@@ -6,15 +6,16 @@ import Screen from '../Screen';
 import Icon from '../Icon';
 import AppTextInput from '../AppTextInput';
 import ImageInput from '../ImageInput';
+import CameraInput from '../CameraInput';
 import colors from '../colors';
 import AppButton from '../AppButton';
 import AppText from '../AppText';
 
 
-function RecoveryScreen(props) {
+function RecoveryScreen({ navigation }) {
 
   const [isNew, setIsNew] = useState(false);
-  const [imageUri, setImageUri] = useState();
+  const [imageUri, setImageUri] = useState(null);
 
   const handlePress = () => console.log('Icon Press');
 
@@ -46,11 +47,12 @@ function RecoveryScreen(props) {
         </View>
       </View>
       <View style={styles.image}>
-      <ImageInput
+        <CameraInput 
           imageUri={imageUri}
-          onChangeImage={uri => setImageUri(uri)}
+          onChangeImage={uri => setImageUri(uri)} 
         />
-        <AppButton title='Continue' color= 'royalBlue' onPress={handlePress}/>
+
+        <AppButton title='Continue' color= 'royalBlue' onPress={()=> navigation.navigate('OTPScreen')}/>
       </View>
       <View style={styles.iconBar}>
         <TouchableOpacity onPress={handlePress}>

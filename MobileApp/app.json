@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "FrontScreen",
-    "slug": "FrontScreen",
+    "name": "Recovery",
+    "slug": "completeapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/R.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./app/assets/splash.png",
@@ -22,9 +22,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/R.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.hassan1995.FrontScreen"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
