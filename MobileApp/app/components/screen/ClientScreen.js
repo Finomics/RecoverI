@@ -30,13 +30,8 @@ function ClientScreen({ navigation }) {
                 <Button title='Search'/>
             </View>
             <ScrollView>
-                <NewCard
-                  items={categories[0]}
-                  onPress={()=> 
-                    navigation.navigate('RecoveryScreen')
-                  }
-                />
-                <NewCard
+              {categories.map((value,key)=><NewCard  items={value}onPress={()=> navigation.navigate('RecoveryScreen') } />)}
+                {/* <NewCard
                   items={categories[1]}
                   onPress={()=> console.log(categories[1])
                   }
@@ -55,7 +50,7 @@ function ClientScreen({ navigation }) {
                   items={categories[4]}
                   onPress={()=> console.log(categories[4])
                   }
-                />
+                /> */}
             </ScrollView>
         </Screen>
     );
