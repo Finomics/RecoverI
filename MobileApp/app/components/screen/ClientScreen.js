@@ -1,21 +1,37 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import Card from '../Card';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
-
+import {getClients} from '../APIcalls/getRequests'
 
 
 function ClientScreen({ navigation }) {
 
-  const listings = [
-    { Name: 'Hassan Mansoor', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 1 },
+  const list = [
+    { Name: 'Hassan Mansoor1', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 1 },
     { Name: 'Hammad Ahmed', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 2 },
     { Name: 'Anas Mansoor', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 3 },
     { Name: 'Bilal Zia', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 4 },
     { Name: 'Mohib Zia', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 5 },
   ];
+  // console.log("in client Screen",list)
+  const[clients,setClients]=useState();
+  useEffect(() => {
+    fetch("https://paym-api.herokuapp.com/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+        console.log("in getAPI",responseJson);
+         setClients(responseJson.Data);
+     //  setClients(list);
+    })
+    .catch((error) => {
+    console.error(error);
+    });
+    setClients(list);
+   
+     },[]);
 
     return (
         <Screen>
@@ -29,18 +45,19 @@ function ClientScreen({ navigation }) {
                 </View>
                 <Button title='Search'/>
             </View>
+            {clients!=null?
             <FlatList 
-                    data={listings}
-                    keyExtractor={listing => listing.value.toString()}
+                    data={clients}
+                    // keyExtractor={listing => listing.ClientId.toString()}
                     renderItem={({item}) =>
                         <Card 
-                            title={item.Name}
+                            title={item.ClientName}
                             subTitle={item.PhoneNumber}
                             subSubTitle={item.Amount}
                             onPress={()=>navigation.navigate('RecoveryScreen', item)} 
                         /> 
                     } 
-                />
+                />:<></>}
                 {/* <NewCard
                   items={categories[0]}
                   onPress={()=> navigation.navigate('RecoveryScreen', categories[0])
