@@ -32,7 +32,7 @@ function RecoveryScreen({ navigation, route }) {
       </View>
       <ScrollView>
       <View style={styles.inputContainer}>
-        <AppText style={styles.name}>{listing.Name}</AppText>
+        <AppText style={styles.name}>{listing.ClientName}</AppText>
         <AppTextInput
           placeholder='Amount'
           icon='currency-rupee'

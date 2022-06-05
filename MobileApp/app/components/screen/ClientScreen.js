@@ -52,7 +52,7 @@ function ClientScreen({ navigation }) {
                     renderItem={({item}) =>
                     <Card 
                       title={item.ClientName}
-                    
+                 
                       subTitle={item.PhoneNumber}
                             subSubTitle={item.Amount}
                             onPress={()=>navigation.navigate('RecoveryScreen', item)} 

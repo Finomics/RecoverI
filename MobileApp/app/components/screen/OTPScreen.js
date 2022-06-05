@@ -50,7 +50,7 @@ function OTPScreen({ navigation, route }) {
     return (
         <Screen>    
             <View style={styles.descriptionContainer}>
-                <AppText style={{ fontWeight: '900'}}>Name: {listing.Name}</AppText>
+                <AppText style={{ fontWeight: '900'}}>Name: {listing.ClientName}</AppText>
                 <AppText style={{ fontWeight: '900'}}>Amount: {(textInput)}</AppText>
                 <AppText style={{ fontWeight: '900'}}>Mode of Payment: {(modeOfPayment)}</AppText>
             </View>
