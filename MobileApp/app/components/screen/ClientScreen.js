@@ -24,12 +24,12 @@ function ClientScreen({ navigation }) {
     .then((responseJson) => {
         console.log("in getAPI",responseJson);
          setClients(responseJson.Data);
-     //  setClients(list);
+  
     })
     .catch((error) => {
     console.error(error);
     });
-    setClients(list);
+   
    
      },[]);
 
@@ -48,11 +48,12 @@ function ClientScreen({ navigation }) {
             {clients!=null?
             <FlatList 
                     data={clients}
-                    // keyExtractor={listing => listing.ClientId.toString()}
+                    keyExtractor={listing => listing.ClientId}
                     renderItem={({item}) =>
-                        <Card 
-                            title={item.ClientName}
-                            subTitle={item.PhoneNumber}
+                    <Card 
+                      title={item.ClientName}
+                    
+                      subTitle={item.PhoneNumber}
                             subSubTitle={item.Amount}
                             onPress={()=>navigation.navigate('RecoveryScreen', item)} 
                         /> 
