@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Image, StyleSheet, Switch, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Switch, TouchableOpacity, View, ScrollView} from 'react-native';
 
 import Screen from '../Screen';
 import Icon from '../Icon';
@@ -12,12 +12,15 @@ import AppButton from '../AppButton';
 import AppText from '../AppText';
 
 
-function RecoveryScreen({ navigation }) {
+function RecoveryScreen({ navigation, route }) {
+
+  const listing = route.params;
 
   const [isNew, setIsNew] = useState(false);
   const [imageUri, setImageUri] = useState(null);
+  const [textInput, setTextInput] = useState(null);
 
-  const handlePress = () => console.log('Icon Press');
+  const handlePress = () => console.log(textInput);
 
   return (
     <Screen style={styles.backGround}>
@@ -27,15 +30,14 @@ function RecoveryScreen({ navigation }) {
           source={require('../../assets/logo.png')} 
         />
       </View>
+      <ScrollView>
       <View style={styles.inputContainer}>
-      <AppTextInput
-          placeholder='Client Name'
-          icon='account-arrow-right-outline'
-        />
+        <AppText style={styles.name}>{listing.ClientName}</AppText>
         <AppTextInput
           placeholder='Amount'
           icon='currency-rupee'
           keyboardType='numeric'
+          onChangeText={(textInput) => setTextInput(textInput)}
         />
       </View>
       <View style={ styles.chequeBarContainer}>
@@ -43,7 +45,10 @@ function RecoveryScreen({ navigation }) {
           <AppText style={styles.text}>Cheque</AppText>
         </View>
         <View style={styles.chequeBarRight}>
-          <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)} />
+          <Switch 
+            value={isNew} 
+            onValueChange={newValue => setIsNew(newValue)}
+          />
         </View>
       </View>
       <View style={styles.image}>
@@ -52,19 +57,14 @@ function RecoveryScreen({ navigation }) {
           onChangeImage={uri => setImageUri(uri)} 
         />
 
-        <AppButton title='Continue' color= 'royalBlue' onPress={()=> navigation.navigate('PhoneCamera')}/>
+        <AppButton title='Continue' color= 'royalBlue' onPress={()=> navigation.navigate('OTPScreen', {listing, isNew, textInput})}/>
       </View>
       <View style={styles.iconBar}>
-        <TouchableOpacity onPress={handlePress}>
-          <Icon name='home' backgroundColor={colors.backGround} iconColor= {colors.royalBlue} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handlePress}>
+          <Icon name='home' backgroundColor={colors.backGround} iconColor= {colors.royalBlue} onPress={handlePress}/>
           <Icon name='account' backgroundColor={colors.backGround} iconColor={colors.royalBlue} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handlePress}>
           <Icon name='magnify' backgroundColor={colors.backGround} iconColor= {colors.royalBlue} />
-        </TouchableOpacity>
       </View>
+      </ScrollView>
     </Screen>
   );
 }
@@ -111,6 +111,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       width: '100%', 
       marginVertical: 10,
+    },
+    name:{
+      fontWeight: '900',
+      fontSize: 20,
+      fontStyle: 'italic',
+      color: colors.primary,
     },
     text:{
       fontWeight: '900',

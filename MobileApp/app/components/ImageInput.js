@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { View, StyleSheet, Image, TouchableWithoutFeedback, Alert } from "react-native";
+import { View, StyleSheet, Image, TouchableWithoutFeedback, Alert, Button } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
+import PhoneCamera from './PhoneCamera';
 import colors from './colors';
 
-function ImageInput({ imageUri, onChangeImage }) {
+function ImageInput({ imageUri, onChangeImage, navigation }) {
 
     useEffect(()=> {
         requestPermission();

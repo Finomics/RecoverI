@@ -1,13 +1,23 @@
 import React, { useState, useRef } from 'react';
-import { SafeAreaView, Text, View ,TouchableOpacity, StyleSheet, TextInput, ScrollView} from 'react-native';
+import { SafeAreaView, Text, View ,TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert} from 'react-native';
 
-import AppTextInput from '../AppTextInput'
+import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
 import AppButton from '../AppButton';
 
 
-function OTPScreen(props) {
+function OTPScreen({ navigation, route }) {
+
+    const {listing, isNew, textInput} = route.params;
+
+    let modeOfPayment = {};
+
+    if (isNew===true){
+        modeOfPayment = 'Cheque'
+    }else{
+        modeOfPayment = 'Cash'
+    }
 
     const pin1Ref = useRef(null);
     const pin2Ref = useRef(null);
@@ -22,11 +32,29 @@ function OTPScreen(props) {
     var OTP_Array = ['','','',''];
 
     const handlePress = () => {
-        console.log(OTP_Array)
-        alert(OTP_Array)
+        // console.log(isNew)
+        Alert.alert(
+            'OTP Verification',
+            'You have made the '+ modeOfPayment + " transaction of Rs. " + textInput +'.',
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+          );
     };
 
-    return (    
+    return (
+        <Screen>    
+            <View style={styles.descriptionContainer}>
+                <AppText style={{ fontWeight: '900'}}>Name: {listing.ClientName}</AppText>
+                <AppText style={{ fontWeight: '900'}}>Amount: {(textInput)}</AppText>
+                <AppText style={{ fontWeight: '900'}}>Mode of Payment: {(modeOfPayment)}</AppText>
+            </View>
+            <View style={styles.backgroundContainer}>
             <View style={styles.container}>
                 <AppText style={{ fontWeight: 'bold', }}> Please Insert OTP </AppText>
                 <View style={styles.inputContainer}>
@@ -109,6 +137,8 @@ function OTPScreen(props) {
                     />
                 </View>
             </View>
+            </View>
+        </Screen>
     );
 }
 
@@ -120,10 +150,18 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: colors.lightShade,
         padding: 10,
+    },
+    descriptionContainer:{
+        marginVertical: 30,
+        alignItems: 'center',
+    },
+    backgroundContainer:{
+        justifyContent: 'center',
+        alignItems: 'center',
     }, 
     inputContainer:{
         flexDirection: 'row',
-        marginTop: 30,
+        marginTop: 15,
         marginBottom: 20,
         width: '100%',
         justifyContent: 'space-evenly',

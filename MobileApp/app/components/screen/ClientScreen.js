@@ -1,12 +1,38 @@
-import React from 'react';
-import { Image, Button, Text, ScrollView, View, StyleSheet, TextInput } from 'react-native';
+import {React,useEffect,useState} from 'react';
+import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import Card from '../Card';
+import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
+import {getClients} from '../APIcalls/getRequests'
 
 
+function ClientScreen({ navigation }) {
 
-function ClientScreen(props) {
+  const list = [
+    { Name: 'Hassan Mansoor1', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 1 },
+    { Name: 'Hammad Ahmed', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 2 },
+    { Name: 'Anas Mansoor', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 3 },
+    { Name: 'Bilal Zia', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 4 },
+    { Name: 'Mohib Zia', PhoneNumber:'0300-xxxxxxx', Amount:'xxxxxxx', value: 5 },
+  ];
+  // console.log("in client Screen",list)
+  const[clients,setClients]=useState();
+  useEffect(() => {
+    fetch("https://paym-api.herokuapp.com/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+        console.log("in getAPI",responseJson);
+         setClients(responseJson.Data);
+  
+    })
+    .catch((error) => {
+    console.error(error);
+    });
+   
+   
+     },[]);
+
     return (
         <Screen>
             <View style={styles.logoContainer}>
@@ -15,52 +41,49 @@ function ClientScreen(props) {
                     source={require('../../assets/logo.png')} 
                 />
                 <View style={styles.textContainer}>
-                    <TextInput style={{fontWeight:'bold'}} placeholder='Client Name'/>
+                  <TextInput style={{fontWeight:'bold', width: '100%'}} placeholder='Client Name'/>
                 </View>
                 <Button title='Search'/>
             </View>
-            <ScrollView>
-                <Card
-                  title='Hassan Mansoor'
-                  subTitle='0324-2886139' 
-                  subSubTitle='xxxxxx'
+            {clients!=null?
+            <FlatList 
+                    data={clients}
+                    keyExtractor={listing => listing.ClientId}
+                    renderItem={({item}) =>
+                    <Card 
+                      title={item.ClientName}
+                 
+                      subTitle={item.PhoneNumber}
+                            subSubTitle={item.Amount}
+                            onPress={()=>navigation.navigate('RecoveryScreen', item)} 
+                        /> 
+                    } 
+                />:<></>}
+                {/* <NewCard
+                  items={categories[0]}
+                  onPress={()=> navigation.navigate('RecoveryScreen', categories[0])
+                  }
                 />
-                <Card
-                  title='Hammad Ahmed'
-                  subTitle='0345-2057798' 
-                  subSubTitle='xxxxxx'
+                <NewCard
+                  items={categories[1]}
+                  onPress={()=> navigation.navigate('RecoveryScreen', categories[1])
+                  }
                 />
-                <Card
-                  title='Anas Mansoor'
-                  subTitle='0300-2345930' 
-                  subSubTitle='xxxxxx'
+                <NewCard
+                  items={categories[2]}
+                  onPress={()=> navigation.navigate('RecoveryScreen', categories[2])
+                  }
                 />
-                <Card
-                  title='Bilal Zia'
-                  subTitle='0343-2842087' 
-                  subSubTitle='xxxxxx'
+                <NewCard
+                  items={categories[3]}
+                  onPress={()=> navigation.navigate('RecoveryScreen', categories[3])
+                  }
                 />
-                <Card
-                  title='Mohib Zia'
-                  subTitle='0301-2283237' 
-                  subSubTitle='xxxxxx'
-                />
-                <Card
-                  title='Mohib Zia'
-                  subTitle='0301-2283237' 
-                  subSubTitle='xxxxxx'
-                />
-                <Card
-                  title='Mohib Zia'
-                  subTitle='0301-2283237' 
-                  subSubTitle='xxxxxx'
-                />
-                <Card
-                  title='Mohib Zia'
-                  subTitle='0301-2283237' 
-                  subSubTitle='xxxxxx'
-                />
-            </ScrollView>
+                <NewCard
+                  items={categories[4]}
+                  onPress={()=> navigation.navigate('RecoveryScreen', categories[4])
+                  }
+                /> */}
         </Screen>
     );
 }
