@@ -10,6 +10,9 @@ import CameraInput from '../CameraInput';
 import colors from '../colors';
 import AppButton from '../AppButton';
 import AppText from '../AppText';
+import {postRequest} from '../APIcalls/postRequests'
+
+
 
 
 function RecoveryScreen({ navigation, route }) {
@@ -20,8 +23,25 @@ function RecoveryScreen({ navigation, route }) {
   const [imageUri, setImageUri] = useState(null);
   const [textInput, setTextInput] = useState(null);
 
-  const handlePress = () => console.log(textInput);
+  const handlePress = () => {
+    console.log(textInput);
+  }
 
+  const handleContinue =async () => {
+    
+    console.log(listing);
+    let api= "Clientdata";
+    let payload={
+      ClientId:"122",
+clientName:"Wajahat",
+clientEmail:"wajee@pacific.com.pk",
+clientAmount:"190",
+  status:"false"
+
+    }
+    let resp= await postRequest(api,payload);
+  //  navigation.navigate('OTPScreen', {listing, isNew, textInput})
+  }
   return (
     <Screen style={styles.backGround}>
       <View style={styles.logoContainer}>
@@ -57,7 +77,7 @@ function RecoveryScreen({ navigation, route }) {
           onChangeImage={uri => setImageUri(uri)} 
         />
 
-        <AppButton title='Continue' color= 'royalBlue' onPress={()=> navigation.navigate('OTPScreen', {listing, isNew, textInput})}/>
+        <AppButton title='Continue' color= 'royalBlue' onPress={()=> handleContinue()}/>
       </View>
       <View style={styles.iconBar}>
           <Icon name='home' backgroundColor={colors.backGround} iconColor= {colors.royalBlue} onPress={handlePress}/>

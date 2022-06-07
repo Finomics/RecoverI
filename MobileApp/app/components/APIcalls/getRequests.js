@@ -32,18 +32,3 @@ console.error(error);
     } 
 
 }
-export  const postRequest=async(api,data)=>{
-    const APIURL= baseApi+"/"+api;
- //;
-    try{
-        let response= await axios.post(APIURL,data);
-        console.log("API Response",api,response);
-       // toast.success(response.status+"\n"+response.data);
-        return response;
-    }catch (err) {
-        // Handle Error Here
-        console.log("Error in API",APIURL,data,err);
-    
-    } 
-  
-}
