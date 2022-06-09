@@ -40,6 +40,7 @@ clientAmount:"190",
 
     }
     let resp= await postRequest(api,payload);
+    console.log("image",imageUri);
   //  navigation.navigate('OTPScreen', {listing, isNew, textInput})
   }
   return (
