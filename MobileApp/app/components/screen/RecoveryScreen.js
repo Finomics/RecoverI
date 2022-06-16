@@ -60,13 +60,13 @@ function RecoveryScreen({ navigation, route }) {
       .then((response) => {
         console.log(JSON.stringify(response.data), "response");
         alert("Send Otp for Check Email");
-        navigation.navigate('OTPScreen', {listing, isNew, textInput});
+       // navigation.navigate('OTPScreen', {listing, isNew, textInput});
 
       })
       .catch((error) => {
         console.log(error, "error");
       })
-
+      navigation.navigate('OTPScreen', {listing, isNew, textInput});
 
   }
 
