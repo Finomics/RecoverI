@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
-import PaymentCard from '../PaymentCard';
+import PaymentCard from '../../components/PaymentCard';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
@@ -19,7 +19,7 @@ function ClientScreen({ navigation }) {
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
   useEffect(() => {
-    fetch("https://paym-api.herokuapp.com/ClientData")
+    fetch("https://paym-api.herokuapp.com/")
       .then((response) => response.json())
       .then((responseJson) => {
         console.log("ClientScreen in getAPI", responseJson);
@@ -52,10 +52,10 @@ function ClientScreen({ navigation }) {
           renderItem={({ item, i }) =>
             <PaymentCard
               key={i}
-              title={item.ClientName}
-              subTitle={item.ClientPhoneNumber}
-              subSubTitle={item.Amount}
-              onPress={() => navigation.navigate('RecoveryScreen', item)}
+              title={item.PaymentName}
+              subTitle={item.PaymentAmount}
+              subSubTitle={item.status}
+              onPress={() => navigation.navigate('OTPScreen', item)}
             />
           }
         /> : <></>}
