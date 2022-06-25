@@ -14,12 +14,12 @@ import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
 export default function App() {
   return (
     // <Screen>
-    <RiderAssignScreen/>
+    // <RiderAssignScreen/>
     //   <ClientScreen/>
     // </Screen>
-    // <NavigationContainer>
-    //   <AuthNavigator/>
-    // </NavigationContainer>
+    <NavigationContainer>
+      <AuthNavigator/>
+    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
