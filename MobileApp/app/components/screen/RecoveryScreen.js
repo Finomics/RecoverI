@@ -32,7 +32,7 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentEmail = listing.ClientEmail
   // const Paymentamount = textInput
   // const imageUrl = Img
-  console.log(PaymentNumber, PaymentName, "PaymentID");
+  // console.log(PaymentNumber, PaymentName, "PaymentID");
 
 
 
@@ -41,7 +41,6 @@ function RecoveryScreen({ navigation, route }) {
 
   const handleContinue = async () => {
 
-    console.log(Img, "ImgUrl");
     axios({
       method: 'post',
       url: 'https://paym-api.herokuapp.com/PaymentData',
@@ -58,15 +57,16 @@ function RecoveryScreen({ navigation, route }) {
       }, withCredentials: true
     })
       .then((response) => {
-        console.log(JSON.stringify(response.data), "response");
-        alert("Send Otp for Check Email");
-       // navigation.navigate('OTPScreen', {listing, isNew, textInput});
+        var a= response.data
+        // console.log(JSON.stringify(response.data), "response");
+        alert("Send Otp for Check Email")
+        navigation.navigate('OTPScreen',a)
 
       })
       .catch((error) => {
         console.log(error, "error");
       })
-      navigation.navigate('OTPScreen', {listing, isNew, textInput});
+
 
   }
 
