@@ -9,16 +9,17 @@ import Screen from './app/components/Screen';
 
 import RecoveryScreen from './app/components/screen/RecoveryScreen';
 import AuthNavigator from './app/components/navigation/AuthNavigator';
-
+import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
 
 export default function App() {
   return (
     // <Screen>
+    <RiderAssignScreen/>
     //   <ClientScreen/>
     // </Screen>
-    <NavigationContainer>
-      <AuthNavigator/>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <AuthNavigator/>
+    // </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
