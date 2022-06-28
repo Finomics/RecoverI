@@ -9,12 +9,12 @@ import Screen from './app/components/Screen';
 
 import RecoveryScreen from './app/components/screen/RecoveryScreen';
 import AuthNavigator from './app/components/navigation/AuthNavigator';
-import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
+import AddMemberScreen from './app/components/screen/AddMemberScreen';
 
 export default function App() {
   return (
     // <Screen>
-    // <RiderAssignScreen/>
+    // <AddMemberScreen/>
     //   <ClientScreen/>
     // </Screen>
     <NavigationContainer>
