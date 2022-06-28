@@ -47,7 +47,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Cash'
-                             onPress={()=> navigation.navigate('PaymentScreen')}
+                             onPress={()=> navigation.navigate('AddMemberScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>

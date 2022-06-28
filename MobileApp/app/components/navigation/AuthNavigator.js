@@ -14,8 +14,8 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigator=()=> (
     <Stack.Navigator>
-        <Stack.Screen name='AddMemberScreen' component={AddMemberScreen} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
+        <Stack.Screen name='AddMemberScreen' component={AddMemberScreen} />
         <Stack.Screen name='ClientFormScreen' component={ClientFormScreen} />
         <Stack.Screen name='ClientScreen' component={ClientScreen} />
         <Stack.Screen name='RecoveryScreen' component={RecoveryScreen} />
