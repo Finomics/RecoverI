@@ -16,7 +16,7 @@ export default function App() {
     // <Screen>
     // <AddMemberScreen/>
     //   <ClientScreen/>
-    // </Screen>
+    // </Screen> test
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
