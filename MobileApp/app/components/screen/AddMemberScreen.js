@@ -70,7 +70,10 @@ function AddMemberScreen(props) {
                 style={{backgroundColor: colors.lightGrey, borderRadius: 25}}
                 />
 
-                <SubmitButton title='Confirm'/>
+                <SubmitButton 
+                    title='Confirm'
+                    color='teal'
+                />
             </AppForm>
             
         </View>
