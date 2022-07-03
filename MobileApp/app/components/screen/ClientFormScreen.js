@@ -82,7 +82,7 @@ function ClientFormScreen(props) {
                 />
                 <SubmitButton 
                     title='Confirm'
-                    color='secondary'
+                    color='teal'
                 />
             </AppForm>
             </ScrollView>

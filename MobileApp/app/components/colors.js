@@ -12,5 +12,5 @@ export default {
     royalBlue: '#0504AA',
     secondary: '#4ecdc4',
     white: '#fff',
-    teal: '#008080',
+    teal: '#367588',
 };
