@@ -86,14 +86,22 @@ function AddMemberScreen(props) {
                         textContentType='password'
                     />
 
-                <SubmitButton 
-                    title='Confirm'
-                    color='teal'
-                />
-            </AppForm>
-            
-        </View>
-    </Screen>
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                        style={{ backgroundColor: colors.lightGrey, borderRadius: 25 }}
+                    />
+
+                    <SubmitButton title='Confirm'
+                      color='teal' />
+                </AppForm>
+
+            </View>
+        </Screen>
     );
 }
 
