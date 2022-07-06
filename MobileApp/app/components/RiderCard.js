@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, View, StyleSheet, FlatList, TouchableOpacity, Modal, Text } from 'react-native';
 
 import RiderNameCard from '../components/RiderNameCard';
 
 import colors from './colors';
 import AppText from './AppText';
-
+import axios from "axios";
 
 
 const tempRiderName = [
@@ -16,62 +16,90 @@ const tempRiderName = [
     { Name: 'Mohib Zia', value: 5 },
 ]
 
-function RiderCard({name, phoneNumber, email, amount, rider, id }) {
+function RiderCard({ name, phoneNumber, email, amount, rider, id }) {
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [Rider, setallRider] = useState([])
 
-    const handlePress = ()=> {
+    const handlePress = () => {
         // console.log(rider)
         setModalVisible(true)
-        
-      }
-    
-    const handleRider = (item)=> {
-        if (rider!==true){
-            console.log(id.Rider=item.Name)
-            console.log('New',item)
-        }else{
-            console.log(id.Rider)
-        }
-      }
-    
+
+    }
+
+    useEffect(() => {
+        axios({
+            method: "get",
+            url: "https://paym-api.herokuapp.com/auth/RiderEmploye",
+        }).then((res) => {
+            setallRider(res.data)
+            // console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [])
+    var ClinetID = id._id
+
+    const handleRider = (item) => {
+        // console.log(,"idididididid");
+
+
+
+        // console.log(item.employeeName, "eee");
+        axios({
+            method: 'post',
+            url: "https://paym-api.herokuapp.com/ClientDataUpdate",
+            data: {
+                id: ClinetID,
+                ClientRider: item.employeeName
+            }
+        }).then((res) => {
+            console.log(res.data.message, "res");
+            alert(res.data.message)
+            // navigation.navigate('RiderAssignScreen')
+            // setRealTime(!realTime);
+        }).catch((err) => {
+            console.log(err, "err");
+        })
+    }
+
     return (
         <>
-        <TouchableOpacity style={styles.card} onPress={()=> {handlePress()}}>
-            <View style={styles.detailsContainer}>
-                <AppText>{name}</AppText>
-                <AppText>{phoneNumber}</AppText>
-                <AppText>{email}</AppText>
-                <AppText>Rs: {amount}</AppText>
-                {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
-                <AppText>Rider: {id.Rider}</AppText>
+            <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
+                <View style={styles.detailsContainer}>
+                    <AppText>{name}</AppText>
+                    <AppText>{phoneNumber}</AppText>
+                    <AppText>{email}</AppText>
+                    <AppText>Rs: {amount}</AppText>
+                    {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
+                    <AppText>Rider: {rider}</AppText>
 
-            </View>
-        </TouchableOpacity>
+                </View>
+            </TouchableOpacity>
 
 
 
-        <Modal
-              animationType="slide"
-              transparent={false}
-              visible={modalVisible}
+            <Modal
+                animationType="slide"
+                transparent={false}
+                visible={modalVisible}
             >
-            <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue}/>
+                <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} />
 
 
-            <FlatList 
-                data={tempRiderName}
-                keyExtractor={tempRiderName => tempRiderName.value.toString()}
-                renderItem={({item}) =>
-                    <RiderNameCard 
-                        name={item.Name}
-                        id={item.value}
-                        onPress={()=> {handleRider(item)}}
-                    /> 
-                    } 
-            />
+                <FlatList
+                    data={Rider}
+                    // keyExtractor={tempRiderName => tempRiderName.value.toString()}
+                    renderItem={({ item }) =>
+                        <RiderNameCard
+                            name={item.employeeName}
+                            // id={item._id}
+                            onPress={() => { handleRider(item) }}
+                        />
+                    }
+                />
 
-            </Modal> 
+            </Modal>
 
 
 
@@ -94,14 +122,14 @@ function RiderCard({name, phoneNumber, email, amount, rider, id }) {
 
 
         </>
-        
+
 
 
     );
 }
 
 const styles = StyleSheet.create({
-    card:{
+    card: {
         borderRadius: 15,
         backgroundColor: colors.lightBlueShade,
         marginBottom: 15,
@@ -112,12 +140,12 @@ const styles = StyleSheet.create({
         borderColor: colors.dark,
         borderWidth: 2,
     },
-    subTitle:{
+    subTitle: {
         color: colors.secondary,
         // fontWeight: 'bold',
         paddingLeft: 3
     },
-    title:{
+    title: {
         color: colors.primary,
         marginBottom: 7,
         fontWeight: 'bold',
