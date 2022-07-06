@@ -13,7 +13,8 @@ import axios from "axios";
 
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required().label("email"),
+    userName: Yup.string().required().label("User Name"),
+    email: Yup.string().required().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -62,7 +63,7 @@ function AddMemberScreen(props) {
             <View style={styles.inputContianer}>
 
                 <AppForm
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{ email: '', password: '', userName:'' }}
                     // onSubmit={values => console.log(values, value,":sasas")}
                     onSubmit={values => { handlePress({ values, value }) }}
                     validationSchema={validationSchema}
@@ -71,6 +72,16 @@ function AddMemberScreen(props) {
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='account-circle-outline'
+                        keyboardType='email-address'
+                        name='userName'
+                        placeholder='User Name'
+                        textContentType='emailAddress'
+                    />
+                    
+                    <AppFormField
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        icon='email-outline'
                         keyboardType='email-address'
                         name='email'
                         placeholder='Email'
