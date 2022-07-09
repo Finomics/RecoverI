@@ -9,11 +9,15 @@ import RiderAssignScreen from "../screen/RiderAssignScreen";
 import AddMemberScreen from "../screen/AddMemberScreen";
 import PaymentScreen from "../screen/PaymentScreen";
  import ClientFormScreen from "../screen/ClientFormScreen";
+ import RegisterScreen from '../screen/RegisterScreen';
+import LoginScreen from '../screen/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator=()=> (
     <Stack.Navigator>
+         <Stack.Screen name='LoginScreen' component={LoginScreen} />
+         <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
         <Stack.Screen name='AddMemberScreen' component={AddMemberScreen} />
         <Stack.Screen name='ClientFormScreen' component={ClientFormScreen} />

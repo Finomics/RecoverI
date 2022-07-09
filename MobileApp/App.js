@@ -10,13 +10,18 @@ import Screen from './app/components/Screen';
 import RecoveryScreen from './app/components/screen/RecoveryScreen';
 import AuthNavigator from './app/components/navigation/AuthNavigator';
 import AddMemberScreen from './app/components/screen/AddMemberScreen';
+import RegisterScreen from './app/components/screen/RegisterScreen';
+import LoginScreen from './app/components/screen/LoginScreen';
 
 export default function App() {
   return (
     // <Screen>
     // <AddMemberScreen/>
     //   <ClientScreen/>
-    // </Screen> test
+
+   //  <RegisterScreen/> 
+//   <LoginScreen/> 
+
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
