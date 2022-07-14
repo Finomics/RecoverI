@@ -8,87 +8,122 @@ import AppButton from '../AppButton';
 import Screen from '../Screen';
 import colors from '../colors';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
+    name: Yup.string().label("name"),
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
-    uniqueID: Yup.string().required().min(4).label("Unique ID"),
 });
 
 
-function LoginScreen( {navigation} ) {
+
+
+
+function LoginScreen({ navigation }) {
+
+
+
+    const handlePress = (values) => {
+        // console.log(values, "form");
+        axios({
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/employe",
+            data: {
+                name: values.name,
+                email: values.email,
+                password: values.password,
+                Role: "Admin",
+            }
+        }).then((res) => {
+
+            alert("Admin has been Created")
+            navigation.navigate('LoginScreen')
+            // alert(res.data.message)
+            // console.log(res.data, "Json Res");
+
+        }).catch((err) => { console.log(err, "Admin Created Error"); })
+    }
+
 
     return (
         <Screen style={styles.container}>
             <ScrollView>
                 <View style={styles.logoContainer}>
-                    <Image  
+                    <Image
                         source={require('../../assets/logo.png')}
                         style={styles.logoName}
                     />
-                    <Icon 
-                        name='account-tie-outline' 
+                    <Icon
+                        name='account-tie-outline'
                         backgroundColor={colors.backGround}
                         iconColor={colors.secondary}
                         size={150}
                     />
                 </View>
                 <AppForm
-                    initialValues={{email:'', password:'', uniqueID:''}}
-                    onSubmit={values => console.log(values)}
+                    initialValues={{ email: '', password: '', uniqueID: '' }}
+                    onSubmit={(values, { resetForm }) => {
+                        handlePress(values)
+                        // , resetForm({ values: initialValues });
+                    }}
                     validationSchema={validationSchema}
                 >
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
+                        autoCorrect={false}
+                        icon='card-account-details-outline'
+                        name='name'
+                        placeholder='Name'
+                        textContentType='name'
+                    />
+                    <AppFormField
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='email'
                         keyboardType='email-address'
                         name='email'
                         placeholder='Email'
-                        textContentType='emailAddress' 
+                        textContentType='emailAddress'
                     />
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
                         placeholder='Password'
-                        secureTextEntry={true} 
+                        secureTextEntry={true}
                         textContentType='password'
                     />
-                    <AppFormField
-                        autoCapitalize='none' 
-                        autoCorrect={false}
-                        icon='card-account-details-outline'
-                        name='uniqueID'
-                        placeholder='Unique ID'
-                        textContentType='password'
-                    />
-                    <SubmitButton title='Register'/>
+
+                    <SubmitButton title='Register' />
                 </AppForm>
             </ScrollView>
-            <AppButton 
-                title='By pass to home Screen' 
+
+            {/* <view>Login</view> */}
+
+            <AppButton
+                title='By pass to home Screen'
                 color='black'
-                onPress={()=> navigation.navigate('HomeScreen')}
+                onPress={() => navigation.navigate('HomeScreen')}
             />
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         paddingHorizontal: 20,
         backgroundColor: colors.backGround,
     },
-    logoContainer:{
+    logoContainer: {
         width: '100%',
         height: 250,
         alignItems: 'center',
         alignSelf: 'center',
         marginBottom: 20,
     },
-    logoName:{
+    logoName: {
         width: '100%',
         height: 120,
     },

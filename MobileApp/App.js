@@ -1,5 +1,4 @@
-
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {GlobalProvider} from './app/components/context/GlobalState'
 
@@ -14,24 +13,32 @@ import AuthNavigator from './app/components/navigation/AuthNavigator';
 import AddMemberScreen from './app/components/screen/AddMemberScreen';
 import RegisterScreen from './app/components/screen/RegisterScreen';
 import LoginScreen from './app/components/screen/LoginScreen';
+import { StoreProvider } from './app/components/screen/GlobalState';
+
+
 
 export default function App() {
+  const [Role, setRole] = useState([])
+  console.log(Role, "Set GolbalState Data");
+
   return (
     // <Screen>
     // <AddMemberScreen/>
     //   <ClientScreen/>
 
-   //  <RegisterScreen/> 
-//   <LoginScreen/> 
+    //  <RegisterScreen/> 
+    //   <LoginScreen/> 
+    <StoreProvider value={{ Role, setRole }}>
 
-    <NavigationContainer>
-      <AuthNavigator/>
-    </NavigationContainer>
-    </GlobalProvider>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+
+    </StoreProvider>
   );
 }
 const styles = StyleSheet.create({
-  container:{
+  container: {
     justifyContent: 'center',
     alignItems: 'center',
   },
