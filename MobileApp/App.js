@@ -1,5 +1,7 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import {GlobalProvider} from './app/components/context/GlobalState'
 
 import { StyleSheet } from 'react-native';
 
@@ -17,9 +19,11 @@ export default function App() {
     // <AddMemberScreen/>
     //   <ClientScreen/>
     // </Screen> test
+    <GlobalProvider>
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
+    </GlobalProvider>
   );
 }
 const styles = StyleSheet.create({
