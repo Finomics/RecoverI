@@ -11,7 +11,7 @@ import { AppForm, AppFormField, SubmitButton } from '../forms';
 import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().label("name"),
+    name: Yup.string().required().label("Name"),
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
@@ -38,7 +38,13 @@ function LoginScreen({ navigation }) {
         }).then((res) => {
 
             alert("Admin has been Created")
-            navigation.navigate('LoginScreen')
+            if(values.name=='Admin'){
+                navigation.navigate('AdminHomeScreen')
+            }else if(values.name=='Cashier'){
+                navigation.navigate('CashierHomeScreen')
+            }else if(values.name=='Rider') {
+                navigation.navigate('RiderHomeScreen')
+            }
             // alert(res.data.message)
             // console.log(res.data, "Json Res");
 
@@ -62,7 +68,7 @@ function LoginScreen({ navigation }) {
                     />
                 </View>
                 <AppForm
-                    initialValues={{ email: '', password: '', uniqueID: '' }}
+                    initialValues={{ email: '', password: '', name: '' }}
                     onSubmit={(values, { resetForm }) => {
                         handlePress(values)
                         // , resetForm({ values: initialValues });
@@ -70,7 +76,7 @@ function LoginScreen({ navigation }) {
                     validationSchema={validationSchema}
                 >
                     <AppFormField
-                        autoCapitalize='none'
+                        autoCapitalize='words'
                         autoCorrect={false}
                         icon='card-account-details-outline'
                         name='name'
@@ -96,17 +102,20 @@ function LoginScreen({ navigation }) {
                         textContentType='password'
                     />
 
-                    <SubmitButton title='Register' />
+                    <SubmitButton 
+                        title='Register'
+                        color='teal'
+                    />
                 </AppForm>
             </ScrollView>
 
             {/* <view>Login</view> */}
 
-            <AppButton
+            {/* <AppButton
                 title='By pass to home Screen'
                 color='black'
                 onPress={() => navigation.navigate('HomeScreen')}
-            />
+            /> */}
         </Screen>
     );
 }
