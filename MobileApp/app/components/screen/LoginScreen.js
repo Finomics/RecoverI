@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react'
 
 import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import * as Yup from 'yup';
@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import Screen from '../Screen';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
 import AppButton from '../AppButton';
+import axios from 'axios';
+import StoreContext from './GlobalState';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -13,7 +15,36 @@ const validationSchema = Yup.object().shape({
 });
 
 
-function LoginScreen( {navigation} ) {
+function LoginScreen({ navigation }) {
+
+
+    const AdminRole = useContext(StoreContext);
+
+
+
+    const handlePress = (values) => {
+        console.log(values, "login");
+
+
+        axios({
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/login",
+            data: {
+                email: values.email,
+                password: values.password,
+            }
+        }).then((res) => {
+            // console.log(res.data,"login Response");
+            // console.log(res.data.Role);
+            // localStorage.setItem("Role", JSON.stringify(res.data.Role))
+            alert("Login Successfully!")
+            navigation.navigate('HomeScreen')
+            AdminRole.setRole(res.data)
+
+        }).catch((err) => {
+            console.log(err, "employee not found");
+        })
+    }
 
     return (
         <Screen style={styles.container}>
@@ -23,48 +54,51 @@ function LoginScreen( {navigation} ) {
                     source={require('../../assets/logo.png')}
                 />
                 <AppForm
-                    initialValues={{email:'', password:''}}
-                    onSubmit={values => console.log(values)}
+                    initialValues={{ email: '', password: '' }}
+                    onSubmit={(values, { resetForm }) => {
+                        handlePress(values)
+                        // , resetForm({ values: initialValues });
+                    }}
                     validationSchema={validationSchema}
                 >
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='email'
                         keyboardType='email-address'
                         name='email'
                         placeholder='Email'
-                        textContentType='emailAddress' 
+                        textContentType='emailAddress'
                     />
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
                         placeholder='Password'
-                        secureTextEntry={true} 
+                        secureTextEntry={true}
                         textContentType='password'
                     />
-                    <SubmitButton 
+                    <SubmitButton
                         title='Login'
                     />
                 </AppForm>
             </ScrollView>
 
-            <AppButton 
-                title='By pass to home Screen' 
+            <AppButton
+                title='By pass to home Screen'
                 color='black'
-                onPress={()=> navigation.navigate('HomeScreen')}
+            // onPress={()=> navigation.navigate('HomeScreen')}
             />
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         paddingHorizontal: 20,
     },
-    logo:{
+    logo: {
         width: '100%',
         height: 120,
         alignSelf: 'center',
