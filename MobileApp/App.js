@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import {GlobalProvider} from './app/components/context/GlobalState'
+import { GlobalProvider } from './app/components/context/GlobalState'
 
 import { StyleSheet } from 'react-native';
 
@@ -21,24 +21,26 @@ import WelcomeScreen from './app/components/screen/WelcomeScreen';
 
 export default function App() {
   const [Role, setRole] = useState([])
+
   console.log(Role, "Set GolbalState Data");
 
   return (
     // <Screen>
     // <AddMemberScreen/>
-      // <ClientScreen/>
+    // <ClientScreen/>
     // <WelcomeScreen/>
     //  <RegisterScreen/> 
-      // <LoginScreen/>
-    
+    // <LoginScreen/>
+
     // <AdminHomeScreen/>
-    // <StoreProvider value={{ Role, setRole }}>
+    
+    <StoreProvider value={{ Role, setRole }}>
 
       <NavigationContainer>
         <AuthNavigator />
       </NavigationContainer>
 
-    // </StoreProvider>
+    </StoreProvider>
   );
 }
 const styles = StyleSheet.create({

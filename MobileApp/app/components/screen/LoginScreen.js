@@ -20,12 +20,10 @@ function LoginScreen({ navigation }) {
 
     const AdminRole = useContext(StoreContext);
 
-
+// console.log(AdminRole,"AdminRole");
 
     const handlePress = (values) => {
-        console.log(values, "login");
-
-
+        console.log(values.email, "login");
         axios({
             method: "post",
             url: "https://paym-api.herokuapp.com/auth/login",
@@ -35,16 +33,32 @@ function LoginScreen({ navigation }) {
             }
         }).then((res) => {
             // console.log(res.data,"login Response");
-            // console.log(res.data.Role);
+            console.log(res.data.Role);
             // localStorage.setItem("Role", JSON.stringify(res.data.Role))
             alert("Login Successfully!")
-            console.log(email)
-            navigation.navigate('HomeScreen')
+            // console.log(email)
             AdminRole.setRole(res.data)
+            if (res.data.Role==='Admin') {
+                navigation.navigate('AdminHomeScreen')
+                
+            } else if(res.data.Role==='Cashier'){
+                
+                navigation.navigate('CashierHomeScreen')
+
+            }else if(res.data.Role==="Rider"){
+
+                navigation.navigate('RiderHomeScreen')
+                
+            }else{
+                navigation.navigate('WelcomeScreen')
+
+            }
 
         }).catch((err) => {
             console.log(err, "employee not found");
         })
+
+     
     }
 
     return (
