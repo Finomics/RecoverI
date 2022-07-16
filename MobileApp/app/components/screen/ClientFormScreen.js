@@ -113,7 +113,8 @@ function ClientFormScreen(props) {
             // secureTextEntry={true}
             textContentType="none"
           />
-          <SubmitButton title="Confirm" />
+          <SubmitButton title="Confirm"
+          color='teal' />
         </AppForm>
       </ScrollView>
     </Screen>
