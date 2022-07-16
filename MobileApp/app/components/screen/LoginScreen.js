@@ -38,6 +38,7 @@ function LoginScreen({ navigation }) {
             // console.log(res.data.Role);
             // localStorage.setItem("Role", JSON.stringify(res.data.Role))
             alert("Login Successfully!")
+            console.log(email)
             navigation.navigate('HomeScreen')
             AdminRole.setRole(res.data)
 
@@ -81,15 +82,16 @@ function LoginScreen({ navigation }) {
                     />
                     <SubmitButton
                         title='Login'
+                        color='teal'
                     />
                 </AppForm>
             </ScrollView>
 
-            <AppButton
+            {/* <AppButton
                 title='By pass to home Screen'
                 color='black'
-            // onPress={()=> navigation.navigate('HomeScreen')}
-            />
+            onPress={()=> navigation.navigate('HomeScreen')}
+            /> */}
         </Screen>
     );
 }

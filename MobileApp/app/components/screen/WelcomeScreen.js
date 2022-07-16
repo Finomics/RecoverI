@@ -19,7 +19,7 @@ function WelcomeScreen({navigation}) {
                     title='Login' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
                     onPress={()=> navigation.navigate('LoginScreen')}
-                    color= 'royalBlue'
+                    color= 'teal'
                 />
             <AppButton 
                 title='Register'

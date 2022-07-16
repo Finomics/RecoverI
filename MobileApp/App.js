@@ -14,6 +14,8 @@ import AddMemberScreen from './app/components/screen/AddMemberScreen';
 import RegisterScreen from './app/components/screen/RegisterScreen';
 import LoginScreen from './app/components/screen/LoginScreen';
 import { StoreProvider } from './app/components/screen/GlobalState';
+import AdminHomeScreen from './app/components/screen/AdminHomeScreen';
+import WelcomeScreen from './app/components/screen/WelcomeScreen';
 
 
 
@@ -24,17 +26,19 @@ export default function App() {
   return (
     // <Screen>
     // <AddMemberScreen/>
-    //   <ClientScreen/>
-
+      // <ClientScreen/>
+    // <WelcomeScreen/>
     //  <RegisterScreen/> 
-    //   <LoginScreen/> 
-    <StoreProvider value={{ Role, setRole }}>
+      // <LoginScreen/>
+    
+    // <AdminHomeScreen/>
+    // <StoreProvider value={{ Role, setRole }}>
 
       <NavigationContainer>
         <AuthNavigator />
       </NavigationContainer>
 
-    </StoreProvider>
+    // </StoreProvider>
   );
 }
 const styles = StyleSheet.create({
