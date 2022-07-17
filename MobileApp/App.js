@@ -33,7 +33,7 @@ export default function App() {
     // <LoginScreen/>
 
     // <AdminHomeScreen/>
-    
+
     <StoreProvider value={{ Role, setRole }}>
 
       <NavigationContainer>

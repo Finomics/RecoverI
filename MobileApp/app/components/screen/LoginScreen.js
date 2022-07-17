@@ -20,7 +20,7 @@ function LoginScreen({ navigation }) {
 
     const AdminRole = useContext(StoreContext);
 
-// console.log(AdminRole,"AdminRole");
+    // console.log(AdminRole,"AdminRole");
 
     const handlePress = (values) => {
         console.log(values.email, "login");
@@ -38,18 +38,18 @@ function LoginScreen({ navigation }) {
             alert("Login Successfully!")
             // console.log(email)
             AdminRole.setRole(res.data)
-            if (res.data.Role==='Admin') {
+            if (res.data.Role === 'Admin') {
                 navigation.navigate('AdminHomeScreen')
-                
-            } else if(res.data.Role==='Cashier'){
-                
+
+            } else if (res.data.Role === 'Cashier') {
+
                 navigation.navigate('CashierHomeScreen')
 
-            }else if(res.data.Role==="Rider"){
+            } else if (res.data.Role === "Rider") {
 
                 navigation.navigate('RiderHomeScreen')
-                
-            }else{
+
+            } else {
                 navigation.navigate('WelcomeScreen')
 
             }
@@ -58,7 +58,7 @@ function LoginScreen({ navigation }) {
             console.log(err, "employee not found");
         })
 
-     
+
     }
 
     return (

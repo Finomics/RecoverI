@@ -57,10 +57,10 @@ function RecoveryScreen({ navigation, route }) {
       }, withCredentials: true
     })
       .then((response) => {
-        var a= response.data
+        var a = response.data
         // console.log(JSON.stringify(response.data), "response");
         alert("Send Otp for Check Email")
-        navigation.navigate('OTPScreen',a)
+        navigation.navigate('OTPScreen', a)
 
       })
       .catch((error) => {

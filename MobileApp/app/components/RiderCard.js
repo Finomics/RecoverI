@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, View, StyleSheet, FlatList, TouchableOpacity, Modal, Text } from 'react-native';
 
 import RiderNameCard from '../components/RiderNameCard';
@@ -6,7 +6,7 @@ import RiderNameCard from '../components/RiderNameCard';
 import colors from './colors';
 import AppText from './AppText';
 import axios from "axios";
-
+import StoreContext from './screen/GlobalState';
 
 const tempRiderName = [
     { Name: 'Hassan Mansoor', value: 1 },
@@ -16,10 +16,15 @@ const tempRiderName = [
     { Name: 'Mohib Zia', value: 5 },
 ]
 
-function RiderCard({ name, phoneNumber, email, amount, rider, id }) {
+// 
+function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Rider, setallRider] = useState([])
+    const Globaledata = useContext(StoreContext);
+    const [realTime, setRealTime] = useState(true);
+
+    console.log(Globaledata.Role, "Rider Card Globaledata");
 
     const handlePress = () => {
         // console.log(rider)
@@ -27,37 +32,41 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id }) {
 
     }
 
+
     useEffect(() => {
         axios({
             method: "get",
             url: "https://paym-api.herokuapp.com/auth/RiderEmploye",
         }).then((res) => {
+
             setallRider(res.data)
             // console.log(res.data);
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [realTime])
+
     var ClinetID = id._id
+    var employeeName = Globaledata.Role.employeeName
 
     const handleRider = (item) => {
-        // console.log(,"idididididid");
-
-
 
         // console.log(item.employeeName, "eee");
+
         axios({
             method: 'post',
             url: "https://paym-api.herokuapp.com/ClientDataUpdate",
             data: {
                 id: ClinetID,
-                ClientRider: item.employeeName
+                ClientRider: item.employeeName,
+                CashierName: employeeName
             }
         }).then((res) => {
             console.log(res.data.message, "res");
             alert(res.data.message)
-            // navigation.navigate('RiderAssignScreen')
-            // setRealTime(!realTime);
+            setRealTime(!realTime);
+            navigation.navigate('RiderAssignScreen')
+
         }).catch((err) => {
             console.log(err, "err");
         })
