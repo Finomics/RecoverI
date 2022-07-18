@@ -34,15 +34,15 @@ export default function App() {
     // <LoginScreen/>
 
     // <AdminHomeScreen/>
-    <TransferScreen/>
+  //  <TransferScreen/>
 
-    // <StoreProvider value={{ Role, setRole }}>
+    <StoreProvider value={{ Role, setRole }}>
 
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
 
-    // </StoreProvider>
+    </StoreProvider>
   );
 }
 const styles = StyleSheet.create({

@@ -7,7 +7,7 @@ import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 
 
-function ClientScreen({ navigation }) {
+function PaymentScreen({ navigation }) {
 
   const list = [
     { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default ClientScreen;
+export default PaymentScreen;

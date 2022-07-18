@@ -15,6 +15,7 @@ import AdminHomeScreen from "../screen/AdminHomeScreen";
 import CashierHomeScreen from "../screen/CashierHomeScreen";
 import RiderHomeScreen from "../screen/RiderHomeScreen";
 import WelcomeScreen from "../screen/WelcomeScreen";
+import TransferScreen from "../screen/TransferScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ const AuthNavigator = () => (
         <Stack.Screen name='OTPScreen' component={OTPScreen} />
         <Stack.Screen name='PaymentScreen' component={PaymentScreen} />
         <Stack.Screen name='RiderAssignScreen' component={RiderAssignScreen} />
+        <Stack.Screen name='TransferScreen' component={TransferScreen} />
     </Stack.Navigator>
 )
 

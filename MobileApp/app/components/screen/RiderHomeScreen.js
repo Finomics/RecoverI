@@ -56,8 +56,8 @@ function RiderHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Dash Board'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            title='Transfer'
+                            onPress={()=> navigation.navigate('TransferScreen')}
                         />
                     </View>
                 </View>
