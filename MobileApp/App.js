@@ -16,6 +16,7 @@ import LoginScreen from './app/components/screen/LoginScreen';
 import { StoreProvider } from './app/components/screen/GlobalState';
 import AdminHomeScreen from './app/components/screen/AdminHomeScreen';
 import WelcomeScreen from './app/components/screen/WelcomeScreen';
+import TransferScreen from './app/components/screen/TransferScreen';
 
 
 
@@ -33,14 +34,15 @@ export default function App() {
     // <LoginScreen/>
 
     // <AdminHomeScreen/>
+    <TransferScreen/>
 
-    <StoreProvider value={{ Role, setRole }}>
+    // <StoreProvider value={{ Role, setRole }}>
 
-      <NavigationContainer>
-        <AuthNavigator />
-      </NavigationContainer>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
 
-    </StoreProvider>
+    // </StoreProvider>
   );
 }
 const styles = StyleSheet.create({
