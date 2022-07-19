@@ -40,21 +40,26 @@ function RecoveryScreen({ navigation, route }) {
   }
 
   const handleContinue = async () => {
+    let mode=(isNew)?"Cheque":"Cash";
+let payload ={
 
+  PaymentId: PaymentId,
+  PaymentName: PaymentName,
+  PaymentNumber: PaymentNumber,
+  PaymentEmail: PaymentEmail,
+  PaymentMode: mode,
+  PaymentAmount: textInput,
+  imageUrl: Img,
+
+
+  status: "false"
+
+}
+console.log("Payload",payload);
     axios({
       method: 'post',
       url: 'https://paym-api.herokuapp.com/PaymentData',
-      data: {
-
-        PaymentId: PaymentId,
-        PaymentName: PaymentName,
-        PaymentNumber: PaymentNumber,
-        PaymentEmail: PaymentEmail,
-        PaymentAmount: textInput,
-        imageUrl: Img,
-        status: "false"
-
-      }, withCredentials: true
+       data:payload , withCredentials: true
     })
       .then((response) => {
         var a = response.data

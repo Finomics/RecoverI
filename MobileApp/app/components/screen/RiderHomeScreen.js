@@ -24,7 +24,7 @@ function RiderHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Add Member'
+                            title='Clients List'
                              onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
@@ -34,7 +34,7 @@ function RiderHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Add Client'
+                            title='Payments Collected'
                             onPress={()=> navigation.navigate('PaymentScreen')}
                         />
                     </View>
@@ -46,8 +46,8 @@ function RiderHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Reporting'
-                             onPress={()=> navigation.navigate('AddMemberScreen')}//shuldbe PaymentScreen
+                            title='Verify Payments'
+                             onPress={()=> navigation.navigate('PaymentScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>

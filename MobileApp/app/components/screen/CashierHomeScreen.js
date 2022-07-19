@@ -24,7 +24,7 @@ function CashierHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Add Member'
+                            title='Assign Rider'
                              onPress={()=> navigation.navigate('RiderAssignScreen')}
                         />
                     </View>
@@ -56,8 +56,8 @@ function CashierHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.secondary}
                             size={150}
-                            title='Dash Board'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            title='lients List'
+                            onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
                 </View>
