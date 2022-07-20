@@ -47,7 +47,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Verify Payments'
-                             onPress={()=> navigation.navigate('PaymentScreen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('UnverifierPaymentScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>

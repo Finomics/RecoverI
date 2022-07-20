@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 function OTPScreen({ navigation, route }) {
-
+console.log("IN OTP",route);
     const PaymentName = route.params;
     const PaymentAmount = route.params;
     const PaymentId = route.params;
