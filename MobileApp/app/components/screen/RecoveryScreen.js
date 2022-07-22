@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Image, StyleSheet, Switch, TouchableOpacity, View, ScrollView } from 'react-native';
 
@@ -12,6 +12,7 @@ import AppButton from '../AppButton';
 import AppText from '../AppText';
 import { postRequest } from '../APIcalls/postRequests'
 import axios from 'axios';
+import StoreContext from './GlobalState';
 
 
 
@@ -30,36 +31,39 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentName = listing.ClientName
   const PaymentNumber = listing.ClientPhoneNumber
   const PaymentEmail = listing.ClientEmail
+  const RecoveryContext = useContext(StoreContext)
+
   // const Paymentamount = textInput
   // const imageUrl = Img
   // console.log(PaymentNumber, PaymentName, "PaymentID");
-
+  console.log(RecoveryContext.Role.employeeName, "sss");
 
 
   const handlePress = () => {
   }
 
   const handleContinue = async () => {
-    let mode=(isNew)?"Cheque":"Cash";
-let payload ={
+    let mode = (isNew) ? "Cheque" : "Cash";
+    let payload = {
 
-  PaymentId: PaymentId,
-  PaymentName: PaymentName,
-  PaymentNumber: PaymentNumber,
-  PaymentEmail: PaymentEmail,
-  PaymentMode: mode,
-  PaymentAmount: textInput,
-  imageUrl: Img,
+      PaymentId: PaymentId,
+      PaymentName: PaymentName,
+      PaymentNumber: PaymentNumber,
+      PaymentEmail: PaymentEmail,
+      PaymentMode: mode,
+      PaymentAmount: textInput,
+      imageUrl: Img,
+      heldby: RecoveryContext.Role.employeeName,
+      status: "false"
 
+    }
 
-  status: "false"
-
-}
-console.log("Payload",payload);
+    console.log("Payload", payload);
+    
     axios({
       method: 'post',
       url: 'https://paym-api.herokuapp.com/PaymentData',
-       data:payload , withCredentials: true
+      data: payload, withCredentials: true
     })
       .then((response) => {
         var a = response.data
