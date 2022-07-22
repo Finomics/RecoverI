@@ -23,6 +23,7 @@ function TransferScreen({ navigation }) {
 
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
+  const [realTime, setRealTime] = useState(false)
   const RiderContextData = useContext(StoreContext)
 
 
@@ -44,7 +45,7 @@ function TransferScreen({ navigation }) {
     }).catch((err) => {
       console.log(err);
     })
-  }, [])
+  }, [realTime])
 
 
 
@@ -52,6 +53,34 @@ function TransferScreen({ navigation }) {
     setTransferId(data)
   }
 
+
+  function PaymentTrasferCashier() {
+
+    // console.log(transferId, "transferId");
+
+    for (let i = 0; i < transferId.length; i++) {
+
+      var paymentObjectId = transferId[i]
+
+      console.log(paymentObjectId, "paymentObjectId");
+
+      axios({
+        method: "post",
+        url: `https://paym-api.herokuapp.com/auth/paymenTrasfer/${paymentObjectId}`,
+        data: {
+          heldby: "Hammad Bhi Cashier"
+        }
+      }).then((res) => {
+        console.log(res.data, "res");
+        setRealTime(!realTime)
+        setTransferId("")
+        // alert("Payment Trasfare has been successfully!")
+
+      }).catch((err) => {
+        console.log(err, "error");
+      })
+    }
+  }
 
   return (
     <Screen>
@@ -77,7 +106,7 @@ function TransferScreen({ navigation }) {
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
               // value={item.PaymentId}
-              value={item}
+              value={item._id}
               arrayList={handleValues}
             />
           }
@@ -107,7 +136,10 @@ function TransferScreen({ navigation }) {
                   onPress={()=> navigation.navigate('RecoveryScreen', categories[4])
                   }
                 /> */}
-      <AppButton title='hello' color='teal' onPress={() => console.log(transferId)} />
+      <AppButton title='hello' color='teal' onPress={
+        // () => console.log(transferId, "djdjdjdj")
+        PaymentTrasferCashier
+      } />
     </Screen>
   );
 }
