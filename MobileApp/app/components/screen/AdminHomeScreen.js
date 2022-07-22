@@ -22,7 +22,7 @@ function AdminHomeScreen({navigation}) {
                         <Icon 
                             name='account-plus-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Add Member'
                              onPress={()=> navigation.navigate('AddMemberScreen')}
@@ -32,7 +32,7 @@ function AdminHomeScreen({navigation}) {
                         <Icon 
                             name='account-multiple-plus-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Add Client'
                             onPress={()=> navigation.navigate('ClientFormScreen')}
@@ -44,7 +44,7 @@ function AdminHomeScreen({navigation}) {
                         <Icon 
                             name='file-document-edit-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Reporting'
                              onPress={()=> navigation.navigate('AddMemberScreen')}//shuldbe PaymentScreen
@@ -54,7 +54,7 @@ function AdminHomeScreen({navigation}) {
                         <Icon 
                             name='view-dashboard-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Dash Board'
                             onPress={()=> navigation.navigate('ClientFormScreen')}

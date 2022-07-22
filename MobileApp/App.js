@@ -17,6 +17,8 @@ import { StoreProvider } from './app/components/screen/GlobalState';
 import AdminHomeScreen from './app/components/screen/AdminHomeScreen';
 import WelcomeScreen from './app/components/screen/WelcomeScreen';
 import TransferScreen from './app/components/screen/TransferScreen';
+import CashierHomeScreen from './app/components/screen/CashierHomeScreen';
+import RiderHomeScreen from './app/components/screen/RiderHomeScreen';
 
 
 
@@ -34,6 +36,8 @@ export default function App() {
     // <LoginScreen/>
 
     // <AdminHomeScreen/>
+    // <CashierHomeScreen/>
+    // <RiderHomeScreen/>
   //  <TransferScreen/>
 
     <StoreProvider value={{ Role, setRole }}>

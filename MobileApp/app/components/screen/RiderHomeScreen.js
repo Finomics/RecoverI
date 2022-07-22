@@ -22,7 +22,7 @@ function RiderHomeScreen({navigation}) {
                         <Icon 
                             name='account-plus-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Clients List'
                              onPress={()=> navigation.navigate('ClientScreen')}
@@ -30,9 +30,9 @@ function RiderHomeScreen({navigation}) {
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='account-multiple-plus-outline' 
+                            name='cash-lock' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Payments Collected'
                             onPress={()=> navigation.navigate('PaymentScreen')}
@@ -42,9 +42,9 @@ function RiderHomeScreen({navigation}) {
                 <View style={{ width: '100%', height: '50%', flexDirection: 'row'}}>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='file-document-edit-outline' 
+                            name='cash-check' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Verify Payments'
                              onPress={()=> navigation.navigate('UnverifierPaymentScreen')}//shuldbe PaymentScreen
@@ -52,9 +52,9 @@ function RiderHomeScreen({navigation}) {
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='view-dashboard-outline' 
+                            name='cash-refund' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Transfer'
                             onPress={()=> navigation.navigate('TransferScreen')}

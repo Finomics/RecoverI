@@ -20,9 +20,9 @@ function CashierHomeScreen({navigation}) {
                 <View style={{width: '100%', height: '50%', flexDirection: 'row'}}>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='account-plus-outline' 
+                            name='motorbike' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Assign Rider'
                              onPress={()=> navigation.navigate('RiderAssignScreen')}
@@ -32,7 +32,7 @@ function CashierHomeScreen({navigation}) {
                         <Icon 
                             name='account-multiple-plus-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Add Client'
                             onPress={()=> navigation.navigate('ClientFormScreen')}
@@ -44,7 +44,7 @@ function CashierHomeScreen({navigation}) {
                         <Icon 
                             name='file-document-edit-outline' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
                             title='Reporting'
                              onPress={()=> navigation.navigate('PaymentScreen')}//shuldbe PaymentScreen
@@ -52,11 +52,11 @@ function CashierHomeScreen({navigation}) {
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='view-dashboard-outline' 
+                            name='cash-multiple' 
                             backgroundColor={colors.backGround}
-                            iconColor={colors.secondary}
+                            iconColor={colors.teal}
                             size={150}
-                            title='lients List'
+                            title='View Payments'
                             onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
