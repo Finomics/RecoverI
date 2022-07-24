@@ -39,7 +39,7 @@ export default function App() {
     // <CashierHomeScreen/>
     // <RiderHomeScreen/>
   //  <TransferScreen/>
-
+    // <OTPScreen/>
     <StoreProvider value={{ Role, setRole }}>
 
       <NavigationContainer>

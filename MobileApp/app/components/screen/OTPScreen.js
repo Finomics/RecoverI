@@ -173,6 +173,11 @@ console.log("IN OTP",route);
                             color='black'
                             onPress={handlePress}
                         />
+                        <AppButton
+                            title='Resend OTP'
+                            color={colors.teal}
+                            onPress={()=> console.log('Hello')}
+                        />
                     </View>
                 </View>
             </View>

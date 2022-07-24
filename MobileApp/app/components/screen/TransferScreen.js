@@ -1,8 +1,9 @@
 import { React, useEffect, useState, useContext } from 'react';
-import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
+import { Image, Button, Modal, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import TransferCard from '../TransferCard';
 import NewCard from '../NewCard';
 import colors from '../colors';
+import CashierNameCard from '../CashierNameCard';
 import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 import AppButton from '../AppButton';
@@ -12,19 +13,20 @@ import axios from 'axios';
 
 function TransferScreen({ navigation }) {
 
-  // const list = [
-  //   { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
-  //   { Name: 'Hammad Ahmed', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 2 },
-  //   { Name: 'Anas Mansoor', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 3 },
-  //   { Name: 'Bilal Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 4 },
-  //   { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
-  // ];
+  const list = [
+    { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
+    { Name: 'Hammad Ahmed', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 2 },
+    { Name: 'Anas Mansoor', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 3 },
+    { Name: 'Bilal Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 4 },
+    { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
+  ];
   // console.log("in client Screen",list)
 
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
   const [realTime, setRealTime] = useState(false)
   const RiderContextData = useContext(StoreContext)
+  const [modalVisible, setModalVisible] = useState(false);
 
 
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
@@ -48,6 +50,10 @@ function TransferScreen({ navigation }) {
   }, [realTime])
 
 
+  const handlePress= ()=>{
+    console.log("World")
+    setModalVisible(true)
+  }
 
   const handleValues = (data) => {
     setTransferId(data)
@@ -111,35 +117,39 @@ function TransferScreen({ navigation }) {
             />
           }
         /> : <></>}
-      {/* <NewCard
-                  items={categories[0]}
-                  onPress={()=> navigation.navigate('RecoveryScreen', categories[0])
-                  }
-                />
-                <NewCard
-                  items={categories[1]}
-                  onPress={()=> navigation.navigate('RecoveryScreen', categories[1])
-                  }
-                />
-                <NewCard
-                  items={categories[2]}
-                  onPress={()=> navigation.navigate('RecoveryScreen', categories[2])
-                  }
-                />
-                <NewCard
-                  items={categories[3]}
-                  onPress={()=> navigation.navigate('RecoveryScreen', categories[3])
-                  }
-                />
-                <NewCard
-                  items={categories[4]}
-                  onPress={()=> navigation.navigate('RecoveryScreen', categories[4])
-                  }
-                /> */}
-      <AppButton title='hello' color='teal' onPress={
-        // () => console.log(transferId, "djdjdjdj")
-        PaymentTrasferCashier
-      } />
+
+      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginBottom: 10}}>
+        <View style={{width: '45%'}}>
+        <AppButton title='Hello' color='teal' style={{width: 50}} onPress={
+          () => handlePress()
+        } />
+
+        </View>
+        <View style={{width: '45%'}}>
+        <AppButton title='Submit' color='teal' onPress={
+          // () => console.log(transferId, "djdjdjdj")
+          PaymentTrasferCashier
+        } />
+        </View>
+      </View>
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
+      >
+        <Button title='List of Cashier' onPress={() => setModalVisible(!modalVisible)} color={colors.teal} />
+        <FlatList
+          data={list}
+          keyExtractor={item => item.value}
+          // keyExtractor={tempRiderName => tempRiderName.value.toString()}
+          renderItem={({ item }) =>
+              <CashierNameCard
+                  name={item.Name}
+                  onPress={()=> console.log(item)}
+              />
+          }
+        />
+      </Modal>
     </Screen>
   );
 }
