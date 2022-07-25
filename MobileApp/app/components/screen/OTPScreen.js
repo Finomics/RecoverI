@@ -170,15 +170,22 @@ console.log("IN OTP",route);
                     <View style={styles.button}>
                         <AppButton
                             title='Confirm'
-                            color='black'
+                            color='teal'
                             onPress={handlePress}
                         />
+                    </View>
+                </View>
+                <View style={{width: '80%', marginTop: 20}}>
+                <AppText>
+                    Have not recieved OTP?
+                </AppText>
                         <AppButton
                             title='Resend OTP'
-                            color={colors.teal}
+                            color='teal'
+                            // color={colors.teal}
                             onPress={()=> console.log('Hello')}
                         />
-                    </View>
+
                 </View>
             </View>
         </Screen>
