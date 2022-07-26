@@ -9,10 +9,7 @@ import { getClients } from '../APIcalls/getRequests'
 import AppButton from '../AppButton';
 import StoreContext from './GlobalState';
 import axios from 'axios';
-
-
 function TransferScreen({ navigation }) {
-
   const list = [
     { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
     { Name: 'Hammad Ahmed', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 2 },
@@ -21,19 +18,14 @@ function TransferScreen({ navigation }) {
     { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
   ];
   // console.log("in client Screen",list)
-
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
   const [realTime, setRealTime] = useState(false)
   const RiderContextData = useContext(StoreContext)
   const [modalVisible, setModalVisible] = useState(false);
-
-
+  const [CashierName, setCashierName] = useState([]);
+  const [heldbyCashierName, setheldbyCashierName] = useState([]);
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
-
-
-
-
   useEffect(() => {
     axios({
       method: "post",
@@ -48,46 +40,46 @@ function TransferScreen({ navigation }) {
       console.log(err);
     })
   }, [realTime])
-
-
-  const handlePress= ()=>{
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://paym-api.herokuapp.com/auth/CashierEmploye",
+    }).then((res) => {
+      setCashierName(res.data);
+      // console.log(res.data, "cashier");
+    }).catch((err) => { console.log(err); })
+  }, [realTime])
+  const handlePress = () => {
     console.log("World")
     setModalVisible(true)
   }
-
   const handleValues = (data) => {
     setTransferId(data)
   }
-
-
+  const handlebyCashier = (data) => {
+    setheldbyCashierName(data.employeeName)
+  }
   function PaymentTrasferCashier() {
-
     // console.log(transferId, "transferId");
-
     for (let i = 0; i < transferId.length; i++) {
-
       var paymentObjectId = transferId[i]
-
       console.log(paymentObjectId, "paymentObjectId");
-
       axios({
         method: "post",
         url: `https://paym-api.herokuapp.com/auth/paymenTrasfer/${paymentObjectId}`,
         data: {
-          heldby: "Hammad Bhi Cashier"
+          heldby: heldbyCashierName
         }
       }).then((res) => {
         console.log(res.data, "res");
         setRealTime(!realTime)
         setTransferId("")
         // alert("Payment Trasfare has been successfully!")
-
       }).catch((err) => {
         console.log(err, "error");
       })
     }
   }
-
   return (
     <Screen>
       <View style={styles.logoContainer}>
@@ -117,19 +109,17 @@ function TransferScreen({ navigation }) {
             />
           }
         /> : <></>}
-
-      <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginBottom: 10}}>
-        <View style={{width: '45%'}}>
-        <AppButton title='Hello' color='teal' style={{width: 50}} onPress={
-          () => handlePress()
-        } />
-
+      <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginBottom: 10 }}>
+        <View style={{ width: '45%' }}>
+          <AppButton title='Select Cashier' color='teal' style={{ width: 50 }} onPress={
+            () => handlePress()
+          } />
         </View>
-        <View style={{width: '45%'}}>
-        <AppButton title='Submit' color='teal' onPress={
-          // () => console.log(transferId, "djdjdjdj")
-          PaymentTrasferCashier
-        } />
+        <View style={{ width: '45%' }}>
+          <AppButton title='Submit' color='teal' onPress={
+            // () => console.log(transferId, "djdjdjdj")
+            PaymentTrasferCashier
+          } />
         </View>
       </View>
       <Modal
@@ -139,21 +129,20 @@ function TransferScreen({ navigation }) {
       >
         <Button title='List of Cashier' onPress={() => setModalVisible(!modalVisible)} color={colors.teal} />
         <FlatList
-          data={list}
+          data={CashierName}
           keyExtractor={item => item.value}
           // keyExtractor={tempRiderName => tempRiderName.value.toString()}
           renderItem={({ item }) =>
-              <CashierNameCard
-                  name={item.Name}
-                  onPress={()=> console.log(item)}
-              />
+            <CashierNameCard
+              name={item.employeeName}
+              onPress={() => handlebyCashier(item)}
+            />
           }
         />
       </Modal>
     </Screen>
   );
 }
-
 const styles = StyleSheet.create({
   logo: {
     height: 120,
@@ -174,5 +163,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 })
-
 export default TransferScreen;
