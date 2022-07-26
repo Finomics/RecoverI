@@ -5,41 +5,38 @@ import AppText from '../AppText';
 import colors from '../colors';
 import AppButton from '../AppButton';
 import axios from 'axios';
-
-
 function OTPScreen({ navigation, route }) {
-console.log("IN OTP",route);
+    console.log("IN OTP", route);
+    const PaymentObjectId = route.params;
     const PaymentName = route.params;
     const PaymentAmount = route.params;
+    const PaymentEmail = route.params;
     const PaymentId = route.params;
     const isNew = route.params;
     const PayId = PaymentId.PaymentId
-    console.log(PaymentName, "PaymentName");
-    console.log(PaymentAmount, "PaymentAmount");
-    console.log(PayId, "PaymentAmount");
-    console.log(isNew, "isNew");
-
+    const PayObjectId = PaymentObjectId.data._id
+    const ResendPaymentEmail = PaymentEmail.data.PaymentEmail
+    // console.log(PaymentName, "PaymentName");
+    // console.log(PaymentAmount, "PaymentAmount");
+    console.log(PayId, "PayId");
+    // console.log(isNew, "isNew");
+    console.log(ResendPaymentEmail, "isNew");
     let modeOfPayment = {};
-
     if (isNew === true) {
         modeOfPayment = 'Cheque'
     } else {
         modeOfPayment = 'Cash'
     }
-
     const pin1Ref = useRef(null);
     const pin2Ref = useRef(null);
     const pin3Ref = useRef(null);
     const pin4Ref = useRef(null);
-
     const [pin1, setPin1] = useState('');
     const [pin2, setPin2] = useState('');
     const [pin3, setPin3] = useState('');
     const [pin4, setPin4] = useState('');
-
     var OTP_Array = [pin1, pin2, pin3, pin4];
     var ReciveOtp = OTP_Array.join("");
-
     const handlePress = () => {
         // console.log(isNew)
         Alert.alert(
@@ -55,13 +52,14 @@ console.log("IN OTP",route);
                     text: "OK", onPress: () => {
                         // console.log("OK Pressed")
                         // console.log(ReciveOtp, "OTP_Array");
-
                         axios({
                             method: 'post',
                             url: 'https://paym-api.herokuapp.com/ReciveOtpStep-2',
                             data: {
+                                PaymentEmail: ResendPaymentEmail,
                                 PaymentId: PayId.toString(),
                                 otp: ReciveOtp,
+                                PayObjectId: PayObjectId,
                                 status: "True"
                             }
                         })
@@ -74,13 +72,26 @@ console.log("IN OTP",route);
                                 alert("Please Correct Otp")
                             })
                     }
-
                 }
-
             ]
         );
     };
-
+    const ReSendOtp = () => {
+        // console.log(ResendPaymentEmail, "ReSendOtp");
+        axios({
+            method: "post",
+            url: "https://paym-api.herokuapp.com/ReSendOTP",
+            data: {
+                PaymentEmail: ResendPaymentEmail
+            }
+        }).then((response) => {
+             console.log(response.data, "REsend Otp")
+            alert("Send ReSend Otp")
+        }).catch((error) => {
+            console.log(error, "error");
+            // alert("Please Correct Otp")
+        })
+    }
     return (
         <Screen>
             <View style={styles.descriptionContainer}>
@@ -92,7 +103,6 @@ console.log("IN OTP",route);
                 <View style={styles.container}>
                     <AppText style={{ fontWeight: 'bold', }}> Please Insert OTP </AppText>
                     <View style={styles.inputContainer}>
-
                         <View style={styles.textContainer}>
                             <TextInput
                                 ref={pin1Ref}
@@ -110,7 +120,6 @@ console.log("IN OTP",route);
                                 }}
                             />
                         </View>
-
                         <View style={styles.textContainer}>
                             <TextInput
                                 ref={pin2Ref}
@@ -128,7 +137,6 @@ console.log("IN OTP",route);
                                 }}
                             />
                         </View>
-
                         <View style={styles.textContainer}>
                             <TextInput
                                 ref={pin3Ref}
@@ -146,8 +154,6 @@ console.log("IN OTP",route);
                                 }}
                             />
                         </View>
-
-
                         <View style={styles.textContainer}>
                             <TextInput
                                 ref={pin4Ref}
@@ -165,7 +171,6 @@ console.log("IN OTP",route);
                                 }}
                             />
                         </View>
-
                     </View>
                     <View style={styles.button}>
                         <AppButton
@@ -175,23 +180,21 @@ console.log("IN OTP",route);
                         />
                     </View>
                 </View>
-                <View style={{width: '80%', marginTop: 20}}>
-                <AppText>
-                    Have not recieved OTP?
-                </AppText>
-                        <AppButton
-                            title='Resend OTP'
-                            color='teal'
-                            // color={colors.teal}
-                            onPress={()=> console.log('Hello')}
-                        />
-
+                <View style={{ width: '80%', marginTop: 20 }}>
+                    <AppText>
+                        Have not recieved OTP?
+                    </AppText>
+                    <AppButton
+                        title='Resend OTP'
+                        color='teal'
+                        // color={colors.teal}
+                        onPress={ReSendOtp}
+                    />
                 </View>
             </View>
         </Screen>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         width: '80%',
@@ -233,5 +236,4 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 })
-
 export default OTPScreen;
