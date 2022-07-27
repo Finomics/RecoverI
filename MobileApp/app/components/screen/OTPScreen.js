@@ -8,21 +8,23 @@ import axios from 'axios';
 function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route);
     const PaymentObjectId = route.params;
-    const PaymentName = route.params;
-    const PaymentAmount = route.params;
-    const PaymentEmail = route.params;
-    const PaymentId = route.params;
-    const isNew = route.params;
-    const PayId = PaymentId.PaymentId
-    const PayObjectId = PaymentObjectId.data._id
-    const ResendPaymentEmail = PaymentEmail.data.PaymentEmail
+
+    const data = route.params;
+    // const PaymentAmount = route.params;
+    // const PaymentEmail = route.params;
+    // const PaymentId = route.params;
+    // const isNew = route.params;
+const mode =data.PaymentMode;
+    const PayId = data.PaymentId;
+    const PayObjectId =data._id;
+    const ResendPaymentEmail = data.PaymentEmail;
     // console.log(PaymentName, "PaymentName");
     // console.log(PaymentAmount, "PaymentAmount");
     console.log(PayId, "PayId");
     // console.log(isNew, "isNew");
     console.log(ResendPaymentEmail, "isNew");
     let modeOfPayment = {};
-    if (isNew === true) {
+    if (mode === true) {
         modeOfPayment = 'Cheque'
     } else {
         modeOfPayment = 'Cash'
@@ -41,7 +43,7 @@ function OTPScreen({ navigation, route }) {
         // console.log(isNew)
         Alert.alert(
             'OTP Verification',
-            'You have made the ' + modeOfPayment + " transaction of Rs. " + PaymentAmount.PaymentAmount + '.',
+            'You have made the ' + modeOfPayment + " transaction of Rs. " + data.PaymentAmount + '.',
             [
                 {
                     text: "Cancel",
@@ -95,8 +97,8 @@ function OTPScreen({ navigation, route }) {
     return (
         <Screen>
             <View style={styles.descriptionContainer}>
-                <AppText style={{ fontWeight: '900' }}>Name: {PaymentName.PaymentName}</AppText>
-                <AppText style={{ fontWeight: '900' }}>Amount: {(PaymentAmount.PaymentAmount)}</AppText>
+                <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
+                <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
                 <AppText style={{ fontWeight: '900' }}>Mode of Payment: {(modeOfPayment)}</AppText>
             </View>
             <View style={styles.backgroundContainer}>
