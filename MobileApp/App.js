@@ -19,6 +19,7 @@ import WelcomeScreen from './app/components/screen/WelcomeScreen';
 import TransferScreen from './app/components/screen/TransferScreen';
 import CashierHomeScreen from './app/components/screen/CashierHomeScreen';
 import RiderHomeScreen from './app/components/screen/RiderHomeScreen';
+import TopButtons from './app/components/screen/TopButtons';
 
 
 
@@ -40,13 +41,15 @@ export default function App() {
     // <RiderHomeScreen/>
   //  <TransferScreen/>
     // <OTPScreen/>
-    <StoreProvider value={{ Role, setRole }}>
+    
+    <TopButtons/>
 
-      <NavigationContainer>
-        <AuthNavigator />
-      </NavigationContainer>
+    // <StoreProvider value={{ Role, setRole }}>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
+    // </StoreProvider>
 
-    </StoreProvider>
   );
 }
 const styles = StyleSheet.create({

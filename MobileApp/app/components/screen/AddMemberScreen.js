@@ -10,6 +10,7 @@ import { AppForm, AppFormField, SubmitButton } from '../forms';
 import Screen from '../Screen'
 import colors from '../colors';
 import axios from "axios";
+import TopButtons from './TopButtons';
 
 
 const validationSchema = Yup.object().shape({
@@ -54,6 +55,7 @@ function AddMemberScreen(props) {
 
     return (
         <Screen style={styles.backGround}>
+            <TopButtons/>
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 140 }}
