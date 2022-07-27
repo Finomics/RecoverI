@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     // <Screen>
-    // <AddMemberScreen/>
+    <AddMemberScreen/>
     // <ClientScreen/>
     // <WelcomeScreen/>
     //  <RegisterScreen/> 
@@ -42,7 +42,7 @@ export default function App() {
   //  <TransferScreen/>
     // <OTPScreen/>
     
-    <TopButtons/>
+    // <TopButtons/>
 
     // <StoreProvider value={{ Role, setRole }}>
     //   <NavigationContainer>
