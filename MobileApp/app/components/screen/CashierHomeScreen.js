@@ -46,8 +46,8 @@ function CashierHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='Reporting'
-                             onPress={()=> navigation.navigate('PaymentScreen')}//shuldbe PaymentScreen
+                            title='Deposit'
+                             onPress={()=> navigation.navigate('TransferScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -56,7 +56,7 @@ function CashierHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='View Payments'
+                            title='View Clients'
                             onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
