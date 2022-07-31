@@ -31,7 +31,7 @@ function AddMemberScreen(props) {
 
 
     const handlePress = ({ values, value }) => {
-   
+
         console.log(values, value, "a");
         axios({
             method: "post",
@@ -40,6 +40,7 @@ function AddMemberScreen(props) {
                 email: values.email,
                 password: values.password,
                 Role: value,
+                name: values.userName
             },
         })
             .then((res) => {
@@ -65,7 +66,7 @@ function AddMemberScreen(props) {
             <View style={styles.inputContianer}>
 
                 <AppForm
-                    initialValues={{ email: '', password: '', userName:'' }}
+                    initialValues={{ email: '', password: '', userName: '' }}
                     // onSubmit={values => console.log(values, value,":sasas")}
                     onSubmit={values => { handlePress({ values, value }) }}
                     validationSchema={validationSchema}
@@ -79,7 +80,7 @@ function AddMemberScreen(props) {
                         placeholder='User Name'
                         textContentType='emailAddress'
                     />
-                    
+
                     <AppFormField
                         autoCapitalize='none'
                         autoCorrect={false}
@@ -110,7 +111,7 @@ function AddMemberScreen(props) {
                     />
 
                     <SubmitButton title='Confirm'
-                      color='teal' />
+                        color='teal' />
                 </AppForm>
 
             </View>
