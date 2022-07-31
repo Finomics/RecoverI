@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     // <Screen>
-    <AddMemberScreen/>
+    // <AddMemberScreen/>
     // <ClientScreen/>
     // <WelcomeScreen/>
     //  <RegisterScreen/> 
@@ -44,11 +44,11 @@ export default function App() {
     
     // <TopButtons/>
 
-    // <StoreProvider value={{ Role, setRole }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
   );
 }

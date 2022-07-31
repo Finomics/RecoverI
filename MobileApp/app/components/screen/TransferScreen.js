@@ -25,6 +25,9 @@ function TransferScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [CashierName, setCashierName] = useState([]);
   const [heldbyCashierName, setheldbyCashierName] = useState([]);
+
+  const [name, setName] = useState('Select Cashier')
+
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
   useEffect(() => {
     axios({
@@ -58,6 +61,8 @@ function TransferScreen({ navigation }) {
   }
   const handlebyCashier = (data) => {
     setheldbyCashierName(data.employeeName)
+    setName(data.employeeName)
+    setModalVisible(!modalVisible)
   }
   function PaymentTrasferCashier() {
     // console.log(transferId, "transferId");
@@ -111,7 +116,7 @@ function TransferScreen({ navigation }) {
         /> : <></>}
       <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginBottom: 10 }}>
         <View style={{ width: '45%' }}>
-          <AppButton title='Select Cashier' color='teal' style={{ width: 50 }} onPress={
+          <AppButton title={ name } color='teal' style={{ width: 50 }} onPress={
             () => handlePress()
           } />
         </View>
@@ -127,7 +132,7 @@ function TransferScreen({ navigation }) {
         transparent={false}
         visible={modalVisible}
       >
-        <Button title='List of Cashier' onPress={() => setModalVisible(!modalVisible)} color={colors.teal} />
+        {/* <Button title='List of Cashier' onPress={() => setModalVisible(!modalVisible)} color={colors.teal} /> */}
         <FlatList
           data={CashierName}
           keyExtractor={item => item.value}
@@ -136,6 +141,7 @@ function TransferScreen({ navigation }) {
             <CashierNameCard
               name={item.employeeName}
               onPress={() => handlebyCashier(item)}
+              
             />
           }
         />
