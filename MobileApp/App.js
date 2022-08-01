@@ -41,7 +41,7 @@ export default function App() {
     // <RiderHomeScreen/>
   //  <TransferScreen/>
     // <OTPScreen/>
-    
+    //
     // <TopButtons/>
 
     <StoreProvider value={{ Role, setRole }}>
