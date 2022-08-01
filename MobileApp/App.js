@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     // <Screen>
-    //<AddMemberScreen/>
+    // <AddMemberScreen/>
     // <ClientScreen/>
     // <WelcomeScreen/>
     //  <RegisterScreen/> 
