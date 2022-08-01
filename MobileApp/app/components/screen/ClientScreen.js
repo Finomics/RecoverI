@@ -18,6 +18,7 @@ function ClientScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
+  
   useEffect(() => {
     fetch("https://paym-api.herokuapp.com/ClientData")
       .then((response) => response.json())

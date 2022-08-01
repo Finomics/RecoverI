@@ -25,6 +25,7 @@ import TopButtons from './app/components/screen/TopButtons';
 
 export default function App() {
   const [Role, setRole] = useState([])
+  const [ClientId, setClientId] = useState([])
 
   console.log(Role, "Set GolbalState Data");
 
@@ -39,12 +40,11 @@ export default function App() {
     // <AdminHomeScreen/>
     // <CashierHomeScreen/>
     // <RiderHomeScreen/>
-  //  <TransferScreen/>
+    //  <TransferScreen/>
     // <OTPScreen/>
-    //
     // <TopButtons/>
 
-    <StoreProvider value={{ Role, setRole }}>
+    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
       <NavigationContainer>
         <AuthNavigator />
       </NavigationContainer>

@@ -31,13 +31,16 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentName = listing.ClientName
   const PaymentNumber = listing.ClientPhoneNumber
   const PaymentEmail = listing.ClientEmail
+  const ClientObjectId = listing._id
   const RecoveryContext = useContext(StoreContext)
 
+
+  // console.log(ClientObjectId, "ClientObjectId");
   // const Paymentamount = textInput
   // const imageUrl = Img
   // console.log(PaymentNumber, PaymentName, "PaymentID");
-  console.log(RecoveryContext.Role.employeeName, "sss");
-
+  const ClientObjId = RecoveryContext.setClientId(ClientObjectId)
+  // console.log(RecoveryContext.ClientId);
 
   const handlePress = () => {
   }
@@ -59,17 +62,20 @@ function RecoveryScreen({ navigation, route }) {
     }
 
     console.log("Payload", payload);
-    
+
     axios({
       method: 'post',
       url: 'https://paym-api.herokuapp.com/PaymentData',
       data: payload, withCredentials: true
     })
       .then((response) => {
+
+        // console.log("response from API", a.data);
+
         var a = response.data
-         console.log("response from API",a.data);
-        alert("Send Otp for Check Email")
         navigation.navigate('OTPScreen', a.data);
+        alert("Send Otp for Check Email")
+
 
       })
       .catch((error) => {

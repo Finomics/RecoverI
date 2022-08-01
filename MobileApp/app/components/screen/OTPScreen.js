@@ -1,28 +1,36 @@
-import React, { useState, useRef } from 'react';
+import { React, useEffect, useState, useRef, useContext } from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert } from 'react-native';
 import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
 import AppButton from '../AppButton';
 import axios from 'axios';
+import StoreContext from './GlobalState';
 function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route);
     const PaymentObjectId = route.params;
 
     const data = route.params;
-    // const PaymentAmount = route.params;
+    const PaymentAmount = route.params;
     // const PaymentEmail = route.params;
     // const PaymentId = route.params;
     // const isNew = route.params;
-const mode =data.PaymentMode;
+    const mode = data.PaymentMode;
     const PayId = data.PaymentId;
-    const PayObjectId =data._id;
+    const PayObjectId = data._id;
     const ResendPaymentEmail = data.PaymentEmail;
+    const RiderContextData = useContext(StoreContext)
+    const ClinincObjectId = RiderContextData.ClientId
+    const RiderID = RiderContextData.Role._id
+
+    // console.log(RiderID, PayObjectId, "RiderNameRiderName");
+    // console.log(PaymentObjectId._id, PayObjectId, "PaymentObjectId PayObjectId");
+    // console.log(RiderContextData.ClientId, "ClientObjectIdClientObjectIdClientObjectId");
     // console.log(PaymentName, "PaymentName");
     // console.log(PaymentAmount, "PaymentAmount");
-    console.log(PayId, "PayId");
     // console.log(isNew, "isNew");
-    console.log(ResendPaymentEmail, "isNew");
+    // console.log(ResendPaymentEmail, "isNew");
+
     let modeOfPayment = {};
     if (mode === true) {
         modeOfPayment = 'Cheque'
@@ -39,6 +47,10 @@ const mode =data.PaymentMode;
     const [pin4, setPin4] = useState('');
     var OTP_Array = [pin1, pin2, pin3, pin4];
     var ReciveOtp = OTP_Array.join("");
+
+
+
+
     const handlePress = () => {
         // console.log(isNew)
         Alert.alert(
@@ -67,7 +79,9 @@ const mode =data.PaymentMode;
                         })
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
+                                // console.log(response.data,"response");
                                 alert("Stutus Update")
+                                trastion()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
@@ -78,6 +92,47 @@ const mode =data.PaymentMode;
             ]
         );
     };
+
+    function trastion() {
+
+        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "trasation");
+
+        axios({
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/trasation",
+            data: {
+                nature: "Receive",
+                Instrument: PayObjectId,
+                PaymentAmount: PaymentAmount.PaymentAmount,
+                From: ClinincObjectId,
+                to: RiderID
+            }
+        }).then((res) => {
+            console.log(res.data, "trastion Response");
+            conformationEmail()
+        }).catch((err) => {
+
+            console.log(err, "trastion Error");
+        })
+    }
+
+    function conformationEmail() {
+
+        axios({
+            method: "post",
+            url: "https://paym-api.herokuapp.com/conformationPayment",
+            data: {
+                ClinincObjectId: ClinincObjectId,
+            }
+        }).then((res) => {
+            console.log(res.data, "conformationPayment Response");
+
+        }).catch((err) => {
+
+            console.log(err, "conformationPayment Error");
+        })
+    }
+
     const ReSendOtp = () => {
         // console.log(ResendPaymentEmail, "ReSendOtp");
         axios({
@@ -87,13 +142,15 @@ const mode =data.PaymentMode;
                 PaymentEmail: ResendPaymentEmail
             }
         }).then((response) => {
-             console.log(response.data, "REsend Otp")
+            console.log(response.data, "REsend Otp")
             alert("Send ReSend Otp")
         }).catch((error) => {
             console.log(error, "error");
             // alert("Please Correct Otp")
         })
     }
+
+    
     return (
         <Screen>
             <View style={styles.descriptionContainer}>

@@ -21,7 +21,6 @@ function TransferScreen({ navigation }) {
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
   const [realTime, setRealTime] = useState(false)
-  const RiderContextData = useContext(StoreContext)
   const [modalVisible, setModalVisible] = useState(false);
   const [CashierName, setCashierName] = useState([]);
   const [heldbyCashierName, setheldbyCashierName] = useState([]);
@@ -29,7 +28,15 @@ function TransferScreen({ navigation }) {
   const [name, setName] = useState('Select Cashier')
 
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
-  useEffect(() => {
+  const [CashierObjectID, setCashierObjectID] = useState([]);
+  const RiderContextData = useContext(StoreContext)
+
+
+  const RiderID = RiderContextData.Role._id
+  // console.log(RiderContextData.Role._id, "RiderNameRiderName");
+
+
+useEffect(() => {
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/heldBy",
@@ -38,11 +45,14 @@ function TransferScreen({ navigation }) {
       }
     }).then((res) => {
       setClients(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     }).catch((err) => {
       console.log(err);
     })
   }, [realTime])
+
+
+
   useEffect(() => {
     axios({
       method: "get",
@@ -52,39 +62,81 @@ function TransferScreen({ navigation }) {
       // console.log(res.data, "cashier");
     }).catch((err) => { console.log(err); })
   }, [realTime])
+
+
   const handlePress = () => {
     console.log("World")
     setModalVisible(true)
   }
+
+
   const handleValues = (data) => {
     setTransferId(data)
+    console.log(data, "datatatata");
   }
+
+
   const handlebyCashier = (data) => {
+
     setheldbyCashierName(data.employeeName)
     setName(data.employeeName)
     setModalVisible(!modalVisible)
+    setheldbyCashierName(data)
+
+    console.log(data._id, "Cashier Data");
+    setCashierObjectID(data._id)
   }
+
+
   function PaymentTrasferCashier() {
     // console.log(transferId, "transferId");
     for (let i = 0; i < transferId.length; i++) {
+
       var paymentObjectId = transferId[i]
       console.log(paymentObjectId, "paymentObjectId");
+
       axios({
         method: "post",
         url: `https://paym-api.herokuapp.com/auth/paymenTrasfer/${paymentObjectId}`,
         data: {
-          heldby: heldbyCashierName
+          heldby: heldbyCashierName.employeeName
         }
       }).then((res) => {
+
         console.log(res.data, "res");
+        trastion()
         setRealTime(!realTime)
         setTransferId("")
-        // alert("Payment Trasfare has been successfully!")
+        alert("Payment Trasfare has been successfully!")
+
       }).catch((err) => {
         console.log(err, "error");
       })
     }
   }
+
+  function trastion() {
+    console.log(transferId, "Trasfer", CashierObjectID, "trasation");
+    
+    axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/auth/trasation",
+      data: {
+        nature: "Trasfer",
+        Instrument: transferId,
+        // PaymentAmount: PaymentAmount,
+        From: RiderID,
+        to: CashierObjectID
+      }
+    }).then((res) => {
+      console.log(res.data, "trastion Response");
+    }).catch((err) => {
+
+      console.log(err, "trastion Error");
+    })
+  }
+
+
   return (
     <Screen>
       <View style={styles.logoContainer}>
