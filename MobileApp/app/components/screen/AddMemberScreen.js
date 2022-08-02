@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { View, Image, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
@@ -27,6 +27,7 @@ function AddMemberScreen(props) {
         { label: 'Rider', value: 'Rider' },
         { label: 'Cashier', value: 'Cashier' },
     ]);
+
 
 
 

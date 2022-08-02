@@ -1,10 +1,12 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import Card from '../Card';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
+import StoreContext from './GlobalState';
+import axios from 'axios';
 
 
 function ClientScreen({ navigation }) {
@@ -18,18 +20,38 @@ function ClientScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
-  
+  const Rider = useContext(StoreContext)
+
+  console.log(Rider.Role.employeeName, "Riderrrrrrr");
+
   useEffect(() => {
-    fetch("https://paym-api.herokuapp.com/ClientData")
-      .then((response) => response.json())
+
+    axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/auth/ShowRiderData",
+      data: {
+        employeeName: Rider.Role.employeeName
+      }
+    })
       .then((responseJson) => {
-        console.log("ClientScreen in getAPI", responseJson);
-        setClients(responseJson.Data);
+        console.log("ClientScreen in getAPI", responseJson.data);
+        setClients(responseJson.data);
 
       })
       .catch((error) => {
         console.error(error);
       });
+
+    // fetch("https://paym-api.herokuapp.com/ClientData")
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     console.log("ClientScreen in getAPI", responseJson.Data);
+    //     setClients(responseJson.Data);
+
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
 
 
   }, []);
