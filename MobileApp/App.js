@@ -20,6 +20,7 @@ import TransferScreen from './app/components/screen/TransferScreen';
 import CashierHomeScreen from './app/components/screen/CashierHomeScreen';
 import RiderHomeScreen from './app/components/screen/RiderHomeScreen';
 import TopButtons from './app/components/screen/TopButtons';
+import SummaryScreen from './app/components/screen/SummaryScreen';
 
 
 
@@ -41,7 +42,7 @@ export default function App() {
     // <RiderHomeScreen/>
   //  <TransferScreen/>
     // <OTPScreen/>
-    
+    <SummaryScreen/>
     // <TopButtons/>
 
     <StoreProvider value={{ Role, setRole }}>
