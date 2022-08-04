@@ -45,11 +45,11 @@ export default function App() {
     <SummaryScreen/>
     // <TopButtons/>
 
-    <StoreProvider value={{ Role, setRole }}>
-      <NavigationContainer>
-        <AuthNavigator />
-      </NavigationContainer>
-    </StoreProvider>
+    // <StoreProvider value={{ Role, setRole }}>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
+    // </StoreProvider>
 
   );
 }
