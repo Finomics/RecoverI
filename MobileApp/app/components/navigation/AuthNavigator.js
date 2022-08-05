@@ -2,6 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import OTPScreen from '../screen/OTPScreen';
+import SummaryScreen from '../screen/SummaryScreen';
 import RecoveryScreen from "../screen/RecoveryScreen";
 import ClientScreen from "../screen/ClientScreen";
 import HomeScreen from "../screen/HomeScreen";
@@ -22,22 +23,23 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
     <Stack.Navigator>
-        <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} />
-        <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
-        <Stack.Screen name='LoginScreen' component={LoginScreen} />
-        <Stack.Screen name='HomeScreen' component={HomeScreen} />
+        <Stack.Screen name='WelcomeScdreen' component={WelcomeScreen} />
+        <Stack.Screen name='AddMemberScreen' component={AddMemberScreen} />
         <Stack.Screen name='AdminHomeScreen' component={AdminHomeScreen}/>
         <Stack.Screen name='CashierHomeScreen' component={CashierHomeScreen} />
-        <Stack.Screen name='RiderHomeScreen' component={RiderHomeScreen} />
-        <Stack.Screen name='AddMemberScreen' component={AddMemberScreen} />
         <Stack.Screen name='ClientFormScreen' component={ClientFormScreen} />
         <Stack.Screen name='ClientScreen' component={ClientScreen} />
-        <Stack.Screen name='RecoveryScreen' component={RecoveryScreen} />
-        <Stack.Screen name='OTPScreen' component={OTPScreen} />
+        <Stack.Screen name='HomeScreen' component={HomeScreen} />
+        <Stack.Screen name='LoginScreen' component={LoginScreen} />
+        <Stack.Screen name='OTPScreedn' component={OTPScreen} />
         <Stack.Screen name='PaymentScreen' component={PaymentScreen} />
-        <Stack.Screen name='UnverifierPaymentScreen' component={UnverifierPaymentScreen} />
+        <Stack.Screen name='RecoveryScreen' component={RecoveryScreen} />
+        <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
         <Stack.Screen name='RiderAssignScreen' component={RiderAssignScreen} />
+        <Stack.Screen name='RiderHomeScreen' component={RiderHomeScreen} />
+        <Stack.Screen name='UnverifierPaymentScreen' component={UnverifierPaymentScreen} />
         <Stack.Screen name='TransferScreen' component={TransferScreen} />
+        <Stack.Screen name='SummaryScreen' component={SummaryScreen} />
     </Stack.Navigator>
 )
 

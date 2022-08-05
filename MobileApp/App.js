@@ -43,14 +43,14 @@ export default function App() {
     // <RiderHomeScreen/>
     //  <TransferScreen/>
     // <OTPScreen/>
-    <SummaryScreen/>
+    // <SummaryScreen/>
     // <TopButtons/>
 
-    // <StoreProvider value={{ Role, setRole }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
   );
 }

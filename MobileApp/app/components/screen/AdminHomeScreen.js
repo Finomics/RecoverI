@@ -47,7 +47,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Reporting'
-                             onPress={()=> navigation.navigate('AddMemberScreen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('SummaryScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
