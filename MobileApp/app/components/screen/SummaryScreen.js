@@ -34,11 +34,11 @@ function SummaryScreen(props) {
     useEffect(() => {
         axios({
             
-            method: "post",
-            url: "https://paym-api.herokuapp.com/heldBy",
-            data: {
-                heldby: "Zubair"
-            }
+            method: "get",
+            url: "https://paym-api.herokuapp.com/auth/CashierEmploye",
+            // data: {
+            //     heldby: "Zubair"
+            // }
 
         }).then((res) => {
             console.log(res.data, "data");
@@ -94,8 +94,8 @@ function SummaryScreen(props) {
                     data={Cashier}
                     renderItem={({ item }) =>
                         <PaymentList
-                            name={item.heldby}
-                            amount={item.PaymentAmount}
+                            name={item.employeeName}
+                            amount={0}
                         />
                     }
                 />
