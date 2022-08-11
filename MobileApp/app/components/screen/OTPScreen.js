@@ -81,7 +81,7 @@ function OTPScreen({ navigation, route }) {
                                 // console.log(JSON.stringify(response))
                                 // console.log(response.data,"response");
                                 alert("Stutus Update")
-                                trastion()
+                                transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
@@ -93,13 +93,13 @@ function OTPScreen({ navigation, route }) {
         );
     };
 
-    function trastion() {
+    function transaction() {
 
-        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "trasation");
+        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/trasation",
+            url: "https://paym-api.herokuapp.com/auth/transaction",
             data: {
                 nature: "Receive",
                 Instrument: PayObjectId,
@@ -108,11 +108,11 @@ function OTPScreen({ navigation, route }) {
                 to: RiderID
             }
         }).then((res) => {
-            console.log(res.data, "trastion Response");
+            console.log(res.data, "transaction Response");
             conformationEmail()
         }).catch((err) => {
 
-            console.log(err, "trastion Error");
+            console.log(err, "transaction Error");
         })
     }
 

@@ -30,7 +30,8 @@ function ClientScreen({ navigation }) {
       method: "post",
       url: "https://paym-api.herokuapp.com/auth/ShowRiderData",
       data: {
-        employeeName: Rider.Role.employeeName
+        // employeeName: Rider.Role.employeeName
+        ClientRiderObjectId: Rider.Role._id
       }
     })
       .then((responseJson) => {

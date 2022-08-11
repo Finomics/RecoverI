@@ -25,6 +25,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) 
     const [realTime, setRealTime] = useState(true);
 
     console.log(Globaledata.Role, "Rider Card Globaledata");
+    // console.log(Globaledata.Role._id, "Rider Card Globaledata");
 
     const handlePress = () => {
         // console.log(rider)
@@ -33,14 +34,32 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) 
     }
 
 
+    // useEffect(() => {
+    //     axios({
+    //         method: "get",
+    //         url: "https://paym-api.herokuapp.com/auth/RiderEmploye",
+    //     }).then((res) => {
+
+    //         setallRider(res.data)
+    //         // console.log(res.data);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }, [realTime])
+
     useEffect(() => {
         axios({
-            method: "get",
-            url: "https://paym-api.herokuapp.com/auth/RiderEmploye",
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/craetedby",
+            data: {
+                createdBy: Globaledata.Role.createdBy,
+                Role: "Rider"
+                // Role: Globaledata.Role.Role
+            }
         }).then((res) => {
 
             setallRider(res.data)
-            // console.log(res.data);
+            console.log(res.data);
         }).catch((err) => {
             console.log(err);
         })
@@ -51,7 +70,8 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) 
 
     const handleRider = (item) => {
 
-        // console.log(item.employeeName, "eee");
+        console.log(item.employeeName, "eee");
+        console.log(item, "eee");
 
         axios({
             method: 'post',
@@ -59,7 +79,8 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) 
             data: {
                 id: ClinetID,
                 ClientRider: item.employeeName,
-                CashierName: employeeName
+                CashierName: employeeName,
+                ClientRiderObjectId: item._id
             }
         }).then((res) => {
             console.log(res.data.message, "res");

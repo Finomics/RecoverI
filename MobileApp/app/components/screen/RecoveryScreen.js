@@ -56,7 +56,7 @@ function RecoveryScreen({ navigation, route }) {
       PaymentMode: mode,
       PaymentAmount: textInput,
       imageUrl: Img,
-      heldby: RecoveryContext.Role.employeeName,
+      heldby: RecoveryContext.Role._id,
       status: "false"
 
     }

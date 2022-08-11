@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { Image, View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { DataTable } from 'react-native-paper';
@@ -8,6 +8,7 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import colors from '../colors';
 import axios from 'axios';
+import StoreContext from './GlobalState';
 
 
 const attendanceData = [
@@ -30,6 +31,8 @@ const attendanceData = [
 function SummaryScreen(props) {
 
     const [Cashier, setCashier] = useState([])
+    const globalEmployee = useContext(StoreContext)
+    console.log(globalEmployee.Role._id);
 
     useEffect(() => {
         axios({
@@ -58,7 +61,7 @@ function SummaryScreen(props) {
             method: "post",
             url: "https://paym-api.herokuapp.com/collectionBy",
             data: {
-                heldby: "Zubair"
+                heldby: globalEmployee.Role._id
             }
 
         }).then((res) => {
