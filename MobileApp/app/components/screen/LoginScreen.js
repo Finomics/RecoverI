@@ -47,7 +47,7 @@ function LoginScreen({ navigation }) {
 
             } else if (res.data.Role === "Rider") {
 
-                navigation.navigate('AdminHomeScreen')
+                navigation.navigate('RiderHomeScreen')
 
             } else {
                 navigation.navigate('WelcomeScreen')
