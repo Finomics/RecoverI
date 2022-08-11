@@ -46,7 +46,7 @@ export default function App() {
     // <SummaryScreen/>
     // <TopButtons/>
 
-    <StoreProvider value={{ Role, setRole }}>
+    <StoreProvider value={{ Role, setRole,setClientId }}>
       <NavigationContainer>
         <AuthNavigator />
       </NavigationContainer>
