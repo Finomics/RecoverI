@@ -22,6 +22,7 @@ function OTPScreen({ navigation, route }) {
     const RiderContextData = useContext(StoreContext)
     const ClinincObjectId = RiderContextData.ClientId
     const RiderID = RiderContextData.Role._id
+    const BelongsTo = RiderContextData.Role.createdBy
 
     // console.log(RiderID, PayObjectId, "RiderNameRiderName");
     // console.log(PaymentObjectId._id, PayObjectId, "PaymentObjectId PayObjectId");
@@ -30,6 +31,7 @@ function OTPScreen({ navigation, route }) {
     // console.log(PaymentAmount, "PaymentAmount");
     // console.log(isNew, "isNew");
     // console.log(ResendPaymentEmail, "isNew");
+    // console.log(BelongsTo, "BelongsTo");
 
     let modeOfPayment = {};
     if (mode === true) {
@@ -79,7 +81,7 @@ function OTPScreen({ navigation, route }) {
                         })
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
-                                // console.log(response.data,"response");
+                                console.log(response.data, "response");
                                 alert("Stutus Update")
                                 transaction()
                             })
@@ -104,6 +106,7 @@ function OTPScreen({ navigation, route }) {
                 nature: "Receive",
                 Instrument: PayObjectId,
                 PaymentAmount: PaymentAmount.PaymentAmount,
+                BelongsTo: BelongsTo,
                 From: ClinincObjectId,
                 to: RiderID
             }
@@ -150,7 +153,7 @@ function OTPScreen({ navigation, route }) {
         })
     }
 
-    
+
     return (
         <Screen>
             <View style={styles.descriptionContainer}>

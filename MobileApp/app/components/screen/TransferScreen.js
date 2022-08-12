@@ -30,13 +30,13 @@ function TransferScreen({ navigation }) {
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
   const [CashierObjectID, setCashierObjectID] = useState([]);
   const RiderContextData = useContext(StoreContext)
-
-
+  const BelongsTo = RiderContextData.Role.createdBy
   const RiderID = RiderContextData.Role._id
+
   // console.log(RiderContextData.Role._id, "RiderNameRiderName");
 
 
-useEffect(() => {
+  useEffect(() => {
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/heldBy",
@@ -54,21 +54,21 @@ useEffect(() => {
 
   useEffect(() => {
     axios({
-        method: "post",
-        url: "https://paym-api.herokuapp.com/auth/craetedby",
-        data: {
-            createdBy: RiderContextData.Role.createdBy,
-            Role: "Cashier"
-            // Role: Globaledata.Role.Role
-        }
+      method: "post",
+      url: "https://paym-api.herokuapp.com/auth/craetedby",
+      data: {
+        createdBy: RiderContextData.Role.createdBy,
+        Role: "Cashier"
+        // Role: Globaledata.Role.Role
+      }
     }).then((res) => {
 
       setCashierName(res.data);
-        console.log(res.data);
+      console.log(res.data);
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
     })
-}, [realTime])
+  }, [realTime])
 
   // useEffect(() => {
   //   axios({
@@ -103,7 +103,7 @@ useEffect(() => {
     console.log(data._id, "Cashier Data");
     setCashierObjectID(data._id)
   }
-console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierName");
+  // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
 
   function PaymentTransferCashier() {
     // console.log(transferId, "transferId");
@@ -135,7 +135,7 @@ console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierNa
 
   function transaction() {
     console.log(transferId, "transfer", CashierObjectID, "transaction");
-    
+
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/auth/transaction",
@@ -143,9 +143,11 @@ console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierNa
         nature: "transfer",
         Instrument: transferId,
         // PaymentAmount: PaymentAmount,
+        BelongsTo: BelongsTo,
+        to: CashierObjectID,
         From: RiderID,
-        to: CashierObjectID
       }
+
     }).then((res) => {
       console.log(res.data, "transaction Response");
     }).catch((err) => {
@@ -186,7 +188,7 @@ console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierNa
         /> : <></>}
       <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginBottom: 10 }}>
         <View style={{ width: '45%' }}>
-          <AppButton title={ name } color='teal' style={{ width: 50 }} onPress={
+          <AppButton title={name} color='teal' style={{ width: 50 }} onPress={
             () => handlePress()
           } />
         </View>
@@ -211,7 +213,7 @@ console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierNa
             <CashierNameCard
               name={item.employeeName}
               onPress={() => handlebyCashier(item)}
-              
+
             />
           }
         />
