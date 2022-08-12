@@ -125,7 +125,7 @@ console.log(heldbyCashierName,"heldbyCashierNameheldbyCashierNameheldbyCashierNa
         transaction()
         setRealTime(!realTime)
         setTransferId("")
-        alert("Payment transfer has been successfully!")
+        alert("Payment is transferred successfully");
 
       }).catch((err) => {
         console.log(err, "error");

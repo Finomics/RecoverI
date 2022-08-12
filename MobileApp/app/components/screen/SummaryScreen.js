@@ -36,13 +36,13 @@ function SummaryScreen(props) {
 
     useEffect(() => {
         axios({
-            
-            method: "get",
-            url: "https://paym-api.herokuapp.com/auth/CashierEmploye",
-            // data: {
-            //     heldby: "Zubair"
-            // }
-
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/craetedby",
+            data: {
+                createdBy: globalEmployee.Role._id,
+                Role: "Cashier"
+                // Role: Globaledata.Role.Role
+            }
         }).then((res) => {
             console.log(res.data, "data");
             setCashier(res.data)
