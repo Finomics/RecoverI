@@ -17,7 +17,7 @@ const tempRiderName = [
 ]
 
 // 
-function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) {
+function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,update, navigation }) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Rider, setallRider] = useState([])
@@ -86,6 +86,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, navigation }) 
             console.log(res.data.message, "res");
             alert(res.data.message)
             setRealTime(!realTime);
+            setUpdate(!update);
             navigation.navigate('RiderAssignScreen')
 
         }).catch((err) => {

@@ -12,6 +12,7 @@ import axios from "axios";
 let temp = {};
 
 function RiderAssignScreen(props) {
+    const [updateList, setUpdateList] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Client, setClient] = useState([])
@@ -29,7 +30,7 @@ function RiderAssignScreen(props) {
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [updateList])
 
     let tempData = [
         { Name: 'Hassan Mansoor', PhoneNumber: '0300-xxxxxxx', Email: 'abc@example.com', Amount: 'xxxxxxx', Rider: null, value: 1 },
@@ -76,6 +77,8 @@ function RiderAssignScreen(props) {
                         amount={item.ClientAmount}
                         rider={item.ClientRider}
                         id={item}
+                        update={updateList}
+                        setUpdate={setUpdateList}
                         onPress={() => { handlePress(item._id) }}
                     />
                 }
