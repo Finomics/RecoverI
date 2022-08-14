@@ -21,6 +21,11 @@ import CashierHomeScreen from './app/components/screen/CashierHomeScreen';
 import RiderHomeScreen from './app/components/screen/RiderHomeScreen';
 import TopButtons from './app/components/screen/TopButtons';
 import SummaryScreen from './app/components/screen/SummaryScreen';
+import ClientFormScreen from './app/components/screen/ClientFormScreen';
+import HomeScreen from './app/components/screen/HomeScreen';
+import PaymentScreen from './app/components/screen/PaymentScreen';
+import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
+import DetailScreen from './app/components/screen/DetailScreen';
 
 
 
@@ -32,25 +37,35 @@ export default function App() {
 
   return (
     // <Screen>
-    //<AddMemberScreen/>
+    // <AddMemberScreen/>
+    // <AdminHomeScreen/>
+    // <CashierHomeScreen/>
+    // <ClientFormScreen/>
     // <ClientScreen/>
+    // <HomeScreen/>
+    // <PaymentScreen/>
+    // <RecoveryScreen/>
+    // <RiderAssignScreen/>
+    // <RiderHomeScreen/>
+    // <SummaryScreen/>
+    //  <TransferScreen/>
+
+    <DetailScreen/>
+
+
     // <WelcomeScreen/>
     //  <RegisterScreen/> 
     // <LoginScreen/>
 
-    // <AdminHomeScreen/>
-    // <CashierHomeScreen/>
     // <RiderHomeScreen/>
-    //  <TransferScreen/>
     // <OTPScreen/>
-    // <SummaryScreen/>
     // <TopButtons/>
 
-    <StoreProvider value={{ Role, setRole }}>
-      <NavigationContainer>
-        <AuthNavigator />
-      </NavigationContainer>
-    </StoreProvider>
+    // <StoreProvider value={{ Role, setRole }}>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
+    // </StoreProvider>
 
   );
 }

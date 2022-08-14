@@ -8,6 +8,7 @@ import { AppForm, AppFormField, SubmitButton } from "../forms";
 import AppText from "../AppText";
 import colors from "../colors";
 import axios from "axios";
+import TopButtons from "./TopButtons";
 // import LogoName from '../components/LogoName';
 
 const validationSchema = Yup.object().shape({
@@ -55,6 +56,7 @@ function ClientFormScreen(props) {
 
   return (
     <Screen style={styles.container}>
+      <TopButtons header={'Client Form Screen'} />
       <ScrollView>
         <AppText style={styles.header}>Client Input Form</AppText>
         <AppForm

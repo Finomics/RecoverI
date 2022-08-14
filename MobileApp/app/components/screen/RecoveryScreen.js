@@ -13,6 +13,7 @@ import AppText from '../AppText';
 import { postRequest } from '../APIcalls/postRequests'
 import axios from 'axios';
 import StoreContext from './GlobalState';
+import TopButtons from './TopButtons';
 
 
 
@@ -116,6 +117,7 @@ function RecoveryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.backGround}>
+      <TopButtons header={'Recovery Screen'}/>
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}

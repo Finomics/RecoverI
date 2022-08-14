@@ -7,6 +7,7 @@ import RiderCard from '../RiderCard';
 import Screen from '../Screen';
 import colors from '../colors'
 import axios from "axios";
+import TopButtons from './TopButtons';
 
 let temp = {};
 
@@ -54,6 +55,7 @@ function RiderAssignScreen(props) {
 
     return (
         <Screen>
+            <TopButtons header={'Rider Assign Screen'}/>
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}

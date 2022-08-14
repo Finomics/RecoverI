@@ -5,10 +5,12 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import Screen from '../Screen';
 import Icon from '../Icon';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 
 function CashierHomeScreen({navigation}) {
     return (
         <Screen>
+            <TopButtons header={'Cashier Home Screen'} />
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}

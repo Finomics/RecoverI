@@ -9,6 +9,7 @@ import { getClients } from '../APIcalls/getRequests'
 import AppButton from '../AppButton';
 import StoreContext from './GlobalState';
 import axios from 'axios';
+import TopButtons from './TopButtons';
 function TransferScreen({ navigation }) {
   const list = [
     { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
@@ -139,6 +140,7 @@ useEffect(() => {
 
   return (
     <Screen>
+      <TopButtons header={'Transfer Screen'}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

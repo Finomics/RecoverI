@@ -7,6 +7,7 @@ import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 import StoreContext from './GlobalState';
 import axios from 'axios';
+import TopButtons from './TopButtons';
 
 
 function ClientScreen({ navigation }) {
@@ -58,6 +59,7 @@ function ClientScreen({ navigation }) {
 
   return (
     <Screen>
+      <TopButtons header={'Client Screen'} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

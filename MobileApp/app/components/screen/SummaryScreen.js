@@ -7,6 +7,7 @@ import PaymentList from '../PaymentList';
 import AppText from '../AppText';
 import Screen from '../Screen';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 
 
 const attendanceData = [
@@ -28,6 +29,7 @@ const attendanceData = [
 function SummaryScreen(props) {
     return (
         <Screen>
+            <TopButtons header={'Summary Screen'}/>
             <View>
                 <AppText style={styles.title}> 
                         Payment Record

@@ -57,7 +57,7 @@ function AddMemberScreen(props) {
 
     return (
         <Screen style={styles.backGround}>
-            <TopButtons/>
+            <TopButtons header={'Admin Member Screen'}/>
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 140 }}

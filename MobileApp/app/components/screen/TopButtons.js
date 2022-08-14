@@ -2,8 +2,9 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import colors from '../colors';
+import AppText from '../AppText';
 
-function TopButtons(props) {
+function TopButtons({header}) {
 
     const handleLeftButton=()=>{
         console.log('Home Button is pressed')
@@ -19,6 +20,7 @@ function TopButtons(props) {
                     <MaterialCommunityIcons name='home-outline' color={colors.teal} size={30} />
                 </TouchableOpacity>
             </View>
+            <AppText>{header}</AppText>
             <View style={styles.rightCorner}>
                 <TouchableOpacity onPress={handleRightButton}>
                     <MaterialCommunityIcons name='logout' color={colors.teal} size={30} />

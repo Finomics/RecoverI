@@ -5,6 +5,7 @@ import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
+import TopButtons from './TopButtons';
 
 
 function PaymentScreen({ navigation }) {
@@ -35,6 +36,7 @@ function PaymentScreen({ navigation }) {
 
   return (
     <Screen>
+      <TopButtons header={'Payment Screen'}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

@@ -5,10 +5,12 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import Screen from '../Screen';
 import Icon from '../Icon';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 
 function AdminHomeScreen({navigation}) {
     return (
         <Screen>
+            <TopButtons header={'Admin Home Screen'}/>
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
