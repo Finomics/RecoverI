@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 
 
 import { Image, View, StyleSheet, FlatList, Modal, Button } from 'react-native';
 import RiderCard from '../RiderCard';
+import StoreContext from './GlobalState';
 
 import Screen from '../Screen';
 import colors from '../colors'
@@ -14,14 +15,17 @@ function RiderAssignScreen(props) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Client, setClient] = useState([])
-
+    const GlobaleEmployee = useContext(StoreContext)
     useEffect(() => {
         axios({
-            method: "get",
-            url: "https://paym-api.herokuapp.com/ClientData",
-        }).then((res) => {
-            setClient(res.data.Data)
-            console.log(res.data);
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/BelongsTo",
+            data: {
+              createdBy: GlobaleEmployee.Role.createdBy
+            }
+          }).then((res) => {
+            setClient(res.data)
+            console.log("Clients in AssignRider",res.data);
         }).catch((err) => {
             console.log(err);
         })

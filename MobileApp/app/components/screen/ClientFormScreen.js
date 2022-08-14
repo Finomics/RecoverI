@@ -44,7 +44,7 @@ function ClientFormScreen(props) {
         ClientPhoneNumber: values.contact,
         ClientAmount: values.email,
         ClientEmail: values.amount,
-        BelongsTo: GlobalEmployeeID.Role._id,
+        BelongsTo: GlobalEmployeeID.Role.createdBy,
       },
     })
       .then((res) => {
