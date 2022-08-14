@@ -22,6 +22,7 @@ function OTPScreen({ navigation, route }) {
     const RiderContextData = useContext(StoreContext)
     const ClinincObjectId = RiderContextData.ClientId
     const RiderID = RiderContextData.Role._id
+    const BelongsTo = RiderContextData.Role.createdBy
 
     // console.log(RiderID, PayObjectId, "RiderNameRiderName");
     // console.log(PaymentObjectId._id, PayObjectId, "PaymentObjectId PayObjectId");
@@ -30,6 +31,7 @@ function OTPScreen({ navigation, route }) {
     // console.log(PaymentAmount, "PaymentAmount");
     // console.log(isNew, "isNew");
     // console.log(ResendPaymentEmail, "isNew");
+    // console.log(BelongsTo, "BelongsTo");
 
     let modeOfPayment = {};
     if (mode === true) {
@@ -79,9 +81,9 @@ function OTPScreen({ navigation, route }) {
                         })
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
-                                // console.log(response.data,"response");
+                                console.log(response.data, "response");
                                 alert("Stutus Update")
-                                trastion()
+                                transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
@@ -93,26 +95,27 @@ function OTPScreen({ navigation, route }) {
         );
     };
 
-    function trastion() {
+    function transaction() {
 
-        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "trasation");
+        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/trasation",
+            url: "https://paym-api.herokuapp.com/auth/transaction",
             data: {
                 nature: "Receive",
                 Instrument: PayObjectId,
                 PaymentAmount: PaymentAmount.PaymentAmount,
+                BelongsTo: BelongsTo,
                 From: ClinincObjectId,
                 to: RiderID
             }
         }).then((res) => {
-            console.log(res.data, "trastion Response");
+            console.log(res.data, "transaction Response");
             conformationEmail()
         }).catch((err) => {
 
-            console.log(err, "trastion Error");
+            console.log(err, "transaction Error");
         })
     }
 
@@ -150,7 +153,7 @@ function OTPScreen({ navigation, route }) {
         })
     }
 
-    
+
     return (
         <Screen>
             <View style={styles.descriptionContainer}>

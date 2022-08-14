@@ -21,17 +21,17 @@ function ClientScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
-  const Rider = useContext(StoreContext)
+  const GlobaleEmployee = useContext(StoreContext)
 
-  console.log(Rider.Role.employeeName, "Riderrrrrrr");
+  console.log(GlobaleEmployee.Role.employeeName, "Riderrrrrrr");
+  console.log(GlobaleEmployee.Role.createdBy, "Riderrrrrrr");
 
   useEffect(() => {
-
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/auth/ShowRiderData",
+      url: "https://paym-api.herokuapp.com/auth/BelongsTo",
       data: {
-        employeeName: Rider.Role.employeeName
+        createdBy: GlobaleEmployee.Role.createdBy
       }
     })
       .then((responseJson) => {
@@ -42,20 +42,41 @@ function ClientScreen({ navigation }) {
       .catch((error) => {
         console.error(error);
       });
-
-    // fetch("https://paym-api.herokuapp.com/ClientData")
-    //   .then((response) => response.json())
-    //   .then((responseJson) => {
-    //     console.log("ClientScreen in getAPI", responseJson.Data);
-    //     setClients(responseJson.Data);
-
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+  }, [])
 
 
-  }, []);
+  // useEffect(() => {
+
+  //   axios({
+  //     method: "post",
+  //     url: "https://paym-api.herokuapp.com/auth/ShowRiderData",
+  //     data: {
+  //       // employeeName: GlobaleEmployee.Role.employeeName
+  //       ClientRiderObjectId: GlobaleEmployee.Role._id
+  //     }
+  //   })
+  //     .then((responseJson) => {
+  //       console.log("ClientScreen in getAPI", responseJson.data);
+  //       setClients(responseJson.data);
+
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+
+  //   // fetch("https://paym-api.herokuapp.com/ClientData")
+  //   //   .then((response) => response.json())
+  //   //   .then((responseJson) => {
+  //   //     console.log("ClientScreen in getAPI", responseJson.Data);
+  //   //     setClients(responseJson.Data);
+
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.error(error);
+  //   //   });
+
+
+  // }, []);
 
   return (
     <Screen>

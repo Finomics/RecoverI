@@ -11,6 +11,7 @@ import Screen from '../Screen'
 import colors from '../colors';
 import axios from "axios";
 import TopButtons from './TopButtons';
+import StoreContext from './GlobalState';
 
 
 const validationSchema = Yup.object().shape({
@@ -27,11 +28,12 @@ function AddMemberScreen(props) {
         { label: 'Rider', value: 'Rider' },
         { label: 'Cashier', value: 'Cashier' },
     ]);
+    const createdByAdminId = useContext(StoreContext)
 
-
-
+    // console.log(createdByAdminId.Role._id, "createdBy");
 
     const handlePress = ({ values, value }) => {
+
 
         console.log(values, value, "a");
         axios({
@@ -41,6 +43,7 @@ function AddMemberScreen(props) {
                 email: values.email,
                 password: values.password,
                 Role: value,
+                createdBy: createdByAdminId.Role._id,
                 name: values.userName
             },
         })
@@ -57,6 +60,7 @@ function AddMemberScreen(props) {
 
     return (
         <Screen style={styles.backGround}>
+
             <TopButtons header={'Admin Member Screen'}/>
             <View style={styles.logoContainer}>
                 <Image

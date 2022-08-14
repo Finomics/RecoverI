@@ -19,7 +19,9 @@ function PaymentScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
+
   useEffect(() => {
+  
     fetch("https://paym-api.herokuapp.com/")
       .then((response) => response.json())
       .then((responseJson) => {

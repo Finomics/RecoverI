@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 
 
 import { Image, View, StyleSheet, FlatList, Modal, Button } from 'react-native';
 import RiderCard from '../RiderCard';
+import StoreContext from './GlobalState';
 
 import Screen from '../Screen';
 import colors from '../colors'
@@ -12,21 +13,25 @@ import TopButtons from './TopButtons';
 let temp = {};
 
 function RiderAssignScreen(props) {
+    const [updateList, setUpdateList] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Client, setClient] = useState([])
-
+    const GlobaleEmployee = useContext(StoreContext)
     useEffect(() => {
         axios({
-            method: "get",
-            url: "https://paym-api.herokuapp.com/ClientData",
-        }).then((res) => {
-            setClient(res.data.Data)
-            console.log(res.data);
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/BelongsTo",
+            data: {
+              createdBy: GlobaleEmployee.Role.createdBy
+            }
+          }).then((res) => {
+            setClient(res.data)
+            console.log("Clients in AssignRider",res.data);
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [updateList])
 
     let tempData = [
         { Name: 'Hassan Mansoor', PhoneNumber: '0300-xxxxxxx', Email: 'abc@example.com', Amount: 'xxxxxxx', Rider: null, value: 1 },
@@ -74,6 +79,8 @@ function RiderAssignScreen(props) {
                         amount={item.ClientAmount}
                         rider={item.ClientRider}
                         id={item}
+                        update={updateList}
+                        setUpdate={setUpdateList}
                         onPress={() => { handlePress(item._id) }}
                     />
                 }

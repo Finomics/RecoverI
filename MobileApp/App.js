@@ -48,9 +48,9 @@ export default function App() {
     // <RiderAssignScreen/>
     // <RiderHomeScreen/>
     // <SummaryScreen/>
-    //  <TransferScreen/>
+     <TransferScreen/>
 
-    <DetailScreen/>
+    // <DetailScreen/>
 
 
     // <WelcomeScreen/>
@@ -66,6 +66,13 @@ export default function App() {
     //     <AuthNavigator />
     //   </NavigationContainer>
     // </StoreProvider>
+
+    // <StoreProvider value={{ Role, setRole,setClientId }}>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
+    // </StoreProvider>
+
 
   );
 }
