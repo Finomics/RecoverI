@@ -27,11 +27,18 @@ function ClientScreen({ navigation }) {
   console.log(GlobaleEmployee.Role.createdBy, "Riderrrrrrr");
 
   useEffect(() => {
+    let belongsTo='';
+    if(GlobaleEmployee.Role.Role=='Admin'){
+   belongsTo= GlobaleEmployee.Role._id;
+    }else{
+      belongsTo= GlobaleEmployee.Role.createdBy;
+    }
+
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/auth/BelongsTo",
       data: {
-        createdBy: GlobaleEmployee.Role.createdBy
+        createdBy: belongsTo
       }
     })
       .then((responseJson) => {

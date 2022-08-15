@@ -38,7 +38,7 @@ function PaymentScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={'Payment Screen'}/>
+      <TopButtons header={'Payment Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

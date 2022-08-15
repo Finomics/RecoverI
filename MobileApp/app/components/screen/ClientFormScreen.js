@@ -42,6 +42,7 @@ function ClientFormScreen({props,navigation}) {
         ClientPhoneNumber: values.contact,
         ClientAmount: values.email,
         ClientEmail: values.amount,
+        
       },
     })
       .then((res) => {

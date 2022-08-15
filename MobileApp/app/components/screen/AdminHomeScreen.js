@@ -36,7 +36,7 @@ function AdminHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='Add Client'
+                            title='Client List'
                             onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
