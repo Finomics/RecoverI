@@ -1,13 +1,21 @@
-import React from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import StoreContext from './GlobalState';
 import colors from '../colors';
 import AppText from '../AppText';
 
-function TopButtons({header}) {
+function TopButtons({header,navigation}) {
+
+    const contextData = useContext(StoreContext)
+    
 
     const handleLeftButton=()=>{
-        console.log('Home Button is pressed')
+        console.log('Home Button is pressed');
+        if(contextData.Role.Role=='Admin'){
+            navigation.navigate("AdminHomeScreen")
+
+        }
     }
     const handleRightButton=()=>{
         console.log('Logout Button is pressed')

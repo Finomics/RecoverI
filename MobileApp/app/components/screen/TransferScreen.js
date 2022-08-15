@@ -160,7 +160,7 @@ function TransferScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={'Transfer Screen'}/>
+      <TopButtons header={'Transfer Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

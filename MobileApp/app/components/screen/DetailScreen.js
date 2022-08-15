@@ -26,7 +26,7 @@ const attendanceData = [
   ]
 
 
-function DetailScreen(props) {
+function DetailScreen({ navigation }) {
     const[transactions,setTransactions]= useState([]);
     useEffect(() => {
         axios({
@@ -46,7 +46,7 @@ function DetailScreen(props) {
     }, [])
   return (
     <Screen>
-        <TopButtons header={'Transactions Screen'}/>
+        <TopButtons header={'Transactions Screen'} navigation={navigation}/>
         <View>
             <AppText style={styles.title}> 
                     Transactions
