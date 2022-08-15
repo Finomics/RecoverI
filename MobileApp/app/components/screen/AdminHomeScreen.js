@@ -58,8 +58,8 @@ function AdminHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='Dash Board'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            title='Transactions'
+                            onPress={()=> navigation.navigate('DetailScreen')}
                         />
                     </View>
                 </View>

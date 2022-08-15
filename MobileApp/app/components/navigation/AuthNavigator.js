@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import OTPScreen from '../screen/OTPScreen';
 import SummaryScreen from '../screen/SummaryScreen';
+import DetailScreen from '../screen/DetailScreen';
+
 import RecoveryScreen from "../screen/RecoveryScreen";
 import ClientScreen from "../screen/ClientScreen";
 import HomeScreen from "../screen/HomeScreen";
@@ -40,6 +42,8 @@ const AuthNavigator = () => (
         <Stack.Screen name='UnverifierPaymentScreen' component={UnverifierPaymentScreen} />
         <Stack.Screen name='TransferScreen' component={TransferScreen} />
         <Stack.Screen name='SummaryScreen' component={SummaryScreen} />
+        <Stack.Screen name='DetailScreen' component={DetailScreen} />
+
     </Stack.Navigator>
 )
 
