@@ -6,7 +6,7 @@ import { DataTable } from 'react-native-paper';
 import AppText from './AppText';
 import StoreContext from './screen/GlobalState';
 
-function PaymentList({ name, amount, tittle }) {
+function PaymentList({ item, amount, tittle }) {
 
     const [total, setTotal] = useState(0)
     const globalEmployee = useContext(StoreContext)
@@ -18,7 +18,7 @@ function PaymentList({ name, amount, tittle }) {
             method: "post",
             url: "https://paym-api.herokuapp.com/collectionBy",
             data: {
-                heldby: globalEmployee.Role._id,
+                heldby: item._id,
             }
 
         }).then((res) => {
@@ -28,10 +28,10 @@ function PaymentList({ name, amount, tittle }) {
             console.error(error);
 
         });
-    }, [name])
+    }, [item])
     return (
         <DataTable.Row style={{ width: '100%' }}>
-            <DataTable.Cell>{name}</DataTable.Cell>
+            <DataTable.Cell>{item.employeeName}</DataTable.Cell>
             <DataTable.Cell >{total}</DataTable.Cell>
         </DataTable.Row>
 

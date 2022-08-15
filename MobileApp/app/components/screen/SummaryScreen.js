@@ -97,7 +97,7 @@ function SummaryScreen(props) {
                     data={Cashier}
                     renderItem={({ item }) =>
                         <PaymentList
-                            name={item.employeeName}
+                            item={item}
                             amount={0}
                         />
                     }
