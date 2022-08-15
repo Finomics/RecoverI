@@ -7,7 +7,8 @@ import colors from './colors';
 import AppText from './AppText';
 import NewCard from './NewCard';
 
-let tempArray=[];
+let tempArray=[];// for logging ids
+let tempAmount=[];// for accumulated amounts
 
 function TransferCard({title, subTitle, subSubTitle, onPress, value, arrayList}) {
 
@@ -18,16 +19,18 @@ function TransferCard({title, subTitle, subSubTitle, onPress, value, arrayList})
     const handlePress=(value)=>{
         setCheckBox(previousState => !previousState)        
         if(checkBox== false){
-            tempArray.push(value)
-            console.log('tempArray after addition ' + tempArray)
+            tempArray.push(value._id);
+            tempAmount.push(value.PaymentAmount);
+            console.log('tempArray after addition ' , tempArray,tempAmount)
             // alert('tempArray after addition ' + tempArray)
         }else{
-            var index = tempArray.indexOf(value)
+            var index = tempArray.indexOf(value._id)
             tempArray.splice(index, 1);
-            console.log('tempArray after substraction ' + tempArray)
+            tempAmount.splice(index, 1);
+            console.log('tempArray after substraction ' + tempArray,tempAmount)
             // alert('tempArray after substraction ' + tempArray)
         }
-        arrayList(tempArray)
+        arrayList(tempArray,tempAmount);
     }
 
     return (

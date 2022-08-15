@@ -21,6 +21,7 @@ function TransferScreen({ navigation }) {
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
+  const [transferAmounts, setTransferAmounts] = useState([]);
   const [realTime, setRealTime] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [CashierName, setCashierName] = useState([]);
@@ -88,9 +89,10 @@ function TransferScreen({ navigation }) {
   }
 
 
-  const handleValues = (data) => {
-    setTransferId(data)
-    console.log(data, "datatatata");
+  const handleValues = (ids,amounts) => {
+    setTransferId(ids);
+    setTransferAmounts(amounts);
+    console.log(ids, "datatatata");
   }
 
 
@@ -107,6 +109,7 @@ function TransferScreen({ navigation }) {
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
 
   function PaymentTransferCashier() {
+    let amounts=[0];
     // console.log(transferId, "transferId");
     for (let i = 0; i < transferId.length; i++) {
 
@@ -121,9 +124,9 @@ function TransferScreen({ navigation }) {
           // heldby: heldbyCashierName.employeeName
         }
       }).then((res) => {
-
-        console.log(res.data, "res");
-        transaction()
+amounts.push(res.data.PaymentAmount);
+        console.log(res, "res");
+       
         setRealTime(!realTime)
         setTransferId("")
         alert("Payment is transferred successfully");
@@ -132,18 +135,19 @@ function TransferScreen({ navigation }) {
         console.log(err, "error");
       })
     }
+    transaction(transferId,transferAmounts);
   }
 
-  function transaction() {
+  function transaction(id,amount) {
     console.log(transferId, "transfer", CashierObjectID, "transaction");
 
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/auth/transaction",
       data: {
-        nature: "transfer",
-        Instrument: transferId,
-        // PaymentAmount: PaymentAmount,
+        nature: "Internal Transfer",
+        Instrument: id,
+        PaymentAmount: amount,
         BelongsTo: BelongsTo,
         to: CashierObjectID,
         From: RiderID,
@@ -183,7 +187,7 @@ function TransferScreen({ navigation }) {
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
               // value={item.PaymentId}
-              value={item._id}
+              value={item}
               arrayList={handleValues}
             />
           }
