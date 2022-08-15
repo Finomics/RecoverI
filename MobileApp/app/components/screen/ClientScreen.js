@@ -80,7 +80,7 @@ function ClientScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={'Client Screen'} />
+      <TopButtons header={'Client Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
