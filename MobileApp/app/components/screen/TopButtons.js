@@ -15,7 +15,16 @@ function TopButtons({header,navigation}) {
         if(contextData.Role.Role=='Admin'){
             navigation.navigate("AdminHomeScreen")
 
-        }
+        } else if (contextData.Role.Role === 'Cashier') {
+
+            navigation.navigate('CashierHomeScreen')
+
+        } else if (contextData.Role.Role === "Rider") {
+
+            navigation.navigate('RiderHomeScreen')
+
+        } else {
+            navigation.navigate('WelcomeScreen')
     }
     const handleRightButton=()=>{
         console.log('Logout Button is pressed')
