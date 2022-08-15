@@ -103,7 +103,7 @@ function OTPScreen({ navigation, route }) {
             method: "post",
             url: "https://paym-api.herokuapp.com/auth/transaction",
             data: {
-                nature: "Receive",
+                nature: "Collection",
                 Instrument:[ PayObjectId],
                 PaymentAmount: [PaymentAmount],
                 BelongsTo: BelongsTo,
