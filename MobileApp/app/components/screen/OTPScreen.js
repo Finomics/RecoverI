@@ -104,8 +104,8 @@ function OTPScreen({ navigation, route }) {
             url: "https://paym-api.herokuapp.com/auth/transaction",
             data: {
                 nature: "Receive",
-                Instrument: PayObjectId,
-                PaymentAmount: PaymentAmount.PaymentAmount,
+                Instrument:[ PayObjectId],
+                PaymentAmount: [PaymentAmount],
                 BelongsTo: BelongsTo,
                 From: ClinincObjectId,
                 to: RiderID

@@ -31,7 +31,7 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentId = listing.ClientId.toString()
   const PaymentName = listing.ClientName
   const PaymentNumber = listing.ClientPhoneNumber
-  const PaymentEmail = listing.ClientEmail
+  const PaymentEmail = listing.ClientEmaicl
   const ClientObjectId = listing._id
   const RecoveryContext = useContext(StoreContext)
 
@@ -117,7 +117,7 @@ function RecoveryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.backGround}>
-      <TopButtons header={'Recovery Screen'}/>
+      <TopButtons header={'Recovery Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}

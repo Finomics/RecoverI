@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 
 import { Image, ScrollView, StyleSheet } from "react-native";
 import * as Yup from "yup";
@@ -9,6 +9,8 @@ import AppText from "../AppText";
 import colors from "../colors";
 import axios from "axios";
 import TopButtons from "./TopButtons";
+import StoreContext from "./GlobalState";
+
 // import LogoName from '../components/LogoName';
 
 const validationSchema = Yup.object().shape({
@@ -29,7 +31,9 @@ function ClientFormScreen({props,navigation}) {
     amount: "",
   };
   // let values=null;
+  const GlobalEmployeeID = useContext(StoreContext)
 
+ 
   const handlePress = (values) => {
     console.log(values.clientID, "form");
 
@@ -42,6 +46,7 @@ function ClientFormScreen({props,navigation}) {
         ClientPhoneNumber: values.contact,
         ClientAmount: values.email,
         ClientEmail: values.amount,
+        BelongsTo: GlobalEmployeeID.Role.createdBy,
         
       },
     })

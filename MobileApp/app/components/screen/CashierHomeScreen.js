@@ -10,7 +10,7 @@ import TopButtons from './TopButtons';
 function CashierHomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Cashier Home Screen'} />
+            <TopButtons header={'Cashier Home Screen'}navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
