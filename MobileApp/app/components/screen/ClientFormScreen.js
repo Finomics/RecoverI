@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
   amount: Yup.string().label("Amount"),
 });
 
-function ClientFormScreen(props) {
+function ClientFormScreen({props,navigation}) {
   const initialValues = {
     clientID: "",
     clientName: "",
@@ -56,7 +56,7 @@ function ClientFormScreen(props) {
 
   return (
     <Screen style={styles.container}>
-      <TopButtons header={'Client Form Screen'} />
+      <TopButtons header={''} navigation={navigation}/>
       <ScrollView>
         <AppText style={styles.header}>Client Input Form</AppText>
         <AppForm

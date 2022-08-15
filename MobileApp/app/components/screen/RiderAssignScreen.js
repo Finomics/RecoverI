@@ -12,7 +12,7 @@ import TopButtons from './TopButtons';
 
 let temp = {};
 
-function RiderAssignScreen(props) {
+function RiderAssignScreen({props,navigation}) {
     const [updateList, setUpdateList] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -60,7 +60,7 @@ function RiderAssignScreen(props) {
 
     return (
         <Screen>
-            <TopButtons header={'Rider Assign Screen'}/>
+            <TopButtons header={'Rider Assign Screen'} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}
