@@ -1,11 +1,13 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState,useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
+import StoreContext from './GlobalState';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 import TopButtons from './TopButtons';
+import axios from 'axios';
 
 
 function PaymentScreen({ navigation }) {
