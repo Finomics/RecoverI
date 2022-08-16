@@ -83,7 +83,7 @@ function DetailScreen({ navigation }) {
                             nature={item.Nature}
                             from={item.From}
                             to={item.to}
-                            amount={item.amount}
+                            amounts={item.PaymentAmount}
                         /> 
                     }
                 />
