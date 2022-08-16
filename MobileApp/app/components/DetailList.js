@@ -7,13 +7,14 @@ import AppText from './AppText';
 
 function DetailList({nature, from, to, amount}) {
 
-    const[ fromname,setFromName]=useState("");
+    const[ fromName,setFromName]=useState("");
+    const[ toName,setToName]=useState("");
 
     useEffect(() => {
         axios({
        
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/EmployeeClientData",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
             data:{
                 EmployeeObjectId: from
               }
@@ -21,17 +22,37 @@ function DetailList({nature, from, to, amount}) {
         }).then((res) => {
             
             console.log(res.data, "fromEmployee");
+            setFromName(res.data.Employee[0].employeeName)
 
         }).catch((error) => {
             console.error(error);
        
         });
+        // for to,
+        axios({
+       
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            data:{
+                EmployeeObjectId: to
+              }
+
+        }).then((res) => {
+            
+            console.log(res.data, "ToEmployee");
+            setToName(res.data.Employee[0].employeeName)
+
+        }).catch((error) => {
+            console.error(error);
+       
+        });
+
     }, [])
     return (
         <DataTable.Row style={{width: '100%'}}>
             <DataTable.Cell>{nature}</DataTable.Cell>
-            <DataTable.Cell>{from}</DataTable.Cell>
-            <DataTable.Cell>{to}</DataTable.Cell>
+            <DataTable.Cell>{fromName}</DataTable.Cell>
+            <DataTable.Cell>{toName}</DataTable.Cell>
             <DataTable.Cell >{amount}</DataTable.Cell>
         </DataTable.Row>
         
