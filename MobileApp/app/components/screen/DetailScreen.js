@@ -32,6 +32,7 @@ function DetailScreen({ navigation }) {
     const belongsTo=userContextData.Role._id;
     const[transactions,setTransactions]= useState([]);
     useEffect(() => {
+        console.log("InDetailsScreen UseEffect",userContextData,belongsTo);
         axios({
        
             method: "get",
