@@ -1,4 +1,5 @@
 import { React, useEffect, useState, useContext } from 'react';
+import qs from 'qs';
 import { Image, View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { DataTable } from 'react-native-paper';
@@ -35,7 +36,7 @@ function DetailScreen({ navigation }) {
         console.log("InDetailsScreen UseEffect",userContextData,belongsTo);
         axios({
        
-            method: "get",
+            method: "post",
             url: "https://paym-api.herokuapp.com/auth/TransactionBelongsTo",
             data:{
                 BelongsTo:belongsTo
