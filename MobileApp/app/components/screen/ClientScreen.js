@@ -43,12 +43,22 @@ function ClientScreen({ navigation }) {
     })
       .then((responseJson) => {
         console.log("ClientScreen in getAPI", responseJson.data);
-        setClients(responseJson.data);
+        setClients(responseJson.data.filter(filterClients));
 
       })
       .catch((error) => {
         console.error(error);
       });
+function filterClients(client){
+  if(GlobaleEmployee.Role.Role=='Rider'){
+  return client.ClientRiderObjectId==GlobaleEmployee.Role._id;
+  }else{
+    return true;
+  }
+
+
+}
+
   }, [])
 
 

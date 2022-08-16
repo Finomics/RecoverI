@@ -31,6 +31,7 @@ function RiderAssignScreen({props,navigation}) {
         }).catch((err) => {
             console.log(err);
         })
+        
     }, [updateList])
 
     let tempData = [

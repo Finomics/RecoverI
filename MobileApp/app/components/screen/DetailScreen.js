@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { Image, View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { DataTable } from 'react-native-paper';
+import StoreContext from './GlobalState';
 import DetailList from '../DetailList';
 import axios from 'axios';
 
@@ -27,13 +28,17 @@ const attendanceData = [
 
 
 function DetailScreen({ navigation }) {
+    const userContextData = useContext(StoreContext);
+    const belongsTo=userContextData.Role._id;
     const[transactions,setTransactions]= useState([]);
     useEffect(() => {
         axios({
        
             method: "get",
-            url: "https://paym-api.herokuapp.com/auth/transaction",
-            
+            url: "https://paym-api.herokuapp.com/auth/TransactionBelongsTo",
+            data:{
+                BelongsTo:belongsTo
+              }
 
         }).then((res) => {
             setTransactions(res.data);
