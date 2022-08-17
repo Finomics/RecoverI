@@ -20,7 +20,7 @@ function OTPScreen({ navigation, route }) {
     const PayObjectId = data._id;
     const ResendPaymentEmail = data.PaymentEmail;
     const RiderContextData = useContext(StoreContext)
-    const ClinincObjectId = RiderContextData.ClientId
+    const ClientObjectId = RiderContextData.ClientId
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
 
@@ -83,12 +83,13 @@ function OTPScreen({ navigation, route }) {
                                 // console.log(JSON.stringify(response))
                                 console.log(response.data, "response");
                                 alert("Stutus Update")
-                                transaction()
+                               // transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
-                                alert("Please Correct Otp")
+                                alert("Please Correct Otp");
                             })
+                            transaction()
                     }
                 }
             ]
@@ -97,7 +98,7 @@ function OTPScreen({ navigation, route }) {
 
     function transaction() {
 
-        // console.log(PayObjectId, "Receive", PaymentAmount.PaymentAmount, ClinincObjectId, RiderID, "transaction");
+         console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
@@ -105,9 +106,9 @@ function OTPScreen({ navigation, route }) {
             data: {
                 nature: "Collection",
                 Instrument:[ PayObjectId],
-                PaymentAmount: [PaymentAmount],
+                PaymentAmount: [PaymentAmount.PaymentAmount],
                 BelongsTo: BelongsTo,
-                From: ClinincObjectId,
+                From: ClientObjectId,
                 to: RiderID
             }
         }).then((res) => {
@@ -125,7 +126,7 @@ function OTPScreen({ navigation, route }) {
             method: "post",
             url: "https://paym-api.herokuapp.com/conformationPayment",
             data: {
-                ClinincObjectId: ClinincObjectId,
+                ClinincObjectId: ClientObjectId,
             }
         }).then((res) => {
             console.log(res.data, "conformationPayment Response");
