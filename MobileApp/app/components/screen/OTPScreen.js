@@ -89,7 +89,7 @@ function OTPScreen({ navigation, route }) {
                                 // console.log(error, "error");
                                 alert("Please Correct Otp");
                             })
-                            transaction()
+                            transaction();
                     }
                 }
             ]
