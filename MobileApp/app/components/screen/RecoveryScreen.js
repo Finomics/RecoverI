@@ -27,11 +27,12 @@ function RecoveryScreen({ navigation, route }) {
 
 
   const listing = route.params;
+//  console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString()
   const PaymentName = listing.ClientName
   const PaymentNumber = listing.ClientPhoneNumber
-  const PaymentEmail = listing.ClientEmaicl
+  const PaymentEmail = listing.ClientEmail
   const ClientObjectId = listing._id
   const RecoveryContext = useContext(StoreContext)
 
