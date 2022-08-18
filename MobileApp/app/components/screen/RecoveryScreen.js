@@ -27,6 +27,7 @@ function RecoveryScreen({ navigation, route }) {
 
 
   const listing = route.params;
+//  console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString()
   const PaymentName = listing.ClientName
