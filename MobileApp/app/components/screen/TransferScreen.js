@@ -89,7 +89,7 @@ function TransferScreen({ navigation }) {
   }
 
 
-  const handleValues = (ids,amounts) => {
+  const handleValues = (ids, amounts) => {
     setTransferId(ids);
     setTransferAmounts(amounts);
     console.log(ids, "datatatata");
@@ -109,7 +109,7 @@ function TransferScreen({ navigation }) {
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
 
   function PaymentTransferCashier() {
-    let amounts=[0];
+    let amounts = [0];
     // console.log(transferId, "transferId");
     for (let i = 0; i < transferId.length; i++) {
 
@@ -124,9 +124,9 @@ function TransferScreen({ navigation }) {
           // heldby: heldbyCashierName.employeeName
         }
       }).then((res) => {
-amounts.push(res.data.PaymentAmount);
+        amounts.push(res.data.PaymentAmount);
         console.log(res, "res");
-       
+
         setRealTime(!realTime)
         setTransferId("")
         alert("Payment is transferred successfully");
@@ -135,10 +135,10 @@ amounts.push(res.data.PaymentAmount);
         console.log(err, "error");
       })
     }
-    transaction(transferId,transferAmounts);
+    transaction(transferId, transferAmounts);
   }
 
-  function transaction(id,amount) {
+  function transaction(id, amount) {
     console.log(transferId, "transfer", CashierObjectID, "transaction");
 
     axios({
@@ -164,7 +164,7 @@ amounts.push(res.data.PaymentAmount);
 
   return (
     <Screen>
-      <TopButtons header={'Transfer Screen'} navigation={navigation}/>
+      <TopButtons header={'Transfer Screen'} navigation={navigation} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

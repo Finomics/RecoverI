@@ -31,7 +31,7 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentId = listing.ClientId.toString()
   const PaymentName = listing.ClientName
   const PaymentNumber = listing.ClientPhoneNumber
-  const PaymentEmail = listing.ClientEmaicl
+  const PaymentEmail = listing.ClientEmail
   const ClientObjectId = listing._id
   const RecoveryContext = useContext(StoreContext)
 

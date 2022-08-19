@@ -32,8 +32,9 @@ function DetailScreen({ navigation }) {
     const userContextData = useContext(StoreContext);
     const belongsTo=userContextData.Role._id;
     const[transactions,setTransactions]= useState([]);
+
     useEffect(() => {
-        console.log("InDetailsScreen UseEffect",userContextData,belongsTo);
+        // console.log("InDetailsScreen UseEffect",userContextData,belongsTo);
         axios({
        
             method: "post",
@@ -51,7 +52,8 @@ function DetailScreen({ navigation }) {
        
         });
     }, [])
-  return (
+  
+    return (
     <Screen>
         <TopButtons header={'Transactions Screen'} navigation={navigation}/>
         <View>

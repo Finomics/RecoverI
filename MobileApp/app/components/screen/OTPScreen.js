@@ -21,6 +21,8 @@ function OTPScreen({ navigation, route }) {
     const ResendPaymentEmail = data.PaymentEmail;
     const RiderContextData = useContext(StoreContext)
     const ClientObjectId = RiderContextData.ClientId
+    console.log(RiderContextData,"ClientObjectID000");
+
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
 
