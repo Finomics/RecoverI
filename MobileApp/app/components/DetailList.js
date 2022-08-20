@@ -12,44 +12,113 @@ function DetailList({ nature, from, to, amounts }) {
     const [amount, setAmount] = useState(0);
 
     useEffect(() => {
-        setAmount(amounts[0])
+        setAmount(amounts[0]);
+        if(nature=='Collection'){
+            forCollection();
+
+        }else if(nature=='Internal Transfer'){
+            forInternalTransfer();
+
+        }
+        // axios({
+
+        //     method: "post",
+        //     url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+        //     data: {
+        //         EmployeeObjectId: from
+        //     }
+
+        // }).then((res) => {
+
+        //     console.log(res.data, "fromEmployeeeeeeeeeee");
+           
+
+        // }).catch((error) => {
+        //     console.error(error);
+
+        // });
+        // // for to,
+        // axios({
+
+        //     method: "post",
+        //     url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+        //     data: {
+        //         EmployeeObjectId: to
+        //     }
+
+        // }).then((res) => {
+
+        //     console.log(res.data, "ToEmployee");
+        //     setToName(res.data.Employee[0].employeeName)
+
+        // }).catch((error) => {
+        //     console.error(error);
+
+        // });
+
+    }, [])
+     function forCollection(){
         axios({
 
             method: "post",
             url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
             data: {
-                EmployeeObjectId: from
-            }
-
-        }).then((res) => {
-
-            console.log(res.data, "fromEmployeeeeeeeeeee");
-            setFromName(res.data.Employee[0].employeeName)
-
-        }).catch((error) => {
-            console.error(error);
-
-        });
-        // for to,
-        axios({
-
-            method: "post",
-            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
-            data: {
+                ClientObjectId:from,
                 EmployeeObjectId: to
             }
 
         }).then((res) => {
 
-            console.log(res.data, "ToEmployee");
+            console.log(res.data, "in collection API");
+            setFromName(res.data.Client[0].ClientName);
             setToName(res.data.Employee[0].employeeName)
 
         }).catch((error) => {
             console.error(error);
 
         });
+     }
+     function forInternalTransfer(){
+        //for from
+        axios({
 
-    }, [])
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            data: {
+                
+                EmployeeObjectId: from
+            }
+
+        }).then((res) => {
+
+            console.log(res.data, "in Internal Transfer from API");
+            setFromName(res.data.Employee[0].employeeName);
+           
+
+        }).catch((error) => {
+            console.error("Error in Internal transfer from ",error);
+
+        });
+        //for to
+        axios({
+
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            data: {
+                
+                EmployeeObjectId: to
+            }
+
+        }).then((res) => {
+
+            console.log(res.data, "in Internal Transfer to API");
+            setToName(res.data.Employee[0].employeeName)
+
+        }).catch((error) => {
+            console.error("Error in Internal transfer to ",error);
+
+        });
+     }
     return (
         <DataTable.Row style={{ width: '100%' }}>
             <DataTable.Cell>{nature}</DataTable.Cell>
