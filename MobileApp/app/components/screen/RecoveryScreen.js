@@ -50,7 +50,7 @@ function RecoveryScreen({ navigation, route }) {
     let mode = (isNew) ? "Cheque" : "Cash";
     let payload = {
 
-      PaymentId: PaymentId,
+      PaymentId: ClientObjectId,
       PaymentName: PaymentName,
       PaymentNumber: PaymentNumber,
       PaymentEmail: PaymentEmail,
