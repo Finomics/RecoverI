@@ -20,41 +20,7 @@ function DetailList({ nature, from, to, amounts }) {
             forInternalTransfer();
 
         }
-        // axios({
-
-        //     method: "post",
-        //     url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
-        //     data: {
-        //         EmployeeObjectId: from
-        //     }
-
-        // }).then((res) => {
-
-        //     console.log(res.data, "fromEmployeeeeeeeeeee");
-           
-
-        // }).catch((error) => {
-        //     console.error(error);
-
-        // });
-        // // for to,
-        // axios({
-
-        //     method: "post",
-        //     url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
-        //     data: {
-        //         EmployeeObjectId: to
-        //     }
-
-        // }).then((res) => {
-
-        //     console.log(res.data, "ToEmployee");
-        //     setToName(res.data.Employee[0].employeeName)
-
-        // }).catch((error) => {
-        //     console.error(error);
-
-        // });
+       
 
     }, [])
      function forCollection(){
