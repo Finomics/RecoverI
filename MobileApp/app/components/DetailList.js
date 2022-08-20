@@ -5,59 +5,94 @@ import axios from 'axios';
 import { DataTable } from 'react-native-paper';
 import AppText from './AppText';
 
-function DetailList({nature, from, to, amounts}) {
+function DetailList({ nature, from, to, amounts }) {
 
-    const[ fromName,setFromName]=useState("");
-    const[ toName,setToName]=useState("");
-    const[ amount,setAmount]=useState(0);
+    const [fromName, setFromName] = useState("");
+    const [toName, setToName] = useState("");
+    const [amount, setAmount] = useState(0);
 
     useEffect(() => {
-        setAmount(amounts[0])
-        axios({
+        setAmount(amounts[0]);
+        if(nature=='Collection'){
+            forCollection();
+
+        }else if(nature=='Internal Transfer'){
+            forInternalTransfer();
+
+        }
        
+
+    }, [])
+     function forCollection(){
+        axios({
+
             method: "post",
             url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
-            data:{
-                EmployeeObjectId: from
-              }
-
-        }).then((res) => {
-            
-            console.log(res.data, "fromEmployee");
-            setFromName(res.data.Employee[0].employeeName)
-
-        }).catch((error) => {
-            console.error(error);
-       
-        });
-        // for to,
-        axios({
-       
-            method: "post",
-            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
-            data:{
+            data: {
+                ClientObjectId:from,
                 EmployeeObjectId: to
-              }
+            }
 
         }).then((res) => {
-            
-            console.log(res.data, "ToEmployee");
+
+            console.log(res.data, "in collection API");
+            setFromName(res.data.Client[0].ClientName);
             setToName(res.data.Employee[0].employeeName)
 
         }).catch((error) => {
             console.error(error);
-       
-        });
 
-    }, [])
+        });
+     }
+     function forInternalTransfer(){
+        //for from
+        axios({
+
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            data: {
+                
+                EmployeeObjectId: from
+            }
+
+        }).then((res) => {
+
+            console.log(res.data, "in Internal Transfer from API");
+            setFromName(res.data.Employee[0].employeeName);
+           
+
+        }).catch((error) => {
+            console.error("Error in Internal transfer from ",error);
+
+        });
+        //for to
+        axios({
+
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            data: {
+                
+                EmployeeObjectId: to
+            }
+
+        }).then((res) => {
+
+            console.log(res.data, "in Internal Transfer to API");
+            setToName(res.data.Employee[0].employeeName)
+
+        }).catch((error) => {
+            console.error("Error in Internal transfer to ",error);
+
+        });
+     }
     return (
-        <DataTable.Row style={{width: '100%'}}>
+        <DataTable.Row style={{ width: '100%' }}>
             <DataTable.Cell>{nature}</DataTable.Cell>
             <DataTable.Cell>{fromName}</DataTable.Cell>
             <DataTable.Cell>{toName}</DataTable.Cell>
             <DataTable.Cell >{amount}</DataTable.Cell>
         </DataTable.Row>
-        
+
     );
 }
 
