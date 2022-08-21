@@ -54,6 +54,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
+            <TopButtons header={'Register Screen'}/>
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image

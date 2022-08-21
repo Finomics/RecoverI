@@ -48,9 +48,9 @@ export default function App() {
     // <RiderAssignScreen/>
     // <RiderHomeScreen/>
     // <SummaryScreen/>
-     <TransferScreen/>
+    //  <TransferScreen/>
 
-    // <DetailScreen/>
+    <DetailScreen/>
 
 
     // <WelcomeScreen/>

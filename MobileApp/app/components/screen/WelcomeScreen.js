@@ -8,6 +8,7 @@ import Screen from '../Screen';
 function WelcomeScreen({navigation}) {
     return (
         <Screen style={styles.container}>
+            <TopButtons header={'Welcome Screen'}/>
             <View style={styles.logoContainer}>
                 <Image
                     source={require('../../assets/logo.png')}

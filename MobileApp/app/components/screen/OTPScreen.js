@@ -156,6 +156,7 @@ function OTPScreen({ navigation, route }) {
 
     return (
         <Screen>
+            <TopButtons header={'OTP Screen'}/>
             <View style={styles.descriptionContainer}>
                 <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
                 <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
