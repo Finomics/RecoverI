@@ -25,7 +25,8 @@
         "foregroundImage": "./app/assets/R.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.hassan1995.FrontScreen"
+      "permissions":["CAMERA"],
+      "package": "com.anostrat.recoverIapp"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"

@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
+import qs from 'qs';
 import { Image, View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { DataTable } from 'react-native-paper';
+import StoreContext from './GlobalState';
 import DetailList from '../DetailList';
+import axios from 'axios';
 
 import AppText from '../AppText';
 import Screen from '../Screen';
@@ -25,13 +28,37 @@ const attendanceData = [
   ]
 
 
-function DetailScreen(props) {
-  return (
+function DetailScreen({ navigation }) {
+    const userContextData = useContext(StoreContext);
+    const belongsTo=userContextData.Role._id;
+    const[transactions,setTransactions]= useState([]);
+
+    useEffect(() => {
+        // console.log("InDetailsScreen UseEffect",userContextData,belongsTo);
+        axios({
+       
+            method: "post",
+            url: "https://paym-api.herokuapp.com/auth/TransactionBelongsTo",
+            data:{
+                BelongsTo:belongsTo
+              }
+
+        }).then((res) => {
+            setTransactions(res.data);
+            console.log(res.data, "Transactions");
+
+        }).catch((error) => {
+            console.error(error);
+       
+        });
+    }, [])
+  
+    return (
     <Screen>
-        <TopButtons header={'Detail Screen'}/>
+        <TopButtons header={'Transactions Screen'} navigation={navigation}/>
         <View>
             <AppText style={styles.title}> 
-                    Documentation
+                    Transactions
             </AppText>
         </View>
             <View style={styles.container}>
@@ -52,13 +79,13 @@ function DetailScreen(props) {
                     </DataTable.Header>
                 </DataTable>
                 <FlatList
-                    data={attendanceData}
+                    data={transactions}
                     renderItem={({item})=>
                         <DetailList
-                            nature={item.emplyeeName}
-                            from={item.emplyeeName}
-                            to={item.emplyeeName}
-                            amount={item.amount}
+                            nature={item.Nature}
+                            from={item.From}
+                            to={item.to}
+                            amounts={item.PaymentAmount}
                         /> 
                     }
                 />

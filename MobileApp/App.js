@@ -67,11 +67,11 @@ export default function App() {
     //   </NavigationContainer>
     // </StoreProvider>
 
-    // <StoreProvider value={{ Role, setRole,setClientId }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
 
   );

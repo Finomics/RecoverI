@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required().min(4).label("Password"),
 });
 
-function AddMemberScreen(props) {
+function AddMemberScreen({navigation}) {
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -61,7 +61,7 @@ function AddMemberScreen(props) {
     return (
         <Screen style={styles.backGround}>
 
-            <TopButtons header={'Admin Member Screen'}/>
+            <TopButtons header={'Admin Member Screen'} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 140 }}

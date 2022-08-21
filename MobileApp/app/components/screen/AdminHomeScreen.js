@@ -10,7 +10,7 @@ import TopButtons from './TopButtons';
 function AdminHomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Admin Home Screen'}/>
+            {/* <TopButtons header={'Admin Home Screen'}/> */}
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
@@ -36,8 +36,8 @@ function AdminHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='Add Client'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            title='Client List'
+                            onPress={()=> navigation.navigate('ClientScreen')}
                         />
                     </View>
                 </View>
@@ -58,8 +58,8 @@ function AdminHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='Dash Board'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            title='Transactions'
+                            onPress={()=> navigation.navigate('DetailScreen')}
                         />
                     </View>
                 </View>

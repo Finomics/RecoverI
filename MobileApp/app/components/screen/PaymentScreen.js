@@ -1,11 +1,13 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState,useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
+import StoreContext from './GlobalState';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 import TopButtons from './TopButtons';
+import axios from 'axios';
 
 
 function PaymentScreen({ navigation }) {
@@ -19,14 +21,21 @@ function PaymentScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
+  const userContext = useContext(StoreContext)
+  const BelongsTo = userContext.Role.createdBy
+  const userId = userContext.Role._id
 
   useEffect(() => {
   
-    fetch("https://paym-api.herokuapp.com/")
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log("ClientScreen in getAPI", responseJson);
-        setClients(responseJson.Data);
+    axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/heldBy",
+      data: {
+        heldby: userId
+      }
+    }).then((res) => {
+        console.log("Payment Screen in heldBy in getAPI", res);
+        setClients(res.Data);
 
       })
       .catch((error) => {
@@ -38,7 +47,7 @@ function PaymentScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={'Payment Screen'}/>
+      <TopButtons header={'Payment Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

@@ -27,6 +27,7 @@ function RecoveryScreen({ navigation, route }) {
 
 
   const listing = route.params;
+//  console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString()
   const PaymentName = listing.ClientName
@@ -50,7 +51,7 @@ function RecoveryScreen({ navigation, route }) {
     let mode = (isNew) ? "Cheque" : "Cash";
     let payload = {
 
-      PaymentId: PaymentId,
+      PaymentId: ClientObjectId,
       PaymentName: PaymentName,
       PaymentNumber: PaymentNumber,
       PaymentEmail: PaymentEmail,
@@ -117,7 +118,7 @@ function RecoveryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.backGround}>
-      <TopButtons header={'Recovery Screen'}/>
+      <TopButtons header={'Recovery Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}

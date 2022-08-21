@@ -27,21 +27,38 @@ function ClientScreen({ navigation }) {
   console.log(GlobaleEmployee.Role.createdBy, "Riderrrrrrr");
 
   useEffect(() => {
+    let belongsTo='';
+    if(GlobaleEmployee.Role.Role=='Admin'){
+   belongsTo= GlobaleEmployee.Role._id;
+    }else{
+      belongsTo= GlobaleEmployee.Role.createdBy;
+    }
+
     axios({
       method: "post",
       url: "https://paym-api.herokuapp.com/auth/BelongsTo",
       data: {
-        createdBy: GlobaleEmployee.Role.createdBy
+        createdBy: belongsTo
       }
     })
       .then((responseJson) => {
         console.log("ClientScreen in getAPI", responseJson.data);
-        setClients(responseJson.data);
+        setClients(responseJson.data.filter(filterClients));
 
       })
       .catch((error) => {
         console.error(error);
       });
+function filterClients(client){
+  if(GlobaleEmployee.Role.Role=='Rider'){
+  return client.ClientRiderObjectId==GlobaleEmployee.Role._id;
+  }else{
+    return true;
+  }
+
+
+}
+
   }, [])
 
 
@@ -80,7 +97,7 @@ function ClientScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={'Client Screen'} />
+      <TopButtons header={'Client Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
