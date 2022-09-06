@@ -2,7 +2,7 @@
   "expo": {
     "name": "Recovery",
     "slug": "completeapp",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./app/assets/r-icon.png",
     "userInterfaceStyle": "light",
@@ -27,7 +27,7 @@
       },
       "permissions":["CAMERA"],
       "package": "com.anostrat.recoverIapp",
-      "versionCode": 2,
+      "versionCode": 3,
     },
     "web": {
       "favicon": "./app/assets/r-icon.png"
