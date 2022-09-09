@@ -20,30 +20,30 @@ function PaymentScreen({ navigation }) {
     { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
   ];
   // console.log("in client Screen",list)
-  const [clients, setClients] = useState();
+  const [payments, setPayments] = useState();
   const userContext = useContext(StoreContext)
   const BelongsTo = userContext.Role.createdBy
   const userId = userContext.Role._id
 
-  useEffect(() => {
-  
-    axios({
+  //- for filtered payments
+useEffect(() => {
+  axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/heldBy",
-      data: {
-        heldby: userId
+      url: "https://paym-api.herokuapp.com/filteredPayments",
+      data:{
+          filter:{
+          status: true
+        }
+                    }
+
       }
-    }).then((res) => {
-        console.log("Payment Screen in heldBy in getAPI", res);
-        setClients(res.Data);
-
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-
-  }, []);
+  ).then((res) => {
+      var a = res.data
+setPayments(a);
+  }).catch((error) => {
+      console.log(error);
+  })
+}, [])
 
   return (
     <Screen>
@@ -58,9 +58,9 @@ function PaymentScreen({ navigation }) {
         </View>
         <Button title='Search' />
       </View>
-      {clients != null ?
+      {payments != null ?
         <FlatList
-          data={clients}
+          data={payments}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <PaymentCard
