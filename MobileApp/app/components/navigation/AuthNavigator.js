@@ -42,7 +42,7 @@ const AuthNavigator = () => (
         <Stack.Screen name='UnverifierPaymentScreen' component={UnverifierPaymentScreen} />
         <Stack.Screen name='TransferScreen' component={TransferScreen} />
         <Stack.Screen name='SummaryScreen' component={SummaryScreen} />
-        <Stack.Screen name='DetailScreen' component={DetailScreen} />
+        <Stack.Screen name='Transactions' component={DetailScreen} />
 
     </Stack.Navigator>
 )

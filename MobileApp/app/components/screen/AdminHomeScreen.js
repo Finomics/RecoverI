@@ -59,7 +59,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Transactions'
-                            onPress={()=> navigation.navigate('DetailScreen')}
+                            onPress={()=> navigation.navigate('Transactions')}
                         />
                     </View>
                 </View>

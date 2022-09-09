@@ -55,11 +55,11 @@ function DetailScreen({ navigation }) {
   
     return (
     <Screen>
-        <TopButtons header={'Transactions Screen'} navigation={navigation}/>
+        <TopButtons header={''} navigation={navigation}/>
         <View>
-            <AppText style={styles.title}> 
+            {/* <AppText style={styles.title}> 
                     Transactions
-            </AppText>
+            </AppText> */}
         </View>
             <View style={styles.container}>
                 <DataTable style={{width: '100%'}}>
