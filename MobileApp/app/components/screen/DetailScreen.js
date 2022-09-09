@@ -64,6 +64,9 @@ function DetailScreen({ navigation }) {
             <View style={styles.container}>
                 <DataTable style={{width: '100%'}}>
                     <DataTable.Header >
+                    <DataTable.Title>
+                            <AppText style={styles.header}>Date</AppText>
+                        </DataTable.Title>
                         <DataTable.Title>
                             <AppText style={styles.header}>Nature</AppText>
                         </DataTable.Title>
@@ -85,6 +88,7 @@ function DetailScreen({ navigation }) {
                             nature={item.Nature}
                             from={item.From}
                             to={item.to}
+                            createdOn={item.createdOn}
                             amounts={item.PaymentAmount}
                         /> 
                     }
