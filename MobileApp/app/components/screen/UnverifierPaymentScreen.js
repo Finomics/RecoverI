@@ -3,7 +3,9 @@ import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'reac
 import PaymentCard from '../../components/PaymentCard';
 import NewCard from '../NewCard';
 import colors from '../colors';
-import Screen from '../Screen'
+import Screen from '../Screen';
+import axios from 'axios';
+
 import { getClients } from '../APIcalls/getRequests'
 
 
@@ -18,20 +20,40 @@ function UnverifierPaymentScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
-  useEffect(() => {
-    fetch("https://paym-api.herokuapp.com/")
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log("ClientScreen in getAPI", responseJson);
-        setClients(responseJson.Data);
+  const [payments, setPayments] = useState();
+  // useEffect(() => {
+  //   fetch("https://paym-api.herokuapp.com/")
+  //     .then((response) => response.json())
+  //     .then((responseJson) => {
+  //       console.log("ClientScreen in getAPI", responseJson);
+  //       setClients(responseJson.Data);
 
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+//- for filtered payments
+useEffect(() => {
+  axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/filteredPayments",
+      data:{
+          filter:{
+          status: false
+        }
+                    }
+
+      }
+  ).then((res) => {
+      var a = res.data
+setPayments(a);
+  }).catch((error) => {
+      console.log(error);
+  })
+}, [])
 
 
-  }, []);
+
 
   return (
     <Screen>
@@ -45,9 +67,9 @@ function UnverifierPaymentScreen({ navigation }) {
         </View>
         <Button title='Search' />
       </View>
-      {clients != null ?
+      {payments != null ?
         <FlatList
-          data={clients}
+          data={payments}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <PaymentCard

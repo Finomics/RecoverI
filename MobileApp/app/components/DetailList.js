@@ -5,13 +5,16 @@ import axios from 'axios';
 import { DataTable } from 'react-native-paper';
 import AppText from './AppText';
 
-function DetailList({ nature, from, to, amounts }) {
+function DetailList({ nature, from, to, amounts,createdOn }) {
 
+    const [date, setDate] = useState("Date");
     const [fromName, setFromName] = useState("");
     const [toName, setToName] = useState("");
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(0,9);
 
     useEffect(() => {
+        console.log("forCreatedOn",typeof(createdOn),createdOn);
+        setDate(createdOn.substring(0,9));
         setAmount(amounts[0]);
         if(nature=='Collection'){
             forCollection();
@@ -79,6 +82,7 @@ function DetailList({ nature, from, to, amounts }) {
 
             console.log(res.data, "in Internal Transfer to API");
             setToName(res.data.Employee[0].employeeName)
+            setDate()
 
         }).catch((error) => {
             console.error("Error in Internal transfer to ",error);
@@ -87,6 +91,7 @@ function DetailList({ nature, from, to, amounts }) {
      }
     return (
         <DataTable.Row style={{ width: '100%' }}>
+             <DataTable.Cell>{date}</DataTable.Cell>
             <DataTable.Cell>{nature}</DataTable.Cell>
             <DataTable.Cell>{fromName}</DataTable.Cell>
             <DataTable.Cell>{toName}</DataTable.Cell>
