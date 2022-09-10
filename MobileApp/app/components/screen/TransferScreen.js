@@ -19,6 +19,7 @@ function TransferScreen({ navigation }) {
     { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
   ];
   // console.log("in client Screen",list)
+  const [payments, setPayments] = useState();
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
   const [transferAmounts, setTransferAmounts] = useState([]);
@@ -38,20 +39,20 @@ function TransferScreen({ navigation }) {
   // console.log(RiderContextData.Role._id, "RiderNameRiderName");
 
 
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: "https://paym-api.herokuapp.com/heldBy",
-      data: {
-        heldby: RiderContextData.Role._id
-      }
-    }).then((res) => {
-      setClients(res.data);
-      // console.log(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, [realTime])
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     url: "https://paym-api.herokuapp.com/heldBy",
+  //     data: {
+  //       heldby: RiderContextData.Role._id
+  //     }
+  //   }).then((res) => {
+  //     setClients(res.data);
+  //     // console.log(res.data);
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // }, [realTime])
 
 
   useEffect(() => {
@@ -70,17 +71,26 @@ function TransferScreen({ navigation }) {
     }).catch((err) => {
       console.log(err);
     })
-  }, [realTime])
+  }, [realTime,])
 
-  // useEffect(() => {
-  //   axios({
-  //     method: "get",
-  //     url: "https://paym-api.herokuapp.com/auth/CashierEmploye",
-  //   }).then((res) => {
-  //     setCashierName(res.data);
-  //     // console.log(res.data, "cashier");
-  //   }).catch((err) => { console.log(err); })
-  // }, [realTime])
+  useEffect(() => {
+    axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/filteredPayments",
+      data:{
+          filter:{
+          heldby:RiderContextData.Role._id
+        }
+                    }
+
+      }
+  ).then((res) => {
+      var a = res.data
+setPayments(a);
+  }).catch((error) => {
+      console.log(error);
+  })
+  }, [realTime])
 
 
   const handlePress = () => {
@@ -178,7 +188,7 @@ function TransferScreen({ navigation }) {
       {clients != null ?
         <FlatList
           // key={i}
-          data={clients}
+          data={payments}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <TransferCard
