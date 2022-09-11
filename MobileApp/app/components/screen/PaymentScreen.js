@@ -32,7 +32,7 @@ useEffect(() => {
       url: "https://paym-api.herokuapp.com/filteredPayments",
       data:{
           filter:{
-          status: true
+            heldby: userId
         }
                     }
 
