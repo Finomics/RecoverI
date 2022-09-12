@@ -131,8 +131,8 @@ console.log("Payments",res.data.length);
         method: "post",
         url: `https://paym-api.herokuapp.com/auth/paymentTransfer/${paymentObjectId}`,
         data: {
-          heldby: heldbyCashierName._id
-          // heldby: heldbyCashierName.employeeName
+          heldby: heldbyCashierName._id,
+          status:"True"
         }
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);

@@ -49,7 +49,7 @@ function AddMemberScreen({navigation}) {
         })
             .then((res) => {
                 console.log(res.data, "response");
-                alert(`youe ${value} hase been created`)
+                alert(`your ${value} is successully created`)
             })
             .catch((err) => {
                 console.log(err, "error");

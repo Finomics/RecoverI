@@ -1,6 +1,7 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState,useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
+import StoreContext from './GlobalState';
 import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen';
@@ -21,17 +22,11 @@ function UnverifierPaymentScreen({ navigation }) {
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
   const [payments, setPayments] = useState();
-  // useEffect(() => {
-  //   fetch("https://paym-api.herokuapp.com/")
-  //     .then((response) => response.json())
-  //     .then((responseJson) => {
-  //       console.log("ClientScreen in getAPI", responseJson);
-  //       setClients(responseJson.Data);
 
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
+  const userContext = useContext(StoreContext)
+ 
+  const userId = userContext.Role._id
+ 
 //- for filtered payments
 useEffect(() => {
   axios({
@@ -39,7 +34,9 @@ useEffect(() => {
       url: "https://paym-api.herokuapp.com/filteredPayments",
       data:{
           filter:{
-          status: false
+            heldby: userId,
+            "status": "false"
+
         }
                     }
 

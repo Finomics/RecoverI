@@ -84,12 +84,12 @@ function OTPScreen({ navigation, route }) {
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
                                 console.log(response.data, "response");
-                                alert("Stutus Update")
+                                alert("payment status Updated")
                                // transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
-                                alert("Please Correct Otp");
+                                alert("Please send Correct Otp");
                             })
                             transaction();
                     }
@@ -131,11 +131,11 @@ function OTPScreen({ navigation, route }) {
                 ClinincObjectId: ClientObjectId,
             }
         }).then((res) => {
-            console.log(res.data, "conformationPayment Response");
+            console.log(res.data, "confirmationPayment Response");
 
         }).catch((err) => {
 
-            console.log(err, "conformationPayment Error");
+            console.log(err, "confirmationPayment Error");
         })
     }
 
@@ -148,11 +148,11 @@ function OTPScreen({ navigation, route }) {
                 PaymentEmail: ResendPaymentEmail
             }
         }).then((response) => {
-            console.log(response.data, "REsend Otp")
-            alert("Send ReSend Otp")
+            console.log(response.data, "OTP resent")
+            alert("OTP resent");
         }).catch((error) => {
-            console.log(error, "error");
-            // alert("Please Correct Otp")
+            console.log(error, "errorin otp resend");
+            
         })
     }
 
