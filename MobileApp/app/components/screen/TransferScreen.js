@@ -87,10 +87,11 @@ function TransferScreen({ navigation }) {
   ).then((res) => {
       var a = res.data
 setPayments(a);
+console.log("Payments",res.data.length);
   }).catch((error) => {
       console.log(error);
   })
-  }, [realTime])
+  }, [])
 
 
   const handlePress = () => {
@@ -113,7 +114,7 @@ setPayments(a);
     setModalVisible(!modalVisible)
     setheldbyCashierName(data)
 
-    console.log(data._id, "Cashier Data");
+ //   console.log(data._id, "Cashier Data");
     setCashierObjectID(data._id)
   }
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
@@ -185,7 +186,7 @@ setPayments(a);
         </View>
         <Button title='Search' />
       </View>
-      {clients != null ?
+      {payments != null ?
         <FlatList
           // key={i}
           data={payments}
