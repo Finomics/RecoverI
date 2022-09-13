@@ -76,7 +76,7 @@ function RecoveryScreen({ navigation, route }) {
 
         var a = response.data
         navigation.navigate('OTPScreen', a.data);
-        alert("Send Otp for Check Email")
+        alert("confirmation OTP is sent");
 
 
       })

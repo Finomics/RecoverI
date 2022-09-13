@@ -19,6 +19,7 @@ function TransferScreen({ navigation }) {
     { Name: 'Mohib Zia', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 5 },
   ];
   // console.log("in client Screen",list)
+  const [payments, setPayments] = useState();
   const [clients, setClients] = useState();
   const [transferId, setTransferId] = useState([]);
   const [transferAmounts, setTransferAmounts] = useState([]);
@@ -38,20 +39,20 @@ function TransferScreen({ navigation }) {
   // console.log(RiderContextData.Role._id, "RiderNameRiderName");
 
 
-  useEffect(() => {
-    axios({
-      method: "post",
-      url: "https://paym-api.herokuapp.com/heldBy",
-      data: {
-        heldby: RiderContextData.Role._id
-      }
-    }).then((res) => {
-      setClients(res.data);
-      // console.log(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, [realTime])
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     url: "https://paym-api.herokuapp.com/heldBy",
+  //     data: {
+  //       heldby: RiderContextData.Role._id
+  //     }
+  //   }).then((res) => {
+  //     setClients(res.data);
+  //     // console.log(res.data);
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // }, [realTime])
 
 
   useEffect(() => {
@@ -70,17 +71,27 @@ function TransferScreen({ navigation }) {
     }).catch((err) => {
       console.log(err);
     })
-  }, [realTime])
+  }, [realTime,])
 
-  // useEffect(() => {
-  //   axios({
-  //     method: "get",
-  //     url: "https://paym-api.herokuapp.com/auth/CashierEmploye",
-  //   }).then((res) => {
-  //     setCashierName(res.data);
-  //     // console.log(res.data, "cashier");
-  //   }).catch((err) => { console.log(err); })
-  // }, [realTime])
+  useEffect(() => {
+    axios({
+      method: "post",
+      url: "https://paym-api.herokuapp.com/filteredPayments",
+      data:{
+          filter:{
+          heldby:RiderContextData.Role._id
+        }
+                    }
+
+      }
+  ).then((res) => {
+      var a = res.data
+setPayments(a);
+console.log("Payments",res.data.length);
+  }).catch((error) => {
+      console.log(error);
+  })
+  }, [])
 
 
   const handlePress = () => {
@@ -103,7 +114,7 @@ function TransferScreen({ navigation }) {
     setModalVisible(!modalVisible)
     setheldbyCashierName(data)
 
-    console.log(data._id, "Cashier Data");
+ //   console.log(data._id, "Cashier Data");
     setCashierObjectID(data._id)
   }
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
@@ -120,8 +131,8 @@ function TransferScreen({ navigation }) {
         method: "post",
         url: `https://paym-api.herokuapp.com/auth/paymentTransfer/${paymentObjectId}`,
         data: {
-          heldby: heldbyCashierName._id
-          // heldby: heldbyCashierName.employeeName
+          heldby: heldbyCashierName._id,
+          status:"True"
         }
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);
@@ -175,10 +186,10 @@ function TransferScreen({ navigation }) {
         </View>
         <Button title='Search' />
       </View>
-      {clients != null ?
+      {payments != null ?
         <FlatList
           // key={i}
-          data={clients}
+          data={payments}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <TransferCard
