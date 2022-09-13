@@ -27,7 +27,7 @@
       },
       "permissions":["CAMERA"],
       "package": "com.anostrat.recoverIapp",
-      "versionCode": 4,
+      "versionCode": 4
     },
     "web": {
       "favicon": "./app/assets/K-icon.png"
