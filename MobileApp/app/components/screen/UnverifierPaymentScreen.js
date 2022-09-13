@@ -4,6 +4,7 @@ import PaymentCard from '../../components/PaymentCard';
 import StoreContext from './GlobalState';
 import NewCard from '../NewCard';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 import Screen from '../Screen';
 import axios from 'axios';
 
@@ -54,6 +55,8 @@ setPayments(a);
 
   return (
     <Screen>
+      <TopButtons header={'Universal Payment Screen'} navigation={navigation}/>
+
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

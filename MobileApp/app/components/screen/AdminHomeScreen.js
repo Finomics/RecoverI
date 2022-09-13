@@ -11,6 +11,7 @@ function AdminHomeScreen({navigation}) {
     return (
         <Screen>
             {/* <TopButtons header={'Admin Home Screen'}/> */}
+            <TopButtons header={'Admin Home Screen'} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}

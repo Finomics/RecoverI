@@ -55,32 +55,33 @@ function DetailScreen({ navigation }) {
   
     return (
     <Screen>
-        <TopButtons header={''} navigation={navigation}/>
+        <TopButtons header={'Detail Screen'} navigation={navigation}/>
         <View>
             {/* <AppText style={styles.title}> 
                     Transactions
             </AppText> */}
         </View>
-            <View style={styles.container}>
-                <DataTable style={{width: '100%'}}>
-                    <DataTable.Header >
-                    <DataTable.Title>
+        <View style={{width: '100%'}}>
+            <ScrollView horizontal={true} >
+                <DataTable>
+                    <DataTable.Header>
+                        <DataTable.Title style={{width: 80}}>
                             <AppText style={styles.header}>Date</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 130}}>
                             <AppText style={styles.header}>Nature</AppText>
-                        </DataTable.Title>
-                        <DataTable.Title>
+                        </DataTable.Title >
+                        <DataTable.Title style={{width: 120}}>
                             <AppText style={styles.header}>From</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 120}}>
                             <AppText style={styles.header}>To</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 100}}>
                             <AppText style={styles.header}>Amount</AppText>
                         </DataTable.Title>
                     </DataTable.Header>
-                </DataTable>
+                    
                 <FlatList
                     data={transactions}
                     renderItem={({item})=>
@@ -93,7 +94,9 @@ function DetailScreen({ navigation }) {
                         /> 
                     }
                 />
-            </View>
+                </DataTable>
+            </ScrollView>
+        </View>
     </Screen>
   );
 }
@@ -101,6 +104,7 @@ function DetailScreen({ navigation }) {
 const styles = StyleSheet.create({
     logoContainer:{
         width: '100%',
+        // flex: 1,
     },
     header:{
         fontWeight: 'bold',

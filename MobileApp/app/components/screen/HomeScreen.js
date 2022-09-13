@@ -10,7 +10,8 @@ import TopButtons from './TopButtons';
 function HomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Home Screen'}/>
+            <TopButtons header={'Home Screen'} navigation={navigation}/>
+
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}

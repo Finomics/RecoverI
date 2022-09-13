@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import axios from 'axios';
 
 import { DataTable } from 'react-native-paper';
@@ -90,13 +90,16 @@ function DetailList({ nature, from, to, amounts,createdOn }) {
         });
      }
     return (
-        <DataTable.Row style={{ width: '100%' }}>
-             <DataTable.Cell>{date}</DataTable.Cell>
-            <DataTable.Cell>{nature}</DataTable.Cell>
-            <DataTable.Cell>{fromName}</DataTable.Cell>
-            <DataTable.Cell>{toName}</DataTable.Cell>
-            <DataTable.Cell >{amount}</DataTable.Cell>
-        </DataTable.Row>
+        
+            <DataTable.Row style={{width: '100%'}}>
+                <DataTable.Cell style={{width: 80}}>{date}</DataTable.Cell>
+                <DataTable.Cell style={{width: 130}}>{nature}</DataTable.Cell>
+                <DataTable.Cell style={{width: 120}}>{fromName}</DataTable.Cell>
+                <DataTable.Cell style={{width: 120}}>{toName}</DataTable.Cell>
+                <DataTable.Cell style={{width: 100, justifyContent: 'flex-end', paddingRight: 10 }}>{amount}</DataTable.Cell>
+            </DataTable.Row>
+        
+        
 
     );
 }

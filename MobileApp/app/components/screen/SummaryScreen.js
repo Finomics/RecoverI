@@ -8,6 +8,7 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import colors from '../colors';
 import axios from 'axios';
+import TopButtons from './TopButtons';
 import StoreContext from './GlobalState';
 
 
@@ -77,6 +78,7 @@ function SummaryScreen(props) {
 
     return (
         <Screen>
+            <TopButtons header={'Summary Screen'} navigation={navigation}/>
             <View>
                 <AppText style={styles.title}>
                     Payment Record

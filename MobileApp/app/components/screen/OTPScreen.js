@@ -4,6 +4,7 @@ import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
 import AppButton from '../AppButton';
+import TopButtons from './TopButtons';
 import axios from 'axios';
 import StoreContext from './GlobalState';
 function OTPScreen({ navigation, route }) {
@@ -159,6 +160,7 @@ function OTPScreen({ navigation, route }) {
 
     return (
         <Screen>
+            <TopButtons header={'OTP Screen'} navigation={navigation}/>
             <View style={styles.descriptionContainer}>
                 <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
                 <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>

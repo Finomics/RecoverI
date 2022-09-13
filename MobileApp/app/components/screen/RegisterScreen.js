@@ -7,6 +7,7 @@ import Icon from '../Icon';
 import AppButton from '../AppButton';
 import Screen from '../Screen';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
 import axios from 'axios';
 
@@ -54,6 +55,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
+            <TopButtons header={'Recovery Screen'} navigation={navigation}/>
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image

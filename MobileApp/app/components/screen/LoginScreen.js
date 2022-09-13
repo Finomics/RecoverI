@@ -8,6 +8,7 @@ import { AppForm, AppFormField, SubmitButton } from '../forms';
 import AppButton from '../AppButton';
 import axios from 'axios';
 import StoreContext from './GlobalState';
+import TopButtons from './TopButtons';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -63,6 +64,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
+            <TopButtons header={'Login Screen'} navigation={navigation}/>
             <ScrollView>
                 <Image
                     style={styles.logo}
