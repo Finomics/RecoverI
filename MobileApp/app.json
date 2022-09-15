@@ -26,7 +26,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions":["CAMERA"],
-      "package": "com.anostrat.recoverIapp",
+      "package": "com.anostrat.kollectIt",
       "versionCode": 1
     },
     "web": {
