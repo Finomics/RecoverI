@@ -57,6 +57,7 @@ function LoginScreen({ navigation }) {
 
         }).catch((err) => {
             console.log(err, "employee not found");
+            alert("Login error, please retry later");
         })
 
 
