@@ -7,7 +7,7 @@
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/splash.png",
+      "image": "./app/assets/K-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,7 +25,9 @@
         "foregroundImage": "./app/assets/K-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions":["CAMERA"],
+      "permissions": [
+        "CAMERA"
+      ],
       "package": "com.anostrat.recoverIapp",
       "versionCode": 1
     },

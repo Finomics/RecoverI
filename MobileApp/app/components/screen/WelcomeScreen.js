@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
 import AppButton from '../AppButton';
 import colors from '../colors';
 import Screen from '../Screen';
 
 function WelcomeScreen({navigation}) {
+
+    useEffect(()=>{
+      <ActivityIndicator/>
+    },[])
     return (
         <Screen style={styles.container}>
             <View style={styles.logoContainer}>
@@ -21,6 +25,7 @@ function WelcomeScreen({navigation}) {
                     onPress={()=> navigation.navigate('LoginScreen')}
                     color= 'teal'
                 />
+            
             <AppButton 
                 title='Register'
                 // onPress={()=> {console.log('Register Button Pressed')}}
