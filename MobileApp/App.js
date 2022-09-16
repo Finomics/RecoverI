@@ -26,6 +26,7 @@ import HomeScreen from './app/components/screen/HomeScreen';
 import PaymentScreen from './app/components/screen/PaymentScreen';
 import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
 import DetailScreen from './app/components/screen/DetailScreen';
+import AppPasswordInput from './app/components/AppPasswordInput';
 
 
 
@@ -72,6 +73,11 @@ export default function App() {
         <AuthNavigator />
       </NavigationContainer>
     </StoreProvider>
+
+
+    // <AppPasswordInput
+    //   icon={'lock'}
+    // />
 
 
   );

@@ -4,7 +4,7 @@ import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } f
 import * as Yup from 'yup';
 
 import Screen from '../Screen';
-import { AppForm, AppFormField, SubmitButton } from '../forms';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import AppButton from '../AppButton';
 import axios from 'axios';
 import StoreContext from './GlobalState';
@@ -18,6 +18,7 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen({ navigation }) {
 
+    const [visibility, setVisibility] = useState(true)
 
     const AdminRole = useContext(StoreContext);
 
@@ -62,6 +63,11 @@ function LoginScreen({ navigation }) {
 
     }
 
+    const handleVisibility=(value)=>{
+        setVisibility(previousState => !previousState)
+        console.log('hi '+ value)
+    }
+
     return (
         <Screen style={styles.container}>
             <TopButtons header={'Login Screen'} navigation={navigation}/>
@@ -87,13 +93,12 @@ function LoginScreen({ navigation }) {
                         placeholder='Email'
                         textContentType='emailAddress'
                     />
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
-                        placeholder='Password'
-                        secureTextEntry={true}
+                        placeholder='Password New'
                         textContentType='password'
                     />
                     <SubmitButton
