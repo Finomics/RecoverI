@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import * as Yup from 'yup';
 import Constants from 'expo-constants';
 import DropDownPicker from 'react-native-dropdown-picker'
 
 
-import { AppForm, AppFormField, SubmitButton } from '../forms';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import Screen from '../Screen'
 import colors from '../colors';
 import axios from "axios";
@@ -64,12 +64,12 @@ function AddMemberScreen({navigation}) {
             <TopButtons header={'Admin Member Screen'} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image
-                    style={{ width: 330, height: 140 }}
+                    style={{ width: 330, height: 100 }}
                     source={require('../../assets/logo.png')}
                 />
             </View>
+                <ScrollView>
             <View style={styles.inputContianer}>
-
                 <AppForm
                     initialValues={{ email: '', password: '', userName: '' }}
                     // onSubmit={values => console.log(values, value,":sasas")}
@@ -95,13 +95,12 @@ function AddMemberScreen({navigation}) {
                         placeholder='Email'
                         textContentType='emailAddress'
                     />
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
-                        placeholder='Password'
-                        secureTextEntry={true}
+                        placeholder='Password New'
                         textContentType='password'
                     />
 
@@ -112,14 +111,14 @@ function AddMemberScreen({navigation}) {
                         setOpen={setOpen}
                         setValue={setValue}
                         setItems={setItems}
-                        style={{ backgroundColor: colors.lightGrey, borderRadius: 25 }}
+                        style={{ backgroundColor: colors.lightGrey, borderRadius: 25, marginVertical: 25 }}
                     />
 
                     <SubmitButton title='Confirm'
                         color='teal' />
                 </AppForm>
-
             </View>
+                </ScrollView>
         </Screen>
     );
 }

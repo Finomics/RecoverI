@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
 
-import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Image, ScrollView, StyleSheet, ActivityIndicator, Text } from 'react-native';
 import * as Yup from 'yup';
 
 import Screen from '../Screen';
-import { AppForm, AppFormField, SubmitButton } from '../forms';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import AppButton from '../AppButton';
 import axios from 'axios';
 import StoreContext from './GlobalState';
@@ -17,7 +17,9 @@ const validationSchema = Yup.object().shape({
 
 
 function LoginScreen({ navigation }) {
-
+    
+    
+    const [load, setLoad] = useState(false)
 
     const AdminRole = useContext(StoreContext);
 
@@ -25,6 +27,8 @@ function LoginScreen({ navigation }) {
 
     const handlePress = (values) => {
         console.log(values.email, "login");
+        setLoad(previousState => !previousState)
+        console.log(load)
         axios({
             method: "post",
             url: "https://paym-api.herokuapp.com/auth/login",
@@ -37,6 +41,7 @@ function LoginScreen({ navigation }) {
             console.log(res.data.Role);
             // localStorage.setItem("Role", JSON.stringify(res.data.Role))
             alert("Login Successfully!")
+            setLoad(previousState => !previousState)
             // console.log(email)
             AdminRole.setRole(res.data)
             if (res.data.Role === 'Admin') {
@@ -58,6 +63,7 @@ function LoginScreen({ navigation }) {
         }).catch((err) => {
             console.log(err, "employee not found");
             alert("Login error, please retry later");
+            setLoad(previousState => !previousState);
         })
 
 
@@ -88,19 +94,27 @@ function LoginScreen({ navigation }) {
                         placeholder='Email'
                         textContentType='emailAddress'
                     />
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
-                        placeholder='Password'
-                        secureTextEntry={true}
+                        placeholder='Password New'
                         textContentType='password'
                     />
-                    <SubmitButton
-                        title='Login'
-                        color='teal'
-                    />
+                    {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
+                            <SubmitButton
+                                title='Login'
+                                color='teal'
+                            /> 
+                    }
+                    
                 </AppForm>
             </ScrollView>
 

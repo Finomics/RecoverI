@@ -41,7 +41,7 @@ app.post('/employe', (req, res, next) => {
 
     } else {
         employee.findOne({ email: req.body.email }, (err, doc) => {
-            if (!err) {
+            if (err) {
                 var employ = new employee({
                     employeeName: req.body.name,
                     employeeEmail: req.body.email,
@@ -58,7 +58,7 @@ app.post('/employe', (req, res, next) => {
                 })
             } else {
                 res.status(409).send({
-                    message: "employee alredy access"
+                    message: "User  alredy exist"
                 })
             }
         }
@@ -188,7 +188,46 @@ app.get('/RiderEmploye', (req, res, next) => {
         }
     })
 })
+//- bulk transfer
 
+app.post('/bulkTransfer', (req, res, next) => {
+    
+    console.log("In Bulk ransfer",req.body);
+    
+    var filters= req.body.filter;
+    var transactiondata = req.body.transaction
+
+    payment.updateMany({ _id: { $in: filters } },
+        { $set: { heldby: req.body.heldby} },
+        {multi: true}, 
+        function(err, records){
+            if (err) {
+                res.status(409).send({
+                    message: "PaymenTrasfer Error",
+                    err
+                })
+            }else{
+                const newtransaction = new Transaction({
+                    Nature: transactiondata.nature,
+                    Instrument: transactiondata.Instrument,
+                    PaymentAmount: transactiondata.PaymentAmount,
+                    BelongsTo: transactiondata.BelongsTo,
+                    From: transactiondata.From,
+                    to: transactiondata.to,
+                });
+                newtransaction.save().then((data) => {
+                    res.send(data)
+        
+                }).catch((err) => {
+                    res.status(500).send({
+                        message: "an error occured : " + err,
+                    })
+                });
+            }
+     }
+
+      )})
+//- single transfer
 app.post('/paymentTransfer/:id', (req, res, next) => {
 
     // console.log(req.params.id, "dd");

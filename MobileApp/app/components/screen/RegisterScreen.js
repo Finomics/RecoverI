@@ -8,7 +8,7 @@ import AppButton from '../AppButton';
 import Screen from '../Screen';
 import colors from '../colors';
 import TopButtons from './TopButtons';
-import { AppForm, AppFormField, SubmitButton } from '../forms';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
@@ -94,13 +94,12 @@ function LoginScreen({ navigation }) {
                         placeholder='Email'
                         textContentType='emailAddress'
                     />
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
-                        placeholder='Password'
-                        secureTextEntry={true}
+                        placeholder='Password New'
                         textContentType='password'
                     />
 
