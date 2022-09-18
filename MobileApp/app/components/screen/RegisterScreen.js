@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Image, ScrollView, StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import * as Yup from 'yup';
 import Icon from '../Icon';
 
@@ -23,9 +23,11 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen({ navigation }) {
 
-
+    const [load, setLoad] = useState(false)
 
     const handlePress = (values) => {
+
+        setLoad(previousState => !previousState)
         // console.log(values, "form");
         axios({
             method: "post",
@@ -39,6 +41,7 @@ function LoginScreen({ navigation }) {
         }).then((res) => {
 
             alert("Admin has been Created")
+            setLoad(previousState => !previousState)
             if(values.name=='Admin'){
                 navigation.navigate('AdminHomeScreen')
             }else if(values.name=='Cashier'){
@@ -49,7 +52,10 @@ function LoginScreen({ navigation }) {
             // alert(res.data.message)
             // console.log(res.data, "Json Res");
 
-        }).catch((err) => { console.log(err, "Admin Created Error"); })
+        }).catch((err) => { 
+            console.log(err, "Admin Created Error");
+            setLoad(previousState => !previousState); 
+        })
     }
 
 
@@ -103,10 +109,23 @@ function LoginScreen({ navigation }) {
                         textContentType='password'
                     />
 
-                    <SubmitButton 
+                    {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
+                            <SubmitButton
+                                title='Register'
+                                color='teal'
+                            /> 
+                    }
+
+                    {/* <SubmitButton 
                         title='Register'
                         color='teal'
-                    />
+                    /> */}
                 </AppForm>
             </ScrollView>
 
@@ -125,6 +144,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         backgroundColor: colors.backGround,
+        paddingBottom: 10,
     },
     logoContainer: {
         width: '100%',
