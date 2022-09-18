@@ -2,12 +2,12 @@
   "expo": {
     "name": "Recovery",
     "slug": "completeapp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/K-icon.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,11 +25,9 @@
         "foregroundImage": "./app/assets/K-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": [
-        "CAMERA"
-      ],
-      "package": "com.anostrat.recoverIapp",
-      "versionCode": 1
+      "permissions":["CAMERA"],
+      "package": "com.anostrat.kollectIt",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./app/assets/K-icon.png"

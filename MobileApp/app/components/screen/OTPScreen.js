@@ -76,7 +76,7 @@ function OTPScreen({ navigation, route }) {
                             url: 'https://paym-api.herokuapp.com/ReciveOtpStep-2',
                             data: {
                                 PaymentEmail: ResendPaymentEmail,
-                                PaymentId: PayId.toString(),
+                                PaymentId: PayId,
                                 otp: ReciveOtp,
                                 PayObjectId: PayObjectId,
                                 status: "True"
