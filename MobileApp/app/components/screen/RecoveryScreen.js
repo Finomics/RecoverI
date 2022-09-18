@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { Image, StyleSheet, Switch, TouchableOpacity, View, ScrollView } from 'react-native';
+import { Image, StyleSheet, Switch, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 
 import Screen from '../Screen';
 import Icon from '../Icon';
@@ -24,6 +24,7 @@ function RecoveryScreen({ navigation, route }) {
   const [imageUri, setImageUri] = useState(null);
   const [textInput, setTextInput] = useState("");
   const [Img, setImage] = useState("");
+  const [load, setLoad] = useState(true)
 
 
   const listing = route.params;
@@ -152,8 +153,15 @@ function RecoveryScreen({ navigation, route }) {
             onChangeImage={uri => setImageUri(uri)
             }
           />
-
+{
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
           <AppButton title='Continue' color='royalBlue' onPress={() => handleContinue()} />
+}
         </View>
         <View style={styles.iconBar}>
           <Icon name='home' backgroundColor={colors.backGround} iconColor={colors.royalBlue} onPress={handlePress} />
