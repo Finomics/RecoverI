@@ -49,7 +49,8 @@ function LoginScreen({ navigation }) {
             // alert(res.data.message)
             // console.log(res.data, "Json Res");
 
-        }).catch((err) => { console.log(err, "Admin Created Error"); })
+        }).catch((err) => { console.log(err, "Admin Created Error");
+    alert(" Error in Registration, please retry later") });
     }
 
 
