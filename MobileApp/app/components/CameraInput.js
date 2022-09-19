@@ -8,7 +8,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from './colors';
 
-function CameraInput({ imageUri, onChangeImage, navigation }) {
+function CameraInput({ imageUri, onChangeImage, navigation, setLoad }) {
 
     const [cameraPermission, setCameraPermission] = useState(null);
     const [storagePermission, setStoragePermission] = useState(null);
@@ -45,6 +45,7 @@ function CameraInput({ imageUri, onChangeImage, navigation }) {
         }
 
 const selectImage= async()=> {
+  setLoad(true);
     console.log('hello1');
     if (camera) {
         const data = await camera.takePictureAsync(null);

@@ -47,6 +47,11 @@ function RecoveryScreen({ navigation, route }) {
 
   const handlePress = () => {
   }
+  const handleCamera = (uro) => {
+    console.log("in HandleCamera",uri);
+    setImageUri(uri);
+
+  }
 
   const handleContinue = async () => {
     let mode = (isNew) ? "Cheque" : "Cash";
@@ -107,7 +112,8 @@ function RecoveryScreen({ navigation, route }) {
     })
       .then(res => {
         // console.log(JSON.stringify(res.data.ImageUrl), "res");
-        setImage(res.data.ImageUrl)
+        setImage(res.data.ImageUrl);
+        setLoad(false);
       })
       .catch(err => { console.log(err, "error"); })
   }
@@ -150,7 +156,8 @@ function RecoveryScreen({ navigation, route }) {
         <View style={styles.image}>
           <CameraInput
             imageUri={imageUri}
-            onChangeImage={uri => setImageUri(uri)
+            setLoad={setLoad}
+            onChangeImage={uri =>  setImageUri(uri)
             }
           />
 {
