@@ -24,7 +24,7 @@ function RecoveryScreen({ navigation, route }) {
   const [imageUri, setImageUri] = useState(null);
   const [textInput, setTextInput] = useState("");
   const [Img, setImage] = useState("");
-  const [load, setLoad] = useState(false)
+  const [load, setLoad] = useState(false);
 
 
   const listing = route.params;
