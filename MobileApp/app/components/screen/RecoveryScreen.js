@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { Image, StyleSheet, Switch, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { Image, StyleSheet, Switch, TouchableOpacity, View,ScrollView, ActivityIndicator } from 'react-native';
 
 import Screen from '../Screen';
 import Icon from '../Icon';
@@ -24,7 +24,7 @@ function RecoveryScreen({ navigation, route }) {
   const [imageUri, setImageUri] = useState(null);
   const [textInput, setTextInput] = useState("");
   const [Img, setImage] = useState("");
-  const [load, setLoad] = useState(true)
+  const [load, setLoad] = useState(false)
 
 
   const listing = route.params;
