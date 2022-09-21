@@ -54,6 +54,7 @@ function RecoveryScreen({ navigation, route }) {
   }
 
   const handleContinue = async () => {
+    setLoad(true);
     let mode = (isNew) ? "Cheque" : "Cash";
     let payload = {
 
@@ -79,8 +80,8 @@ function RecoveryScreen({ navigation, route }) {
       .then((response) => {
 
         // console.log("response from API", a.data);
-
-        var a = response.data
+setLoad(false);
+        var a = response.data;
         navigation.navigate('OTPScreen', a.data);
         alert("confirmation OTP is sent");
 
