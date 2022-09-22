@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useRef, useContext } from 'react';
-import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert } from 'react-native';
+import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert,ActivityIndicator } from 'react-native';
 import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
@@ -46,6 +46,7 @@ function OTPScreen({ navigation, route }) {
     const pin2Ref = useRef(null);
     const pin3Ref = useRef(null);
     const pin4Ref = useRef(null);
+    const [load, setLoad] = useState(false);
     const [pin1, setPin1] = useState('');
     const [pin2, setPin2] = useState('');
     const [pin3, setPin3] = useState('');
@@ -57,7 +58,7 @@ function OTPScreen({ navigation, route }) {
 
 
     const handlePress = () => {
-        // console.log(isNew)
+     setLoad(true);
         Alert.alert(
             'OTP Verification',
             'You have made the ' + modeOfPayment + " transaction of Rs. " + data.PaymentAmount + '.',
@@ -85,12 +86,14 @@ function OTPScreen({ navigation, route }) {
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
                                 console.log(response.data, "response");
-                                alert("payment status Updated")
+                                alert("payment status Updated");
+                                setLoad(false);
                                // transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
                                 alert("Please send Correct Otp");
+                                setLoad(false);
                             })
                             transaction();
                     }
@@ -240,11 +243,20 @@ function OTPScreen({ navigation, route }) {
                         </View>
                     </View>
                     <View style={styles.button}>
+
+                    {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
                         <AppButton
                             title='Confirm'
                             color='teal'
                             onPress={handlePress}
                         />
+                    }
                     </View>
                 </View>
                 <View style={{ width: '80%', marginTop: 20 }}>
