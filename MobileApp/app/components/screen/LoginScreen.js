@@ -56,7 +56,7 @@ function LoginScreen({ navigation }) {
                 navigation.navigate('RiderHomeScreen')
 
             } else {
-                navigation.navigate('WelcomeScreen')
+                navigation.navigate('Welcome Screen')
 
             }
 

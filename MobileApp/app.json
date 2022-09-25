@@ -7,9 +7,9 @@
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/splscreen.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1B1D36"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

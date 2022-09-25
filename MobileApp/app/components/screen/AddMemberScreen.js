@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 
-import { View, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, ScrollView, ActivityIndicator  } from 'react-native';
 import * as Yup from 'yup';
 import Constants from 'expo-constants';
 import DropDownPicker from 'react-native-dropdown-picker'
 
 
-import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton, } from '../forms';
 import Screen from '../Screen'
 import colors from '../colors';
 import axios from "axios";
@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function AddMemberScreen({navigation}) {
-
+    const [load, setLoad] = useState(false);
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -34,7 +34,7 @@ function AddMemberScreen({navigation}) {
 
     const handlePress = ({ values, value }) => {
 
-
+setLoad(true);
         console.log(values, value, "a");
         axios({
             method: "post",
@@ -49,6 +49,7 @@ function AddMemberScreen({navigation}) {
         })
             .then((res) => {
                 console.log(res.data, "response");
+                setLoad(false);
                 alert(`your ${value} is successully created`)
             })
             .catch((err) => {
@@ -113,9 +114,16 @@ function AddMemberScreen({navigation}) {
                         setItems={setItems}
                         style={{ backgroundColor: colors.lightGrey, borderRadius: 25, marginVertical: 25 }}
                     />
-
+  {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
                     <SubmitButton title='Confirm'
                         color='teal' />
+  }
                 </AppForm>
             </View>
                 </ScrollView>
