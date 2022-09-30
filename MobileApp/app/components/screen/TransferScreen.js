@@ -132,7 +132,7 @@ console.log("Payments",res.data.length);
         url: `https://paym-api.herokuapp.com/auth/paymentTransfer/${paymentObjectId}`,
         data: {
           heldby: heldbyCashierName._id,
-          status:"True"
+          status:"Verified"
         }
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);

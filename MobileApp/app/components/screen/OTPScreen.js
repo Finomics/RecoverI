@@ -80,7 +80,7 @@ function OTPScreen({ navigation, route }) {
                                 PaymentId: PayId,
                                 otp: ReciveOtp,
                                 PayObjectId: PayObjectId,
-                                status: "True"
+                                status: "Verified"
                             }
                         })
                             .then((response) => {
