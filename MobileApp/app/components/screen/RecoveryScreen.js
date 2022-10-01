@@ -66,7 +66,7 @@ function RecoveryScreen({ navigation, route }) {
       PaymentAmount: textInput,
       imageUrl: Img,
       heldby: RecoveryContext.Role._id,
-      status: "false"
+      status: "Un Verified"
 
     }
 

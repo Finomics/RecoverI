@@ -36,7 +36,7 @@ useEffect(() => {
       data:{
           filter:{
             heldby: userId,
-            "status": "false"
+            "status": "Un Verified"
 
         }
                     }

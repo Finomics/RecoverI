@@ -40,7 +40,8 @@ function LoginScreen({ navigation }) {
             }
         }).then((res) => {
 
-            alert("Admin has been Created")
+            alert("Admin has been Created");
+            navigation.navigate('Welcome Screen');
             setLoad(previousState => !previousState)
             if(values.name=='Admin'){
                 navigation.navigate('AdminHomeScreen')
