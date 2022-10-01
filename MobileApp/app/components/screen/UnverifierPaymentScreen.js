@@ -55,7 +55,7 @@ setPayments(a);
 
   return (
     <Screen>
-      <TopButtons header={'Universal Payment Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation}/>
 
       <View style={styles.logoContainer}>
         <Image

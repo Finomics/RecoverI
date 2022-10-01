@@ -48,7 +48,7 @@ setPayments(a);
 
   return (
     <Screen>
-      <TopButtons header={'Payment Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
