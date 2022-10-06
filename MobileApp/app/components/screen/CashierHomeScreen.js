@@ -58,7 +58,7 @@ function CashierHomeScreen({navigation}) {
                             backgroundColor={colors.backGround}
                             iconColor={colors.teal}
                             size={150}
-                            title='View Clients'
+                            title='View Payments'
                             onPress={()=> navigation.navigate('Unverified Payments Screen')}
                         />
                     </View>

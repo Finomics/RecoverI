@@ -37,8 +37,8 @@ useEffect(() => {
     riderPayments(filter);
   }
   if(userContext.Role.Role=='Cashier'){
-   // filter.heldby= userId;
-    filter.status="Verified";
+   filter.AssignedBy= userId;
+  //  filter.status="Verified";
     getPayments(filter);
   }
  
