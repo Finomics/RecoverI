@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 
 import { Image, StyleSheet, Switch, TouchableOpacity, View,ScrollView, ActivityIndicator } from 'react-native';
 
@@ -45,6 +45,30 @@ function RecoveryScreen({ navigation, route }) {
   const ClientObjId = RecoveryContext.setClientId(ClientObjectId)
   // console.log(RecoveryContext.ClientId);
 
+  useEffect(()=> {
+    axios({
+      method: 'post',
+      url: 'https://paym-api.herokuapp.com/checkExist',
+
+      data:{  filter:{status:"Un Verified",
+      PaymentClientId:ClientObjectId}}
+
+    })
+      .then((response) => {
+let tr=parseInt(response.data);
+       console.log("response from Check Exist", response.data);
+       if(tr>0){
+        alert("Uou already have "+tr+" payment from this client");
+       }
+
+      
+
+
+      })
+      .catch((error) => {
+        console.log(error, "error");
+      }) 
+  },[])
   const handlePress = () => {
   }
   const handleCamera = (uro) => {

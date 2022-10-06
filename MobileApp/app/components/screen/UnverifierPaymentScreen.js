@@ -30,25 +30,38 @@ function UnverifierPaymentScreen({ navigation }) {
  
 //- for filtered payments
 useEffect(() => {
-  axios({
-      method: "post",
-      url: "https://paym-api.herokuapp.com/filteredPayments",
-      data:{
-          filter:{
-            heldby: userId,
-            "status": "Un Verified"
-
-        }
-                    }
-
-      }
-  ).then((res) => {
-      var a = res.data
-setPayments(a);
-  }).catch((error) => {
-      console.log(error);
-  })
+  let filter={}
+  if(userContext.Role.Role=='Rider'){
+    filter.heldby= userId;
+    filter.status="Verified";
+    riderPayments(filter);
+  }
+  if(userContext.Role.Role=='Cashier'){
+   // filter.heldby= userId;
+    filter.status="Verified";
+    getPayments(filter);
+  }
+ 
+ 
+  
 }, [])
+async function getPayments(filter){
+  axios({
+    method: "post",
+    url: "https://paym-api.herokuapp.com/filteredPayments",
+    data:{
+        filter:filter
+                  }
+
+    }
+).then((res) => {
+    var a = res.data
+setPayments(a);
+}).catch((error) => {
+    console.log(error);
+})
+
+}
 
 
 
