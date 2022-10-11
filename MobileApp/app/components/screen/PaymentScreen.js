@@ -31,12 +31,12 @@ useEffect(() => {
   if(userContext.Role.Role=='Rider'){
     filter.heldby= userId;
     filter.status="Verified";
-    riderPayments(filter);
+    getPayments(filter);
   }
   if(userContext.Role.Role=='Cashier'){
    // filter.heldby= userId;
     filter.status="Verified";
-    riderPayments(filter);
+    getPayments(filter);
   }
  
  

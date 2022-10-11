@@ -34,7 +34,7 @@ useEffect(() => {
   if(userContext.Role.Role=='Rider'){
     filter.heldby= userId;
     filter.status="Verified";
-    riderPayments(filter);
+    getPayments(filter);
   }
   if(userContext.Role.Role=='Cashier'){
    filter.AssignedBy= userId;
@@ -90,6 +90,7 @@ setPayments(a);
               title={item.PaymentName}
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
+              code={item.VerificationCode}
               onPress={() => navigation.navigate('OTPScreen', item)}
             />
           }
