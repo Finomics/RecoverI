@@ -33,12 +33,12 @@ useEffect(() => {
   let filter={}
   if(userContext.Role.Role=='Rider'){
     filter.heldby= userId;
-    filter.status="Verified";
+    filter.status="Un Verified";
     getPayments(filter);
   }
   if(userContext.Role.Role=='Cashier'){
    filter.AssignedBy= userId;
-  //  filter.status="Verified";
+ //   filter.status="Un Verified";
     getPayments(filter);
   }
  
