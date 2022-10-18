@@ -16,14 +16,14 @@ const validationSchema = Yup.object().shape({
 });
 
 
-function LoginScreen({ navigation }) {
+function ChangePassword({ navigation }) {
     
     
     const [load, setLoad] = useState(false)
 
-    const AdminRole = useContext(StoreContext);
+    const contextData = useContext(StoreContext);
 
-    // console.log(AdminRole,"AdminRole");
+     console.log("Role",contextData.Role);
 
     const handlePress = (values) => {
         console.log(values.email, "login");
@@ -43,7 +43,7 @@ function LoginScreen({ navigation }) {
             alert("Login Successfully!")
             setLoad(previousState => !previousState)
             // console.log(email)
-            AdminRole.setRole(res.data)
+            contextData.setRole(res.data)
             if (res.data.Role === 'Admin') {
                 navigation.navigate('Admin Home')
 
@@ -53,7 +53,7 @@ function LoginScreen({ navigation }) {
 
             } else if (res.data.Role === "Rider") {
 
-                navigation.navigate('Rider Home')
+                navigation.navigate('RiderHomeScreen')
 
             } else {
                 navigation.navigate('Welcome Screen')
@@ -71,7 +71,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={'Login Screen'} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation}/>
             <ScrollView>
                 <Image
                     style={styles.logo}
@@ -85,14 +85,13 @@ function LoginScreen({ navigation }) {
                     }}
                     validationSchema={validationSchema}
                 >
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
-                        icon='email'
-                        keyboardType='email-address'
-                        name='email'
-                        placeholder='Email'
-                        textContentType='emailAddress'
+                        icon='lock'
+                        name='password'
+                        placeholder='Password Old'
+                        textContentType='password'
                     />
                     <AppFormPassword
                         autoCapitalize='none'
@@ -110,7 +109,7 @@ function LoginScreen({ navigation }) {
                             /> 
                         : 
                             <SubmitButton
-                                title='Login'
+                                title='Update'
                                 color='teal'
                             /> 
                     }
@@ -139,4 +138,4 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
 })
-export default LoginScreen; 
+export default ChangePassword; 

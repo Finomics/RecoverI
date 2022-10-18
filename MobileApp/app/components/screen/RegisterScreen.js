@@ -44,7 +44,7 @@ function LoginScreen({ navigation }) {
             navigation.navigate('Welcome Screen');
             setLoad(previousState => !previousState)
             if(values.name=='Admin'){
-                navigation.navigate('AdminHomeScreen')
+                navigation.navigate('Admin Home')
             }else if(values.name=='Cashier'){
                 navigation.navigate('CashierHomeScreen')
             }else if(values.name=='Rider') {

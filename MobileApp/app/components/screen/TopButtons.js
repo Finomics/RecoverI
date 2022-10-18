@@ -13,15 +13,15 @@ function TopButtons({header,navigation}) {
     const handleLeftButton=()=>{
         console.log('Home Button is pressed');
         if(contextData.Role.Role=='Admin'){
-            navigation.navigate("AdminHomeScreen")
+            navigation.navigate("Admin Home")
 
         } else if (contextData.Role.Role === 'Cashier') {
 
-            navigation.navigate('CashierHomeScreen')
+            navigation.navigate('Cashier Home')
 
         } else if (contextData.Role.Role === "Rider") {
 
-            navigation.navigate('RiderHomeScreen')
+            navigation.navigate('Rider Home')
 
         } else {
             navigation.navigate('Welcome Screen');
