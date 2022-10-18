@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
 });
 
 
-function LoginScreen({ navigation }) {
+function ChangePassword({ navigation }) {
     
     
     const [load, setLoad] = useState(false)
@@ -53,7 +53,7 @@ function LoginScreen({ navigation }) {
 
             } else if (res.data.Role === "Rider") {
 
-                navigation.navigate('Rider Home')
+                navigation.navigate('RiderHomeScreen')
 
             } else {
                 navigation.navigate('Welcome Screen')
@@ -139,4 +139,4 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
 })
-export default LoginScreen; 
+export default ChangePassword; 
