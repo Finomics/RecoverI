@@ -109,7 +109,7 @@ function ChangePassword({ navigation }) {
                             /> 
                         : 
                             <SubmitButton
-                                title='Login'
+                                title='Update'
                                 color='teal'
                             /> 
                     }
