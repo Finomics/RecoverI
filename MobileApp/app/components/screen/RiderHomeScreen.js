@@ -10,7 +10,7 @@ import TopButtons from './TopButtons';
 function RiderHomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Rider Home Screen'} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}

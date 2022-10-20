@@ -59,9 +59,16 @@ function filterClients(client){
 
 }
 
+
   }, [])
 
-
+  const handlePress=(item)=>{
+    if(GlobaleEmployee.Role.Role=='Rider'){
+      navigation.navigate('Recovery Screen', item);
+    
+  }
+  console.log("Client is pressed",item);
+}
   // useEffect(() => {
 
   //   axios({
@@ -97,7 +104,7 @@ function filterClients(client){
 
   return (
     <Screen>
-      <TopButtons header={'Client Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
@@ -118,7 +125,8 @@ function filterClients(client){
               title={item.ClientName}
               subTitle={item.ClientPhoneNumber}
               subSubTitle={item.Amount}
-              onPress={() => navigation.navigate('Recovery Screen', item)}
+
+              onPress={() => handlePress(item)}
             />
           }
         /> : <></>}
