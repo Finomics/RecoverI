@@ -105,10 +105,10 @@ let tr=parseInt(response.data);
     })
       .then((response) => {
         var a = response.data;
-         console.log("response from API", a.data);
+         console.log("response from API", a);
 setLoad(false);
         var a = response.data;
-        navigation.navigate('OTP Screen', a.data);
+        navigation.navigate('OTP Screen', a);
         alert("confirmation OTP is sent");
 
 
