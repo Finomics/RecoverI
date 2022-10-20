@@ -22,14 +22,14 @@ function WelcomeScreen({navigation}) {
                 <AppButton 
                     title='Login' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
-                    onPress={()=> navigation.navigate('LoginScreen')}
+                    onPress={()=> navigation.navigate('Login Screen')}
                     color= 'teal'
                 />
             
             <AppButton 
                 title='Register'
                 // onPress={()=> {console.log('Register Button Pressed')}}
-                onPress={()=> navigation.navigate('RegisterScreen')}
+                onPress={()=> navigation.navigate('Registration Screen')}
                 color= 'secondary'
             />
             </View> 

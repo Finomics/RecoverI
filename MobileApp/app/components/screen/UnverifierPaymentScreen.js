@@ -91,7 +91,7 @@ setPayments(a);
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
               code={item.VerificationCode}
-              onPress={() => navigation.navigate('OTPScreen', item)}
+              onPress={() => navigation.navigate('OTP Screen', item)}
             />
           }
         /> : <></>}

@@ -71,7 +71,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={'Login Screen'} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation}/>
             <ScrollView>
                 <Image
                     style={styles.logo}

@@ -53,7 +53,7 @@ function ChangePassword({ navigation }) {
 
             } else if (res.data.Role === "Rider") {
 
-                navigation.navigate('RiderHomeScreen')
+                navigation.navigate('Rider Home')
 
             } else {
                 navigation.navigate('Welcome Screen')

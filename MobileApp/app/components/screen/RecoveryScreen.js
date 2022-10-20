@@ -104,11 +104,11 @@ let tr=parseInt(response.data);
       data: payload, withCredentials: true
     })
       .then((response) => {
-
-        // console.log("response from API", a.data);
+        var a = response.data;
+         console.log("response from API", a.data);
 setLoad(false);
         var a = response.data;
-        navigation.navigate('OTPScreen', a.data);
+        navigation.navigate('OTP Screen', a.data);
         alert("confirmation OTP is sent");
 
 

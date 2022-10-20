@@ -63,7 +63,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={'Recovery Screen'} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation}/>
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image

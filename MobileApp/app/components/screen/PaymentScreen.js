@@ -84,7 +84,7 @@ setPayments(a);
               title={item.PaymentName}
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
-              onPress={() => navigation.navigate('OTPScreen', item)}
+              onPress={() => navigation.navigate('OTP Screen', item)}
             />
           }
         /> : <></>}

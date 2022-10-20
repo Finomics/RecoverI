@@ -118,7 +118,7 @@ function filterClients(client){
               title={item.ClientName}
               subTitle={item.ClientPhoneNumber}
               subSubTitle={item.Amount}
-              onPress={() => navigation.navigate('RecoveryScreen', item)}
+              onPress={() => navigation.navigate('Recovery Screen', item)}
             />
           }
         /> : <></>}

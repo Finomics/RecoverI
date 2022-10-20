@@ -14,7 +14,7 @@ function DetailList({ nature, from, to, amounts,createdOn }) {
 
     useEffect(() => {
         console.log("forCreatedOn",typeof(createdOn),createdOn);
-        setDate(createdOn.substring(0,9));
+        setDate(createdOn.substring(0,11));
         setAmount(amounts[0]);
         if(nature=='Collection'){
             forCollection();
