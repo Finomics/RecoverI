@@ -55,7 +55,7 @@ function DetailScreen({ navigation }) {
   
     return (
     <Screen>
-        <TopButtons header={'Detail Screen'} navigation={navigation}/>
+        <TopButtons header={''} navigation={navigation}/>
         <View>
             {/* <AppText style={styles.title}> 
                     Transactions

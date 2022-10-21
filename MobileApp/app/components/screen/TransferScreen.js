@@ -175,7 +175,7 @@ console.log("Payments",res.data.length);
 
   return (
     <Screen>
-      <TopButtons header={'Transfer Screen'} navigation={navigation} />
+      <TopButtons header={''} navigation={navigation} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

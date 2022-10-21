@@ -78,7 +78,7 @@ function SummaryScreen(props) {
 
     return (
         <Screen>
-            <TopButtons header={'Summary Screen'} navigation={props.navigation}/>
+            <TopButtons header={''} navigation={props.navigation}/>
             <View>
                 <AppText style={styles.title}>
                     Payment Record

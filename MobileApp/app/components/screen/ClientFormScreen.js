@@ -62,7 +62,7 @@ function ClientFormScreen({props,navigation}) {
 
   return (
     <Screen style={styles.container}>
-      <TopButtons header={'Client Form Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation}/>
       <ScrollView>
         <AppText style={styles.header}>Client Input Form</AppText>
         <AppForm

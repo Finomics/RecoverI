@@ -23,7 +23,7 @@ function ChangePassword({ navigation }) {
 
     const contextData = useContext(StoreContext);
 
-     console.log("Role",contextData.Role);
+     console.log("user in Change Password",contextData.Role);
 
     const handlePress = (values) => {
         console.log(values.email, "login");
