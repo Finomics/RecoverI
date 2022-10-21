@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import Screen from '../Screen';
+import AppText from '../AppText';
 import Icon from '../Icon';
 import colors from '../colors';
 import TopButtons from './TopButtons';
@@ -63,6 +64,14 @@ function RiderHomeScreen({navigation}) {
                         />
                     </View>
                 </View>
+
+                <TouchableOpacity 
+                    style={{width: '50%', alignSelf: 'flex-end', marginTop: 15,}}
+                    onPress={()=> navigation.navigate('Change Password')}>
+                    <AppText>
+                        Change Password?
+                    </AppText>
+                </TouchableOpacity>
 
             </View>
         </Screen>

@@ -45,7 +45,7 @@ const AuthNavigator = () => (
         <Stack.Screen name='Transfer Screen' component={TransferScreen} />
         <Stack.Screen name='Summary Screen' component={SummaryScreen} />
         <Stack.Screen name='Transactions' component={DetailScreen} />
-
+        {/* <Stack.Screen name='Change Password' component={ChangePassword}/> */}
     </Stack.Navigator>
 )
 
