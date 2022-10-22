@@ -4,35 +4,36 @@ import axios from 'axios';
 
 import { DataTable } from 'react-native-paper';
 import AppText from './AppText';
+import { Url } from './screen/Core';
 
-function DetailList({ nature, from, to, amounts,createdOn }) {
+function DetailList({ nature, from, to, amounts, createdOn }) {
 
     const [date, setDate] = useState("Date");
     const [fromName, setFromName] = useState("");
     const [toName, setToName] = useState("");
-    const [amount, setAmount] = useState(0,9);
+    const [amount, setAmount] = useState(0, 9);
 
     useEffect(() => {
-        console.log("forCreatedOn",typeof(createdOn),createdOn);
-        setDate(createdOn.substring(0,11));
+        console.log("forCreatedOn", typeof (createdOn), createdOn);
+        setDate(createdOn.substring(0, 11));
         setAmount(amounts[0]);
-        if(nature=='Collection'){
+        if (nature == 'Collection') {
             forCollection();
 
-        }else if(nature=='Internal Transfer'){
+        } else if (nature == 'Internal Transfer') {
             forInternalTransfer();
 
         }
-       
+
 
     }, [])
-     function forCollection(){
+    function forCollection() {
         axios({
 
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            url: Url + "/auth/empolyeeClientData",
             data: {
-                ClientObjectId:from,
+                ClientObjectId: from,
                 EmployeeObjectId: to
             }
 
@@ -46,15 +47,15 @@ function DetailList({ nature, from, to, amounts,createdOn }) {
             console.error(error);
 
         });
-     }
-     function forInternalTransfer(){
+    }
+    function forInternalTransfer() {
         //for from
         axios({
 
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            url: Url + "/auth/empolyeeClientData",
             data: {
-                
+
                 EmployeeObjectId: from
             }
 
@@ -62,19 +63,19 @@ function DetailList({ nature, from, to, amounts,createdOn }) {
 
             console.log(res.data, "in Internal Transfer from API");
             setFromName(res.data.Employee[0].employeeName);
-           
+
 
         }).catch((error) => {
-            console.error("Error in Internal transfer from ",error);
+            console.error("Error in Internal transfer from ", error);
 
         });
         //for to
         axios({
 
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/empolyeeClientData",
+            url: Url + "/auth/empolyeeClientData",
             data: {
-                
+
                 EmployeeObjectId: to
             }
 
@@ -85,21 +86,21 @@ function DetailList({ nature, from, to, amounts,createdOn }) {
             setDate()
 
         }).catch((error) => {
-            console.error("Error in Internal transfer to ",error);
+            console.error("Error in Internal transfer to ", error);
 
         });
-     }
+    }
     return (
-        
-            <DataTable.Row style={{width: '100%'}}>
-                <DataTable.Cell style={{width: 80}}>{date}</DataTable.Cell>
-                <DataTable.Cell style={{width: 130}}>{nature}</DataTable.Cell>
-                <DataTable.Cell style={{width: 120}}>{fromName}</DataTable.Cell>
-                <DataTable.Cell style={{width: 120}}>{toName}</DataTable.Cell>
-                <DataTable.Cell style={{width: 100, justifyContent: 'flex-end', paddingRight: 10 }}>{amount}</DataTable.Cell>
-            </DataTable.Row>
-        
-        
+
+        <DataTable.Row style={{ width: '100%' }}>
+            <DataTable.Cell style={{ width: 80 }}>{date}</DataTable.Cell>
+            <DataTable.Cell style={{ width: 130 }}>{nature}</DataTable.Cell>
+            <DataTable.Cell style={{ width: 120 }}>{fromName}</DataTable.Cell>
+            <DataTable.Cell style={{ width: 120 }}>{toName}</DataTable.Cell>
+            <DataTable.Cell style={{ width: 100, justifyContent: 'flex-end', paddingRight: 10 }}>{amount}</DataTable.Cell>
+        </DataTable.Row>
+
+
 
     );
 }
