@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import { View, Image, StyleSheet, ScrollView, ActivityIndicator  } from 'react-native';
+import { View, Image, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import * as Yup from 'yup';
 import Constants from 'expo-constants';
 import DropDownPicker from 'react-native-dropdown-picker'
@@ -12,6 +12,7 @@ import colors from '../colors';
 import axios from "axios";
 import TopButtons from './TopButtons';
 import StoreContext from './GlobalState';
+import { Url } from './Core';
 
 
 const validationSchema = Yup.object().shape({
@@ -20,7 +21,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().required().min(4).label("Password"),
 });
 
-function AddMemberScreen({navigation}) {
+function AddMemberScreen({ navigation }) {
     const [load, setLoad] = useState(false);
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -34,11 +35,11 @@ function AddMemberScreen({navigation}) {
 
     const handlePress = ({ values, value }) => {
 
-setLoad(true);
+        setLoad(true);
         console.log(values, value, "a");
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/employe",
+            url: Url + '/auth/employe',
             data: {
                 email: values.email,
                 password: values.password,
@@ -62,71 +63,71 @@ setLoad(true);
     return (
         <Screen style={styles.backGround}>
 
-            <TopButtons header={'Admin Member Screen'} navigation={navigation}/>
+            <TopButtons header={'Admin Member Screen'} navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 100 }}
                     source={require('../../assets/logo.png')}
                 />
             </View>
-                <ScrollView>
-            <View style={styles.inputContianer}>
-                <AppForm
-                    initialValues={{ email: '', password: '', userName: '' }}
-                    // onSubmit={values => console.log(values, value,":sasas")}
-                    onSubmit={values => { handlePress({ values, value }) }}
-                    validationSchema={validationSchema}
-                >
-                    <AppFormField
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='account-circle-outline'
-                        keyboardType='email-address'
-                        name='userName'
-                        placeholder='User Name'
-                        textContentType='emailAddress'
-                    />
+            <ScrollView>
+                <View style={styles.inputContianer}>
+                    <AppForm
+                        initialValues={{ email: '', password: '', userName: '' }}
+                        // onSubmit={values => console.log(values, value,":sasas")}
+                        onSubmit={values => { handlePress({ values, value }) }}
+                        validationSchema={validationSchema}
+                    >
+                        <AppFormField
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            icon='account-circle-outline'
+                            keyboardType='email-address'
+                            name='userName'
+                            placeholder='User Name'
+                            textContentType='emailAddress'
+                        />
 
-                    <AppFormField
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='email-outline'
-                        keyboardType='email-address'
-                        name='email'
-                        placeholder='Email'
-                        textContentType='emailAddress'
-                    />
-                    <AppFormPassword
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        icon='lock'
-                        name='password'
-                        placeholder='Password New'
-                        textContentType='password'
-                    />
+                        <AppFormField
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            icon='email-outline'
+                            keyboardType='email-address'
+                            name='email'
+                            placeholder='Email'
+                            textContentType='emailAddress'
+                        />
+                        <AppFormPassword
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            icon='lock'
+                            name='password'
+                            placeholder='Password New'
+                            textContentType='password'
+                        />
 
-                    <DropDownPicker
-                        open={open}
-                        value={value}
-                        items={items}
-                        setOpen={setOpen}
-                        setValue={setValue}
-                        setItems={setItems}
-                        style={{ backgroundColor: colors.lightGrey, borderRadius: 25, marginVertical: 25 }}
-                    />
-  {
-                        load ? 
-                            <ActivityIndicator
-                                size='large' 
-                                color="#0000ff"
-                            /> 
-                        : 
-                    <SubmitButton title='Confirm'
-                        color='teal' />
-  }
-                </AppForm>
-            </View>
-                </ScrollView>
+                        <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                            style={{ backgroundColor: colors.lightGrey, borderRadius: 25, marginVertical: 25 }}
+                        />
+                        {
+                            load ?
+                                <ActivityIndicator
+                                    size='large'
+                                    color="#0000ff"
+                                />
+                                :
+                                <SubmitButton title='Confirm'
+                                    color='teal' />
+                        }
+                    </AppForm>
+                </View>
+            </ScrollView>
         </Screen>
     );
 }

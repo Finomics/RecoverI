@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Image, View, StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { DataTable } from 'react-native-paper';
@@ -10,6 +10,7 @@ import colors from '../colors';
 import axios from 'axios';
 import TopButtons from './TopButtons';
 import StoreContext from './GlobalState';
+import { Url } from './Core';
 
 
 const attendanceData = [
@@ -38,7 +39,7 @@ function SummaryScreen(props) {
     useEffect(() => {
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/craetedby",
+            url: Url + "/auth/craetedby",
             data: {
                 createdBy: globalEmployee.Role._id,
                 Role: "Cashier"
@@ -47,20 +48,20 @@ function SummaryScreen(props) {
         }).then((res) => {
             console.log(res.data, "data");
             setCashier(res.data)
-        
+
         }).catch((error) => {
-                console.error(error);
-            
-            });
+            console.error(error);
+
+        });
     }, [])
 
 
 
     useEffect(() => {
         axios({
-       
+
             method: "post",
-            url: "https://paym-api.herokuapp.com/collectionBy",
+            url: Url + "/collectionBy",
             data: {
                 heldby: globalEmployee.Role._id
             }
@@ -70,7 +71,7 @@ function SummaryScreen(props) {
 
         }).catch((error) => {
             console.error(error);
-       
+
         });
     }, [])
 
@@ -78,7 +79,7 @@ function SummaryScreen(props) {
 
     return (
         <Screen>
-            <TopButtons header={''} navigation={props.navigation}/>
+            <TopButtons header={''} navigation={props.navigation} />
             <View>
                 <AppText style={styles.title}>
                     Payment Record

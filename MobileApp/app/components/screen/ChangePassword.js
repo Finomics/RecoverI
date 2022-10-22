@@ -15,6 +15,10 @@ import AppButton from "../AppButton";
 import axios from "axios";
 import StoreContext from "./GlobalState";
 import TopButtons from "./TopButtons";
+import { Url } from "./Core";
+
+
+
 
 const validationSchema = Yup.object().shape({
   password: Yup.string().required().label("Password"),
@@ -34,7 +38,7 @@ function ChangePassword({ navigation }) {
 
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/auth/ChangePassword",
+      url: Url + "/auth/ChangePassword",
       data: {
         empolyeeObjectId: contextData.Role._id,
         employeePassword: values.password,
@@ -44,9 +48,9 @@ function ChangePassword({ navigation }) {
       .then((res) => {
         setLoad((previousState) => !previousState);
         console.log(res.data, "Change Password Json Data");
-    })
-    .catch((err) => {
-          setLoad((previousState) => !previousState);
+      })
+      .catch((err) => {
+        setLoad((previousState) => !previousState);
         console.log(err, "Change Password Error Json Data");
       });
   };
@@ -86,7 +90,7 @@ function ChangePassword({ navigation }) {
             <ActivityIndicator size="large" color="#0000ff" />
           ) : (
             <SubmitButton title="Update" color="teal" />
-            )}
+          )}
           {/* <SubmitButton title="Update" color="teal" /> */}
         </AppForm>
       </ScrollView>

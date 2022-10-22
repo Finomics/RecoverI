@@ -11,6 +11,10 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import colors from '../colors';
 import TopButtons from './TopButtons';
+import { Url } from './Core';
+
+
+
 
 const attendanceData = [
     {
@@ -38,7 +42,7 @@ function DetailScreen({ navigation }) {
         axios({
        
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/TransactionBelongsTo",
+            url: Url +  "/auth/TransactionBelongsTo",
             data:{
                 BelongsTo:belongsTo
               }

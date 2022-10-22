@@ -1,0 +1,1 @@
+export var Url = "https://paym-api.herokuapp.com"
