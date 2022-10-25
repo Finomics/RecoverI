@@ -98,7 +98,7 @@ function TransferScreen({ navigation }) {
 
 
   const handlePress = () => {
-    console.log("World")
+   
     setModalVisible(true)
   }
 

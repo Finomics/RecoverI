@@ -60,7 +60,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Transfer'
-                            onPress={()=> navigation.navigate('TransferScreen')}
+                            onPress={()=> navigation.navigate('Transfer Screen')}
                         />
                     </View>
                 </View>
