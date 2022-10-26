@@ -8,6 +8,7 @@ import { getClients } from '../APIcalls/getRequests'
 import StoreContext from './GlobalState';
 import axios from 'axios';
 import TopButtons from './TopButtons';
+import { Url } from './Core';
 
 
 function ClientScreen({ navigation }) {
@@ -27,16 +28,16 @@ function ClientScreen({ navigation }) {
   console.log(GlobaleEmployee.Role.createdBy, "Riderrrrrrr");
 
   useEffect(() => {
-    let belongsTo='';
-    if(GlobaleEmployee.Role.Role=='Admin'){
-   belongsTo= GlobaleEmployee.Role._id;
-    }else{
-      belongsTo= GlobaleEmployee.Role.createdBy;
+    let belongsTo = '';
+    if (GlobaleEmployee.Role.Role == 'Admin') {
+      belongsTo = GlobaleEmployee.Role._id;
+    } else {
+      belongsTo = GlobaleEmployee.Role.createdBy;
     }
 
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/auth/BelongsTo",
+      url: Url + "/auth/BelongsTo",
       data: {
         createdBy: belongsTo
       }
@@ -49,26 +50,26 @@ function ClientScreen({ navigation }) {
       .catch((error) => {
         console.error(error);
       });
-function filterClients(client){
-  if(GlobaleEmployee.Role.Role=='Rider'){
-  return client.ClientRiderObjectId==GlobaleEmployee.Role._id;
-  }else{
-    return true;
-  }
+    function filterClients(client) {
+      if (GlobaleEmployee.Role.Role == 'Rider') {
+        return client.ClientRiderObjectId == GlobaleEmployee.Role._id;
+      } else {
+        return true;
+      }
 
 
-}
+    }
 
 
   }, [])
 
-  const handlePress=(item)=>{
-    if(GlobaleEmployee.Role.Role=='Rider'){
+  const handlePress = (item) => {
+    if (GlobaleEmployee.Role.Role == 'Rider') {
       navigation.navigate('Recovery Screen', item);
-    
+
+    }
+    console.log("Client is pressed", item);
   }
-  console.log("Client is pressed",item);
-}
   // useEffect(() => {
 
   //   axios({
@@ -104,7 +105,7 @@ function filterClients(client){
 
   return (
     <Screen>
-      <TopButtons header={''} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

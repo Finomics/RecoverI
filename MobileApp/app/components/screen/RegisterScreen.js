@@ -10,6 +10,8 @@ import colors from '../colors';
 import TopButtons from './TopButtons';
 import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import axios from 'axios';
+import { Url } from './Core';
+
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
@@ -31,7 +33,7 @@ function LoginScreen({ navigation }) {
         // console.log(values, "form");
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/employe",
+            url: Url +  "/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,

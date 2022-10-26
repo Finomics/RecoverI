@@ -10,6 +10,9 @@ import AppButton from '../AppButton';
 import StoreContext from './GlobalState';
 import axios from 'axios';
 import TopButtons from './TopButtons';
+import { Url } from './Core';
+
+
 function TransferScreen({ navigation }) {
   const list = [
     { Name: 'Hassan Mansoor1', PhoneNumber: '0300-xxxxxxx', Amount: 'xxxxxxx', value: 1 },
@@ -42,7 +45,7 @@ function TransferScreen({ navigation }) {
   // useEffect(() => {
   //   axios({
   //     method: "post",
-  //     url: "https://paym-api.herokuapp.com/heldBy",
+  //        url: Url + "/heldBy",
   //     data: {
   //       heldby: RiderContextData.Role._id
   //     }
@@ -58,7 +61,7 @@ function TransferScreen({ navigation }) {
   useEffect(() => {
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/auth/craetedby",
+      url: Url + "/auth/craetedby",
       data: {
         createdBy: RiderContextData.Role.createdBy,
         Role: "Cashier"
@@ -71,31 +74,31 @@ function TransferScreen({ navigation }) {
     }).catch((err) => {
       console.log(err);
     })
-  }, [realTime,])
+  }, [realTime])
+
 
   useEffect(() => {
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/filteredPayments",
-      data:{
-          filter:{
-          heldby:RiderContextData.Role._id
+      url: Url + "/filteredPayments",
+      data: {
+        filter: {
+          heldby: RiderContextData.Role._id
         }
-                    }
-
       }
-  ).then((res) => {
+
+    }).then((res) => {
       var a = res.data
-setPayments(a);
-console.log("Payments",res.data.length);
-  }).catch((error) => {
+      setPayments(a);
+      console.log("Payments", res.data.length);
+    }).catch((error) => {
       console.log(error);
-  })
+    })
   }, [])
 
 
   const handlePress = () => {
-    console.log("World")
+   
     setModalVisible(true)
   }
 
@@ -114,7 +117,7 @@ console.log("Payments",res.data.length);
     setModalVisible(!modalVisible)
     setheldbyCashierName(data)
 
- //   console.log(data._id, "Cashier Data");
+    //   console.log(data._id, "Cashier Data");
     setCashierObjectID(data._id)
   }
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
@@ -129,10 +132,10 @@ console.log("Payments",res.data.length);
 
       axios({
         method: "post",
-        url: `https://paym-api.herokuapp.com/auth/paymentTransfer/${paymentObjectId}`,
+        url: Url + `/auth/paymentTransfer/${paymentObjectId}`,
         data: {
           heldby: heldbyCashierName._id,
-          status:"Verified"
+          status: "Verified"
         }
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);
@@ -154,15 +157,15 @@ console.log("Payments",res.data.length);
 
     axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/auth/transaction",
-      data: {
-        nature: "Internal Transfer",
-        Instrument: id,
-        PaymentAmount: amount,
-        BelongsTo: BelongsTo,
-        to: CashierObjectID,
-        From: RiderID,
-      }
+      url: Url + "/auth/transaction",
+        data: {
+          nature: "Internal Transfer",
+          Instrument: id,
+          PaymentAmount: amount,
+          BelongsTo: BelongsTo,
+          to: CashierObjectID,
+          From: RiderID,
+        }
 
     }).then((res) => {
       console.log(res.data, "transaction Response");
@@ -175,7 +178,7 @@ console.log("Payments",res.data.length);
 
   return (
     <Screen>
-      <TopButtons header={'Transfer Screen'} navigation={navigation} />
+      <TopButtons header={''} navigation={navigation} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}

@@ -9,6 +9,7 @@ import AppButton from '../AppButton';
 import axios from 'axios';
 import StoreContext from './GlobalState';
 import TopButtons from './TopButtons';
+import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -31,7 +32,7 @@ function LoginScreen({ navigation }) {
         console.log(load)
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/login",
+            url: Url + '/auth/login',
             data: {
                 email: values.email,
                 password: values.password,

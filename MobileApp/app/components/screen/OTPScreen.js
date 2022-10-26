@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useRef, useContext } from 'react';
-import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert,ActivityIndicator } from 'react-native';
+import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
@@ -7,6 +7,11 @@ import AppButton from '../AppButton';
 import TopButtons from './TopButtons';
 import axios from 'axios';
 import StoreContext from './GlobalState';
+import { Url } from './Core';
+
+
+
+
 function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route);
     const PaymentObjectId = route.params;
@@ -22,7 +27,7 @@ function OTPScreen({ navigation, route }) {
     const ResendPaymentEmail = data.PaymentEmail;
     const RiderContextData = useContext(StoreContext)
     const ClientObjectId = RiderContextData.ClientId
-    console.log(RiderContextData,"ClientObjectID000");
+    console.log(RiderContextData, "ClientObjectID000");
 
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
@@ -58,7 +63,7 @@ function OTPScreen({ navigation, route }) {
 
 
     const handlePress = () => {
-     setLoad(true);
+        setLoad(true);
         Alert.alert(
             'OTP Verification',
             'You have made the ' + modeOfPayment + " transaction of Rs. " + data.PaymentAmount + '.',
@@ -74,7 +79,7 @@ function OTPScreen({ navigation, route }) {
                         // console.log(ReciveOtp, "OTP_Array");
                         axios({
                             method: 'post',
-                            url: 'https://paym-api.herokuapp.com/ReciveOtpStep-2',
+                            url: Url + '/ReciveOtpStep-2',
                             data: {
                                 PaymentEmail: ResendPaymentEmail,
                                 PaymentId: PayId,
@@ -88,14 +93,14 @@ function OTPScreen({ navigation, route }) {
                                 console.log(response.data, "response");
                                 alert("payment status Updated");
                                 setLoad(false);
-                               // transaction()
+                                // transaction()
                             })
                             .catch((error) => {
                                 // console.log(error, "error");
                                 alert("Please send Correct Otp");
                                 setLoad(false);
                             })
-                            transaction();
+                        transaction();
                     }
                 }
             ]
@@ -104,14 +109,14 @@ function OTPScreen({ navigation, route }) {
 
     function transaction() {
 
-         console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
+        console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/transaction",
+            url: Url + "/auth/transaction",
             data: {
                 nature: "Collection",
-                Instrument:[ PayObjectId],
+                Instrument: [PayObjectId],
                 PaymentAmount: [PaymentAmount.PaymentAmount],
                 BelongsTo: BelongsTo,
                 From: ClientObjectId,
@@ -130,7 +135,7 @@ function OTPScreen({ navigation, route }) {
 
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/conformationPayment",
+            url: Url + "/conformationPayment",
             data: {
                 ClinincObjectId: ClientObjectId,
             }
@@ -147,7 +152,7 @@ function OTPScreen({ navigation, route }) {
         // console.log(ResendPaymentEmail, "ReSendOtp");
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/ReSendOTP",
+            url: Url + "/ReSendOTP",
             data: {
                 PaymentEmail: ResendPaymentEmail
             }
@@ -156,14 +161,14 @@ function OTPScreen({ navigation, route }) {
             alert("OTP resent");
         }).catch((error) => {
             console.log(error, "errorin otp resend");
-            
+
         })
     }
 
 
     return (
         <Screen>
-            <TopButtons header={'OTP Screen'} navigation={navigation}/>
+            <TopButtons header={'OTP Screen'} navigation={navigation} />
             <View style={styles.descriptionContainer}>
                 <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
                 <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
@@ -244,19 +249,19 @@ function OTPScreen({ navigation, route }) {
                     </View>
                     <View style={styles.button}>
 
-                    {
-                        load ? 
-                            <ActivityIndicator
-                                size='large' 
-                                color="#0000ff"
-                            /> 
-                        : 
-                        <AppButton
-                            title='Confirm'
-                            color='teal'
-                            onPress={handlePress}
-                        />
-                    }
+                        {
+                            load ?
+                                <ActivityIndicator
+                                    size='large'
+                                    color="#0000ff"
+                                />
+                                :
+                                <AppButton
+                                    title='Confirm'
+                                    color='teal'
+                                    onPress={handlePress}
+                                />
+                        }
                     </View>
                 </View>
                 <View style={{ width: '80%', marginTop: 20 }}>

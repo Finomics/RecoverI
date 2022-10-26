@@ -1,4 +1,4 @@
-import { React, useEffect, useState,useContext } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
 import StoreContext from './GlobalState';
@@ -9,6 +9,7 @@ import Screen from '../Screen';
 import axios from 'axios';
 
 import { getClients } from '../APIcalls/getRequests'
+import { Url } from './Core';
 
 
 function UnverifierPaymentScreen({ navigation }) {
@@ -25,50 +26,50 @@ function UnverifierPaymentScreen({ navigation }) {
   const [payments, setPayments] = useState();
 
   const userContext = useContext(StoreContext)
- 
+
   const userId = userContext.Role._id
- 
-//- for filtered payments
-useEffect(() => {
-  let filter={}
-  if(userContext.Role.Role=='Rider'){
-    filter.heldby= userId;
-    filter.status="Un Verified";
-    getPayments(filter);
-  }
-  if(userContext.Role.Role=='Cashier'){
-   filter.AssignedBy= userId;
- //   filter.status="Un Verified";
-    getPayments(filter);
-  }
- 
- 
-  
-}, [])
-async function getPayments(filter){
-  axios({
-    method: "post",
-    url: "https://paym-api.herokuapp.com/filteredPayments",
-    data:{
-        filter:filter
-                  }
+
+  //- for filtered payments
+  useEffect(() => {
+    let filter = {}
+    if (userContext.Role.Role == 'Rider') {
+      filter.heldby = userId;
+      filter.status = "Un Verified";
+      getPayments(filter);
+    }
+    if (userContext.Role.Role == 'Cashier') {
+      filter.AssignedBy = userId;
+      //   filter.status="Un Verified";
+      getPayments(filter);
+    }
+
+
+
+  }, [])
+  async function getPayments(filter) {
+    axios({
+      method: "post",
+      url: Url + "/filteredPayments",
+      data: {
+        filter: filter
+      }
 
     }
-).then((res) => {
-    var a = res.data
-setPayments(a);
-}).catch((error) => {
-    console.log(error);
-})
+    ).then((res) => {
+      var a = res.data
+      setPayments(a);
+    }).catch((error) => {
+      console.log(error);
+    })
 
-}
+  }
 
 
 
 
   return (
     <Screen>
-      <TopButtons header={''} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation} />
 
       <View style={styles.logoContainer}>
         <Image
