@@ -1,1 +1,1 @@
-export var Url = "https://paym-api.herokuapp.com"
+export var Url = "https://kollectitapi.herokuapp.com"
