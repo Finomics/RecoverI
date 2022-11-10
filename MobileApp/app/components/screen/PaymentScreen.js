@@ -1,4 +1,4 @@
-import { React, useEffect, useState,useContext } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
 import StoreContext from './GlobalState';
@@ -8,6 +8,7 @@ import Screen from '../Screen'
 import { getClients } from '../APIcalls/getRequests'
 import TopButtons from './TopButtons';
 import axios from 'axios';
+import { Url } from './Core';
 
 
 function PaymentScreen({ navigation }) {
@@ -26,29 +27,44 @@ function PaymentScreen({ navigation }) {
   const userId = userContext.Role._id
 
   //- for filtered payments
-useEffect(() => {
-  axios({
-      method: "post",
-      url: "https://paym-api.herokuapp.com/filteredPayments",
-      data:{
-          filter:{
-            heldby: userId,
-            status:"True"
-        }
-                    }
+  useEffect(() => {
+    let filter = {}
+    if (userContext.Role.Role == 'Rider') {
+      filter.heldby = userId;
+      filter.status = "Verified";
+      getPayments(filter);
+    }
+    if (userContext.Role.Role == 'Cashier') {
+      // filter.heldby= userId;
+      filter.status = "Verified";
+      getPayments(filter);
+    }
 
+
+
+  }, [])
+  async function getPayments(filter) {
+    axios({
+      method: "post",
+      url: Url + "/filteredPayments",
+      data: {
+        filter: filter
       }
-  ).then((res) => {
+
+    }
+    ).then((res) => {
       var a = res.data
-setPayments(a);
-  }).catch((error) => {
+      setPayments(a);
+    }).catch((error) => {
       console.log(error);
-  })
-}, [])
+    })
+
+  }
+
 
   return (
     <Screen>
-      <TopButtons header={'Payment Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation} />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
@@ -69,7 +85,7 @@ setPayments(a);
               title={item.PaymentName}
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
-              onPress={() => navigation.navigate('OTPScreen', item)}
+              onPress={() => navigation.navigate('OTP Screen', item)}
             />
           }
         /> : <></>}

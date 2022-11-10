@@ -26,11 +26,22 @@ import HomeScreen from './app/components/screen/HomeScreen';
 import PaymentScreen from './app/components/screen/PaymentScreen';
 import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
 import DetailScreen from './app/components/screen/DetailScreen';
+import AppPasswordInput from './app/components/AppPasswordInput';
 
 
 
 export default function App() {
-  const [Role, setRole] = useState([])
+  // added dummy user for testing
+  const [Role, setRole] = useState( {
+    "Role": "Rider",
+    "__v": 0,
+    "_id": "6332c6a43aa907a561297c96",
+    "createdBy": "6332c3f23aa907a561297c8f",
+    "createdOn": "2022-09-27T09:47:16.447Z",
+    "employeeEmail": "sr0.1@gmail.com",
+    "employeeName": "Shamshad Rider",
+    "employeePassword": "1234",
+  })
   const [ClientId, setClientId] = useState([])
 
   console.log(Role, "Set GolbalState Data");
@@ -72,6 +83,11 @@ export default function App() {
         <AuthNavigator />
       </NavigationContainer>
     </StoreProvider>
+
+
+    // <AppPasswordInput
+    //   icon={'lock'}
+    // />
 
 
   );

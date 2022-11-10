@@ -1,13 +1,15 @@
-import { React, useEffect, useState,useContext } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
 import PaymentCard from '../../components/PaymentCard';
 import StoreContext from './GlobalState';
 import NewCard from '../NewCard';
 import colors from '../colors';
+import TopButtons from './TopButtons';
 import Screen from '../Screen';
 import axios from 'axios';
 
 import { getClients } from '../APIcalls/getRequests'
+import { Url } from './Core';
 
 
 function UnverifierPaymentScreen({ navigation }) {
@@ -24,36 +26,51 @@ function UnverifierPaymentScreen({ navigation }) {
   const [payments, setPayments] = useState();
 
   const userContext = useContext(StoreContext)
- 
+
   const userId = userContext.Role._id
- 
-//- for filtered payments
-useEffect(() => {
-  axios({
+
+  //- for filtered payments
+  useEffect(() => {
+    let filter = {}
+    if (userContext.Role.Role == 'Rider') {
+      filter.heldby = userId;
+      filter.status = "Un Verified";
+      getPayments(filter);
+    }
+    if (userContext.Role.Role == 'Cashier') {
+      filter.AssignedBy = userId;
+      //   filter.status="Un Verified";
+      getPayments(filter);
+    }
+
+
+
+  }, [])
+  async function getPayments(filter) {
+    axios({
       method: "post",
-      url: "https://paym-api.herokuapp.com/filteredPayments",
-      data:{
-          filter:{
-            heldby: userId,
-            "status": "false"
-
-        }
-                    }
-
+      url: Url + "/filteredPayments",
+      data: {
+        filter: filter
       }
-  ).then((res) => {
+
+    }
+    ).then((res) => {
       var a = res.data
-setPayments(a);
-  }).catch((error) => {
+      setPayments(a);
+    }).catch((error) => {
       console.log(error);
-  })
-}, [])
+    })
+
+  }
 
 
 
 
   return (
     <Screen>
+      <TopButtons header={''} navigation={navigation} />
+
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
@@ -74,7 +91,8 @@ setPayments(a);
               title={item.PaymentName}
               subTitle={item.PaymentAmount}
               subSubTitle={item.status}
-              onPress={() => navigation.navigate('OTPScreen', item)}
+              code={item.VerificationCode}
+              onPress={() => navigation.navigate('OTP Screen', item)}
             />
           }
         /> : <></>}

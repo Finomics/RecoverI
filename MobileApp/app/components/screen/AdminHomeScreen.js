@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import Screen from '../Screen';
+import AppText from '../AppText';
 import Icon from '../Icon';
 import colors from '../colors';
 import TopButtons from './TopButtons';
+
 
 function AdminHomeScreen({navigation}) {
     return (
         <Screen>
             {/* <TopButtons header={'Admin Home Screen'}/> */}
+            <TopButtons header={''} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
@@ -27,7 +30,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Add Member'
-                             onPress={()=> navigation.navigate('AddMemberScreen')}
+                             onPress={()=> navigation.navigate('Add Member Screen')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -37,7 +40,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Client List'
-                            onPress={()=> navigation.navigate('ClientScreen')}
+                            onPress={()=> navigation.navigate('Client Screen')}
                         />
                     </View>
                 </View>
@@ -49,7 +52,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Reporting'
-                             onPress={()=> navigation.navigate('SummaryScreen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Summary Screen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -63,6 +66,15 @@ function AdminHomeScreen({navigation}) {
                         />
                     </View>
                 </View>
+
+
+                <TouchableOpacity 
+                    style={{width: '50%', alignSelf: 'flex-end', marginTop: 15,}}
+                    onPress={()=> navigation.navigate('Change Password')}>
+                    <AppText>
+                        Change Password?
+                    </AppText>
+                </TouchableOpacity>
 
             </View>
         </Screen>

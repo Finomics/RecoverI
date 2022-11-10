@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Image, ScrollView, StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import * as Yup from 'yup';
 import Icon from '../Icon';
 
 import AppButton from '../AppButton';
 import Screen from '../Screen';
 import colors from '../colors';
-import { AppForm, AppFormField, SubmitButton } from '../forms';
+import TopButtons from './TopButtons';
+import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import axios from 'axios';
+import { Url } from './Core';
+
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
@@ -22,13 +25,15 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen({ navigation }) {
 
-
+    const [load, setLoad] = useState(false)
 
     const handlePress = (values) => {
+
+        setLoad(previousState => !previousState)
         // console.log(values, "form");
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/employe",
+            url: Url +  "/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,
@@ -37,9 +42,11 @@ function LoginScreen({ navigation }) {
             }
         }).then((res) => {
 
-            alert("Admin has been Created")
+            alert("Admin has been Created");
+            navigation.navigate('Welcome Screen');
+            setLoad(previousState => !previousState)
             if(values.name=='Admin'){
-                navigation.navigate('AdminHomeScreen')
+                navigation.navigate('Admin Home')
             }else if(values.name=='Cashier'){
                 navigation.navigate('CashierHomeScreen')
             }else if(values.name=='Rider') {
@@ -48,13 +55,17 @@ function LoginScreen({ navigation }) {
             // alert(res.data.message)
             // console.log(res.data, "Json Res");
 
-        }).catch((err) => { console.log(err, "Admin Created Error"); })
+        }).catch((err) => { 
+            console.log(err, "Admin Created Error");
+            setLoad(previousState => !previousState); 
+            alert ("Error in Registration: please try again later.");
+        })
     }
 
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={'Register Screen'}/>
+            <TopButtons header={''} navigation={navigation}/>
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image
@@ -93,20 +104,32 @@ function LoginScreen({ navigation }) {
                         placeholder='Email'
                         textContentType='emailAddress'
                     />
-                    <AppFormField
+                    <AppFormPassword
                         autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock'
                         name='password'
-                        placeholder='Password'
-                        secureTextEntry={true}
+                        placeholder='Password New'
                         textContentType='password'
                     />
 
-                    <SubmitButton 
+                    {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
+                            <SubmitButton
+                                title='Register'
+                                color='teal'
+                            /> 
+                    }
+
+                    {/* <SubmitButton 
                         title='Register'
                         color='teal'
-                    />
+                    /> */}
                 </AppForm>
             </ScrollView>
 
@@ -125,6 +148,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
         backgroundColor: colors.backGround,
+        paddingBottom: 10,
     },
     logoContainer: {
         width: '100%',

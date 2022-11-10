@@ -1,18 +1,26 @@
-import React from 'react';
+import {React,useContext} from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import colors from './colors';
 import AppText from './AppText';
 import NewCard from './NewCard';
+import StoreContext from '../components/screen/GlobalState';
 
-function PaymentCard({title, subTitle, subSubTitle, onPress }) {
+
+function PaymentCard({title, subTitle, subSubTitle, onPress,code }) {
+    const userContext = useContext(StoreContext);
+    console.log("User in Payment Card",userContext);
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
             <View style={styles.detailsContainer}>
                 <AppText style={styles.title} numberOfLines={1}>Name: {title}</AppText>
                 <AppText style={styles.subTitle} numberOfLines={1}>Amount: {subTitle}</AppText>
                 <AppText style={styles.subTitle} numberOfLines={1}>Status: {subSubTitle}</AppText>
-            </View>
+                {(userContext.Role.Role=='Cashier')?
+                <AppText style={styles.subTitle} numberOfLines={1}>Verification Code: {code}</AppText>
+          :
+          <></>}
+                </View>
         </TouchableOpacity>
     );
 }

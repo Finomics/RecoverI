@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 
 import { Image, View, StyleSheet, FlatList, Modal, Button } from 'react-native';
@@ -9,10 +9,12 @@ import Screen from '../Screen';
 import colors from '../colors'
 import axios from "axios";
 import TopButtons from './TopButtons';
+import { Url } from './Core';
+
 
 let temp = {};
 
-function RiderAssignScreen({props,navigation}) {
+function RiderAssignScreen({ props, navigation }) {
     const [updateList, setUpdateList] = useState(false);
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -21,17 +23,17 @@ function RiderAssignScreen({props,navigation}) {
     useEffect(() => {
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/BelongsTo",
+            url: Url + "/auth/BelongsTo",
             data: {
-              createdBy: GlobaleEmployee.Role.createdBy
+                createdBy: GlobaleEmployee.Role.createdBy
             }
-          }).then((res) => {
+        }).then((res) => {
             setClient(res.data)
-            console.log("Clients in AssignRider",res.data);
+            console.log("Clients in AssignRider", res.data);
         }).catch((err) => {
             console.log(err);
         })
-        
+
     }, [updateList])
 
     let tempData = [
@@ -61,7 +63,7 @@ function RiderAssignScreen({props,navigation}) {
 
     return (
         <Screen>
-            <TopButtons header={'Rider Assign Screen'} navigation={navigation}/>
+            <TopButtons header={'Rider Assign Screen'} navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}

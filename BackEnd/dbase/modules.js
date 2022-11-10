@@ -39,8 +39,9 @@ process.on('SIGINT', function () {/////this function will run jst before app is 
 // otpSchema Start
 var otpSchema = new mongoose.Schema({
     "PaymentEmail": String,
-    "orderId": String,
+    
     "ClientId": String,
+    "PaymentId":String,
     "otpCode": String,
     "createdOn": { "type": Date, "default": Date.now },
 });
@@ -51,7 +52,7 @@ var otpModel = mongoose.model("otps", otpSchema);
 
 //  PaymentSchema Start
 var paymentSchema = mongoose.Schema({
-    PaymentId: String,
+    PaymentClientId: String,
     PaymentName: String,
     PaymentEmail: String,
     PaymentNumber: String,

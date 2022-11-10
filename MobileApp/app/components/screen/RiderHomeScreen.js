@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import Screen from '../Screen';
+import AppText from '../AppText';
 import Icon from '../Icon';
 import colors from '../colors';
 import TopButtons from './TopButtons';
@@ -10,7 +11,7 @@ import TopButtons from './TopButtons';
 function RiderHomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Rider Home Screen'} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
@@ -27,7 +28,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Clients List'
-                             onPress={()=> navigation.navigate('ClientScreen')}
+                             onPress={()=> navigation.navigate('Client Screen')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -37,7 +38,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Payments Collected'
-                            onPress={()=> navigation.navigate('PaymentScreen')}
+                            onPress={()=> navigation.navigate('Payment Screen')}
                         />
                     </View>
                 </View>
@@ -49,7 +50,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Verify Payments'
-                             onPress={()=> navigation.navigate('UnverifierPaymentScreen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Unverified Payments Screen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -59,10 +60,18 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Transfer'
-                            onPress={()=> navigation.navigate('TransferScreen')}
+                            onPress={()=> navigation.navigate('Transfer Screen')}
                         />
                     </View>
                 </View>
+
+                <TouchableOpacity 
+                    style={{width: '50%', alignSelf: 'flex-end', marginTop: 15,}}
+                    onPress={()=> navigation.navigate('Change Password')}>
+                    <AppText>
+                        Change Password?
+                    </AppText>
+                </TouchableOpacity>
 
             </View>
         </Screen>

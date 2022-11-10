@@ -11,6 +11,10 @@ import AppText from '../AppText';
 import Screen from '../Screen';
 import colors from '../colors';
 import TopButtons from './TopButtons';
+import { Url } from './Core';
+
+
+
 
 const attendanceData = [
     {
@@ -38,7 +42,7 @@ function DetailScreen({ navigation }) {
         axios({
        
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/TransactionBelongsTo",
+            url: Url +  "/auth/TransactionBelongsTo",
             data:{
                 BelongsTo:belongsTo
               }
@@ -61,26 +65,27 @@ function DetailScreen({ navigation }) {
                     Transactions
             </AppText> */}
         </View>
-            <View style={styles.container}>
-                <DataTable style={{width: '100%'}}>
-                    <DataTable.Header >
-                    <DataTable.Title>
+        <View style={{width: '100%'}}>
+            <ScrollView horizontal={true} >
+                <DataTable>
+                    <DataTable.Header>
+                        <DataTable.Title style={{width: 80}}>
                             <AppText style={styles.header}>Date</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 130}}>
                             <AppText style={styles.header}>Nature</AppText>
-                        </DataTable.Title>
-                        <DataTable.Title>
+                        </DataTable.Title >
+                        <DataTable.Title style={{width: 120}}>
                             <AppText style={styles.header}>From</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 120}}>
                             <AppText style={styles.header}>To</AppText>
                         </DataTable.Title>
-                        <DataTable.Title>
+                        <DataTable.Title style={{width: 100}}>
                             <AppText style={styles.header}>Amount</AppText>
                         </DataTable.Title>
                     </DataTable.Header>
-                </DataTable>
+                    
                 <FlatList
                     data={transactions}
                     renderItem={({item})=>
@@ -93,7 +98,9 @@ function DetailScreen({ navigation }) {
                         /> 
                     }
                 />
-            </View>
+                </DataTable>
+            </ScrollView>
+        </View>
     </Screen>
   );
 }
@@ -101,6 +108,7 @@ function DetailScreen({ navigation }) {
 const styles = StyleSheet.create({
     logoContainer:{
         width: '100%',
+        // flex: 1,
     },
     header:{
         fontWeight: 'bold',

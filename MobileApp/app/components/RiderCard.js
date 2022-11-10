@@ -34,18 +34,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     }
 
 
-    // useEffect(() => {
-    //     axios({
-    //         method: "get",
-    //         url: "https://paym-api.herokuapp.com/auth/RiderEmploye",
-    //     }).then((res) => {
-
-    //         setallRider(res.data)
-    //         // console.log(res.data);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }, [realTime])
+   
 
     useEffect(() => {
         axios({
@@ -80,14 +69,16 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                 id: ClinetID,
                 ClientRider: item.employeeName,
                 CashierName: employeeName,
-                ClientRiderObjectId: item._id
+                ClientRiderObjectId: item._id,
+                AssignedBy:Globaledata.Role._id
+
             }
         }).then((res) => {
             console.log(res.data.message, "res");
             alert(res.data.message)
             setRealTime(!realTime);
             setUpdate(!update);
-            navigation.navigate('RiderAssignScreen')
+            navigation.navigate('Assign Rider Screen')
 
         }).catch((err) => {
             console.log(err, "err");

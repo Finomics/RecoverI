@@ -10,7 +10,8 @@ import TopButtons from './TopButtons';
 function HomeScreen({navigation}) {
     return (
         <Screen>
-            <TopButtons header={'Home Screen'}/>
+            <TopButtons header={''} navigation={navigation}/>
+
             <View style={styles.logoContainer}>
                 <Image  
                     source={require('../../assets/logo.png')}
@@ -27,7 +28,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Assign Rider'
-                             onPress={()=> navigation.navigate('RiderAssignScreen')}
+                             onPress={()=> navigation.navigate('Assign Rider Screen')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -37,7 +38,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Client'
-                            onPress={()=> navigation.navigate('ClientScreen')}
+                            onPress={()=> navigation.navigate('Clients Screen')}
                         />
                     </View>
                 </View>
@@ -49,7 +50,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Cash'
-                             onPress={()=> navigation.navigate('AddMemberScreen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Add Member Screen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -59,7 +60,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Input Form'
-                            onPress={()=> navigation.navigate('ClientFormScreen')}
+                            onPress={()=> navigation.navigate('Client Form')}
                         />
                     </View>
                 </View>

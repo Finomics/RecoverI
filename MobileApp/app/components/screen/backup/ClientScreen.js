@@ -55,7 +55,7 @@ function ClientScreen({ navigation }) {
                  
                       subTitle={item.PhoneNumber}
                             subSubTitle={item.Amount}
-                            onPress={()=>navigation.navigate('RecoveryScreen', item)} 
+                            onPress={()=>navigation.navigate('Recovery Screen', item)} 
                         /> 
                     } 
                 />:<></>}
