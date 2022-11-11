@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { Image, ScrollView, StyleSheet, Text } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../Screen";
@@ -102,6 +102,7 @@ function ClientFormScreen({ props, navigation }) {
             // secureTextEntry={true}
             textContentType="telephoneNumber"
           />
+          <Text style={{color: colors.teal}}>With country code without '00' or '+'</Text>
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
