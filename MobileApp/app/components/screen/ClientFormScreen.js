@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { Image, ScrollView, StyleSheet, Text } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, ActivityIndicator } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../Screen";
@@ -33,9 +33,10 @@ function ClientFormScreen({ props, navigation }) {
   };
   // let values=null;
   const GlobalEmployeeID = useContext(StoreContext)
-
+  const [load, setLoad] = useState(false);
 
   const handlePress = (values) => {
+    setLoad(true);
     console.log(values, "form");
     
 
@@ -56,6 +57,7 @@ function ClientFormScreen({ props, navigation }) {
         var a = res.data;
         console.log(a, "response");
         alert("Form has been Submit!");
+        setLoad(false);
       })
       .catch((err) => {
         console.log(err, "error");
@@ -124,8 +126,16 @@ function ClientFormScreen({ props, navigation }) {
             // secureTextEntry={true}
             textContentType="none"
           />
+           {
+                            load ?
+                                <ActivityIndicator
+                                    size='large'
+                                    color="#0000ff"
+                                />
+                                :
           <SubmitButton title="Confirm"
             color='teal' />
+           }
         </AppForm>
       </ScrollView>
     </Screen>
