@@ -36,7 +36,7 @@ function ClientFormScreen({ props, navigation }) {
 
 
   const handlePress = (values) => {
-    console.log(values.clientID, "form");
+    console.log(values, "form");
     
 
     axios({
@@ -45,7 +45,7 @@ function ClientFormScreen({ props, navigation }) {
       data: {
         ClientId: values.clientID,
         ClientName: values.clientName,
-        ClientPhoneNumber: values.contact,
+        ClientPhoneNumber: values.number.slice(1),
         ClientAmount: values.amount,
         ClientEmail: values.email,
         BelongsTo: GlobalEmployeeID.Role.createdBy,
@@ -60,6 +60,7 @@ function ClientFormScreen({ props, navigation }) {
       .catch((err) => {
         console.log(err, "error");
       });
+      
   };
 
   return (
