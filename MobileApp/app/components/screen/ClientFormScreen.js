@@ -4,7 +4,7 @@ import { Image, ScrollView, StyleSheet, Text } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../Screen";
-import { AppForm, AppFormField, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPhone, SubmitButton } from "../forms";
 import AppText from "../AppText";
 import colors from "../colors";
 import axios from "axios";
@@ -37,6 +37,7 @@ function ClientFormScreen({ props, navigation }) {
 
   const handlePress = (values) => {
     console.log(values.clientID, "form");
+    
 
     axios({
       method: "post",
@@ -92,15 +93,14 @@ function ClientFormScreen({ props, navigation }) {
             // secureTextEntry={true}
             textContentType="name"
           />
-          <AppFormField
-            autoCapitalize="none"
+          <AppFormPhone
+            autoCapitalize='none'
             autoCorrect={false}
-            icon="cellphone-settings"
-            keyboardType="numeric"
-            name="contact"
-            placeholder="Client Contact Number"
-            // secureTextEntry={true}
-            textContentType="telephoneNumber"
+            icon='phone-outline'
+            keyboardType='numeric'
+            name='number'
+            placeholder='Contact Number'
+            textContentType='emailAddress'
           />
           <Text style={{color: colors.teal}}>With country code without '00' or '+'</Text>
           <AppFormField
