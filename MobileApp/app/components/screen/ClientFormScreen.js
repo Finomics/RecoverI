@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, ActivityIndicator } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../Screen";
-import { AppForm, AppFormField, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPhone, SubmitButton } from "../forms";
 import AppText from "../AppText";
 import colors from "../colors";
 import axios from "axios";
@@ -33,10 +33,12 @@ function ClientFormScreen({ props, navigation }) {
   };
   // let values=null;
   const GlobalEmployeeID = useContext(StoreContext)
-
+  const [load, setLoad] = useState(false);
 
   const handlePress = (values) => {
-    console.log(values.clientID, "form");
+    setLoad(true);
+    console.log(values, "form");
+    
 
     axios({
       method: "post",
@@ -44,7 +46,7 @@ function ClientFormScreen({ props, navigation }) {
       data: {
         ClientId: values.clientID,
         ClientName: values.clientName,
-        ClientPhoneNumber: values.contact,
+        ClientPhoneNumber: values.number.slice(1),
         ClientAmount: values.amount,
         ClientEmail: values.email,
         BelongsTo: GlobalEmployeeID.Role.createdBy,
@@ -55,10 +57,12 @@ function ClientFormScreen({ props, navigation }) {
         var a = res.data;
         console.log(a, "response");
         alert("Form has been Submit!");
+        setLoad(false);
       })
       .catch((err) => {
         console.log(err, "error");
       });
+      
   };
 
   return (
@@ -92,16 +96,16 @@ function ClientFormScreen({ props, navigation }) {
             // secureTextEntry={true}
             textContentType="name"
           />
-          <AppFormField
-            autoCapitalize="none"
+          <AppFormPhone
+            autoCapitalize='none'
             autoCorrect={false}
-            icon="cellphone-settings"
-            keyboardType="numeric"
-            name="contact"
-            placeholder="Client Contact Number"
-            // secureTextEntry={true}
-            textContentType="telephoneNumber"
+            icon='phone-outline'
+            keyboardType='numeric'
+            name='number'
+            placeholder='Contact Number'
+            textContentType='emailAddress'
           />
+          <Text style={{color: colors.teal}}>With country code without '00' or '+'</Text>
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -122,8 +126,16 @@ function ClientFormScreen({ props, navigation }) {
             // secureTextEntry={true}
             textContentType="none"
           />
+           {
+                            load ?
+                                <ActivityIndicator
+                                    size='large'
+                                    color="#0000ff"
+                                />
+                                :
           <SubmitButton title="Confirm"
             color='teal' />
+           }
         </AppForm>
       </ScrollView>
     </Screen>

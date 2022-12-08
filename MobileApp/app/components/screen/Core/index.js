@@ -1,1 +1,1 @@
-export var Url = "https://kollectitapi.herokuapp.com"
+export var Url = "https://kollectit-server-ttltjp6rba-el.a.run.app"
