@@ -78,7 +78,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
             alert(res.data.message)
             setRealTime(!realTime);
             setUpdate(!update);
-            navigation.navigate('Assign Rider Screen')
+            navigation.navigate('Assign Rider')
 
         }).catch((err) => {
             console.log(err, "err");

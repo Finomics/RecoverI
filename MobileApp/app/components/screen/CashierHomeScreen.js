@@ -28,7 +28,7 @@ function CashierHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Assign Rider'
-                             onPress={()=> navigation.navigate('Assign Rider Screen')}
+                             onPress={()=> navigation.navigate('Assign Rider')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -60,7 +60,7 @@ function CashierHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='View Payments'
-                            onPress={()=> navigation.navigate('All Payments Screen')}
+                            onPress={()=> navigation.navigate('All Payments')}
                         />
                     </View>
                 </View>
