@@ -94,7 +94,7 @@ function AddMemberScreen({ navigation }) {
                             icon='email-outline'
                             keyboardType='email-address'
                             name='email'
-                            placeholder='Email'
+                            placeholder='Email or Phone'
                             textContentType='emailAddress'
                         />
                         <AppFormPassword
