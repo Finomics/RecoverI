@@ -38,7 +38,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Payments Collected'
-                            onPress={()=> navigation.navigate('Payment Screen')}
+                            onPress={()=> navigation.navigate('Collections')}
                         />
                     </View>
                 </View>

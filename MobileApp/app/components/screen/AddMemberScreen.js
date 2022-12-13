@@ -63,7 +63,7 @@ function AddMemberScreen({ navigation }) {
     return (
         <Screen style={styles.backGround}>
 
-            <TopButtons header={'Admin Member Screen'} navigation={navigation} />
+            <TopButtons header={''} navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 100 }}

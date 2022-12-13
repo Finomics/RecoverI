@@ -92,7 +92,7 @@ function LoginScreen({ navigation }) {
                         icon='email'
                         keyboardType='email-address'
                         name='email'
-                        placeholder='Email'
+                        placeholder='Email or Phone'
                         textContentType='emailAddress'
                     />
                     <AppFormPassword

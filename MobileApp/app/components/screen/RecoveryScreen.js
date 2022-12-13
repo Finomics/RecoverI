@@ -126,7 +126,7 @@ setLoad(false);
 
   return (
     <Screen style={styles.backGround}>
-      <TopButtons header={'Recovery Screen'} navigation={navigation}/>
+      <TopButtons header={''} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}
