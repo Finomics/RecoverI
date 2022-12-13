@@ -42,8 +42,8 @@ const AuthNavigator = () => (
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreen} />
         <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} />
-        <Stack.Screen name='Transfer Screen' component={TransferScreen} />
-        <Stack.Screen name='Summary Screen' component={SummaryScreen} />
+        <Stack.Screen name='Transfer' component={TransferScreen} />
+        <Stack.Screen name='Summary' component={SummaryScreen} />
         <Stack.Screen name='Transactions' component={DetailScreen} />
         {/* <Stack.Screen name='Change Password' component={ChangePassword}/> */}
     </Stack.Navigator>

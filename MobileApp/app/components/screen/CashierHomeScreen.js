@@ -50,7 +50,7 @@ function CashierHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Deposit'
-                             onPress={()=> navigation.navigate('Transfer Screen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Transfer')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
