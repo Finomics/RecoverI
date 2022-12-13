@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
-import { Image, StyleSheet, Switch, TouchableOpacity, View, ScrollView, ActivityIndicator } from 'react-native';
+import { Image, StyleSheet, Switch, TouchableOpacity, View,ScrollView, ActivityIndicator } from 'react-native';
 
 import Screen from '../Screen';
 import Icon from '../Icon';
@@ -14,7 +14,6 @@ import { postRequest } from '../APIcalls/postRequests'
 import axios from 'axios';
 import StoreContext from './GlobalState';
 import TopButtons from './TopButtons';
-import { Url } from './Core';
 
 
 
@@ -29,14 +28,13 @@ function RecoveryScreen({ navigation, route }) {
 
 
   const listing = route.params;
-  //  console.log("LISTING",listing);
+//  console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString()
-  const PaymentName = listing.ClientName;
-  const PaymentNumber = listing.ClientPhoneNumber;
-  const PaymentEmail = listing.ClientEmail;
-  const ClientObjectId = listing._id;
-  const assignedBy = listing.AssignedBy;
+  const PaymentName = listing.ClientName
+  const PaymentNumber = listing.ClientPhoneNumber
+  const PaymentEmail = listing.ClientEmail
+  const ClientObjectId = listing._id
   const RecoveryContext = useContext(StoreContext)
 
 
@@ -47,35 +45,10 @@ function RecoveryScreen({ navigation, route }) {
   const ClientObjId = RecoveryContext.setClientId(ClientObjectId)
   // console.log(RecoveryContext.ClientId);
 
-  useEffect(() => {
-    axios({
-      method: 'post',
-      url: Url + '/checkExist',
-
-      data: {
-        filter: {
-          status: "Un Verified",
-          PaymentClientId: ClientObjectId
-        }
-      }
-
-    })
-      .then((response) => {
-        let tr = parseInt(response.data);
-        console.log("response from Check Exist", response.data);
-        if (tr > 0) {
-          alert("Uou already have " + tr + " payment from this client");
-        }
-
-      })
-      .catch((error) => {
-        console.log(error, "error");
-      })
-  }, [])
   const handlePress = () => {
   }
   const handleCamera = (uro) => {
-    console.log("in HandleCamera", uri);
+    console.log("in HandleCamera",uri);
     setImageUri(uri);
 
   }
@@ -91,10 +64,9 @@ function RecoveryScreen({ navigation, route }) {
       PaymentEmail: PaymentEmail,
       PaymentMode: mode,
       PaymentAmount: textInput,
-      AssignedBy: assignedBy,
       imageUrl: Img,
       heldby: RecoveryContext.Role._id,
-      status: "Un Verified"
+      status: "Unverified"
 
     }
 
@@ -102,15 +74,15 @@ function RecoveryScreen({ navigation, route }) {
 
     axios({
       method: 'post',
-      url: Url + '/PaymentData',
+      url: 'https://paym-api.herokuapp.com/PaymentData',
       data: payload, withCredentials: true
     })
       .then((response) => {
+
+        // console.log("response from API", a.data);
+setLoad(false);
         var a = response.data;
-        console.log("response from API", a);
-        setLoad(false);
-        var a = response.data;
-        navigation.navigate('OTP Screen', a);
+        navigation.navigate('OTPScreen', a.data);
         alert("confirmation OTP is sent");
 
 
@@ -135,7 +107,7 @@ function RecoveryScreen({ navigation, route }) {
     })
     axios({
       method: 'post',
-      url: Url + "/upload",
+      url: "https://paym-api.herokuapp.com/upload",
       data: formData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -154,7 +126,7 @@ function RecoveryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.backGround}>
-      <TopButtons header={'Recovery Screen'} navigation={navigation} />
+      <TopButtons header={'Recovery Screen'} navigation={navigation}/>
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}
@@ -186,18 +158,18 @@ function RecoveryScreen({ navigation, route }) {
           <CameraInput
             imageUri={imageUri}
             setLoad={setLoad}
-            onChangeImage={uri => setImageUri(uri)
+            onChangeImage={uri =>  setImageUri(uri)
             }
           />
-          {
-            load ?
-              <ActivityIndicator
-                size='large'
-                color="#0000ff"
-              />
-              :
-              <AppButton title='Continue' color='royalBlue' onPress={() => handleContinue()} />
-          }
+{
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
+          <AppButton title='Continue' color='royalBlue' onPress={() => handleContinue()} />
+}
         </View>
         <View style={styles.iconBar}>
           <Icon name='home' backgroundColor={colors.backGround} iconColor={colors.royalBlue} onPress={handlePress} />

@@ -28,7 +28,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Clients List'
-                             onPress={()=> navigation.navigate('Client Screen')}
+                             onPress={()=> navigation.navigate('Clients Listing')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>

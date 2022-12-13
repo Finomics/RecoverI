@@ -40,7 +40,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Client List'
-                            onPress={()=> navigation.navigate('Client Screen')}
+                            onPress={()=> navigation.navigate('Clients Listing')}
                         />
                     </View>
                 </View>

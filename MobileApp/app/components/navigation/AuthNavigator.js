@@ -32,7 +32,7 @@ const AuthNavigator = () => (
         <Stack.Screen name='Admin Home' component={AdminHomeScreen}/>
         <Stack.Screen name='Cashier Home' component={CashierHomeScreen} />
         <Stack.Screen name='Client Form' component={ClientFormScreen} />
-        <Stack.Screen name='Client Screen' component={ClientScreen} />
+        <Stack.Screen name='Clients Listing' component={ClientScreen} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='OTP Screen' component={OTPScreen} />
