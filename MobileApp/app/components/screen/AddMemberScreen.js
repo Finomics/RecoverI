@@ -17,7 +17,7 @@ import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
     userName: Yup.string().required().label("User Name"),
-    email: Yup.string().required().label("Email"),
+    email: Yup.string().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
