@@ -55,6 +55,9 @@ function AddMemberScreen({ navigation }) {
             })
             .catch((err) => {
                 console.log(err, "error");
+                alert("error in creating user");
+                setLoad(false);
+                AudioScheduledSourceNode(false);
             });
 
 

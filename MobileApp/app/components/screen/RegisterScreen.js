@@ -57,6 +57,7 @@ function LoginScreen({ navigation }) {
             console.log(err, "Admin Created Error");
             setLoad(previousState => !previousState); 
             alert ("Error in Registration: please try again later.");
+            setLoad(false);
         })
     }
 
