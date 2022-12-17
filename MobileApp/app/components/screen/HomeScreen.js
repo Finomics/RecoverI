@@ -28,7 +28,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Assign Rider'
-                             onPress={()=> navigation.navigate('Assign Rider Screen')}
+                             onPress={()=> navigation.navigate('')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -50,7 +50,7 @@ function HomeScreen({navigation}) {
                             iconColor={colors.secondary}
                             size={150}
                             title='Cash'
-                             onPress={()=> navigation.navigate('Add Member Screen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Add Member')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>

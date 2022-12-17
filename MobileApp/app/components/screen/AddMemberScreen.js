@@ -17,7 +17,7 @@ import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
     userName: Yup.string().required().label("User Name"),
-    email: Yup.string().required().label("Email"),
+    email: Yup.string().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -55,6 +55,9 @@ function AddMemberScreen({ navigation }) {
             })
             .catch((err) => {
                 console.log(err, "error");
+                alert("error in creating user");
+                setLoad(false);
+                AudioScheduledSourceNode(false);
             });
 
 
@@ -63,7 +66,7 @@ function AddMemberScreen({ navigation }) {
     return (
         <Screen style={styles.backGround}>
 
-            <TopButtons header={'Admin Member Screen'} navigation={navigation} />
+            <TopButtons header={''} navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 100 }}
@@ -94,7 +97,7 @@ function AddMemberScreen({ navigation }) {
                             icon='email-outline'
                             keyboardType='email-address'
                             name='email'
-                            placeholder='Email'
+                            placeholder='Email or Phone'
                             textContentType='emailAddress'
                         />
                         <AppFormPassword

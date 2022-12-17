@@ -10,12 +10,10 @@ import colors from '../colors';
 import TopButtons from './TopButtons';
 import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import axios from 'axios';
-import { Url } from './Core';
-
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
-    email: Yup.string().required().email().label("Email"),
+    email: Yup.string().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -33,7 +31,7 @@ function LoginScreen({ navigation }) {
         // console.log(values, "form");
         axios({
             method: "post",
-            url: Url +  "/auth/employe",
+            url: "https://paym-api.herokuapp.com/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,
@@ -42,30 +40,31 @@ function LoginScreen({ navigation }) {
             }
         }).then((res) => {
 
-            alert("Admin has been Created");
-            navigation.navigate('Welcome Screen');
+            alert("Admin has been Created")
             setLoad(previousState => !previousState)
-            if(values.name=='Admin'){
-                navigation.navigate('Admin Home')
-            }else if(values.name=='Cashier'){
-                navigation.navigate('CashierHomeScreen')
-            }else if(values.name=='Rider') {
-                navigation.navigate('RiderHomeScreen')
-            }
-            // alert(res.data.message)
-            // console.log(res.data, "Json Res");
+            navigation.navigate('Welcome')
+
+            // if(values.name=='Admin'){
+            //     navigation.navigate('AdminHomeScreen')
+            // }else if(values.name=='Cashier'){
+            //     navigation.navigate('CashierHomeScreen')
+            // }else if(values.name=='Rider') {
+            //     navigation.navigate('RiderHomeScreen')
+            // }
+           
 
         }).catch((err) => { 
             console.log(err, "Admin Created Error");
             setLoad(previousState => !previousState); 
             alert ("Error in Registration: please try again later.");
+            setLoad(false);
         })
     }
 
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={''} navigation={navigation}/>
+            <TopButtons header={'Recovery Screen'} navigation={navigation}/>
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image
@@ -101,7 +100,7 @@ function LoginScreen({ navigation }) {
                         icon='email'
                         keyboardType='email-address'
                         name='email'
-                        placeholder='Email'
+                        placeholder='Email or Phone'
                         textContentType='emailAddress'
                     />
                     <AppFormPassword

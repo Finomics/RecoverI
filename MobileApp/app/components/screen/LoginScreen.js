@@ -12,7 +12,7 @@ import TopButtons from './TopButtons';
 import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required().email().label("Email"),
+    email: Yup.string().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -57,7 +57,7 @@ function LoginScreen({ navigation }) {
                 navigation.navigate('Rider Home')
 
             } else {
-                navigation.navigate('Welcome Screen')
+                navigation.navigate('Welcome')
 
             }
 
@@ -92,7 +92,7 @@ function LoginScreen({ navigation }) {
                         icon='email'
                         keyboardType='email-address'
                         name='email'
-                        placeholder='Email'
+                        placeholder='Email or Phone'
                         textContentType='emailAddress'
                     />
                     <AppFormPassword
