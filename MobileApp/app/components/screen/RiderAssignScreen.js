@@ -63,7 +63,7 @@ function RiderAssignScreen({ props, navigation }) {
 
     return (
         <Screen>
-            <TopButtons header={'Rider Assign Screen'} navigation={navigation} />
+            <TopButtons header={''} navigation={navigation} />
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}

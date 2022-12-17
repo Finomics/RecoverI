@@ -24,13 +24,13 @@ function TopButtons({header,navigation}) {
             navigation.navigate('Rider Home')
 
         } else {
-            navigation.navigate('Welcome Screen');
+            navigation.navigate('Welcome');
     }
 }
     const handleRightButton=()=>{
         contextData.setRole([]);
         alert("logged out successfully");
-        navigation.navigate('Welcome Screen');
+        navigation.navigate('Welcome');
         console.log('Logout Button is pressed');
     }
 

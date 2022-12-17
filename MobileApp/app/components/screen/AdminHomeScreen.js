@@ -30,7 +30,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Add Member'
-                             onPress={()=> navigation.navigate('Add Member Screen')}
+                             onPress={()=> navigation.navigate('Add Member')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
