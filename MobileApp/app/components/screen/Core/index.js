@@ -1,1 +1,1 @@
-export var Url = "https://kollectit-server-ttltjp6rba-el.a.run.app"
+export var Url = "https://kollectit-server-ttltjp6rba-et.a.run.app"
