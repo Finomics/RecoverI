@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { Image, ScrollView, StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import * as Yup from 'yup';
 import Icon from '../Icon';
+import { Url } from './Core';
 
 import AppButton from '../AppButton';
 import Screen from '../Screen';
@@ -31,7 +32,7 @@ function LoginScreen({ navigation }) {
         // console.log(values, "form");
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/employe",
+            url: Url+"/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,
