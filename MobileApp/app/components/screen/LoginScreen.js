@@ -12,7 +12,7 @@ import TopButtons from './TopButtons';
 import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().email().label("Email"),
+    email: Yup.string().label("Email"),
     password: Yup.string().label("Password"),
 });
 
