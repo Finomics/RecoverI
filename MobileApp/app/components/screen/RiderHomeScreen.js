@@ -28,7 +28,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Clients List'
-                             onPress={()=> navigation.navigate('Client Screen')}
+                             onPress={()=> navigation.navigate('Clients Listing')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -38,7 +38,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Payments Collected'
-                            onPress={()=> navigation.navigate('Payment Screen')}
+                            onPress={()=> navigation.navigate('Collections')}
                         />
                     </View>
                 </View>
@@ -60,7 +60,7 @@ function RiderHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Transfer'
-                            onPress={()=> navigation.navigate('Transfer Screen')}
+                            onPress={()=> navigation.navigate('Transfer')}
                         />
                     </View>
                 </View>

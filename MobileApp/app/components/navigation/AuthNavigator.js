@@ -32,18 +32,18 @@ const AuthNavigator = () => (
         <Stack.Screen name='Admin Home' component={AdminHomeScreen}/>
         <Stack.Screen name='Cashier Home' component={CashierHomeScreen} />
         <Stack.Screen name='Client Form' component={ClientFormScreen} />
-        <Stack.Screen name='Client Screen' component={ClientScreen} />
+        <Stack.Screen name='Clients Listing' component={ClientScreen} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='OTP Screen' component={OTPScreen} />
-        <Stack.Screen name='Payment Screen' component={PaymentScreen} />
+        <Stack.Screen name='Collections' component={PaymentScreen} />
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreen} />
         <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} />
-        <Stack.Screen name='Transfer Screen' component={TransferScreen} />
-        <Stack.Screen name='Summary Screen' component={SummaryScreen} />
+        <Stack.Screen name='Transfer' component={TransferScreen} />
+        <Stack.Screen name='Summary' component={SummaryScreen} />
         <Stack.Screen name='Transactions' component={DetailScreen} />
         {/* <Stack.Screen name='Change Password' component={ChangePassword}/> */}
     </Stack.Navigator>

@@ -40,7 +40,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Client List'
-                            onPress={()=> navigation.navigate('Client Screen')}
+                            onPress={()=> navigation.navigate('Clients Listing')}
                         />
                     </View>
                 </View>
@@ -52,7 +52,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.teal}
                             size={150}
                             title='Reporting'
-                             onPress={()=> navigation.navigate('Summary Screen')}//shuldbe PaymentScreen
+                             onPress={()=> navigation.navigate('Summary')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
