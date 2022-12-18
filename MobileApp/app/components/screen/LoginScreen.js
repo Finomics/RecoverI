@@ -13,7 +13,7 @@ import { Url } from './Core';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email().label("Email"),
-    password: Yup.string().required().min(4).label("Password"),
+    password: Yup.string().label("Password"),
 });
 
 

@@ -12,9 +12,9 @@ import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
 import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required().label("Name"),
+    name: Yup.string().label("Name"),
     email: Yup.string().email().label("Email"),
-    password: Yup.string().required().min(4).label("Password"),
+    password: Yup.string().label("Password"),
 });
 
 
