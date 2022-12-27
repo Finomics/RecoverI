@@ -7,6 +7,8 @@ import colors from './colors';
 import AppText from './AppText';
 import axios from "axios";
 import StoreContext from './screen/GlobalState';
+import { Url } from './screen/Core';
+
 
 const tempRiderName = [
     { Name: 'Hassan Mansoor', value: 1 },
@@ -39,7 +41,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     useEffect(() => {
         axios({
             method: "post",
-            url: "https://paym-api.herokuapp.com/auth/craetedby",
+            url: Url+"/auth/craetedby",
             data: {
                 createdBy: Globaledata.Role.createdBy,
                 Role: "Rider"
@@ -64,7 +66,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 
         axios({
             method: 'post',
-            url: "https://paym-api.herokuapp.com/ClientDataUpdate",
+            url: Url+"/ClientDataUpdate",
             data: {
                 id: ClinetID,
                 ClientRider: item.employeeName,

@@ -5,6 +5,10 @@ import axios from 'axios';
 import { DataTable } from 'react-native-paper';
 import AppText from './AppText';
 import StoreContext from './screen/GlobalState';
+import { Url } from './screen/Core';
+
+
+
 
 function PaymentList({ item, amount, tittle }) {
 
@@ -16,7 +20,7 @@ function PaymentList({ item, amount, tittle }) {
         axios({
 
             method: "post",
-            url: "https://paym-api.herokuapp.com/collectionBy",
+            url: Url +  "/collectionBy",
             data: {
                 heldby: item._id,
             }

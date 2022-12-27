@@ -74,7 +74,7 @@ function ClientScreen({ navigation }) {
 
   //   axios({
   //     method: "post",
-  //     url: "https://paym-api.herokuapp.com/auth/ShowRiderData",
+  //       url: Url +  "/auth/ShowRiderData",
   //     data: {
   //       // employeeName: GlobaleEmployee.Role.employeeName
   //       ClientRiderObjectId: GlobaleEmployee.Role._id
@@ -89,7 +89,7 @@ function ClientScreen({ navigation }) {
   //       console.error(error);
   //     });
 
-  //   // fetch("https://paym-api.herokuapp.com/ClientData")
+  //   // fetch(`${Url}/ClientData`)
   //   //   .then((response) => response.json())
   //   //   .then((responseJson) => {
   //   //     console.log("ClientScreen in getAPI", responseJson.Data);

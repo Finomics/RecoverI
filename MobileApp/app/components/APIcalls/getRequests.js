@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { Url } from '../screen/Core';
 
 
 
 
-const baseApi = "https://paym-api.herokuapp.com/";
+const baseApi = Url;
 
 
 export const getClients = async () => {

@@ -5,6 +5,7 @@ import NewCard from '../NewCard';
 import colors from '../colors';
 import Screen from '../Screen'
 import {getClients} from '../APIcalls/getRequests'
+import { Url } from '../Core';
 
 
 function ClientScreen({ navigation }) {
@@ -19,7 +20,7 @@ function ClientScreen({ navigation }) {
   // console.log("in client Screen",list)
   const[clients,setClients]=useState();
   useEffect(() => {
-    fetch("https://paym-api.herokuapp.com/ClientData")
+    fetch( `${Url}/ClientData`)
     .then((response) => response.json())
     .then((responseJson) => {
         console.log("in getAPI",responseJson);
