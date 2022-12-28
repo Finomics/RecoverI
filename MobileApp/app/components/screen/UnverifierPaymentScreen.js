@@ -34,7 +34,7 @@ function UnverifierPaymentScreen({ navigation }) {
     let filter = {}
     if (userContext.Role.Role == 'Rider') {
       filter.heldby = userId;
-      filter.status = "Un Verified";
+      filter.status = "Unverified";
       getPayments(filter);
     }
     if (userContext.Role.Role == 'Cashier') {
