@@ -146,10 +146,11 @@ function TransferScreen({ navigation }) {
 
         setRealTime(!realTime);
         setTransferId("")
-        alert("Payment is transferred successfully");
+       
 
       }).catch((err) => {
         console.log(err, "error");
+        alert("Error in Payment transfer");
       })
     }
     transaction(transferId, transferAmounts);
