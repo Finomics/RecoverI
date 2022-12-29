@@ -56,7 +56,9 @@ function UnverifierPaymentScreen({ navigation }) {
 
     }
     ).then((res) => {
+      console.log("Response in All Payments",res)
       var a = res.data
+
       setPayments(a);
     }).catch((error) => {
       console.log(error);

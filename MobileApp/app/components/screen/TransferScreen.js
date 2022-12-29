@@ -94,7 +94,7 @@ function TransferScreen({ navigation }) {
     }).catch((error) => {
       console.log(error);
     })
-  }, [])
+  }, [realTime])
 
 
   const handlePress = () => {

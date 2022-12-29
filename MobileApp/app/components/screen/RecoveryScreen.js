@@ -32,13 +32,14 @@ function RecoveryScreen({ navigation, route }) {
   const [load, setLoad] = useState(false);
 
   const listing = route.params;
-  //  console.log("LISTING",listing);
+    console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString();
   const PaymentName = listing.ClientName;
   const PaymentNumber = listing.ClientPhoneNumber;
   const PaymentEmail = listing.ClientEmail;
   const ClientObjectId = listing._id;
+  const assignedBy = listing.AssignedBy;
   const RecoveryContext = useContext(StoreContext);
 
   // console.log(ClientObjectId, "ClientObjectId");
@@ -66,6 +67,7 @@ function RecoveryScreen({ navigation, route }) {
       PaymentAmount: textInput,
       imageUrl: Img,
       heldby: RecoveryContext.Role._id,
+      AssignedBy:assignedBy,
       status: "Unverified",
     };
 

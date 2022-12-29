@@ -16,7 +16,7 @@ function PaymentCard({title, subTitle, subSubTitle, onPress,code }) {
                 <AppText style={styles.title} numberOfLines={1}>Name: {title}</AppText>
                 <AppText style={styles.subTitle} numberOfLines={1}>Amount: {subTitle}</AppText>
                 <AppText style={styles.subTitle} numberOfLines={1}>Status: {subSubTitle}</AppText>
-                {(userContext.Role.Role=='Cashier'&&subSubTitle=="Un Verified")?
+                {(userContext.Role.Role=='Cashier'&&subSubTitle=="Unverified")?
                 <AppText style={styles.subTitle} numberOfLines={1}>Verification Code: {code}</AppText>
           :
           <></>}
