@@ -81,7 +81,8 @@ function RecoveryScreen({ navigation, route }) {
         // console.log("response from API", a.data);
         setLoad(false);
         var a = response.data;
-        navigation.navigate("OTPScreen", a.data);
+        console.log("sending to OTP screen",a);
+        navigation.navigate("OTP Screen", a);
         alert("confirmation OTP is sent");
       })
       .catch((error) => {
