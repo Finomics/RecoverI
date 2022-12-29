@@ -93,6 +93,7 @@ function OTPScreen({ navigation, route }) {
                                 console.log(response.data, "response");
                                 alert("payment status Updated");
                                 setLoad(false);
+                                navigation.navigate("Rider Home");
                                 // transaction()
                             })
                             .catch((error) => {

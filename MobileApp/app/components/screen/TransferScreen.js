@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useContext } from 'react';
-import { Image, Button, Modal, FlatList, View, StyleSheet, TextInput } from 'react-native';
+import { Image, Button, Modal, FlatList, View, StyleSheet, TextInput,ActivityIndicator } from 'react-native';
 import TransferCard from '../TransferCard';
 import NewCard from '../NewCard';
 import colors from '../colors';
@@ -30,7 +30,7 @@ function TransferScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [CashierName, setCashierName] = useState([]);
   const [heldbyCashierName, setheldbyCashierName] = useState([]);
-
+  const [load, setLoad] = useState(false);
   const [name, setName] = useState('Select Cashier')
 
   // console.log(RiderContextData.Role.employeeName, "RiderNameRiderName");
@@ -123,6 +123,7 @@ function TransferScreen({ navigation }) {
   // console.log(heldbyCashierName, "heldbyCashierNameheldbyCashierNameheldbyCashierName");
 
   function PaymentTransferCashier() {
+    setLoad(true);
     let amounts = [0];
     // console.log(transferId, "transferId");
     for (let i = 0; i < transferId.length; i++) {
@@ -140,8 +141,10 @@ function TransferScreen({ navigation }) {
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);
         console.log(res, "res");
+        alert("Payment Transferred" );
+        setLoad(false);
 
-        setRealTime(!realTime)
+        setRealTime(!realTime);
         setTransferId("")
         alert("Payment is transferred successfully");
 
@@ -213,10 +216,18 @@ function TransferScreen({ navigation }) {
           } />
         </View>
         <View style={{ width: '45%' }}>
+        {
+                        load ? 
+                            <ActivityIndicator
+                                size='large' 
+                                color="#0000ff"
+                            /> 
+                        : 
           <AppButton title='Submit' color='teal' onPress={
             // () => console.log(transferId, "djdjdjdj")
             PaymentTransferCashier
           } />
+        }
         </View>
       </View>
       <Modal
