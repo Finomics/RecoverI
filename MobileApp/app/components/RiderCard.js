@@ -6,8 +6,10 @@ import RiderNameCard from '../components/RiderNameCard';
 import colors from './colors';
 import AppText from './AppText';
 import axios from "axios";
+import Icon from './Icon';
 import StoreContext from './screen/GlobalState';
 import { Url } from './screen/Core';
+import Screen from './Screen';
 
 
 const tempRiderName = [
@@ -89,6 +91,9 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 
     return (
         <>
+        <Screen>
+
+        
             <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
                 <View style={styles.detailsContainer}>
                     <AppText>{name}</AppText>
@@ -101,14 +106,23 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                 </View>
             </TouchableOpacity>
 
-
-
             <Modal
                 animationType="slide"
                 transparent={false}
                 visible={modalVisible}
             >
-                <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} />
+                <View style={styles.buttonStyle}>
+                    <AppText style={{ textAlign: 'center' }}> List of Riders </AppText>
+                    <Icon
+                        name='backburger'
+                        size={50}
+                        backgroundColor='transparent'
+                        iconColor={colors.royalBlue}
+                        onPress={() => setModalVisible(!modalVisible)}
+                        title='Back'
+                    />
+                    {/* <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} /> */}
+                </View>
 
 
                 <FlatList
@@ -144,7 +158,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 
 
 
-
+        </Screen>
         </>
 
 
@@ -173,6 +187,9 @@ const styles = StyleSheet.create({
         color: colors.primary,
         marginBottom: 7,
         fontWeight: 'bold',
+    },
+    buttonStyle:{
+        paddingBottom: 15,
     },
 })
 
