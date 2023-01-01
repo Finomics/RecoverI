@@ -56,7 +56,7 @@ function ClientFormScreen({ props, navigation }) {
       .then((res) => {
         var a = res.data;
         console.log(a, "response");
-        alert("Form has been Submit!");
+        alert("Form has been Submitted");
         setLoad(false);
       })
       .catch((err) => {

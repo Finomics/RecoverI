@@ -63,7 +63,7 @@ function LoginScreen({ navigation }) {
 
         }).catch((err) => {
             console.log(err, "employee not found");
-            alert("Login error, please retry later");
+            alert("You have entered incorrect login credentials. Please try again");
             setLoad(previousState => !previousState);
         })
 
