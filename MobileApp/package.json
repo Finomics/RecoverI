@@ -28,6 +28,7 @@
     "react-native-axios": "^0.17.1",
     "react-native-confirmation-code-field": "^7.3.0",
     "react-native-dropdown-picker": "^5.4.2",
+    "react-native-image-slider-banner": "^1.0.3",
     "react-native-native-event-library": "^1.0.3",
     "react-native-paper": "^4.12.4",
     "react-native-phone-number-input": "^2.1.0",
