@@ -15,30 +15,30 @@ function WelcomeScreen({navigation}) {
     },[])
     return (
         <Screen style={styles.container}>
-            <View style={styles.logoContainer}>
-              <View style={{flex: 2}}>
+            <View style={styles.upperContainer}>
+              <View style={{ flex: 3, marginHorizontal: 5, borderRadius: 20, overflow: 'hidden'}}>
                 <ImageSlider
-                  // localImg={true}
+                  localImg={true}
+                  caroselImageContainerStyle={{height: '100%'}}
+                  caroselImageStyle={{ borderRadius: 30 }}
                   data={[
-                      {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU'},
-                      {img: 'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg'},
-                      {img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg'}
+                      {img: require('../../assets/banner_1.png')},
+                      {img: require('../../assets/banner_2.png')},
+                      {img: require('../../assets/banner_3.png')}
                   ]}
                   autoPlay={true}
-                  onItemChanged={(item) => console.log("item", item)}
+                  // onItemChanged={(item) => console.log("item", item)}
                   closeIconColor="#fff"
                 />
               </View>
-              <View style={{flex: 1}}>
-                  {/* <Text>hello</Text> */}
+              <View style={{flex: 2, justifyContent:'center', alignItems: 'center'}}>
                   <Image
                       source={require('../../assets/logo.png')}
                       style={styles.imageContainer}
                   />
-
               </View>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={styles.lowerContainer}>
                 <AppButton 
                     title='Login' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
@@ -59,28 +59,21 @@ function WelcomeScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      paddingTop: 0,
       backgroundColor: colors.backGround,
     },
-    logoContainer:{
-      flex: 4,
-      width: '100%',
-      // backgroundColor: 'red',
-      alignItems: 'center',
-      justifyContent: 'center',
+    upperContainer:{
+      flex: 3,
     },
-    buttonContainer:{
+    lowerContainer:{
       flex: 1,
-      // backgroundColor: 'blue',
-      width: '100%',
       paddingHorizontal: 20,
       alignItems: 'center',
       justifyContent: 'center',
     },
     imageContainer:{
-      width: 300,
-      height: 100,
+      width: '100%',
+      height: 150,
     },
   });
 
