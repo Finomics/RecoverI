@@ -16,11 +16,11 @@ function WelcomeScreen({navigation}) {
     return (
         <Screen style={styles.container}>
             <View style={styles.upperContainer}>
-              <View style={{ flex: 3, marginHorizontal: 5, borderRadius: 20, overflow: 'hidden'}}>
+              <View style={{ flex: 3, borderRadius: 20, overflow: 'hidden'}}>
                 <ImageSlider
                   localImg={true}
-                  caroselImageContainerStyle={{height: '100%'}}
-                  caroselImageStyle={{ borderRadius: 30 }}
+                  caroselImageContainerStyle={{marginVertical: -30}}
+                  caroselImageStyle={{ borderRadius: 30, }}
                   data={[
                       {img: require('../../assets/banner_1.png')},
                       {img: require('../../assets/banner_2.png')},
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
       backgroundColor: colors.backGround,
     },
     upperContainer:{
-      flex: 3,
+      flex: 2,
     },
     lowerContainer:{
       flex: 1,
