@@ -40,6 +40,7 @@ function RecoveryScreen({ navigation, route }) {
   const PaymentEmail = listing.ClientEmail;
   const ClientObjectId = listing._id;
   const assignedBy = listing.AssignedBy;
+  const belongsTo = listing.BelongsTo;
   const RecoveryContext = useContext(StoreContext);
 
   // console.log(ClientObjectId, "ClientObjectId");
@@ -67,6 +68,7 @@ function RecoveryScreen({ navigation, route }) {
       PaymentAmount: textInput,
       imageUrl: Img,
       heldby: RecoveryContext.Role._id,
+      belongsTo:belongsTo,
       AssignedBy:assignedBy,
       status: "Unverified",
     };
