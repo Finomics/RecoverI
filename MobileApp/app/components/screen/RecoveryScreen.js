@@ -91,6 +91,8 @@ function RecoveryScreen({ navigation, route }) {
       })
       .catch((error) => {
         console.log(error, "error");
+        alert("error in processing transaction");
+        setLoad(false);
       });
   };
 
