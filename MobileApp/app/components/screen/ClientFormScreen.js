@@ -61,6 +61,8 @@ function ClientFormScreen({ props, navigation }) {
       })
       .catch((err) => {
         console.log(err, "error");
+        alert("Error occured in submitting the form");
+        setLoad(false);
       });
       
   };
@@ -105,7 +107,7 @@ function ClientFormScreen({ props, navigation }) {
             placeholder='Contact Number'
             textContentType='emailAddress'
           />
-          <Text style={{color: colors.teal}}>With country code without '00' or '+'</Text>
+          {/* <Text style={{color: colors.teal}}>With country code without '00' or '+'</Text> */}
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
