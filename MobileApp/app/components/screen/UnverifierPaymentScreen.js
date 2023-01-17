@@ -24,7 +24,8 @@ function UnverifierPaymentScreen({ navigation }) {
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
   const [payments, setPayments] = useState();
-
+  const [filtered, setfiltered] = useState();
+  const [filterText, setfilterText] = useState();
   const userContext = useContext(StoreContext)
 
   const userId = userContext.Role._id
@@ -46,6 +47,17 @@ function UnverifierPaymentScreen({ navigation }) {
 
 
   }, [])
+  const  handleSearch=async()=>{
+    console.log("Search",filterText);
+    const filtereddata=payments.filter(paymentData=>(nameFilter(paymentData.PaymentName,filterText)));
+    setfiltered(filtereddata);
+
+  }
+  function nameFilter(paymentName, name){
+    console.log("Filters",paymentName.toLowerCase().includes(name.toLowerCase()))
+    return paymentName.toLowerCase().includes(name.toLowerCase());
+
+  }
   async function getPayments(filter) {
     axios({
       method: "post",
@@ -60,6 +72,7 @@ function UnverifierPaymentScreen({ navigation }) {
       var a = res.data
 
       setPayments(a);
+      setfiltered(a);
     }).catch((error) => {
       console.log(error);
     })
@@ -79,13 +92,13 @@ function UnverifierPaymentScreen({ navigation }) {
           source={require('../../assets/logo.png')}
         />
         <View style={styles.textContainer}>
-          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' />
+          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' onChangeText={(text) =>setfilterText(text.toString())} />
         </View>
-        <Button title='Search' />
+        <Button title='Search' onPress={() =>handleSearch()} />
       </View>
       {payments != null ?
         <FlatList
-          data={payments}
+          data={filtered}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <PaymentCard

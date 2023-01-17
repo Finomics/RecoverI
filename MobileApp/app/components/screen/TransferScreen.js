@@ -90,7 +90,7 @@ function TransferScreen({ navigation }) {
     }).then((res) => {
       var a = res.data
       setPayments(a);
-      console.log("Payments", res.data.length);
+      console.log("Payments of", RiderContextData.Role, res.data);
     }).catch((error) => {
       console.log(error);
     })
