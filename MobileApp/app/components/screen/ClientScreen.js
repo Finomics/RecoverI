@@ -22,6 +22,8 @@ function ClientScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
+  const [filtered, setfiltered] = useState();
+  const [filterText, setfilterText] = useState();
   const GlobaleEmployee = useContext(StoreContext)
 
   console.log(GlobaleEmployee.Role.employeeName, "Riderrrrrrr");
@@ -44,7 +46,9 @@ function ClientScreen({ navigation }) {
     })
       .then((responseJson) => {
         console.log("ClientScreen in getAPI", responseJson.data);
-        setClients(responseJson.data.filter(filterClients));
+        const filteredData=responseJson.data.filter(filterClients)
+        setClients(filteredData);
+        setfiltered(filteredData);
 
       })
       .catch((error) => {
@@ -62,7 +66,18 @@ function ClientScreen({ navigation }) {
 
 
   }, [])
+// for search
+  const  handleSearch=async()=>{
+    console.log("Search",filterText);
+    const filtereddata=clients.filter(clientData=>(nameFilter(clientData.ClientName,filterText)));
+    setfiltered(filtereddata);
 
+  }
+  function nameFilter(clientName, name){
+    console.log("Filters",clientName.toLowerCase().includes(name.toLowerCase()))
+    return clientName.toLowerCase().includes(name.toLowerCase());
+
+  }
   const handlePress = (item) => {
     if (GlobaleEmployee.Role.Role == 'Rider') {
       navigation.navigate('Recovery Screen', item);
@@ -112,13 +127,13 @@ function ClientScreen({ navigation }) {
           source={require('../../assets/logo.png')}
         />
         <View style={styles.textContainer}>
-          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' />
+          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' onChangeText={(text) =>setfilterText(text.toString())} />
         </View>
-        <Button title='Search' />
+        <Button title='Search'onPress={() =>handleSearch()} />
       </View>
       {clients != null ?
         <FlatList
-          data={clients}
+          data={filtered}
           keyExtractor={listing => listing.ClientId}
           renderItem={({ item, i }) =>
             <Card
