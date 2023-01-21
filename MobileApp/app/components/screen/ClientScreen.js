@@ -22,7 +22,7 @@ function ClientScreen({ navigation }) {
   ];
   // console.log("in client Screen",list)
   const [clients, setClients] = useState();
-  const [filtered, setfiltered] = useState();
+  const [filtered, setfiltered] = useState([]);
   const [filterText, setfilterText] = useState();
   const GlobaleEmployee = useContext(StoreContext)
 
@@ -69,8 +69,10 @@ function ClientScreen({ navigation }) {
 // for search
   const  handleSearch=async()=>{
     console.log("Search",filterText);
-    const filtereddata=clients.filter(clientData=>(nameFilter(clientData.ClientName,filterText)));
+    let filtereddata=clients.filter(clientData=>(nameFilter(clientData.ClientName,filterText)));
+    console.log("filtered before",filtered.length,filtereddata.length)
     setfiltered(filtereddata);
+    console.log("filtered after",filtered.length,filtereddata.length);
 
   }
   function nameFilter(clientName, name){

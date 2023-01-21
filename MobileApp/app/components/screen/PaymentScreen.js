@@ -43,6 +43,10 @@ function PaymentScreen({ navigation }) {
 
 
   }, [])
+  const handleSearch=async(value)=>{
+console.log(value);
+
+  }
   async function getPayments(filter) {
     axios({
       method: "post",
