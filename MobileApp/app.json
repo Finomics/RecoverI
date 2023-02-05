@@ -34,6 +34,11 @@
     "web": {
       "favicon": "./app/assets/K-icon.png"
     },
-    "description": ""
+    "description": "",
+    "extra": {
+      "eas": {
+        "projectId": "bd31b2bd-e300-484c-863e-72ebb794d387"
+      }
+    }
   }
 }
