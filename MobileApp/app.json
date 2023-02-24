@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kollect IT",
     "slug": "KollectIT",
-    "version": "1.2.5",
+    "version": "1.2.7",
     "orientation": "portrait",
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
@@ -29,12 +29,16 @@
         "CAMERA"
       ],
       "package": "com.anostrat.kollectIt",
-      "versionCode": 25
+      "versionCode": 27
     },
     "web": {
       "favicon": "./app/assets/K-icon.png"
     },
     "description": "",
-   
+    "extra": {
+      "eas": {
+        "projectId": "22acc4af-b047-43c4-8f59-f939430406ab"
+      }
+    }
   }
 }
