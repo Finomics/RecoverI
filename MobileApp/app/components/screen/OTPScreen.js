@@ -319,22 +319,21 @@ function OTPScreen({ navigation, route }) {
                 transparent={false}
                 visible={modalVisible}
             >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Pressable
-                            style={{margin: 10, alignSelf:'center'}}
-                            onPress={() => setModalVisible(!modalVisible)}>
-                            <AppText style={styles.textStyle}>Go Back</AppText>
-                        </Pressable>
-                    </View>
-                    
+                                   
+                <View style={{marginVertical: 30, padding:3, alignItems: 'center' }}>
                     <Image
-                        style={{width: width, height: (width*3/2)}}
+                        style={{width: width*0.9, height: (width*3/2)}}
                         source={{
-                            uri: 'https://storage.googleapis.com/toys-db4fb.appspot.com/1677578120630-undefined.jpg?GoogleAccessId=firebase-adminsdk-gosuz%40toys-db4fb.iam.gserviceaccount.com&Expires=16447017600&Signature=IOhjX6lSAhtaVv8YVfxY6t2MTt0uvcRmhIE1ESlH9xgLumL3ujrrNs2WbBliaPCpXw3TrXjrhGmbK1fhh9rDn0RCE%2B9NSgsMzAJDxtbc%2BfAe6ML%2BaiH5cO0u3FJdq2POmZ6DDaj5BJGQsEALVCjKzReSfSOYP8Al5oJk3BY1CtdTFS5F8pgMf0o%2FpeQGQ1iRiBNBkZRUK6Hgi5Pin4Cia%2Fj%2FKCUH0ZT4vOejWPZDfgM%2Fl0e8kI7wjs8%2FHAJK73hZ5SrbQzsyfITBt%2F1E6z7JpdGDh3HMM%2B4Ff6PRwme%2Fw5YCTGzOaiNIVy%2FMT62aPX13EOoT0LcUKa%2FDLp2LZemXAw%3D%3D',
+                            uri: data.imageUrl,
                         }}
                     /> 
                 </View>
+            
+                <Pressable
+                    style={{margin: 10, alignSelf:'center'}}
+                    onPress={() => setModalVisible(!modalVisible)}>
+                    <AppText>Go Back</AppText>
+                </Pressable>
             </Modal>            
 
 
