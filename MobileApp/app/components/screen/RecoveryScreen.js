@@ -32,7 +32,7 @@ function RecoveryScreen({ navigation, route }) {
   const [load, setLoad] = useState(false);
 
   const listing = route.params;
-    console.log("LISTING",listing);
+  //  console.log("LISTING",listing);
 
   const PaymentId = listing.ClientId.toString();
   const PaymentName = listing.ClientName;
@@ -90,7 +90,7 @@ function RecoveryScreen({ navigation, route }) {
         alert("confirmation OTP is sent");
       })
       .catch((error) => {
-        console.log(error, "error");
+        console.log( "error in Payment Data",error);
         alert("error in processing transaction");
         setLoad(false);
       });
@@ -117,7 +117,7 @@ function RecoveryScreen({ navigation, route }) {
         setLoad(false);
       })
       .catch((err) => {
-        console.log(err, "error");
+        console.log("error in image upload",err);
       });
   }
 
