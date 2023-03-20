@@ -16,28 +16,7 @@ function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route);
     const PaymentObjectId = route.params;
 
-
-
-    let data = route;
-    data={
-        "_id":"640ac512f8ecc2fdd460845e",
-        "PaymentClientId":"63fd93f39620c65296b8558c",
-        "PaymentName":"Tata Client 02",
-        "PaymentEmail":"hammad.tecstik@gmail.com",
-        "PaymentNumber":"923452057798",
-        "PaymentAmount":"250",
-        "imageUrl":"https://storage.googleapis.com/toys-db4fb.appspot.com/1677578120630-undefined.jpg?GoogleAccessId=firebase-adminsdk-gosuz%40toys-db4fb.iam.gserviceaccount.com&Expires=16447017600&Signature=IOhjX6lSAhtaVv8YVfxY6t2MTt0uvcRmhIE1ESlH9xgLumL3ujrrNs2WbBliaPCpXw3TrXjrhGmbK1fhh9rDn0RCE%2B9NSgsMzAJDxtbc%2BfAe6ML%2BaiH5cO0u3FJdq2POmZ6DDaj5BJGQsEALVCjKzReSfSOYP8Al5oJk3BY1CtdTFS5F8pgMf0o%2FpeQGQ1iRiBNBkZRUK6Hgi5Pin4Cia%2Fj%2FKCUH0ZT4vOejWPZDfgM%2Fl0e8kI7wjs8%2FHAJK73hZ5SrbQzsyfITBt%2F1E6z7JpdGDh3HMM%2B4Ff6PRwme%2Fw5YCTGzOaiNIVy%2FMT62aPX13EOoT0LcUKa%2FDLp2LZemXAw%3D%3D",
-        "PaymentMode":"Cash",
-        "AssignedBy":"63eb21a7543e6577e25f1fc4",
-        "VerificationCode":"2877",
-        "BelongsTo":"63db55cf07ec951109a359c7",
-        "heldby":"63eb2180543e6577e25f1fc1",
-        "status":"Verified",
-        "createdOn":"2023-03-10T05:50:10.524Z",
-        "__v":0
-     }
-    let PaymentAmount = route.params;
-    PaymentAmount=data.PaymentAmount;
+const data= route.params;
     // const PaymentEmail = route.params;
     // const PaymentId = route.params;
     // const isNew = route.params;
@@ -48,6 +27,10 @@ function OTPScreen({ navigation, route }) {
     const RiderContextData = useContext(StoreContext)
     const ClientObjectId = RiderContextData.ClientId
     console.log(RiderContextData, "ClientObjectID000");
+    // const PaymentEmail = route.params;
+    // const PaymentId = route.params;
+    // const isNew = route.params;
+  
 
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
