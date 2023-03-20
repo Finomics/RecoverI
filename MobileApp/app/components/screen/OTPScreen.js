@@ -116,7 +116,7 @@ const data= route.params;
 
     function transaction() {
 
-        console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
+    //    console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
@@ -124,7 +124,7 @@ const data= route.params;
             data: {
                 nature: "Collection",
                 Instrument: [PayObjectId],
-                PaymentAmount: [PaymentAmount.PaymentAmount],
+                PaymentAmount: [data.PaymentAmount],
                 BelongsTo: BelongsTo,
                 From: ClientObjectId,
                 to: RiderID
