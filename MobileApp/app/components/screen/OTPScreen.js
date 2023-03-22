@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useRef, useContext } from 'react';
-import { SafeAreaView, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import { Dimensions, Text, View, TouchableOpacity, StyleSheet, TextInput, ScrollView, Modal, Alert, ActivityIndicator, Pressable, Image } from 'react-native';
 import Screen from '../Screen';
 import AppText from '../AppText';
 import colors from '../colors';
@@ -9,15 +9,14 @@ import axios from 'axios';
 import StoreContext from './GlobalState';
 import { Url } from './Core';
 
-
+const {width, height} = Dimensions.get('window')
 
 
 function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route);
     const PaymentObjectId = route.params;
 
-    const data = route.params;
-    const PaymentAmount = route.params;
+const data= route.params;
     // const PaymentEmail = route.params;
     // const PaymentId = route.params;
     // const isNew = route.params;
@@ -28,6 +27,10 @@ function OTPScreen({ navigation, route }) {
     const RiderContextData = useContext(StoreContext)
     const ClientObjectId = RiderContextData.ClientId
     console.log(RiderContextData, "ClientObjectID000");
+    // const PaymentEmail = route.params;
+    // const PaymentId = route.params;
+    // const isNew = route.params;
+  
 
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
@@ -56,6 +59,9 @@ function OTPScreen({ navigation, route }) {
     const [pin2, setPin2] = useState('');
     const [pin3, setPin3] = useState('');
     const [pin4, setPin4] = useState('');
+
+    const [modalVisible, setModalVisible] = useState(false);
+
     var OTP_Array = [pin1, pin2, pin3, pin4];
     var ReciveOtp = OTP_Array.join("");
 
@@ -110,7 +116,7 @@ function OTPScreen({ navigation, route }) {
 
     function transaction() {
 
-        console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
+    //    console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
@@ -118,7 +124,7 @@ function OTPScreen({ navigation, route }) {
             data: {
                 nature: "Collection",
                 Instrument: [PayObjectId],
-                PaymentAmount: [PaymentAmount.PaymentAmount],
+                PaymentAmount: [data.PaymentAmount],
                 BelongsTo: BelongsTo,
                 From: ClientObjectId,
                 to: RiderID
@@ -167,14 +173,23 @@ function OTPScreen({ navigation, route }) {
     }
 
 
+    const handleImageModal=()=>{
+        console.log('hello' + width)
+        setModalVisible(true)
+
+    }
+
+
     return (
         <Screen>
             <TopButtons header={'OTP Screen'} navigation={navigation} />
-            <View style={styles.descriptionContainer}>
-                <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
-                <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
-                <AppText style={{ fontWeight: '900' }}>Mode of Payment: {(modeOfPayment)}</AppText>
-            </View>
+            <TouchableOpacity onPress={handleImageModal}>
+                <View style={styles.descriptionContainer}>
+                    <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
+                    <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
+                    <AppText style={{ fontWeight: '900' }}>Mode of Payment: {(modeOfPayment)}</AppText>
+                </View>
+            </TouchableOpacity>
             <View style={styles.backgroundContainer}>
                 <View style={styles.container}>
                     <AppText style={{ fontWeight: 'bold', }}> Please Insert OTP </AppText>
@@ -276,7 +291,35 @@ function OTPScreen({ navigation, route }) {
                         onPress={ReSendOtp}
                     />
                 </View>
+                
+
             </View>
+            
+
+
+            <Modal
+                animationType="slide"
+                transparent={false}
+                visible={modalVisible}
+            >
+                                   
+                <View style={{marginVertical: 30, padding:3, alignItems: 'center' }}>
+                    <Image
+                        style={{width: width*0.9, height: (width*3/2)}}
+                        source={{
+                            uri: data.imageUrl,
+                        }}
+                    /> 
+                </View>
+            
+                <Pressable
+                    style={{margin: 10, alignSelf:'center'}}
+                    onPress={() => setModalVisible(!modalVisible)}>
+                    <AppText>Go Back</AppText>
+                </Pressable>
+            </Modal>            
+
+
         </Screen>
     );
 }
@@ -290,8 +333,15 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     descriptionContainer: {
-        marginVertical: 30,
+        marginVertical: 20,
+        paddingVertical: 20,
+        width: '75%',
+        alignSelf:'center',
         alignItems: 'center',
+        backgroundColor: 'white',
+        borderColor: colors.lightShade,
+        borderWidth: 3,
+        borderRadius: 25,
     },
     backgroundContainer: {
         justifyContent: 'center',

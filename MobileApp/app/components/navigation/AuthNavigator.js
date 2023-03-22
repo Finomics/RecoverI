@@ -28,6 +28,7 @@ const AuthNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Welcome' component={WelcomeScreen} />
         <Stack.Screen name='Change Password' component={ChangePassword} />
+        <Stack.Screen name='OTP Screen' component={OTPScreen} />
         <Stack.Screen name='Add Member' component={AddMemberScreen} />
         <Stack.Screen name='Admin Home' component={AdminHomeScreen}/>
         <Stack.Screen name='Cashier Home' component={CashierHomeScreen} />
@@ -35,7 +36,6 @@ const AuthNavigator = () => (
         <Stack.Screen name='Clients Listing' component={ClientScreen} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
-        <Stack.Screen name='OTP Screen' component={OTPScreen} />
         <Stack.Screen name='Collections' component={PaymentScreen} />
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
