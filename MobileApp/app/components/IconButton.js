@@ -33,7 +33,7 @@ function IconButton({title, subTitle, image}) {
 
 const styles = StyleSheet.create({
     container:{
-        marginVertical: 20,
+        marginVertical: 10,
         alignSelf: 'center',
         width: width*0.9,
         height: height*0.15,

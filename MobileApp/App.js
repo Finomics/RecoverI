@@ -29,6 +29,8 @@ import DetailScreen from './app/components/screen/DetailScreen';
 import AppPasswordInput from './app/components/AppPasswordInput';
 import IconButton from './app/components/IconButton';
 import { Title } from 'react-native-paper';
+import Header from './app/components/Header';
+import CashierHomeScreenCopy from './app/components/screen/CashierHomeScreenCopy';
 
 
 
@@ -62,11 +64,14 @@ export default function App() {
     // <RiderHomeScreen/>
     // <SummaryScreen/>
     //  <TransferScreen/>
-    <IconButton
-      title={'Title'}
-      subTitle={'Sub-Title'}
-      image={require('./app/assets/delivery-man.png')}
-    />
+    // <IconButton
+    //   title={'Title'}
+    //   subTitle={'Sub-Title'}
+    //   image={require('./app/assets/delivery-man.png')}
+    // />
+
+    // <Header/>
+    <CashierHomeScreenCopy/>
 
     // <DetailScreen/>
 
