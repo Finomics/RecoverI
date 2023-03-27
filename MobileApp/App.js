@@ -27,6 +27,8 @@ import PaymentScreen from './app/components/screen/PaymentScreen';
 import RiderAssignScreen from './app/components/screen/RiderAssignScreen';
 import DetailScreen from './app/components/screen/DetailScreen';
 import AppPasswordInput from './app/components/AppPasswordInput';
+import IconButton from './app/components/IconButton';
+import { Title } from 'react-native-paper';
 
 
 
@@ -60,6 +62,11 @@ export default function App() {
     // <RiderHomeScreen/>
     // <SummaryScreen/>
     //  <TransferScreen/>
+    <IconButton
+      title={'Title'}
+      subTitle={'Sub-Title'}
+      image={require('./app/assets/delivery-man.png')}
+    />
 
     // <DetailScreen/>
 
@@ -78,11 +85,13 @@ export default function App() {
     //   </NavigationContainer>
     // </StoreProvider>
 
-    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
-      <NavigationContainer>
-        <AuthNavigator />
-      </NavigationContainer>
-    </StoreProvider>
+
+
+    // <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
+    //   <NavigationContainer>
+    //     <AuthNavigator />
+    //   </NavigationContainer>
+    // </StoreProvider>
 
 
     // <AppPasswordInput
