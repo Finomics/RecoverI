@@ -4,10 +4,10 @@ import { View, StyleSheet, Text, Dimensions, TouchableOpacity, Image } from 'rea
 
 const {width, height} = Dimensions.get('screen');
 
-function IconButton({title, subTitle, image}) {
+function IconButton({title, subTitle, image, onPress}) {
     
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.buttonContainer}>
                 <View style={styles.titleButton}>
                     <Text style={styles.title}>
@@ -50,10 +50,14 @@ const styles = StyleSheet.create({
     imageContainer:{
         backgroundColor: 'transparent',
         width: '40%',
-        height: height*0.15,
+        height: height*0.16,
+        // width: 20,
+        // height: 20,
     },
     tinyIcon:{
         width: '90%',
+        height: '90%',
+        alignSelf: 'flex-end',
     },
     titleButton:{
         width: '55%',

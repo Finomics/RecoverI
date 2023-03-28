@@ -4,7 +4,7 @@ import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'rea
 
 const {width, height} = Dimensions.get('screen');
 
-function Header(props) {
+function Header({header}) {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.backContainer}>
@@ -21,7 +21,7 @@ function Header(props) {
                     />
                 </View>
                 <Text style={styles.header}>
-                    Cashier
+                    {header}
                 </Text>
             </View>
         </View>

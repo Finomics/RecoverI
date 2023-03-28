@@ -6,7 +6,12 @@ import Constants from 'expo-constants'
 
 function Screen({children,style}) {
     return (
+        // <SafeAreaView style={[styles.screen, style]}>
+        //     {children}
+        // </SafeAreaView>
+
         <SafeAreaView style={[styles.screen, style]}>
+            <StatusBar backgroundColor="#578B9D"/>
             {children}
         </SafeAreaView>
     );
@@ -14,11 +19,8 @@ function Screen({children,style}) {
 
 const styles = StyleSheet.create({
     screen:{
-        // paddingTop: Constants.statusBarHeight,
-        paddingTop: StatusBar.currentHeight,
-        // marginTop:StatusBar.currentHeight,
+        backgroundColor: '#D6DCE5',
         flex: 1,
-        // backgroundColor: 'yellow',
     },
 })
 
