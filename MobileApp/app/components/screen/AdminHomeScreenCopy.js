@@ -9,26 +9,26 @@ import AppText from '../AppText';
 
 const {width, height} = Dimensions.get('screen');
 
-function CashierHomeScreenCopy(props) {
+function AdminHomeScreenCopy(props) {
 
 
-    const handleAssignRider=()=>{
-        console.log('Assign Rider')
+    const handleAddMember=()=>{
+        console.log('handleAddMember')
     }
-    const handleAddClient=()=>{
-        console.log('Add Client')
+    const handleClientList=()=>{
+        console.log('handleClientList')
     }
-    const handleDeposit=()=>{
-        console.log('Deposit')
+    const handleReporting=()=>{
+        console.log('handleReporting')
     }
-    const handleViewPayments=()=>{
-        console.log('View Payments')
+    const handleTransaction=()=>{
+        console.log('handleTransaction')
     }
 
     return (
         <Screen>
             <Header
-                header={'Cashier'}
+                header={'Admin'}
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>
@@ -44,28 +44,28 @@ function CashierHomeScreenCopy(props) {
             </View>
             <ScrollView>
                 <IconButton
-                    title={'Assign Rider'}
+                    title={'Add Member'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/delivery-man.png')}
-                    onPress={handleAssignRider}
+                    image={require('../../assets/add-member.png')}
+                    onPress={handleAddMember}
                 />
                 <IconButton
-                    title={'Add Client'}
+                    title={'Client List'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/add-user.png')}
-                    onPress={handleAddClient}
+                    image={require('../../assets/clients-list.png')}
+                    onPress={handleClientList}
                 />
                 <IconButton
-                    title={'Deposit'}
+                    title={'Reporting'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/deposit.png')}
-                    onPress={handleDeposit}
+                    image={require('../../assets/document.png')}
+                    onPress={handleReporting}
                 />
                 <IconButton
-                    title={'View Payments'}
+                    title={'Transactions'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/credit-card.png')}
-                    onPress={handleViewPayments}
+                    image={require('../../assets/transaction.png')}
+                    onPress={handleTransaction}
                 />
             </ScrollView>
         </Screen>
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     container:{},
 });
 
-export default CashierHomeScreenCopy;
+export default AdminHomeScreenCopy;

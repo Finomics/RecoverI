@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
         // height: 40,
     },
     title:{
-        width:'60%',
+        width:'50%',
         height: '100%',
+        // backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',

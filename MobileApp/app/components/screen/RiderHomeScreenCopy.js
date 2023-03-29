@@ -1,34 +1,34 @@
 import React from 'react';
 
-import { View, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, ScrollView, Text } from 'react-native';
+import AppText from '../AppText';
 
 import Header from '../Header';
 import IconButton from '../IconButton';
 import Screen from '../Screen';
-import AppText from '../AppText';
 
 const {width, height} = Dimensions.get('screen');
 
-function CashierHomeScreenCopy(props) {
+function RiderHomeScreenCopy(props) {
 
 
-    const handleAssignRider=()=>{
-        console.log('Assign Rider')
+    const handleClientList=()=>{
+        console.log('handleClientList')
     }
-    const handleAddClient=()=>{
-        console.log('Add Client')
+    const handlePaymentCollection=()=>{
+        console.log('handlePaymentCollection')
     }
-    const handleDeposit=()=>{
-        console.log('Deposit')
+    const handleVerifyPayments=()=>{
+        console.log('handleVerifyPayments')
     }
-    const handleViewPayments=()=>{
-        console.log('View Payments')
+    const handleTransfer=()=>{
+        console.log('handleTransfer')
     }
 
     return (
         <Screen>
             <Header
-                header={'Cashier'}
+                header={'Rider'}
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>
@@ -44,28 +44,28 @@ function CashierHomeScreenCopy(props) {
             </View>
             <ScrollView>
                 <IconButton
-                    title={'Assign Rider'}
+                    title={'Client List'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/delivery-man.png')}
-                    onPress={handleAssignRider}
+                    image={require('../../assets/client-list.png')}
+                    onPress={handleClientList}
                 />
                 <IconButton
-                    title={'Add Client'}
+                    title={'Payment Collection'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/add-user.png')}
-                    onPress={handleAddClient}
+                    image={require('../../assets/payment-collection.png')}
+                    onPress={handlePaymentCollection}
                 />
                 <IconButton
-                    title={'Deposit'}
+                    title={'Verify Payments'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/deposit.png')}
-                    onPress={handleDeposit}
+                    image={require('../../assets/verify-payments.png')}
+                    onPress={handleVerifyPayments}
                 />
                 <IconButton
-                    title={'View Payments'}
+                    title={'Transfer'}
                     subTitle={'Sub-Title'}
-                    image={require('../../assets/credit-card.png')}
-                    onPress={handleViewPayments}
+                    image={require('../../assets/transfer.png')}
+                    onPress={handleTransfer}
                 />
             </ScrollView>
         </Screen>
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     container:{},
 });
 
-export default CashierHomeScreenCopy;
+export default RiderHomeScreenCopy;

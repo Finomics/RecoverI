@@ -31,6 +31,8 @@ import IconButton from './app/components/IconButton';
 import { Title } from 'react-native-paper';
 import Header from './app/components/Header';
 import CashierHomeScreenCopy from './app/components/screen/CashierHomeScreenCopy';
+import AdminHomeScreenCopy from './app/components/screen/AdminHomeScreenCopy';
+import RiderHomeScreenCopy from './app/components/screen/RiderHomeScreenCopy';
 
 
 
@@ -72,6 +74,8 @@ export default function App() {
 
     // <Header/>
     <CashierHomeScreenCopy/>
+    // <AdminHomeScreenCopy/>
+    // <RiderHomeScreenCopy/>
 
     // <DetailScreen/>
 

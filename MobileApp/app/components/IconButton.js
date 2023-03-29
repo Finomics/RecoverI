@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     title:{
         backgroundColor: 'white',
-        width: '80%',
+        width: '90%',
         padding: 5,
         color: '#2E6C81',
         borderRadius: 15,
