@@ -21,12 +21,16 @@ import RiderHomeScreen from "../screen/RiderHomeScreen";
 import WelcomeScreen from "../screen/WelcomeScreen";
 import TransferScreen from "../screen/TransferScreen";
 import UnverifierPaymentScreen from "../screen/UnverifierPaymentScreen";
+import CashierHomeScreenCopy from '../screen/CashierHomeScreenCopy';
+import AdminHomeScreenCopy from '../screen/AdminHomeScreenCopy';
+import RiderHomeScreenCopy from '../screen/RiderHomeScreenCopy';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Welcome' component={WelcomeScreen} />
+        <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy} />
         <Stack.Screen name='Change Password' component={ChangePassword} />
         <Stack.Screen name='OTP Screen' component={OTPScreen} />
         <Stack.Screen name='Add Member' component={AddMemberScreen} />
@@ -40,7 +44,6 @@ const AuthNavigator = () => (
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
-        <Stack.Screen name='Rider Home' component={RiderHomeScreen} />
         <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} />
         <Stack.Screen name='Transfer' component={TransferScreen} />
         <Stack.Screen name='Summary' component={SummaryScreen} />

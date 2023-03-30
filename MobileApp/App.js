@@ -73,7 +73,7 @@ export default function App() {
     // />
 
     // <Header/>
-    <CashierHomeScreenCopy/>
+  //  <CashierHomeScreenCopy/>
     // <AdminHomeScreenCopy/>
     // <RiderHomeScreenCopy/>
 
@@ -96,11 +96,11 @@ export default function App() {
 
 
 
-    // <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
 
     // <AppPasswordInput
