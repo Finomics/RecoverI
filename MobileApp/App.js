@@ -81,7 +81,7 @@ export default function App() {
     // <RiderHomeScreenCopy/>
     // <WelcomeScreenCopy/>
     // <RegisterScreenCopy/>
-    <LoginScreenCopy/>
+   // <LoginScreenCopy/>
     // <DetailScreen/>
 
 
@@ -101,11 +101,11 @@ export default function App() {
 
 
 
-    // <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
 
     // <AppPasswordInput
