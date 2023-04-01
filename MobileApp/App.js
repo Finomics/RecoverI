@@ -33,6 +33,9 @@ import Header from './app/components/Header';
 import CashierHomeScreenCopy from './app/components/screen/CashierHomeScreenCopy';
 import AdminHomeScreenCopy from './app/components/screen/AdminHomeScreenCopy';
 import RiderHomeScreenCopy from './app/components/screen/RiderHomeScreenCopy';
+import WelcomeScreenCopy from './app/components/screen/WelcomeScreenCopy';
+import RegisterScreenCopy from './app/components/screen/RegisterScreenCopy';
+import LoginScreenCopy from './app/components/screen/LoginScreenCopy';
 
 
 
@@ -73,10 +76,12 @@ export default function App() {
     // />
 
     // <Header/>
-    <CashierHomeScreenCopy/>
+    // <CashierHomeScreenCopy/>
     // <AdminHomeScreenCopy/>
     // <RiderHomeScreenCopy/>
-
+    // <WelcomeScreenCopy/>
+    // <RegisterScreenCopy/>
+    <LoginScreenCopy/>
     // <DetailScreen/>
 
 
