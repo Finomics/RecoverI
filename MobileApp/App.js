@@ -36,6 +36,7 @@ import RiderHomeScreenCopy from './app/components/screen/RiderHomeScreenCopy';
 import WelcomeScreenCopy from './app/components/screen/WelcomeScreenCopy';
 import RegisterScreenCopy from './app/components/screen/RegisterScreenCopy';
 import LoginScreenCopy from './app/components/screen/LoginScreenCopy';
+import ClientFormScreenCopy from './app/components/screen/ClientFormScreenCopy';
 
 
 
@@ -81,7 +82,8 @@ export default function App() {
     // <RiderHomeScreenCopy/>
     // <WelcomeScreenCopy/>
     // <RegisterScreenCopy/>
-    <LoginScreenCopy/>
+    // <LoginScreenCopy/>
+    <ClientFormScreenCopy/>
     // <DetailScreen/>
 
 
