@@ -105,6 +105,22 @@ function RegisterScreenCopy({ navigation }) {
                                 placeholder='Name'
                                 textContentType='name'
                                 />
+                                 <AppFormField
+                                autoCapitalize='words'
+                                autoCorrect={false}
+                                icon='card-account-details-outline'
+                                name='name'
+                                placeholder='Company Name'
+                                textContentType='companyName'
+                                />
+                                 <AppFormField
+                                autoCapitalize='words'
+                                autoCorrect={false}
+                                icon='card-account-details-outline'
+                                name='name'
+                                placeholder='Company Short Code '
+                                textContentType='companyCode'
+                                />
                             <AppFormField
                                 autoCapitalize='none'
                                 autoCorrect={false}
