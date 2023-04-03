@@ -71,10 +71,10 @@ function RegisterScreenCopy({ navigation }) {
             <Header
                 header={'Register'}
             />
-            <View style={{width: width, marginBottom:10, justifyContent: 'center'}}>
+            <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
                 <Image
-                    style={{width: width, height: height*0.25,}}
-                    source={require('../../assets/banner_2.png')}
+                    style={styles.logo}
+                    source={require('../../assets/logo.png')}
                 />
             </View>
             <ScrollView>
@@ -175,6 +175,13 @@ const styles = StyleSheet.create({
     logoName: {
         width: '100%',
         height: 120,
+    },
+    logo: {
+        width: '100%',
+        height: 120,
+        alignSelf: 'center',
+        marginTop: 30,
+        marginBottom: 20,
     },
 })
 export default RegisterScreenCopy; 

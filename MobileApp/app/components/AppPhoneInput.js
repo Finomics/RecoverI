@@ -26,7 +26,8 @@ function AppPhoneInput({placeholder,  ...otherProps}) {
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor: defaultStyles.colors.light,
+    // backgroundColor: defaultStyles.colors.light,
+    backgroundColor: '#E6E6E6',
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,
