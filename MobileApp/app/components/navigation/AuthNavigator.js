@@ -27,22 +27,22 @@ import RiderHomeScreenCopy from '../screen/RiderHomeScreenCopy';
 import WelcomeScreenCopy from '../screen/WelcomeScreenCopy';
 import RegisterScreenCopy from '../screen/RegisterScreenCopy';
 import LoginScreenCopy from '../screen/LoginScreenCopy';
-
+import ClientFormScreenCopy from '../screen/ClientFormScreenCopy';
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
     <Stack.Navigator>
-        <Stack.Screen name='Login' component={LoginScreenCopy} />
-        <Stack.Screen name='Welcome' component={ WelcomeScreenCopy} />
-        <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy} />
-        <Stack.Screen name='Change Password' component={ChangePassword} />
-        <Stack.Screen name='OTP Screen' component={OTPScreen} />
-        <Stack.Screen name='Add Member' component={AddMemberScreen} />
-        <Stack.Screen name='Admin Home' component={AdminHomeScreen}/>
-        <Stack.Screen name='Cashier Home' component={CashierHomeScreen} />
-        <Stack.Screen name='Client Form' component={ClientFormScreen} />
-        <Stack.Screen name='Clients Listing' component={ClientScreen} />
+        <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
+        <Stack.Screen name='Change Password' component={ChangePassword}  options={{headerShown: false}}/>
+        <Stack.Screen name='OTP Screen' component={OTPScreen}  options={{headerShown: false}} />
+        <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
+        <Stack.Screen name='Admin Home' component={AdminHomeScreenCopy}  options={{headerShown: false}}/>
+        <Stack.Screen name='Cashier Home' component={CashierHomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Client Form' component={ClientFormScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Clients Listing' component={ClientScreen}  options={{headerShown: false}} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} />
         <Stack.Screen name='Collections' component={PaymentScreen} />
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />

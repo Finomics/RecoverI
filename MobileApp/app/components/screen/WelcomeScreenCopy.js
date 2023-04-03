@@ -7,7 +7,7 @@ import AppButtonNew from '../AppButtonNew';
 
 const {width, height} = Dimensions.get('screen');
 
-function WelcomeScreenCopy(props) {
+function WelcomeScreenCopy({navigation}) {
     return (
         <Screen>
             <Header
@@ -30,11 +30,13 @@ function WelcomeScreenCopy(props) {
                         </View>
                         <AppButtonNew
                             title={'Login'}
+                            onPress={()=> navigation.navigate('Login')}
                             width='90%'
                             color='#B4C6D1'
                             />
                         <AppButtonNew
                             title={'Register'}
+                            onPress={()=> navigation.navigate('Register')}
                             width='90%'
                             color='#FFFFFF'
                             />

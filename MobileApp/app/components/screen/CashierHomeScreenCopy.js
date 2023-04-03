@@ -9,14 +9,15 @@ import AppText from '../AppText';
 
 const {width, height} = Dimensions.get('screen');
 
-function CashierHomeScreenCopy(props) {
+function CashierHomeScreenCopy({navigation}) {
 
 
     const handleAssignRider=()=>{
         console.log('Assign Rider')
     }
     const handleAddClient=()=>{
-        console.log('Add Client')
+        console.log('Add Client');
+        navigation.navigate('Client Form');
     }
     const handleDeposit=()=>{
         console.log('Deposit')

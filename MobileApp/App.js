@@ -83,7 +83,7 @@ export default function App() {
     // <WelcomeScreenCopy/>
     // <RegisterScreenCopy/>
     // <LoginScreenCopy/>
-    <ClientFormScreenCopy/>
+   // <ClientFormScreenCopy/>
     // <DetailScreen/>
 
 
@@ -103,11 +103,11 @@ export default function App() {
 
 
 
-    // <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
-    //   <NavigationContainer>
-    //     <AuthNavigator />
-    //   </NavigationContainer>
-    // </StoreProvider>
+    <StoreProvider value={{ Role, setRole, ClientId, setClientId }}>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    </StoreProvider>
 
 
     // <AppPasswordInput
