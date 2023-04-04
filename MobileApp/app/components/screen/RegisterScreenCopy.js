@@ -17,6 +17,8 @@ import Header from '../Header';
 const {width, height} = Dimensions.get('screen');
 const validationSchema = Yup.object().shape({
     name: Yup.string().label("Name"),
+    cName: Yup.string().label("CName"),
+    sCode: Yup.string().label("SCode"),
     email: Yup.string().email().label("Email"),
     password: Yup.string().label("Password"),
 });
@@ -32,10 +34,10 @@ function RegisterScreenCopy({ navigation }) {
     const handlePress = (values) => {
 
         setLoad(previousState => !previousState)
-        // console.log(values, "form");
+         console.log(values, "registration form");
         axios({
             method: "post",
-            url: Url+"/auth/employe",
+            url: Url+"/auth/employe_",
             data: {
                 name: values.name,
                 email: values.email,
@@ -109,17 +111,17 @@ function RegisterScreenCopy({ navigation }) {
                                 autoCapitalize='words'
                                 autoCorrect={false}
                                 icon='card-account-details-outline'
-                                name='name'
+                                name='cName'
                                 placeholder='Company Name'
-                                textContentType='companyName'
+                                textContentType='name'
                                 />
                                  <AppFormField
                                 autoCapitalize='words'
                                 autoCorrect={false}
                                 icon='card-account-details-outline'
-                                name='name'
+                                name='sCode'
                                 placeholder='Company Short Code '
-                                textContentType='companyCode'
+                                textContentType='name'
                                 />
                             <AppFormField
                                 autoCapitalize='none'
