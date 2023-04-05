@@ -9,20 +9,24 @@ import AppText from '../AppText';
 
 const {width, height} = Dimensions.get('screen');
 
-function AdminHomeScreenCopy(props) {
+function AdminHomeScreenCopy({navigation}) {
 
 
     const handleAddMember=()=>{
-        console.log('handleAddMember')
+        console.log('handleAddMember');
+        navigation.navigate("Add Member")
     }
     const handleClientList=()=>{
         console.log('handleClientList')
+        navigation.navigate("Clients Listing");
     }
     const handleReporting=()=>{
-        console.log('handleReporting')
+        console.log('handleReporting');
+        navigation.navigate("Summary");
     }
     const handleTransaction=()=>{
-        console.log('handleTransaction')
+        console.log('handleTransaction');
+        navigation.navigate("Transactions");
     }
 
     return (
