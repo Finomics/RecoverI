@@ -34,6 +34,7 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
         <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Change Password' component={ChangePassword}  options={{headerShown: false}}/>
@@ -47,7 +48,6 @@ const AuthNavigator = () => (
         <Stack.Screen name='Collections' component={PaymentScreen} />
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />
         <Stack.Screen name='Register' component={RegisterScreenCopy} />
-        <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
         <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} />
         <Stack.Screen name='Transfer' component={TransferScreen} />
         <Stack.Screen name='Summary' component={SummaryScreen} />

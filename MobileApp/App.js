@@ -43,7 +43,7 @@ import ClientFormScreenCopy from './app/components/screen/ClientFormScreenCopy';
 export default function App() {
   // added dummy user for testing
   const [Role, setRole] = useState({
-    "Role": "Rider",
+    "Role": "Caashier",
     "__v": 0,
     "_id": "6332c6a43aa907a561297c96",
     "createdBy": "6332c3f23aa907a561297c8f",

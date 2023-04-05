@@ -9,20 +9,24 @@ import Screen from '../Screen';
 
 const {width, height} = Dimensions.get('screen');
 
-function RiderHomeScreenCopy(props) {
+function RiderHomeScreenCopy({navigation}) {
 
 
     const handleClientList=()=>{
-        console.log('handleClientList')
+        console.log('handleClientList');
+        navigation.navigate('Clients Listing');
     }
     const handlePaymentCollection=()=>{
-        console.log('handlePaymentCollection')
+        console.log('handlePaymentCollection');
+        navigation.navigate('Collections')
     }
     const handleVerifyPayments=()=>{
-        console.log('handleVerifyPayments')
+        console.log('handleVerifyPayments');;
+        navigation.navigate('All Payments');
     }
     const handleTransfer=()=>{
-        console.log('handleTransfer')
+        console.log('handleTransfer');
+        navigation.navigate('Transfer');
     }
 
     return (

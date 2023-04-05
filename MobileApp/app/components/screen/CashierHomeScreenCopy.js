@@ -13,17 +13,20 @@ function CashierHomeScreenCopy({navigation}) {
 
 
     const handleAssignRider=()=>{
-        console.log('Assign Rider')
+        console.log('Assign Rider');
+        navigation.navigate('Assign Rider');
     }
     const handleAddClient=()=>{
         console.log('Add Client');
         navigation.navigate('Client Form');
     }
     const handleDeposit=()=>{
-        console.log('Deposit')
+        console.log('Deposit');
+        navigation.navigate('Transfer')
     }
     const handleViewPayments=()=>{
-        console.log('View Payments')
+        console.log('View Payments');
+        navigation.navigate('All Payments');
     }
 
     return (
