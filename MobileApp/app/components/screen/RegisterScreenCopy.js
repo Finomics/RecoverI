@@ -37,7 +37,7 @@ function RegisterScreenCopy({ navigation }) {
          console.log(values, "registration form");
         axios({
             method: "post",
-            url: Url+"/auth/employe_",
+            url: Url+"/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,
@@ -92,7 +92,7 @@ function RegisterScreenCopy({ navigation }) {
 
 
                         <AppForm
-                            initialValues={{ email: '', password: '', name: '' }}
+                            initialValues={{ email: '', password: '', name: '',cName:'',sCode:'' }}
                             onSubmit={(values, { resetForm }) => {
                                 handlePress(values)
                                 // , resetForm({ values: initialValues });
