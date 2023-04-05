@@ -42,6 +42,8 @@ function RegisterScreenCopy({ navigation }) {
                 name: values.name,
                 email: values.email,
                 password: values.password,
+                companyName: values.cName,
+                shortCode: values.sCode,
                 Role: "Admin",
             }
         }).then((res) => {

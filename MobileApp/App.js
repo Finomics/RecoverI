@@ -42,7 +42,7 @@ import ClientFormScreenCopy from './app/components/screen/ClientFormScreenCopy';
 
 export default function App() {
   // added dummy user for testing
-  const [Role, setRole] = useState( {
+  const [Role, setRole] = useState({
     "Role": "Rider",
     "__v": 0,
     "_id": "6332c6a43aa907a561297c96",
@@ -83,7 +83,7 @@ export default function App() {
     // <WelcomeScreenCopy/>
     // <RegisterScreenCopy/>
     // <LoginScreenCopy/>
-   // <ClientFormScreenCopy/>
+    // <ClientFormScreenCopy/>
     // <DetailScreen/>
 
 

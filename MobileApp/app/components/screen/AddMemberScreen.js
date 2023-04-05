@@ -31,7 +31,7 @@ function AddMemberScreen({ navigation }) {
     ]);
     const createdByAdminId = useContext(StoreContext)
 
-    // console.log(createdByAdminId.Role._id, "createdBy");
+    console.log(createdByAdminId.Role.companyName, "createdBy");
 
     const handlePress = ({ values, value }) => {
 
@@ -45,6 +45,8 @@ function AddMemberScreen({ navigation }) {
                 password: values.password,
                 Role: value,
                 createdBy: createdByAdminId.Role._id,
+                companyName: createdByAdminId.Role.companyName,
+                shortCode: createdByAdminId.Role.shortCode,
                 name: values.userName
             },
         })
