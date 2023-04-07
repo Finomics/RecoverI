@@ -13,4 +13,5 @@ export default {
     secondary: '#4ecdc4',
     white: '#fff',
     teal: '#367588',
+    buttonColor: '#578B9D',
 };

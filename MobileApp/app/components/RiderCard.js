@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, View, StyleSheet, FlatList, TouchableOpacity, Modal, Text } from 'react-native';
+import { Button, View, StyleSheet, FlatList, TouchableOpacity, Modal, Image, ScrollView } from 'react-native';
 
 import RiderNameCard from '../components/RiderNameCard';
 
@@ -10,6 +10,9 @@ import Icon from './Icon';
 import StoreContext from './screen/GlobalState';
 import { Url } from './screen/Core';
 import Screen from './Screen';
+import Header from './Header';
+import AppTextInput from './AppTextInput';
+import AppButton from './AppButton';
 
 
 const tempRiderName = [
@@ -27,6 +30,8 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     const [Rider, setallRider] = useState([])
     const Globaledata = useContext(StoreContext);
     const [realTime, setRealTime] = useState(true);
+
+    const [text, setText] = React.useState();
 
     console.log(Globaledata.Role, "Rider Card Globaledata");
     // console.log(Globaledata.Role._id, "Rider Card Globaledata");
@@ -89,6 +94,12 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
         })
     }
 
+
+    const handleHello=()=>{
+        console.log('hello')
+        console.log(text)
+    }
+
     return (
         <>
         <Screen>
@@ -111,8 +122,17 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                 transparent={false}
                 visible={modalVisible}
             >
+
+                <Header
+                    header={'List of Riders'}
+                    />
+                <View style={styles.logoContainer}>
+                    <Image
+                        style={styles.logo}
+                        source={require('../assets/logo.png')}
+                        />
+                </View>
                 <View style={styles.buttonStyle}>
-                    <AppText style={{ textAlign: 'center' }}> List of Riders </AppText>
                     <Icon
                         name='backburger'
                         size={50}
@@ -120,22 +140,35 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                         iconColor={colors.royalBlue}
                         onPress={() => setModalVisible(!modalVisible)}
                         title='Back'
-                    />
+                        />
                     {/* <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} /> */}
                 </View>
-
 
                 <FlatList
                     data={Rider}
                     // keyExtractor={tempRiderName => tempRiderName.value.toString()}
                     renderItem={({ item }) =>
-                        <RiderNameCard
-                            name={item.employeeName}
-                            // id={item._id}
-                            onPress={() => { handleRider(item) }}
-                        />
-                    }
+                    <RiderNameCard
+                    name={item.employeeName}
+                    // id={item._id}
+                    onPress={() => { handleRider(item) }}
+                    />
+                }
                 />
+
+               <View style={{marginHorizontal: 10, borderTopWidth: 3,}}>
+                    <AppTextInput
+                        icon={'circle'}
+                        placeholder={'Dummy Text'}
+                        onChangeText={setText}
+                        value={text}
+                    />
+                    <AppButton
+                        title={'hello'}
+                        color='buttonColor'
+                        onPress={handleHello}
+                    />
+               </View>
 
             </Modal>
 
@@ -169,13 +202,13 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
-        backgroundColor: colors.lightBlueShade,
+        backgroundColor: '#B4C6D1',
         marginBottom: 15,
         marginHorizontal: 10,
         overflow: 'hidden',
         paddingVertical: 10,
         paddingLeft: 10,
-        borderColor: colors.dark,
+        borderColor: '#B4C6D1',
         borderWidth: 2,
     },
     subTitle: {
@@ -189,7 +222,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     buttonStyle:{
-        paddingVertical: 15,
+        // paddingVertical: 15,
+    },
+    logo: {
+        height: 120,
+        width: 300,
+    },
+    logoContainer: {
+        alignItems: 'center',
+        width: '100%',
+        marginVertical: 10,
+        // backgroundColor: colors.
     },
 })
 

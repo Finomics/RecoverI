@@ -10,6 +10,7 @@ import colors from '../colors'
 import axios from "axios";
 import TopButtons from './TopButtons';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 let temp = {};
@@ -63,7 +64,9 @@ function RiderAssignScreen({ props, navigation }) {
 
     return (
         <Screen>
-            <TopButtons header={''} navigation={navigation} />
+            <Header
+                header={'Assign Rider'}
+            />
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}

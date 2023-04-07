@@ -27,13 +27,13 @@ function RiderNameCard({name, id, onPress }) {
 const styles = StyleSheet.create({
     card:{
         borderRadius: 15,
-        backgroundColor: colors.lightBlueShade,
+        backgroundColor: '#E6E6E6',
         marginBottom: 15,
         marginHorizontal: 10,
         overflow: 'hidden',
-        paddingVertical: 10,
+        paddingVertical: 15,
         paddingLeft: 10,
-        borderColor: colors.dark,
+        borderColor: '#E6E6E6',
         borderWidth: 2,
     },
     subTitle:{

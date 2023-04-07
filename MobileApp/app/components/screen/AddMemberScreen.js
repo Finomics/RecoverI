@@ -13,6 +13,7 @@ import axios from "axios";
 import TopButtons from './TopButtons';
 import StoreContext from './GlobalState';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 const validationSchema = Yup.object().shape({
@@ -67,8 +68,9 @@ function AddMemberScreen({ navigation }) {
 
     return (
         <Screen style={styles.backGround}>
-
-            <TopButtons header={''} navigation={navigation} />
+            <Header
+                header={'Add Member'}
+            />
             <View style={styles.logoContainer}>
                 <Image
                     style={{ width: 330, height: 100 }}

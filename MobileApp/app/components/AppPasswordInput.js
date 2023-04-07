@@ -27,7 +27,7 @@ function AppPasswordInput({ icon, ...otherProps }) {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: colors.lightGrey,
+        backgroundColor: '#E6E6E6',
         borderRadius: 20,
         flexDirection: 'row',
         width: '100%',

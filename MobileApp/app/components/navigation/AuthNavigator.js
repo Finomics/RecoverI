@@ -34,7 +34,7 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
-        <Stack.Screen name='Assign Rider' component={RiderAssignScreen} />
+        <Stack.Screen name='Assign Rider' component={RiderAssignScreen} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Change Password' component={ChangePassword}  options={{headerShown: false}}/>

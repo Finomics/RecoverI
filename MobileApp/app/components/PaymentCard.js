@@ -28,22 +28,22 @@ function PaymentCard({title, subTitle, subSubTitle, onPress,code }) {
 const styles = StyleSheet.create({
     card:{
         borderRadius: 15,
-        backgroundColor: colors.lightBlueShade,
+        backgroundColor: '#B4C6D1',
         marginBottom: 15,
         marginHorizontal: 10,
         overflow: 'hidden',
         paddingVertical: 10,
         paddingLeft: 10,
-        borderColor: colors.dark,
+        borderColor: '#B4C6D1',
         borderWidth: 2,
     },
     subTitle:{
-        color: colors.secondary,
+        color: 'black',
         // fontWeight: 'bold',
         paddingLeft: 3
     },
     title:{
-        color: colors.primary,
+        color: 'black',
         marginBottom: 7,
         fontWeight: 'bold',
     },

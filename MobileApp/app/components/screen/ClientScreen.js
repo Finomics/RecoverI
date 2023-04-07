@@ -9,6 +9,7 @@ import StoreContext from './GlobalState';
 import axios from 'axios';
 import TopButtons from './TopButtons';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 function ClientScreen({ navigation }) {
@@ -122,16 +123,18 @@ function ClientScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={''} navigation={navigation} />
+      <Header
+        header={'Client Listing'}
+      />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
           source={require('../../assets/logo.png')}
         />
         <View style={styles.textContainer}>
-          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' onChangeText={(text) =>setfilterText(text.toString())} />
+          <TextInput style={{ fontWeight: 'bold', fontSize: 18, width: '100%' }} placeholder='Client Name' onChangeText={(text) =>setfilterText(text.toString())} />
         </View>
-        <Button title='Search'onPress={() =>handleSearch()} />
+        <Button title='Search' onPress={() =>handleSearch()} color={'#578B9D'}  />
       </View>
       {clients != null ?
         <FlatList
@@ -190,10 +193,11 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: '80%',
-    height: 50,
-    backgroundColor: colors.light,
+    // height: 50,
+    backgroundColor: 'white',
     borderRadius: 15,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
     marginBottom: 10,
   },
 })

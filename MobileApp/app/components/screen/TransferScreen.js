@@ -11,6 +11,7 @@ import StoreContext from './GlobalState';
 import axios from 'axios';
 import TopButtons from './TopButtons';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 function TransferScreen({ navigation }) {
@@ -182,16 +183,18 @@ function TransferScreen({ navigation }) {
 
   return (
     <Screen>
-      <TopButtons header={''} navigation={navigation} />
+      <Header
+        header={'Transfer'}
+      />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
           source={require('../../assets/logo.png')}
         />
         <View style={styles.textContainer}>
-          <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' />
+          <TextInput style={{ fontWeight: 'bold', fontSize: 18, width: '100%' }} placeholder='Client Name' />
         </View>
-        <Button title='Search' />
+        <Button title='Search' color={'#578B9D'}/>
       </View>
       {payments != null ?
         <FlatList
