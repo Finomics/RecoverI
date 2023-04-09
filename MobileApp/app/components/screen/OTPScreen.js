@@ -8,6 +8,7 @@ import TopButtons from './TopButtons';
 import axios from 'axios';
 import StoreContext from './GlobalState';
 import { Url } from './Core';
+import Header from '../Header';
 
 const {width, height} = Dimensions.get('window')
 
@@ -182,7 +183,15 @@ const data= route.params;
 
     return (
         <Screen>
-            <TopButtons header={'OTP Screen'} navigation={navigation} />
+            <Header
+                header={'OTP'}
+            />
+            <View style={styles.logoContainer}>
+                <Image
+                style={styles.logo}
+                source={require('../../assets/logo.png')}
+                />
+            </View>
             <TouchableOpacity onPress={handleImageModal}>
                 <View style={styles.descriptionContainer}>
                     <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
@@ -369,6 +378,16 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center'
+    },
+    logo: {
+        height: 120,
+        width: '90%',
+    },
+    logoContainer: {
+        alignItems: 'center',
+        width: '100%',
+        marginVertical: 10,
+        // backgroundColor: colors.
     },
 })
 export default OTPScreen;

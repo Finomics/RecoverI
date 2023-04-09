@@ -23,6 +23,7 @@ import axios from "axios";
 import StoreContext from "./GlobalState";
 import TopButtons from "./TopButtons";
 import { Url } from "./Core";
+import Header from "../Header";
 
 function RecoveryScreen({ navigation, route }) {
   const [isNew, setIsNew] = useState(false);
@@ -125,7 +126,9 @@ function RecoveryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.backGround}>
-      <TopButtons header={""} navigation={navigation} />
+      <Header
+        header={'Recovery'}
+      />
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}
@@ -159,17 +162,20 @@ function RecoveryScreen({ navigation, route }) {
             setLoad={setLoad}
             onChangeImage={(uri) => setImageUri(uri)}
           />
-          {load ? (
-            <ActivityIndicator size="large" color="#0000ff" />
-          ) : (
-            <AppButton
-              title="Continue"
-              color="royalBlue"
-              onPress={() => handleContinue()}
-            />
-          )}
+
+          <View style={{width: '80%'}}>
+              {load ? (
+                <ActivityIndicator size="large" color="#0000ff" />
+              ) : (
+                <AppButton
+                  title="Continue"
+                  color="buttonColor2"
+                  onPress={() => handleContinue()}
+                />
+              )}
+          </View>
         </View>
-        <View style={styles.iconBar}>
+        {/* <View style={styles.iconBar}>
           <Icon
             name="home"
             backgroundColor={colors.backGround}
@@ -186,7 +192,7 @@ function RecoveryScreen({ navigation, route }) {
             backgroundColor={colors.backGround}
             iconColor={colors.royalBlue}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </Screen>
   );
@@ -239,7 +245,7 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     fontSize: 20,
     fontStyle: "italic",
-    color: colors.primary,
+    color: colors.buttonColor2,
   },
   text: {
     fontWeight: "900",

@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '80%',
     height: 50,
-    backgroundColor: colors.light,
+    backgroundColor: 'white',
     borderRadius: 15,
     padding: 10,
     marginBottom: 10,

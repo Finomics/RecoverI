@@ -6,6 +6,7 @@ import PaymentList from '../PaymentList';
 
 import AppText from '../AppText';
 import Screen from '../Screen';
+import Header from '../Header';
 import colors from '../colors';
 import axios from 'axios';
 import TopButtons from './TopButtons';
@@ -79,7 +80,15 @@ function SummaryScreen(props) {
 
     return (
         <Screen>
-            <TopButtons header={''} navigation={props.navigation} />
+            <Header
+                header={'Summary'}
+            />
+            <View style={styles.logoContainer}>
+                <Image
+                style={styles.logo}
+                source={require('../../assets/logo.png')}
+                />
+            </View>
             <View>
                 <AppText style={styles.title}>
                     Payment Record
@@ -112,8 +121,15 @@ function SummaryScreen(props) {
 }
 
 const styles = StyleSheet.create({
+    logo: {
+        height: 120,
+        width: '90%',
+    },
     logoContainer: {
+        alignItems: 'center',
         width: '100%',
+        marginVertical: 10,
+        // backgroundColor: colors.
     },
     header: {
         fontWeight: 'bold',

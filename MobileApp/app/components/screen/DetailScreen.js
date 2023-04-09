@@ -12,6 +12,7 @@ import Screen from '../Screen';
 import colors from '../colors';
 import TopButtons from './TopButtons';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 
@@ -59,17 +60,21 @@ function DetailScreen({ navigation }) {
   
     return (
     <Screen>
-        <TopButtons header={''} navigation={navigation}/>
-        <View>
-            {/* <AppText style={styles.title}> 
-                    Transactions
-            </AppText> */}
+        <Header
+            header={'Transactions'}
+        />
+        <View style={styles.logoContainer}>
+            <Image
+            style={styles.logo}
+            source={require('../../assets/logo.png')}
+            />
         </View>
-        <View style={{width: '100%'}}>
+
+        <View style={{width: '100%',}}>
             <ScrollView horizontal={true} >
                 <DataTable>
                     <DataTable.Header>
-                        <DataTable.Title style={{width: 80}}>
+                        <DataTable.Title style={{width: 80,}}>
                             <AppText style={styles.header}>Date</AppText>
                         </DataTable.Title>
                         <DataTable.Title style={{width: 130}}>
@@ -106,9 +111,15 @@ function DetailScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    logoContainer:{
+    logo: {
+        height: 120,
+        width: '90%',
+    },
+    logoContainer: {
+        alignItems: 'center',
         width: '100%',
-        // flex: 1,
+        marginVertical: 10,
+        // backgroundColor: colors.
     },
     header:{
         fontWeight: 'bold',
