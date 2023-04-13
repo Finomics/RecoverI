@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react'
+import StoreContext from './GlobalState';
 
 import { View, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
 
@@ -10,7 +11,9 @@ import AppText from '../AppText';
 const {width, height} = Dimensions.get('screen');
 
 function CashierHomeScreenCopy({navigation}) {
-
+    const contextData = useContext(StoreContext);
+    const [user,setUser]=useState(contextData.Role)
+    console.log("Context in Cashier",contextData.Role);
 
     const handleClientList=()=>{
         console.log('handleClientList');
@@ -36,12 +39,12 @@ function CashierHomeScreenCopy({navigation}) {
     return (
         <Screen>
             <Header
-                header={'Cashier'}
+                header={'Cashier Home'}
                 navigation={navigation}
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>
-                    Logged in as: Hammad
+                    Logged in as: {user.employeeName}
                 </AppText>
             </View>
             <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>
