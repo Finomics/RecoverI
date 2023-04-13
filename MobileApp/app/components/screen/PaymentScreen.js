@@ -9,6 +9,7 @@ import { getClients } from '../APIcalls/getRequests'
 import TopButtons from './TopButtons';
 import axios from 'axios';
 import { Url } from './Core';
+import Header from '../Header';
 
 
 function PaymentScreen({ navigation }) {
@@ -68,7 +69,10 @@ console.log(value);
 
   return (
     <Screen>
-      <TopButtons header={''} navigation={navigation} />
+      <Header
+        header={'Collections'}
+        navigation={navigation}
+      />
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
