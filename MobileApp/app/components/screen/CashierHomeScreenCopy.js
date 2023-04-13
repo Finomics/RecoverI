@@ -12,6 +12,10 @@ const {width, height} = Dimensions.get('screen');
 function CashierHomeScreenCopy({navigation}) {
 
 
+    const handleClientList=()=>{
+        console.log('handleClientList');
+        navigation.navigate('Clients Listing');
+    }
     const handleAssignRider=()=>{
         console.log('Assign Rider');
         navigation.navigate('Assign Rider');
@@ -50,27 +54,33 @@ function CashierHomeScreenCopy({navigation}) {
             <ScrollView>
                 <IconButton
                     title={'Assign Rider'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'Assign Rider to your clients'}
                     image={require('../../assets/delivery-man.png')}
                     onPress={handleAssignRider}
                 />
                 <IconButton
                     title={'Add Client'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'Add new Clients'}
                     image={require('../../assets/add-user.png')}
                     onPress={handleAddClient}
                 />
                 <IconButton
                     title={'Deposit'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'Deposit Payments'}
                     image={require('../../assets/deposit.png')}
                     onPress={handleDeposit}
                 />
                 <IconButton
                     title={'View Payments'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'view collected payments'}
                     image={require('../../assets/credit-card.png')}
                     onPress={handleViewPayments}
+                />
+                <IconButton
+                    title={'Client List'}
+                    subTitle={'Ciew Clients &  collect Payments'}
+                    image={require('../../assets/client-list.png')}
+                    onPress={handleClientList}
                 />
             </ScrollView>
         </Screen>

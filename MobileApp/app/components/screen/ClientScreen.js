@@ -27,8 +27,7 @@ function ClientScreen({ navigation }) {
   const [filterText, setfilterText] = useState();
   const GlobaleEmployee = useContext(StoreContext)
 
-  console.log(GlobaleEmployee.Role.employeeName, "Riderrrrrrr");
-  console.log(GlobaleEmployee.Role.createdBy, "Riderrrrrrr");
+ 
 
   useEffect(() => {
     let belongsTo = '';
@@ -82,8 +81,8 @@ function ClientScreen({ navigation }) {
 
   }
   const handlePress = (item) => {
+    navigation.navigate('Recovery Screen', item);
     if (GlobaleEmployee.Role.Role == 'Rider') {
-      navigation.navigate('Recovery Screen', item);
 
     }
     console.log("Client is pressed", item);
