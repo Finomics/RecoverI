@@ -45,13 +45,13 @@ const AuthNavigator = () => (
         <Stack.Screen name='Client Form' component={ClientFormScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Clients Listing' component={ClientScreen}  options={{headerShown: false}} />
         {/* <Stack.Screen name='HomeScreen' component={HomeScreen} /> */}
-        <Stack.Screen name='Collections' component={PaymentScreen} />
-        <Stack.Screen name='Recovery Screen' component={RecoveryScreen} />
+        <Stack.Screen name='Collections' component={PaymentScreen} options={{headerShown: false}} />
+        <Stack.Screen name='Recovery Screen' component={RecoveryScreen} options={{headerShown: false}}/>
         <Stack.Screen name='Register' component={RegisterScreenCopy} />
-        <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} />
-        <Stack.Screen name='Transfer' component={TransferScreen} />
-        <Stack.Screen name='Summary' component={SummaryScreen} />
-        <Stack.Screen name='Transactions' component={DetailScreen} />
+        <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} options={{headerShown: false}}/>
+        <Stack.Screen name='Transfer' component={TransferScreen} options={{headerShown: false}} />
+        <Stack.Screen name='Summary' component={SummaryScreen} options={{headerShown: false}}/>
+        <Stack.Screen name='Transactions' component={DetailScreen} options={{headerShown: false}} />
         {/* <Stack.Screen name='Change Password' component={ChangePassword}/> */}
     </Stack.Navigator>
 )
