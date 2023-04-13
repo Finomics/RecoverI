@@ -77,6 +77,7 @@ function LoginScreenCopy({ navigation }) {
         <Screen style={styles.container}>
             <Header
                 header={'Login'}
+                navigation={navigation}
             />
             <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
                 <Image

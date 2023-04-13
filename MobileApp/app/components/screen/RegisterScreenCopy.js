@@ -74,6 +74,7 @@ function RegisterScreenCopy({ navigation }) {
         <Screen style={styles.container}>
             <Header
                 header={'Register'}
+                navigation={navigation}
             />
             <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
                 <Image

@@ -4,10 +4,20 @@ import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'rea
 
 const {width, height} = Dimensions.get('screen');
 
-function Header({header}) {
+function Header({header,navigation}) {
+    const handleBack=async()=>{
+        console.log("in arowpress");
+        if (navigation.canGoBack()) {
+            navigation.goBack();
+          }
+
+    }
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.backContainer}>
+           
+            
+            <TouchableOpacity style={styles.backContainer}onPress={handleBack}>
+            
                 <Image
                     style={styles.tinyIcon}
                     source={require('../assets/left-arrow.png')}
