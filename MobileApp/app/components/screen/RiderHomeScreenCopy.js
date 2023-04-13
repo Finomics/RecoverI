@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react'
+import StoreContext from './GlobalState';
 
 import { View, StyleSheet, Image, Dimensions, ScrollView, Text } from 'react-native';
 import AppText from '../AppText';
@@ -10,7 +11,8 @@ import Screen from '../Screen';
 const {width, height} = Dimensions.get('screen');
 
 function RiderHomeScreenCopy({navigation}) {
-
+    const contextData = useContext(StoreContext);
+    const [user,setUser]=useState(contextData.Role);
 
     const handleClientList=()=>{
         console.log('handleClientList');
@@ -37,7 +39,7 @@ function RiderHomeScreenCopy({navigation}) {
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>
-                    Logged in as: "Hammad"
+                Logged in as: {user.employeeName}
                 </AppText>
             </View>
             <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>
