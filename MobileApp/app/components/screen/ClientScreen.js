@@ -125,6 +125,7 @@ function ClientScreen({ navigation }) {
     <Screen>
       <Header
         header={'Client Listing'}
+        navigation={navigation}
       />
       <View style={styles.logoContainer}>
         <Image

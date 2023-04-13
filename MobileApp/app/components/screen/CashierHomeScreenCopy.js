@@ -33,10 +33,11 @@ function CashierHomeScreenCopy({navigation}) {
         <Screen>
             <Header
                 header={'Cashier'}
+                navigation={navigation}
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>
-                    Logged in as: "Hammad"
+                    Logged in as: Hammad
                 </AppText>
             </View>
             <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>

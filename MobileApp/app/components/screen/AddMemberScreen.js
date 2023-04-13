@@ -70,6 +70,8 @@ function AddMemberScreen({ navigation }) {
         <Screen style={styles.backGround}>
             <Header
                 header={'Add Member'}
+               
+                navigation ={navigation }
             />
             <View style={styles.logoContainer}>
                 <Image

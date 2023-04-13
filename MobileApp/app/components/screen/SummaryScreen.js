@@ -31,7 +31,7 @@ const attendanceData = [
 
 
 
-function SummaryScreen(props) {
+function SummaryScreen({navigation},props) {
 
     const [Cashier, setCashier] = useState([])
     const globalEmployee = useContext(StoreContext)
@@ -82,6 +82,7 @@ function SummaryScreen(props) {
         <Screen>
             <Header
                 header={'Summary'}
+                navigation={navigation}
             />
             <View style={styles.logoContainer}>
                 <Image

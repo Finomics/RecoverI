@@ -73,6 +73,7 @@ function ClientFormScreenCopy({ props, navigation }) {
         <Screen>
             <Header
                 header={'Client Form'}
+                navigation={navigation}
             />
             <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
                 <Image

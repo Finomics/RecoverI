@@ -128,6 +128,7 @@ function RecoveryScreen({ navigation, route }) {
     <Screen style={styles.backGround}>
       <Header
         header={'Recovery'}
+        navigation={navigation}
       />
       <View style={styles.logoContainer}>
         <Image

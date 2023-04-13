@@ -185,6 +185,7 @@ const data= route.params;
         <Screen>
             <Header
                 header={'OTP'}
+                navigation={navigation}
             />
             <View style={styles.logoContainer}>
                 <Image

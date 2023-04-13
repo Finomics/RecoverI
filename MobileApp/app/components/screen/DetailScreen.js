@@ -62,6 +62,7 @@ function DetailScreen({ navigation }) {
     <Screen>
         <Header
             header={'Transactions'}
+            navigation={navigation}
         />
         <View style={styles.logoContainer}>
             <Image

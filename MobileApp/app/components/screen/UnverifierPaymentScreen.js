@@ -87,6 +87,7 @@ function UnverifierPaymentScreen({ navigation }) {
     <Screen>
       <Header
         header={'All Payments'}
+        navigation={navigation}
       />
 
       <View style={styles.logoContainer}>

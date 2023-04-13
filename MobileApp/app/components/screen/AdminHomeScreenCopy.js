@@ -33,6 +33,7 @@ function AdminHomeScreenCopy({navigation}) {
         <Screen>
             <Header
                 header={'Admin'}
+                navigation={navigation}
             />
             <View style={{alignItems: 'center'}}>
                 <AppText>

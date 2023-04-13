@@ -185,6 +185,7 @@ function TransferScreen({ navigation }) {
     <Screen>
       <Header
         header={'Transfer'}
+        navigation={navigation}
       />
       <View style={styles.logoContainer}>
         <Image

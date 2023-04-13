@@ -66,6 +66,7 @@ function RiderAssignScreen({ props, navigation }) {
         <Screen>
             <Header
                 header={'Assign Rider'}
+                navigation={navigation}
             />
             <View style={styles.logoContainer}>
                 <Image
