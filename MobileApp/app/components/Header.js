@@ -1,12 +1,19 @@
 import React from 'react';
 
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
 
 function Header({header,navigation}) {
+    const navigation1 = useNavigation();
+     const route = useRoute();
+    
+  
+    // // Get the name of the current screen
+    // const screenName = route.name;
     const handleBack=async()=>{
-        console.log("in arowpress");
+        console.log("in arowpress",navigation1,route.name);
         if (navigation.canGoBack()) {
             navigation.goBack();
           }
@@ -26,7 +33,7 @@ function Header({header,navigation}) {
             <View style={styles.title}>
                 <View style={styles.imageContainer}>
                     <Image
-                        style={{width: '100%', height: '100%'}}
+                        style={{width: '100%', height: '90%'}}
                         source={require('../assets/kollect-logo.png')}
                     />
                 </View>
@@ -34,6 +41,13 @@ function Header({header,navigation}) {
                     {header}
                 </Text>
             </View>
+            <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>
+            
+                <Image
+                    style={styles.tinyIcon}
+                    source={require('../assets/homeicon.png')}
+                />
+            </TouchableOpacity>
         </View>
     );
 }
@@ -53,6 +67,14 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
     },
+    homeContaiiner:{
+        width: '20%',
+        height: '100%',
+       //  backgroundColor: 'yellow',
+         flex: 1,
+         alignItems: 'center',
+         justifyContent: 'center',
+    },
     imageContainer:{
         width: 100,
         height: '100%',
@@ -61,7 +83,7 @@ const styles = StyleSheet.create({
     },
     tinyIcon:{
         width: '60%',
-        height: '70%',
+        height: '100%',
         // width: 40,
         // height: 40,
     },
