@@ -40,12 +40,20 @@ function Header({header,navigation}) {
                     {header}
                 </Text>
             </View>
+            {(route.name==="Rider Home")?
+             <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
+                <Image
+                    style={styles.homeIcon}
+                    source={require('../assets/logout.png')}
+                />
+            </TouchableOpacity> :
             <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
                 <Image
                     style={styles.homeIcon}
                     source={require('../assets/homeicon.png')}
                 />
             </TouchableOpacity>
+            }
         </View>
     );
 }
