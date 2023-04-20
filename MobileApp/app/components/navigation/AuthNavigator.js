@@ -47,7 +47,7 @@ const AuthNavigator = () => (
         {/* <Stack.Screen name='HomeScreen' component={HomeScreen} /> */}
         <Stack.Screen name='Collections' component={PaymentScreen} options={{headerShown: false}} />
         <Stack.Screen name='Recovery Screen' component={RecoveryScreen} options={{headerShown: false}}/>
-        <Stack.Screen name='Register' component={RegisterScreenCopy} />
+        <Stack.Screen name='Register' component={RegisterScreenCopy} options={{headerShown: false}} />
         <Stack.Screen name='All Payments' component={UnverifierPaymentScreen} options={{headerShown: false}}/>
         <Stack.Screen name='Transfer' component={TransferScreen} options={{headerShown: false}} />
         <Stack.Screen name='Summary' component={SummaryScreen} options={{headerShown: false}}/>
