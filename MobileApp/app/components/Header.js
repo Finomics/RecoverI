@@ -21,8 +21,7 @@ function Header({header,navigation}) {
     }
     return (
         <View style={styles.container}>
-           
-            
+
             <TouchableOpacity style={styles.backContainer}onPress={handleBack}>
             
                 <Image
@@ -33,7 +32,7 @@ function Header({header,navigation}) {
             <View style={styles.title}>
                 <View style={styles.imageContainer}>
                     <Image
-                        style={{width: '100%', height: '90%'}}
+                        style={{width: '100%', height: '90%',}}
                         source={require('../assets/kollect-logo.png')}
                     />
                 </View>
@@ -41,10 +40,9 @@ function Header({header,navigation}) {
                     {header}
                 </Text>
             </View>
-            <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>
-            
+            <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
                 <Image
-                    style={styles.tinyIcon}
+                    style={styles.homeIcon}
                     source={require('../assets/homeicon.png')}
                 />
             </TouchableOpacity>
@@ -64,13 +62,13 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow',
         width: '20%',
         height: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        justifyContent: 'center',
+        // alignItems: 'flex-end',
     },
     homeContaiiner:{
         width: '20%',
         height: '100%',
-       //  backgroundColor: 'yellow',
+        // backgroundColor: 'yellow',
          flex: 1,
          alignItems: 'center',
          justifyContent: 'center',
@@ -82,23 +80,32 @@ const styles = StyleSheet.create({
         // backgroundColor: 'pink',
     },
     tinyIcon:{
-        width: '60%',
+        width: '90%',
         height: '100%',
+        // alignSelf: 'center',
+        // width: 40,
+        // height: 40,
+    },
+    homeIcon:{
+        width: '70%',
+        height: '80%',
+        // alignSelf: 'center',
         // width: 40,
         // height: 40,
     },
     title:{
-        width:'50%',
+        width:'60%',
         height: '100%',
         // backgroundColor: 'red',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
     },
     header:{
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold',
-        color: 'white'
+        
+        color: 'white',
     },
 });
 

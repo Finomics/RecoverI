@@ -34,7 +34,7 @@ function RiderHomeScreenCopy({navigation}) {
     return (
         <Screen>
             <Header
-                header={'Rider'}
+                header={'Rider Home'}
                 navigation={navigation}
             />
             <View style={{alignItems: 'center'}}>
