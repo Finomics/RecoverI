@@ -85,7 +85,7 @@ function LoginScreenCopy({ navigation }) {
                     source={require('../../assets/logo.png')}
                 />
             </View>
-            <ScrollView>
+            <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <View style={styles.container}>
                     <View style={styles.form}>
                         <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingBottom: 30}}>
