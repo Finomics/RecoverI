@@ -70,6 +70,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 setRiderObj(item)
         console.log(item.employeeName, "eee");
         console.log(item, "eee");
+        alert("Selected "+item.employeeName);
 /*
         axios({
             method: 'post',
@@ -98,6 +99,30 @@ setRiderObj(item)
 
     const handleAssign=()=>{
         console.log('in Assigned',dueAmount,riderObj);
+
+        
+        axios({
+            method: 'post',
+            url: Url+"/ClientDataUpdate",
+            data: {
+                id: ClinetID,
+                ClientRider: riderObj.employeeName,
+                CashierName: employeeName,
+                ClientRiderObjectId: riderObj._id,
+                AssignedBy:Globaledata.Role._id,
+                amount: dueAmount
+
+            }
+        }).then((res) => {
+            console.log(res.data.message, "res");
+            alert(res.data.message)
+            setRealTime(!realTime);
+            setUpdate(!update);
+            navigation.navigate('Assign Rider')
+
+        }).catch((err) => {
+            console.log(err, "err");
+        })
     
     }
 
