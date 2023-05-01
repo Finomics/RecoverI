@@ -52,25 +52,25 @@ function AdminHomeScreenCopy({navigation}) {
             <ScrollView>
                 <IconButton
                     title={'Add Member'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'Add cashiers or Riders'}
                     image={require('../../assets/add-member.png')}
                     onPress={handleAddMember}
                 />
                 <IconButton
                     title={'Client List'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View Clients Listing'}
                     image={require('../../assets/clients-list.png')}
                     onPress={handleClientList}
                 />
                 <IconButton
                     title={'Reporting'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View Collections'}
                     image={require('../../assets/document.png')}
                     onPress={handleReporting}
                 />
                 <IconButton
                     title={'Transactions'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View Transactions history'}
                     image={require('../../assets/transaction.png')}
                     onPress={handleTransaction}
                 />
