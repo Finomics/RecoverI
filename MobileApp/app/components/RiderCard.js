@@ -30,9 +30,8 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     const [Rider, setallRider] = useState([])
     const Globaledata = useContext(StoreContext);
     const [realTime, setRealTime] = useState(true);
-
-    const [text, setText] = React.useState();
-
+    const [amount, setAmount] = useState("");
+  
     console.log(Globaledata.Role, "Rider Card Globaledata");
     // console.log(Globaledata.Role._id, "Rider Card Globaledata");
 
@@ -95,9 +94,9 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     }
 
 
-    const handleHello=()=>{
-        console.log('hello')
-        console.log(text)
+    const handleAssign=()=>{
+        console.log('in Assigned',amount);
+    
     }
 
     return (
@@ -159,14 +158,14 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                <View style={{marginHorizontal: 10, borderTopWidth: 3,}}>
                     <AppTextInput
                         icon={'circle'}
-                        placeholder={'Dummy Text'}
-                        onChangeText={setText}
+                        placeholder={'Amount'}
+                        onChangeText={setAmount}
                         value={text}
                     />
                     <AppButton
                         title={'hello'}
                         color='buttonColor'
-                        onPress={handleHello}
+                        onPress={handleAssign}
                     />
                </View>
 
