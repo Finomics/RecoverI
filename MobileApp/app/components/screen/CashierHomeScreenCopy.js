@@ -81,7 +81,7 @@ function CashierHomeScreenCopy({navigation}) {
                 />
                 <IconButton
                     title={'Client List'}
-                    subTitle={'Ciew Clients &  collect Payments'}
+                    subTitle={'View Clients &  collect Payments'}
                     image={require('../../assets/client-list.png')}
                     onPress={handleClientList}
                 />

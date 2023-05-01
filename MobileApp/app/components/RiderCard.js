@@ -30,7 +30,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     const [Rider, setallRider] = useState([])
     const Globaledata = useContext(StoreContext);
     const [realTime, setRealTime] = useState(true);
-    const [amount, setAmount] = useState("");
+    const [dueAmount, setDueamount] = useState(0.0);
   
     console.log(Globaledata.Role, "Rider Card Globaledata");
     // console.log(Globaledata.Role._id, "Rider Card Globaledata");
@@ -78,7 +78,8 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                 ClientRider: item.employeeName,
                 CashierName: employeeName,
                 ClientRiderObjectId: item._id,
-                AssignedBy:Globaledata.Role._id
+                AssignedBy:Globaledata.Role._id,
+                amount: dueAmount
 
             }
         }).then((res) => {
@@ -159,7 +160,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                     <AppTextInput
                         icon={'circle'}
                         placeholder={'Amount'}
-                        onChangeText={setAmount}
+                        onChangeText={setDueamount}
                         value={text}
                     />
                     <AppButton

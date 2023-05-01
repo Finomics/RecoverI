@@ -40,7 +40,7 @@ function Header({header,navigation}) {
                     {header}
                 </Text>
             </View>
-            {(route.name==="Rider Home")?
+            {(route.name==="Rider Home"||route.name==="Cashier Home"||route.name==="Admin Home")?
              <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
                 <Image
                     style={styles.homeIcon}

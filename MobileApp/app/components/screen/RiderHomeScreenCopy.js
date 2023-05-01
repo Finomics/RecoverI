@@ -52,25 +52,25 @@ function RiderHomeScreenCopy({navigation}) {
             <ScrollView>
                 <IconButton
                     title={'Client List'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View list of clients assigned to you.'}
                     image={require('../../assets/client-list.png')}
                     onPress={handleClientList}
                 />
                 <IconButton
                     title={'Payment Collection'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View all payments collected by you.'}
                     image={require('../../assets/payment-collection.png')}
                     onPress={handlePaymentCollection}
                 />
                 <IconButton
                     title={'Verify Payments'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'View Unverified Payments to verify'}
                     image={require('../../assets/verify-payments.png')}
                     onPress={handleVerifyPayments}
                 />
                 <IconButton
                     title={'Transfer'}
-                    subTitle={'Sub-Title'}
+                    subTitle={'Transfer payments to cashier'}
                     image={require('../../assets/transfer.png')}
                     onPress={handleTransfer}
                 />
