@@ -31,6 +31,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     const Globaledata = useContext(StoreContext);
     const [realTime, setRealTime] = useState(true);
     const [dueAmount, setDueamount] = useState(0.0);
+    const [riderObj, setRiderObj] = useState({});
   
     console.log(Globaledata.Role, "Rider Card Globaledata");
     // console.log(Globaledata.Role._id, "Rider Card Globaledata");
@@ -66,10 +67,10 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     var employeeName = Globaledata.Role.employeeName
 
     const handleRider = (item) => {
-
+setRiderObj(item)
         console.log(item.employeeName, "eee");
         console.log(item, "eee");
-
+/*
         axios({
             method: 'post',
             url: Url+"/ClientDataUpdate",
@@ -91,12 +92,12 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
 
         }).catch((err) => {
             console.log(err, "err");
-        })
+        })*/
     }
 
 
     const handleAssign=()=>{
-        console.log('in Assigned',amount);
+        console.log('in Assigned',dueAmount,riderObj);
     
     }
 
@@ -161,7 +162,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
                         icon={'circle'}
                         placeholder={'Amount'}
                         onChangeText={setDueamount}
-                        value={text}
+                        value={dueAmount}
                     />
                     <AppButton
                         title={'hello'}
