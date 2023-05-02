@@ -14,6 +14,8 @@ import PaymentScreen from "../screen/PaymentScreen";
 import ClientFormScreen from "../screen/ClientFormScreen";
 import RegisterScreen from '../screen/RegisterScreen';
 import LoginScreen from '../screen/LoginScreen';
+import ChangePasswordCopy from '../screen/changePasswordCopy';
+
 import ChangePassword from '../screen/ChangePassword';
 import AdminHomeScreen from "../screen/AdminHomeScreen";
 import CashierHomeScreen from "../screen/CashierHomeScreen";
@@ -34,10 +36,10 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Change Password' component={ChangePasswordCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
-        <Stack.Screen name='Change Password' component={ChangePassword}  options={{headerShown: false}}/>
         <Stack.Screen name='OTP Screen' component={OTPScreen}  options={{headerShown: false}} />
         <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
         <Stack.Screen name='Admin Home' component={AdminHomeScreenCopy}  options={{headerShown: false}}/>
