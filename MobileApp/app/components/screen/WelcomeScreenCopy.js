@@ -12,6 +12,7 @@ function WelcomeScreenCopy({navigation}) {
         <Screen>
             <Header
                 header={'Welcome'}
+                navigation={navigation}
             />
             <View style={{width: width, marginBottom: 60, justifyContent: 'center'}}>
                 <Image

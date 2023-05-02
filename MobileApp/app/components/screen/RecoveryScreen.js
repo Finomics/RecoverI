@@ -72,6 +72,7 @@ function RecoveryScreen({ navigation, route }) {
       belongsTo:belongsTo,
       AssignedBy:assignedBy,
       status: "Unverified",
+      Rider_id: RecoveryContext.Role._id,
     };
 
     console.log("Payload", payload);
