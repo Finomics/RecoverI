@@ -30,7 +30,10 @@ function AdminHomeScreenCopy({navigation}) {
         console.log('handleTransaction');
         navigation.navigate("Transactions");
     }
-
+    const handlePasswordChange=()=>{
+        console.log('handlePasswordChang');
+        navigation.navigate('Change Password');
+    }
     return (
         <Screen>
             <Header
@@ -73,6 +76,12 @@ function AdminHomeScreenCopy({navigation}) {
                     subTitle={'View Transactions history'}
                     image={require('../../assets/transaction.png')}
                     onPress={handleTransaction}
+                />
+                 <IconButton
+                    title={'Change Password'}
+                    subTitle={'Change Password'}
+                    image={require('../../assets/password.png')}
+                    onPress={handlePasswordChange}
                 />
             </ScrollView>
         </Screen>

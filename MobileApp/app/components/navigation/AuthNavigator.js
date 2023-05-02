@@ -14,6 +14,7 @@ import PaymentScreen from "../screen/PaymentScreen";
 import ClientFormScreen from "../screen/ClientFormScreen";
 import RegisterScreen from '../screen/RegisterScreen';
 import LoginScreen from '../screen/LoginScreen';
+//import LoginScreenCopy from '../screen/LoginScreenCopy';
 import ChangePasswordCopy from '../screen/changePasswordCopy';
 
 import ChangePassword from '../screen/ChangePassword';

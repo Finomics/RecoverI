@@ -36,6 +36,10 @@ function CashierHomeScreenCopy({navigation}) {
         navigation.navigate('All Payments');
     }
 
+    const handlePasswordChange=()=>{
+        console.log('handlePasswordChang');
+        navigation.navigate('Change Password');
+    }
     return (
         <Screen>
             <Header
@@ -84,6 +88,12 @@ function CashierHomeScreenCopy({navigation}) {
                     subTitle={'View Clients &  collect Payments'}
                     image={require('../../assets/client-list.png')}
                     onPress={handleClientList}
+                />
+                 <IconButton
+                    title={'Change Password'}
+                    subTitle={'Change Password'}
+                    image={require('../../assets/password.png')}
+                    onPress={handlePasswordChange}
                 />
             </ScrollView>
         </Screen>

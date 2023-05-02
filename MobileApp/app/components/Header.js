@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useEffect, useState, useContext } from 'react';
+import StoreContext from "./screen/GlobalState";
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'react-native';
@@ -8,6 +9,7 @@ const {width, height} = Dimensions.get('screen');
 function Header({header,navigation}) {
     const navigation1 = useNavigation();
      const route = useRoute();
+     const contextData = useContext(StoreContext)
     
   
     // // Get the name of the current screen
@@ -19,6 +21,23 @@ function Header({header,navigation}) {
           }
 
     }
+    const handleHome=()=>{
+        console.log('Home Button is pressed');
+        if(contextData.Role.Role=='Admin'){
+            navigation.navigate("Admin Home")
+
+        } else if (contextData.Role.Role === 'Cashier') {
+
+            navigation.navigate('Cashier Home')
+
+        } else if (contextData.Role.Role === "Rider") {
+
+            navigation.navigate('Rider Home')
+
+        } else {
+            navigation.navigate('Welcome');
+    }
+}
     return (
         <View style={styles.container}>
 
@@ -47,7 +66,7 @@ function Header({header,navigation}) {
                     source={require('../assets/logout.png')}
                 />
             </TouchableOpacity> :
-            <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
+            <TouchableOpacity style={styles.homeContaiiner}onPress={handleHome}>           
                 <Image
                     style={styles.homeIcon}
                     source={require('../assets/homeicon.png')}

@@ -55,7 +55,7 @@ function ChangePasswordCopy({ navigation }) {
     return (
         <Screen style={styles.container}>
             <Header
-                header={'Login'}
+                header={'Set Password'}
                 navigation={navigation}
             />
             <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
@@ -143,4 +143,4 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
 })
-export default LoginScreenCopy; 
+export default ChangePasswordCopy; 

@@ -30,6 +30,10 @@ function RiderHomeScreenCopy({navigation}) {
         console.log('handleTransfer');
         navigation.navigate('Transfer');
     }
+    const handlePasswordChange=()=>{
+        console.log('handlePasswordChang');
+        navigation.navigate('Change Password');
+    }
 
     return (
         <Screen>
@@ -73,6 +77,12 @@ function RiderHomeScreenCopy({navigation}) {
                     subTitle={'Transfer payments to cashier'}
                     image={require('../../assets/transfer.png')}
                     onPress={handleTransfer}
+                />
+                 <IconButton
+                    title={'Change Password'}
+                    subTitle={'Change Password'}
+                    image={require('../../assets/password.png')}
+                    onPress={handlePasswordChange}
                 />
             </ScrollView>
         </Screen>
