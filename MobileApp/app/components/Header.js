@@ -1,29 +1,29 @@
-import {React, useEffect, useState, useContext } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import StoreContext from "./screen/GlobalState";
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'react-native';
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-function Header({header,navigation}) {
+function Header({ header, navigation }) {
     const navigation1 = useNavigation();
-     const route = useRoute();
-     const contextData = useContext(StoreContext)
-    
-  
+    const route = useRoute();
+    const contextData = useContext(StoreContext)
+
+
     // // Get the name of the current screen
     // const screenName = route.name;
-    const handleBack=async()=>{
-        console.log("in arowpress",navigation1,route.name);
+    const handleBack = async () => {
+        console.log("in arowpress", navigation1, route.name);
         if (navigation.canGoBack()) {
             navigation.goBack();
-          }
+        }
 
     }
-    const handleHome=()=>{
+    const handleHome = () => {
         console.log('Home Button is pressed');
-        if(contextData.Role.Role=='Admin'){
+        if (contextData.Role.Role == 'Admin') {
             navigation.navigate("Admin Home")
 
         } else if (contextData.Role.Role === 'Cashier') {
@@ -36,13 +36,13 @@ function Header({header,navigation}) {
 
         } else {
             navigation.navigate('Welcome');
+        }
     }
-}
     return (
         <View style={styles.container}>
 
-            <TouchableOpacity style={styles.backContainer}onPress={handleBack}>
-            
+            <TouchableOpacity style={styles.backContainer} onPress={handleBack}>
+
                 <Image
                     style={styles.tinyIcon}
                     source={require('../assets/left-arrow.png')}
@@ -51,7 +51,7 @@ function Header({header,navigation}) {
             <View style={styles.title}>
                 <View style={styles.imageContainer}>
                     <Image
-                        style={{width: '100%', height: '90%',}}
+                        style={{ width: '100%', height: '90%', }}
                         source={require('../assets/kollect-logo.png')}
                     />
                 </View>
@@ -59,80 +59,87 @@ function Header({header,navigation}) {
                     {header}
                 </Text>
             </View>
-            {(route.name==="Rider Home"||route.name==="Cashier Home"||route.name==="Admin Home")?
-             <TouchableOpacity style={styles.homeContaiiner}onPress={handleBack}>           
-                <Image
-                    style={styles.homeIcon}
-                    source={require('../assets/logout.png')}
-                />
-            </TouchableOpacity> :
-            <TouchableOpacity style={styles.homeContaiiner}onPress={handleHome}>           
-                <Image
-                    style={styles.homeIcon}
-                    source={require('../assets/homeicon.png')}
-                />
-            </TouchableOpacity>
+            {(route.name === "Rider Home" || route.name === "Cashier Home" || route.name === "Admin Home") ?
+                <TouchableOpacity style={styles.homeContaiiner} onPress={handleBack}>
+                    <Image
+                        style={styles.homeIcon}
+                        source={require('../assets/logout.png')}
+                    />
+                </TouchableOpacity> :
+                <TouchableOpacity style={styles.homeContaiiner} onPress={handleHome}>
+                    <Image
+                        style={styles.homeIcon}
+                        source={require('../assets/homeicon.png')}
+                    />
+                </TouchableOpacity>
             }
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         // marginTop: 20,
         backgroundColor: '#578B9D',
         width: width,
-        height: height*0.08,
+        height: height * 0.08,
         flexDirection: 'row',
     },
-    backContainer:{
+    backContainer: {
         // backgroundColor: 'yellow',
         width: '20%',
         height: '100%',
         justifyContent: 'center',
         // alignItems: 'flex-end',
     },
-    homeContaiiner:{
+    homeContaiiner: {
         width: '20%',
         height: '100%',
         // backgroundColor: 'yellow',
-         flex: 1,
-         alignItems: 'center',
-         justifyContent: 'center',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    imageContainer:{
-        width: 100,
-        height: '100%',
+    imageContainer: {
+        width: width / 9.7,
+        height: height / 10,
         overflow: 'hidden',
+        marginLeft: "-5%"
         // backgroundColor: 'pink',
     },
-    tinyIcon:{
-        width: '90%',
-        height: '100%',
+    tinyIcon: {
+        width: width / 9.7,
+        height: height / 17,
         // alignSelf: 'center',
         // width: 40,
         // height: 40,
+        marginLeft: 10
     },
-    homeIcon:{
-        width: '70%',
-        height: '80%',
+    homeIcon: {
+        width: width / 9.5,
+        height: height / 20,
         // alignSelf: 'center',
         // width: 40,
         // height: 40,
+
     },
-    title:{
-        width:'60%',
+    title: {
+        width: '60%',
         height: '100%',
         // backgroundColor: 'red',
         // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
     },
-    header:{
+    header: {
         fontSize: 20,
         fontWeight: 'bold',
-        
+        margin: 16,
         color: 'white',
+        textAlign: "center",
+        height: height / 20,
+        alignItems:"center"
+
     },
 });
 
