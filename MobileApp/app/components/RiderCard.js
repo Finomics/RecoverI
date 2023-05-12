@@ -190,7 +190,7 @@ setRiderObj(item)
                         value={dueAmount}
                     />
                     <AppButton
-                        title={'hello'}
+                        title={'Assign'}
                         color='buttonColor'
                         onPress={handleAssign}
                     />
