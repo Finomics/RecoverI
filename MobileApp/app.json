@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kollect IT",
     "slug": "KollectIT",
-    "version": "1.0.2",
+    "version": "1.2.9",
     "orientation": "portrait",
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
@@ -28,8 +28,8 @@
       "permissions": [
         "CAMERA"
       ],
-      "package": "com.tecstik.kollectIt",
-      "versionCode": 2
+      "package": "com.anostrat.kollectIt",
+      "versionCode": 29
     },
     "web": {
       "favicon": "./app/assets/K-icon.png"
