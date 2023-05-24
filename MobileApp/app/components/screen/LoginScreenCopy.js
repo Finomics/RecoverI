@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 
-import { Image, ScrollView, StyleSheet, ActivityIndicator, Dimensions, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, ActivityIndicator, Dimensions, View, Text } from 'react-native';
 import * as Yup from 'yup';
 
 import Screen from '../Screen';
@@ -11,9 +11,10 @@ import StoreContext from './GlobalState';
 import TopButtons from './TopButtons';
 import { Url } from './Core';
 import Header from '../Header';
+import { TouchableOpacity } from 'react-native';
 
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 const validationSchema = Yup.object().shape({
     email: Yup.string().label("Email"),
     password: Yup.string().label("Password"),
@@ -21,9 +22,10 @@ const validationSchema = Yup.object().shape({
 
 
 function LoginScreenCopy({ navigation }) {
-    
-    
+
+
     const [load, setLoad] = useState(false)
+    const [UserId, onChangeText] = React.useState('')
 
     const AdminRole = useContext(StoreContext);
 
@@ -73,13 +75,29 @@ function LoginScreenCopy({ navigation }) {
 
     }
 
+    function forgrtPassword() {
+        console.log(UserId);
+        axios({
+            method: "post",
+            url: Url + '/dash/forgrtPassword',
+            data: {
+                employeeEmail:UserId
+            }
+        }).then((response) => {
+            console.log(response.data, "Forget Password Response");
+            alert("Forget Password Successfull!")
+        }).catch(() => {
+            console.log(error, "Forget Password Error");
+        })
+    }
+
     return (
         <Screen style={styles.container}>
             <Header
                 header={'Login'}
                 navigation={navigation}
             />
-            <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
+            <View style={{ width: width, marginBottom: 0, justifyContent: 'center' }}>
                 <Image
                     style={styles.logo}
                     source={require('../../assets/logo.png')}
@@ -88,11 +106,11 @@ function LoginScreenCopy({ navigation }) {
             <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <View style={styles.container}>
                     <View style={styles.form}>
-                        <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingBottom: 30}}>
+                        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', paddingBottom: 30 }}>
                             <Image
-                                style={{width: width*0.35}}
+                                style={{ width: width * 0.35 }}
                                 source={require('../../assets/pngtree.png')}
-                                />
+                            />
                         </View>
 
 
@@ -112,6 +130,7 @@ function LoginScreenCopy({ navigation }) {
                                 name='email'
                                 placeholder='Email or Phone'
                                 textContentType='emailAddress'
+                                onChangeText={text => onChangeText(text)}
                             />
                             <AppFormPassword
                                 autoCapitalize='none'
@@ -122,18 +141,21 @@ function LoginScreenCopy({ navigation }) {
                                 textContentType='password'
                             />
                             {
-                                load ? 
+                                load ?
                                     <ActivityIndicator
-                                        size='large' 
+                                        size='large'
                                         color="#0000ff"
-                                    /> 
-                                : 
+                                    />
+                                    :
                                     <SubmitButton
                                         title='Login'
                                         color='teal'
-                                    /> 
+                                    />
                             }
-                            
+                            <TouchableOpacity onPress={forgrtPassword}>
+                                <Text style={{ color: "white", textAlign: "right", marginTop: 15 }}>Forget Password?</Text>
+                            </TouchableOpacity>
+
                         </AppForm>
                     </View>
                 </View>
@@ -155,13 +177,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    form:{
+    form: {
         backgroundColor: '#578B9D',
-        width: width*0.9,
+        width: width * 0.9,
         // height: 400,
         borderRadius: 25,
         paddingTop: 10,
-        paddingBottom:30,
+        paddingBottom: 30,
         paddingHorizontal: 10,
     },
     logo: {
