@@ -25,14 +25,14 @@ function LoginScreenCopy({ navigation }) {
 
 
     const [load, setLoad] = useState(false)
-    const [UserId, onChangeText] = React.useState('')
-
+    const [UserId, setChangeText] = useState('')
     const AdminRole = useContext(StoreContext);
 
     // console.log(AdminRole,"AdminRole");
 
     const handlePress = (values) => {
         console.log(values.email, "login");
+        setChangeText(values.email)
         setLoad(previousState => !previousState)
         console.log(load)
         axios({
@@ -81,7 +81,7 @@ function LoginScreenCopy({ navigation }) {
             method: "post",
             url: Url + '/dash/forgrtPassword',
             data: {
-                employeeEmail:UserId
+                employeeEmail: UserId
             }
         }).then((response) => {
             console.log(response.data, "Forget Password Response");
@@ -130,7 +130,9 @@ function LoginScreenCopy({ navigation }) {
                                 name='email'
                                 placeholder='Email or Phone'
                                 textContentType='emailAddress'
-                                onChangeText={text => onChangeText(text)}
+                                onChange={(e)=>{setChangeText(e.terget.value)}}
+                            // onChangeText={text => onChangeText(text)}
+
                             />
                             <AppFormPassword
                                 autoCapitalize='none'

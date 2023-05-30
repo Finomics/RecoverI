@@ -79,11 +79,14 @@ function Header({ header, navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        // marginTop: 20,
+        marginTop: '0%',
         backgroundColor: '#578B9D',
         width: width,
         height: height * 0.08,
         flexDirection: 'row',
+        // position: "relative",
+        // zIndex: 1,
+        // opacity:2
     },
     backContainer: {
         // backgroundColor: 'yellow',
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: "center",
         height: height / 20,
-        alignItems:"center"
+        alignItems: "center"
 
     },
 });

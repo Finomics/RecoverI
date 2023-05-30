@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useContext } from 'react';
-import { Image, Button, Modal, FlatList, View, StyleSheet, TextInput,ActivityIndicator } from 'react-native';
+import { Image, Button, Modal, FlatList, View, StyleSheet, TextInput, ActivityIndicator } from 'react-native';
 import TransferCard from '../TransferCard';
 import NewCard from '../NewCard';
 import colors from '../colors';
@@ -12,6 +12,7 @@ import axios from 'axios';
 import TopButtons from './TopButtons';
 import { Url } from './Core';
 import Header from '../Header';
+import Icon from '../Icon';
 
 
 function TransferScreen({ navigation }) {
@@ -99,7 +100,7 @@ function TransferScreen({ navigation }) {
 
 
   const handlePress = () => {
-   
+
     setModalVisible(true)
   }
 
@@ -142,12 +143,12 @@ function TransferScreen({ navigation }) {
       }).then((res) => {
         amounts.push(res.data.PaymentAmount);
         console.log(res, "res");
-        alert("Payment Transferred" );
+        alert("Payment Transferred");
         setLoad(false);
 
         setRealTime(!realTime);
         setTransferId("")
-       
+
 
       }).catch((err) => {
         console.log(err, "error");
@@ -163,14 +164,14 @@ function TransferScreen({ navigation }) {
     axios({
       method: "post",
       url: Url + "/auth/transaction",
-        data: {
-          nature: "Internal Transfer",
-          Instrument: id,
-          PaymentAmount: amount,
-          BelongsTo: BelongsTo,
-          to: CashierObjectID,
-          From: RiderID,
-        }
+      data: {
+        nature: "Internal Transfer",
+        Instrument: id,
+        PaymentAmount: amount,
+        BelongsTo: BelongsTo,
+        to: CashierObjectID,
+        From: RiderID,
+      }
 
     }).then((res) => {
       console.log(res.data, "transaction Response");
@@ -195,7 +196,7 @@ function TransferScreen({ navigation }) {
         <View style={styles.textContainer}>
           <TextInput style={{ fontWeight: 'bold', fontSize: 18, width: '100%' }} placeholder='Client Name' />
         </View>
-        <Button title='Search' color={'#578B9D'}/>
+        <Button title='Search' color={'#578B9D'} />
       </View>
       {payments != null ?
         <FlatList
@@ -221,18 +222,18 @@ function TransferScreen({ navigation }) {
           } />
         </View>
         <View style={{ width: '45%' }}>
-        {
-                        load ? 
-                            <ActivityIndicator
-                                size='large' 
-                                color="#0000ff"
-                            /> 
-                        : 
-          <AppButton title='Submit' color='teal' onPress={
-            // () => console.log(transferId, "djdjdjdj")
-            PaymentTransferCashier
-          } />
-        }
+          {
+            load ?
+              <ActivityIndicator
+                size='large'
+                color="#0000ff"
+              />
+              :
+              <AppButton title='Submit' color='teal' onPress={
+                // () => console.log(transferId, "djdjdjdj")
+                PaymentTransferCashier
+              } />
+          }
         </View>
       </View>
       <Modal
@@ -240,8 +241,21 @@ function TransferScreen({ navigation }) {
         transparent={false}
         visible={modalVisible}
       >
+       
         {/* <Button title='List of Cashier' onPress={() => setModalVisible(!modalVisible)} color={colors.teal} /> */}
+        <View style={{ margin: "5%"}}>
+          <Icon
+            name='backburger'
+            size={50}
+            backgroundColor='transparent'
+            iconColor={colors.royalBlue}
+            onPress={() => setModalVisible(!modalVisible)}
+            title='Back'
+          />
+        </View>
         <FlatList
+          
+
           data={CashierName}
           keyExtractor={item => item.value}
           // keyExtractor={tempRiderName => tempRiderName.value.toString()}

@@ -24,7 +24,7 @@ const tempRiderName = [
 ]
 
 // 
-function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,update, navigation }) {
+function RiderCard({ name, phoneNumber, email, amount, rider, id, setUpdate, update, navigation }) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [Rider, setallRider] = useState([])
@@ -32,7 +32,7 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     const [realTime, setRealTime] = useState(true);
     const [dueAmount, setDueamount] = useState(0.0);
     const [riderObj, setRiderObj] = useState({});
-  
+
     console.log(Globaledata.Role, "Rider Card Globaledata");
     // console.log(Globaledata.Role._id, "Rider Card Globaledata");
 
@@ -43,12 +43,12 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     }
 
 
-   
+
 
     useEffect(() => {
         axios({
             method: "post",
-            url: Url+"/auth/craetedby",
+            url: Url + "/auth/craetedby",
             data: {
                 createdBy: Globaledata.Role.createdBy,
                 Role: "Rider"
@@ -67,49 +67,49 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id,setUpdate,updat
     var employeeName = Globaledata.Role.employeeName
 
     const handleRider = (item) => {
-setRiderObj(item)
+        setRiderObj(item)
         console.log(item.employeeName, "eee");
         console.log(item, "eee");
-        alert("Selected "+item.employeeName);
-/*
-        axios({
-            method: 'post',
-            url: Url+"/ClientDataUpdate",
-            data: {
-                id: ClinetID,
-                ClientRider: item.employeeName,
-                CashierName: employeeName,
-                ClientRiderObjectId: item._id,
-                AssignedBy:Globaledata.Role._id,
-                amount: dueAmount
-
-            }
-        }).then((res) => {
-            console.log(res.data.message, "res");
-            alert(res.data.message)
-            setRealTime(!realTime);
-            setUpdate(!update);
-            navigation.navigate('Assign Rider')
-
-        }).catch((err) => {
-            console.log(err, "err");
-        })*/
+        alert("Selected " + item.employeeName);
+        /*
+                axios({
+                    method: 'post',
+                    url: Url+"/ClientDataUpdate",
+                    data: {
+                        id: ClinetID,
+                        ClientRider: item.employeeName,
+                        CashierName: employeeName,
+                        ClientRiderObjectId: item._id,
+                        AssignedBy:Globaledata.Role._id,
+                        amount: dueAmount
+        
+                    }
+                }).then((res) => {
+                    console.log(res.data.message, "res");
+                    alert(res.data.message)
+                    setRealTime(!realTime);
+                    setUpdate(!update);
+                    navigation.navigate('Assign Rider')
+        
+                }).catch((err) => {
+                    console.log(err, "err");
+                })*/
     }
 
 
-    const handleAssign=()=>{
-        console.log('in Assigned',dueAmount,riderObj);
+    const handleAssign = () => {
+        console.log('in Assigned', dueAmount, riderObj);
 
-        
+
         axios({
             method: 'post',
-            url: Url+"/ClientDataUpdate",
+            url: Url + "/ClientDataUpdate",
             data: {
                 id: ClinetID,
                 ClientRider: riderObj.employeeName,
                 CashierName: employeeName,
                 ClientRiderObjectId: riderObj._id,
-                AssignedBy:Globaledata.Role._id,
+                AssignedBy: Globaledata.Role._id,
                 amount: dueAmount
 
             }
@@ -123,80 +123,80 @@ setRiderObj(item)
         }).catch((err) => {
             console.log(err, "err");
         })
-    
+
     }
 
     return (
         <>
-        <Screen>
+            <Screen>
 
-        
-            <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
-                <View style={styles.detailsContainer}>
-                    <AppText>{name}</AppText>
-                    <AppText>{phoneNumber}</AppText>
-                    <AppText>{email}</AppText>
-                    <AppText>Rs: {amount}</AppText>
-                    {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
-                    <AppText>Rider: {rider}</AppText>
 
-                </View>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
+                    <View style={styles.detailsContainer}>
+                        <AppText>{name}</AppText>
+                        <AppText>{phoneNumber}</AppText>
+                        <AppText>{email}</AppText>
+                        <AppText>Rs: {amount}</AppText>
+                        {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
+                        <AppText>Rider: {rider}</AppText>
 
-            <Modal
-                animationType="slide"
-                transparent={false}
-                visible={modalVisible}
-            >
+                    </View>
+                </TouchableOpacity>
 
-                <Header
-                    header={'List of Riders'}
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={modalVisible}
+                >
+
+                    <Header
+                        header={'List of Riders'}
                     />
-                <View style={styles.logoContainer}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../assets/logo.png')}
+                    <View style={styles.logoContainer}>
+                        <Image
+                            style={styles.logo}
+                            source={require('../assets/logo.png')}
                         />
-                </View>
-                <View style={styles.buttonStyle}>
-                    <Icon
-                        name='backburger'
-                        size={50}
-                        backgroundColor='transparent'
-                        iconColor={colors.royalBlue}
-                        onPress={() => setModalVisible(!modalVisible)}
-                        title='Back'
+                    </View>
+                    <View style={styles.buttonStyle}>
+                        <Icon
+                            name='backburger'
+                            size={50}
+                            backgroundColor='transparent'
+                            iconColor={colors.royalBlue}
+                            onPress={() => setModalVisible(!modalVisible)}
+                            title='Back'
                         />
-                    {/* <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} /> */}
-                </View>
+                        {/* <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} /> */}
+                    </View>
 
-                <FlatList
-                    data={Rider}
-                    // keyExtractor={tempRiderName => tempRiderName.value.toString()}
-                    renderItem={({ item }) =>
-                    <RiderNameCard
-                    name={item.employeeName}
-                    // id={item._id}
-                    onPress={() => { handleRider(item) }}
+                    <FlatList
+                        data={Rider}
+                        // keyExtractor={tempRiderName => tempRiderName.value.toString()}
+                        renderItem={({ item }) =>
+                            <RiderNameCard
+                                name={item.employeeName}
+                                // id={item._id}
+                                onPress={() => { handleRider(item) }}
+                            />
+                        }
                     />
-                }
-                />
 
-               <View style={{marginHorizontal: 10, borderTopWidth: 3,}}>
-                    <AppTextInput
-                        icon={'circle'}
-                        placeholder={'Amount'}
-                        onChangeText={setDueamount}
-                        value={dueAmount}
-                    />
-                    <AppButton
-                        title={'Assign'}
-                        color='buttonColor'
-                        onPress={handleAssign}
-                    />
-               </View>
+                    <View style={{ marginHorizontal: 10, borderTopWidth: 3, }}>
+                        <AppTextInput
+                            icon={'circle'}
+                            placeholder={'Amount'}
+                            onChangeText={setDueamount}
+                            value={dueAmount}
+                        />
+                        <AppButton
+                            title={'Assign'}
+                            color='buttonColor'
+                            onPress={handleAssign}
+                        />
+                    </View>
 
-            </Modal>
+                </Modal>
 
 
 
@@ -217,7 +217,7 @@ setRiderObj(item)
 
 
 
-        </Screen>
+            </Screen>
         </>
 
 
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
         marginBottom: 7,
         fontWeight: 'bold',
     },
-    buttonStyle:{
+    buttonStyle: {
         // paddingVertical: 15,
     },
     logo: {
