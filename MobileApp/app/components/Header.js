@@ -49,7 +49,9 @@ function Header({ header, navigation }) {
                 />
             </TouchableOpacity>
             <View style={styles.title}>
-                <View style={styles.imageContainer}>
+                <View
+                    style={styles.imageContainer}
+                >
                     <Image
                         style={{ width: '100%', height: '90%', }}
                         source={require('../assets/kollect-logo.png')}
@@ -116,7 +118,8 @@ const styles = StyleSheet.create({
         // alignSelf: 'center',
         // width: 40,
         // height: 40,
-        marginLeft: 10
+        marginLeft: 10,
+        top: 5
     },
     homeIcon: {
         width: width / 9.5,
@@ -135,13 +138,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     header: {
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: 'bold',
-        margin: 16,
+        marginLeft: 20,
         color: 'white',
         textAlign: "center",
         height: height / 20,
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: height / 90
 
     },
 });

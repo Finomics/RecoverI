@@ -130,7 +130,7 @@ function LoginScreenCopy({ navigation }) {
                                 name='email'
                                 placeholder='Email or Phone'
                                 textContentType='emailAddress'
-                                onChange={(e)=>{setChangeText(e.terget.value)}}
+                                // onChange={(e)=>{setChangeText(e.terget.value)}}
                             // onChangeText={text => onChangeText(text)}
 
                             />
