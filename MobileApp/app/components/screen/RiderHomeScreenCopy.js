@@ -41,9 +41,9 @@ function RiderHomeScreenCopy({navigation}) {
                 header={'Rider Home'}
                 navigation={navigation}
             />
-            <View style={{alignItems: 'center'}}>
-                <AppText>
-                Logged in as: {user.employeeName}
+           <View style={{alignItems: 'center',backgroundColor:"white"}}>
+                <AppText style={{color:"#2E6C81"}}>
+                    Welcome : {user.employeeName}
                 </AppText>
             </View>
             <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>

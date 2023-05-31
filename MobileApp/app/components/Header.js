@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'pink',
     },
     tinyIcon: {
-        width: width / 9.7,
-        height: height / 17,
+        width: width / 8,
+        height: height / 22,
         // alignSelf: 'center',
         // width: 40,
         // height: 40,
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
         top: 5
     },
     homeIcon: {
-        width: width / 9.5,
-        height: height / 20,
+        width: width / 10,
+        height: height / 22,
         // alignSelf: 'center',
         // width: 40,
         // height: 40,

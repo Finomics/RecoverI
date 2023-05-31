@@ -46,5 +46,28 @@
             "Caption": "Change Password",
             "Description": "Change Password"
         }
+    },
+    "AdminHome": {
+        "AddMember": {
+            "Caption": "Add Member",
+            "Description": "Add cashiers or Riders"
+        },
+        "ClientList": {
+            "Caption": "Client List",
+            "Description": "View Clients Listing"
+        },
+        "Reporting": {
+            "Caption": "Reporting",
+            "Description": "View Collections"
+        },
+        "Transactions": {
+            "Caption": "Transactions",
+            "Description": "View Transactions history"
+        },
+        "ChangePassword": {
+            "Caption": "Change Password",
+            "Description": "Change Password"
+        }
+      
     }
 }
