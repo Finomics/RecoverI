@@ -1,0 +1,50 @@
+{
+    "RiderHome": {
+        "ClientList": {
+            "Caption": "Client List",
+            "Description": "View list of clients assigned to you."
+        },
+        "PaymentCollection": {
+            "Caption": "Payment Collection",
+            "Description": "View all payments collected by you."
+        },
+        "VerifyPayments": {
+            "Caption": "Verify Payments",
+            "Description": "View Unverified Payments to verify"
+        },
+        "Transfer": {
+            "Caption": "Transfer",
+            "Description": "Transfer payments to cashier"
+        },
+        "ChangePassword": {
+            "Caption": "Change Password",
+            "Description": "Change Password"
+        }
+    },
+    "CashierHome": {
+        "AssignRider": {
+            "Caption": "Assign Rider",
+            "Description": "Assign Rider to your clients"
+        },
+        "AddClient": {
+            "Caption": "Add Client",
+            "Description": "Add new Clients"
+        },
+        "Deposit": {
+            "Caption": "Deposit",
+            "Description": "Deposit Payments"
+        },
+        "ViewPayments": {
+            "Caption": "View Payments",
+            "Description": "View collected payments"
+        },
+        "ClientList": {
+            "Caption": "Client List",
+            "Description": "View Clients &  collect Payments"
+        },
+        "ChangePassword": {
+            "Caption": "Change Password",
+            "Description": "Change Password"
+        }
+    }
+}
