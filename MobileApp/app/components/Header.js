@@ -64,7 +64,7 @@ function Header({ header, navigation }) {
             {(route.name === "Rider Home" || route.name === "Cashier Home" || route.name === "Admin Home") ?
                 <TouchableOpacity style={styles.homeContaiiner} onPress={handleBack}>
                     <Image
-                        style={styles.homeIcon}
+                        style={styles.logoOutIcon}
                         source={require('../assets/logout.png')}
                     />
                 </TouchableOpacity> :
@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'pink',
     },
     tinyIcon: {
-        width: width / 8,
-        height: height / 22,
+        width: width / 14,
+        height: height / 24,
         // alignSelf: 'center',
         // width: 40,
         // height: 40,
@@ -122,12 +122,12 @@ const styles = StyleSheet.create({
         top: 5
     },
     homeIcon: {
-        width: width / 10,
-        height: height / 22,
-        // alignSelf: 'center',
-        // width: 40,
-        // height: 40,
-
+        width: width / 14,
+        height: height / 24,
+    },
+    logoOutIcon: {
+        width: width / 15,
+        height: height / 30,
     },
     title: {
         width: '60%',

@@ -58,6 +58,8 @@ function CashierHomeScreenCopy({navigation}) {
                 />
 
             </View>
+
+            
             <ScrollView>
                 <IconButton
                     title={'Assign Rider'}
