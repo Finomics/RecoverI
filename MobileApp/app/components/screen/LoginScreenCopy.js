@@ -46,7 +46,7 @@ function LoginScreenCopy({ navigation }) {
             // console.log(res.data,"login Response");
             console.log(res.data.Role);
             // localStorage.setItem("Role", JSON.stringify(res.data.Role))
-            alert("Login Successfully!")
+            alert("Login Successfuly")
             setLoad(previousState => !previousState)
             // console.log(email)
             AdminRole.setRole(res.data)

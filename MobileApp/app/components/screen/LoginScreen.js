@@ -18,8 +18,8 @@ const validationSchema = Yup.object().shape({
 
 
 function LoginScreen({ navigation }) {
-    
-    
+
+
     const [load, setLoad] = useState(false)
 
     const AdminRole = useContext(StoreContext);
@@ -41,7 +41,7 @@ function LoginScreen({ navigation }) {
             // console.log(res.data,"login Response");
             console.log(res.data.Role);
             // localStorage.setItem("Role", JSON.stringify(res.data.Role))
-            alert("Login Successfully!")
+            alert("Login Successfuly")
             setLoad(previousState => !previousState)
             // console.log(email)
             AdminRole.setRole(res.data)
@@ -72,7 +72,7 @@ function LoginScreen({ navigation }) {
 
     return (
         <Screen style={styles.container}>
-            <TopButtons header={''} navigation={navigation}/>
+            <TopButtons header={''} navigation={navigation} />
             <ScrollView>
                 <Image
                     style={styles.logo}
@@ -104,18 +104,18 @@ function LoginScreen({ navigation }) {
                         textContentType='password'
                     />
                     {
-                        load ? 
+                        load ?
                             <ActivityIndicator
-                                size='large' 
+                                size='large'
                                 color="#0000ff"
-                            /> 
-                        : 
+                            />
+                            :
                             <SubmitButton
                                 title='Login'
                                 color='teal'
-                            /> 
+                            />
                     }
-                    
+
                 </AppForm>
             </ScrollView>
 
