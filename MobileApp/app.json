@@ -34,6 +34,9 @@
     "web": {
       "favicon": "./app/assets/K-icon.png"
     },
+    "expo-yarn-workspaces": {
+      "symlinks": ["expo-constants"]
+    },
     "description": "",
     "extra": {
       "eas": {
