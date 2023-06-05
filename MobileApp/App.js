@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as Updates from 'expo-updates';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { GlobalProvider } from './app/components/context/GlobalState'
 
@@ -38,14 +39,82 @@ import RegisterScreenCopy from './app/components/screen/RegisterScreenCopy';
 import LoginScreenCopy from './app/components/screen/LoginScreenCopy';
 import ClientFormScreenCopy from './app/components/screen/ClientFormScreenCopy';
 
-
+import Constants from 'expo-constants';
 
 export default function App() {
   // added dummy user for testing
   const [Role, setRole] = useState({})
   const [ClientId, setClientId] = useState([])
 
-  console.log(Role, "Set GolbalState Data");
+  // console.log(Role, "Set GolbalState Data");
+
+  const fetchLatestAppVersion = async () => {
+    let a = com.anostrat.kollectIt
+    // const { com.anostrat.kollectIt } = Constants.manifest.android;
+    const url = `https://play.google.com/store/apps/details?id=${com.anostrat.kollectIt}`;
+    
+
+    // const url = 'https://play.google.com/store/apps/details?id=com.miniclip.eightballpool';
+    // console.log(url, "ddddddddddddddddddd");
+
+    try {
+      const response = await fetch(url);
+      console.log(response,"response");
+      const html = await response.text();
+
+      // Extract the latest version number from the HTML
+      const match = html.match(/Current Version:.*?>(.*?)</);
+      console.log(match,"match");
+      const latestVersion = match ? match[1] : null;
+      console.log(latestVersion);
+      // return latestVersion;
+    } catch (error) {
+      console.log('Error fetching latest app version:', error);
+      return null;
+    }
+  };
+
+  const checkForUpdate = async () => {
+    try {
+      const update = await Updates.checkForUpdateAsync();
+
+      if (update.isAvailable) {
+        // An update is available, check if it's the latest version
+        const latestVersion = await fetchLatestAppVersion();
+
+        if (latestVersion && latestVersion !== update.manifest.version) {
+          // Prompt the user to update
+          // You can use any UI component or library to display a prompt to the user
+          // For example, you can use the `react-native-modal` library to show a modal
+          // with the update prompt
+          // console.log('Update available:', latestVersion);
+        }
+      }
+    } catch (error) {
+      console.log('Error checking for update:', error);
+    }
+  };
+
+  const checkAppVersion = async () => {
+    try {
+      const { manifest } = await Updates.fetchUpdateAsync();
+      const appVersion = manifest.version;
+      // console.log('App version:', appVersion);
+
+      // Use the app version as needed
+      // For example, you can compare it with a server version or display it in your UI
+    } catch (error) {
+      console.log('Error checking app version:', error);
+    }
+  };
+
+
+  useEffect(() => {
+    // checkForUpdate();
+    // checkAppVersion()
+    fetchLatestAppVersion()
+
+  }, [])
 
   return (
     // <Screen>

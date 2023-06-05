@@ -132,76 +132,81 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, setUpdate, upd
             {/* <Screen> */}
 
 
-                <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
-                    <View style={styles.detailsContainer}>
-                        <AppText>{name}</AppText>
-                        <AppText>{phoneNumber}</AppText>
-                        <AppText>{email}</AppText>
-                        <AppText>Rs: {amount}</AppText>
-                        {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
-                        <AppText>Rider: {rider}</AppText>
+            <TouchableOpacity style={styles.card} onPress={() => { handlePress() }}>
+                <View style={styles.detailsContainer}>
+                    <AppText>{name}</AppText>
+                    <AppText>{phoneNumber}</AppText>
+                    <AppText>{email}</AppText>
+                    <AppText>Rs: {amount}</AppText>
+                    {/* <AppText>Rider: {rider===true? 'temp' : id.Rider}</AppText> */}
+                    <AppText>Rider: {rider}</AppText>
 
-                    </View>
-                </TouchableOpacity>
+                </View>
+            </TouchableOpacity>
 
-                <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={modalVisible}
+            <Modal
+                animationType="slide"
+                transparent={false}
+                visible={modalVisible}
 
-                >
+            >
 
-                    <Header
-                        header={'List of Riders'}
-                        
+                {/* <Header
+                    header={'List of Riders'}
+                /> */}
+                {/* <View style={styles.logoContainer}>
+                    
+                  
+                </View> */}
+
+                <View style={styles.buttonStyle}>
+                    <Image
+                        style={styles.logo}
+                        source={require('../assets/logo.png')}
+
                     />
-                    <View style={styles.logoContainer}>
-                        <Image
-                            style={styles.logo}
-                            source={require('../assets/logo.png')}
-
-                        />
-                    </View>
-                    <View style={styles.buttonStyle}>
+                    <View style={{ marginTop: "15%", marginRight: "2%" }}>
                         <Icon
-                            name='backburger'
+                            name='close'
                             size={50}
                             backgroundColor='transparent'
                             iconColor={colors.royalBlue}
                             onPress={() => setModalVisible(!modalVisible)}
-                            title='Back'
+                            title='Close'
                         />
-                        <Text style={{ textAlign: "center", marginTop: "-12%", margin: "6%", fontSize: 22,color:"#2E6C81" }}>{(riderObj == "") ? <></> : `Selected: ${riderObj.employeeName}`} </Text>
-                        {/* <Button title='List of Riders' onPress={() => setModalVisible(!modalVisible)} color={colors.royalBlue} /> */}
                     </View>
 
-                    <FlatList
-                        data={Rider}
-                        // keyExtractor={tempRiderName => tempRiderName.value.toString()}
-                        renderItem={({ item }) =>
-                            <RiderNameCard
-                                name={item.employeeName}
-                                // id={item._id}
-                                onPress={() => { handleRider(item) }}
-                            />
-                        }
+
+                </View>
+                <Text style={{ textAlign: "center", marginTop: "-12%", margin: "6%", fontSize: 22, color: "#2E6C81" }}>{(riderObj == "") ? <></> : ` ${riderObj.employeeName}`} </Text>
+
+                <FlatList
+                    data={Rider}
+                    // keyExtractor={tempRiderName => tempRiderName.value.toString()}
+                    renderItem={({ item }) =>
+                        <RiderNameCard
+                            name={item.employeeName}
+                            // id={item._id}
+                            onPress={() => { handleRider(item) }}
+                        />
+                    }
+                />
+
+                <View style={{ marginHorizontal: 10, borderTopWidth: 3, }}>
+                    <AppTextInput
+                        icon={'circle'}
+                        placeholder={'Amount'}
+                        onChangeText={setDueamount}
+                        value={dueAmount}
                     />
+                    <AppButton
+                        title={'Assign'}
+                        color='buttonColor'
+                        onPress={handleAssign}
+                    />
+                </View>
 
-                    <View style={{ marginHorizontal: 10, borderTopWidth: 3, }}>
-                        <AppTextInput
-                            icon={'circle'}
-                            placeholder={'Amount'}
-                            onChangeText={setDueamount}
-                            value={dueAmount}
-                        />
-                        <AppButton
-                            title={'Assign'}
-                            color='buttonColor'
-                            onPress={handleAssign}
-                        />
-                    </View>
-
-                </Modal>
+            </Modal>
 
 
 
@@ -255,10 +260,14 @@ const styles = StyleSheet.create({
     buttonStyle: {
         // paddingVertical: 15,
         flex: 1,
+        // margin: "5%",
+        // padding: "5%",
+        flexDirection: "row"
     },
     logo: {
         height: 120,
         width: 300,
+        marginTop: "7%"
     },
     logoContainer: {
         alignItems: 'center',
