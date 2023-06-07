@@ -46,7 +46,7 @@ const data= route.params;
     // console.log(BelongsTo, "BelongsTo");
 
     let modeOfPayment = '';
-    if (mode === true ||mode === 'Cheque') {
+    if (mode === 'Cheque') {
         modeOfPayment = 'Cheque'
     } else {
         modeOfPayment = 'Cash'
