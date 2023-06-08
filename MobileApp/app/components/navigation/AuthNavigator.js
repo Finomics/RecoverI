@@ -32,6 +32,7 @@ import RegisterScreenCopy from '../screen/RegisterScreenCopy';
 import LoginScreenCopy from '../screen/LoginScreenCopy';
 import ClientFormScreenCopy from '../screen/ClientFormScreenCopy';
 import RiderCard from "../RiderCard";
+import TeamMember from "../screen/TeamMember/TeamMember";
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,7 @@ const AuthNavigator = () => (
         <Stack.Screen name='Summary' component={SummaryScreen} options={{headerShown: false}}/>
         <Stack.Screen name='Transactions' component={DetailScreen} options={{headerShown: false}} />
         <Stack.Screen name='RiderCard' component={RiderCard} options={{headerShown: false}} />
+        <Stack.Screen name='TeamMember' component={TeamMember} options={{headerShown: false}} />
         {/* <Stack.Screen name='Change Password' component={ChangePassword}/> */}
     </Stack.Navigator>
 )

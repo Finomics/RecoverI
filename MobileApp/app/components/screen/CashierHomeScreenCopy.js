@@ -99,6 +99,7 @@ function CashierHomeScreenCopy({ navigation }) {
                     image={require('../../assets/client-list.png')}
                     onPress={handleClientList}
                 />
+               
                 <IconButton
                     title={'Change Password'}
                     subTitle={'Change Password'}
