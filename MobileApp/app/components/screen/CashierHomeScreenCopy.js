@@ -8,35 +8,43 @@ import IconButton from '../IconButton';
 import Screen from '../Screen';
 import AppText from '../AppText';
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-function CashierHomeScreenCopy({navigation}) {
+function CashierHomeScreenCopy({ navigation }) {
     const contextData = useContext(StoreContext);
-    const [user,setUser]=useState(contextData.Role)
-    console.log("Context in Cashier",contextData.Role);
+    const [user, setUser] = useState(contextData.Role)
+    // let arr = []
+    let str = user.employeeName
+    console.log(user.shortCode);
+    // arr.push(user.employeeName)
 
-    const handleClientList=()=>{
+
+    // console.log(arr, "firstWord");
+
+    // console.log("Context in Cashier", contextData.Role);
+
+    const handleClientList = () => {
         console.log('handleClientList');
         navigation.navigate('Clients Listing');
     }
-    const handleAssignRider=()=>{
+    const handleAssignRider = () => {
         console.log('Assign Rider');
         navigation.navigate('Assign Rider');
     }
-    const handleAddClient=()=>{
+    const handleAddClient = () => {
         console.log('Add Client');
         navigation.navigate('Client Form');
     }
-    const handleDeposit=()=>{
+    const handleDeposit = () => {
         console.log('Deposit');
         navigation.navigate('Transfer')
     }
-    const handleViewPayments=()=>{
+    const handleViewPayments = () => {
         console.log('View Payments');
         navigation.navigate('All Payments');
     }
 
-    const handlePasswordChange=()=>{
+    const handlePasswordChange = () => {
         console.log('handlePasswordChang');
         navigation.navigate('Change Password');
     }
@@ -46,20 +54,20 @@ function CashierHomeScreenCopy({navigation}) {
                 header={'Cashier Home'}
                 navigation={navigation}
             />
-            <View style={{alignItems: 'center',backgroundColor:"white"}}>
-                <AppText style={{color:"#2E6C81"}}>
-                    Welcome : {user.employeeName}
+            <View style={{ alignItems: 'center', backgroundColor: "white" }}>
+                <AppText style={{ color: "#2E6C81" }}>
+                    Welcome : {`${str.substring(0, str.indexOf(' '))} ( ${user.shortCode})`}
                 </AppText>
             </View>
-            <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>
+            <View style={{ width: width, height: height * 0.2, justifyContent: 'center' }}>
                 <Image
-                    style={{width: width, height: height*0.13,}}
+                    style={{ width: width, height: height * 0.13, }}
                     source={require('../../assets/kollectit.png')}
                 />
 
             </View>
 
-            
+
             <ScrollView>
                 <IconButton
                     title={'Assign Rider'}
@@ -91,7 +99,7 @@ function CashierHomeScreenCopy({navigation}) {
                     image={require('../../assets/client-list.png')}
                     onPress={handleClientList}
                 />
-                 <IconButton
+                <IconButton
                     title={'Change Password'}
                     subTitle={'Change Password'}
                     image={require('../../assets/password.png')}
@@ -103,7 +111,7 @@ function CashierHomeScreenCopy({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container:{},
+    container: {},
 });
 
 export default CashierHomeScreenCopy;
