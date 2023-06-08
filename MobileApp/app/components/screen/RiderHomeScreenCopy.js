@@ -13,6 +13,7 @@ const {width, height} = Dimensions.get('screen');
 function RiderHomeScreenCopy({navigation}) {
     const contextData = useContext(StoreContext);
     const [user,setUser]=useState(contextData.Role);
+    let str = user.employeeName
 
     const handleClientList=()=>{
         console.log('handleClientList');
@@ -43,7 +44,8 @@ function RiderHomeScreenCopy({navigation}) {
             />
            <View style={{alignItems: 'center',backgroundColor:"white"}}>
                 <AppText style={{color:"#2E6C81"}}>
-                    Welcome : {user.employeeName}
+                    {/* Welcome : {user.employeeName} */}
+                    Welcome : {`${str.substring(0, str.indexOf(' '))} ( ${user.shortCode})`}
                 </AppText>
             </View>
             <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>

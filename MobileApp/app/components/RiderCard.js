@@ -148,17 +148,15 @@ function RiderCard({ name, phoneNumber, email, amount, rider, id, setUpdate, upd
                 animationType="slide"
                 transparent={false}
                 visible={modalVisible}
-
             >
-
-                {/* <Header
+                 {/* <Header
                     header={'List of Riders'}
                 /> */}
                 {/* <View style={styles.logoContainer}>
                     
                   
                 </View> */}
-
+                
                 <View style={styles.buttonStyle}>
                     <Image
                         style={styles.logo}

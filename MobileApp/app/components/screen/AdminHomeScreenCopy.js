@@ -8,29 +8,31 @@ import IconButton from '../IconButton';
 import Screen from '../Screen';
 import AppText from '../AppText';
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-function AdminHomeScreenCopy({navigation}) {
+function AdminHomeScreenCopy({ navigation }) {
+
     const contextData = useContext(StoreContext);
-    const [user,setUser]=useState(contextData.Role);
+    const [user, setUser] = useState(contextData.Role);
+    let str = user.employeeName
 
-    const handleAddMember=()=>{
+    const handleAddMember = () => {
         console.log('handleAddMember');
         navigation.navigate("Add Member")
     }
-    const handleClientList=()=>{
+    const handleClientList = () => {
         console.log('handleClientList')
         navigation.navigate("Clients Listing");
     }
-    const handleReporting=()=>{
+    const handleReporting = () => {
         console.log('handleReporting');
         navigation.navigate("Summary");
     }
-    const handleTransaction=()=>{
+    const handleTransaction = () => {
         console.log('handleTransaction');
         navigation.navigate("Transactions");
     }
-    const handlePasswordChange=()=>{
+    const handlePasswordChange = () => {
         console.log('handlePasswordChang');
         navigation.navigate('Change Password');
     }
@@ -40,14 +42,14 @@ function AdminHomeScreenCopy({navigation}) {
                 header={'Admin'}
                 navigation={navigation}
             />
-             <View style={{alignItems: 'center',backgroundColor:"white"}}>
-                <AppText style={{color:"#2E6C81"}}>
-                    Welcome : {user.employeeName}
+            <View style={{ alignItems: 'center', backgroundColor: "white" }}>
+                <AppText style={{ color: "#2E6C81" }}>
+                    Welcome : {`${str.substring(0, str.indexOf(' '))} ( ${user.shortCode})`}
                 </AppText>
             </View>
-            <View style={{width: width, height: height*0.2, justifyContent: 'center'}}>
+            <View style={{ width: width, height: height * 0.2, justifyContent: 'center' }}>
                 <Image
-                    style={{width: width, height: height*0.13,}}
+                    style={{ width: width, height: height * 0.13, }}
                     source={require('../../assets/kollectit.png')}
                 />
 
@@ -77,7 +79,7 @@ function AdminHomeScreenCopy({navigation}) {
                     image={require('../../assets/transaction.png')}
                     onPress={handleTransaction}
                 />
-                 <IconButton
+                <IconButton
                     title={'Change Password'}
                     subTitle={'Change Password'}
                     image={require('../../assets/password.png')}
@@ -89,7 +91,7 @@ function AdminHomeScreenCopy({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container:{},
+    container: {},
 });
 
 export default AdminHomeScreenCopy;
