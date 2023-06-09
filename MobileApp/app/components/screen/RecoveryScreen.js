@@ -62,6 +62,11 @@ function RecoveryScreen({ navigation, route }) {
   };
 
   const handleContinue = async () => {
+    if(textInput==""){
+      alert("Please enter correct collection Amount");
+    }else{
+
+    
     setLoad(true);
     let mode = isNew ? "Cheque" : "Cash";
     let payload = {
@@ -88,6 +93,7 @@ function RecoveryScreen({ navigation, route }) {
       withCredentials: true,
     })
       .then((response) => {
+        setTextInput("");
         // console.log("response from API", a.data);
         setLoad(false);
         var a = response.data;
@@ -101,7 +107,9 @@ function RecoveryScreen({ navigation, route }) {
         alert(error.response.data);
         setLoad(false);
       });
-  };
+      setTextInput("");
+  }
+};
 
   if (imageUri === null) {
     console.log("not image");
@@ -203,6 +211,7 @@ function RecoveryScreen({ navigation, route }) {
       </ScrollView>
     </Screen>
   );
+
 }
 
 const styles = StyleSheet.create({
