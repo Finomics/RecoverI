@@ -19,6 +19,7 @@ import Header from '../Header';
 const validationSchema = Yup.object().shape({
     userName: Yup.string().required().label("User Name"),
     email: Yup.string().label("Email"),
+    ConatactNumber: Yup.string().label("ConatactNumber"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -38,6 +39,8 @@ function AddMemberScreen({ navigation }) {
 
         setLoad(true);
         console.log(values, value, "a");
+
+
         axios({
             method: "post",
             url: Url + '/auth/employe',
@@ -48,6 +51,7 @@ function AddMemberScreen({ navigation }) {
                 createdBy: createdByAdminId.Role._id,
                 companyName: createdByAdminId.Role.companyName,
                 shortCode: createdByAdminId.Role.shortCode,
+                employeeContactNum: values.ConatactNumber,
                 name: values.userName
             },
         })
@@ -70,8 +74,8 @@ function AddMemberScreen({ navigation }) {
         <Screen style={styles.backGround}>
             <Header
                 header={'Add Member'}
-               
-                navigation ={navigation }
+
+                navigation={navigation}
             />
             <View style={styles.logoContainer}>
                 <Image
@@ -103,15 +107,25 @@ function AddMemberScreen({ navigation }) {
                             icon='email-outline'
                             keyboardType='email-address'
                             name='email'
-                            placeholder='Email or Phone'
+                            placeholder='Login Id'
                             textContentType='emailAddress'
+                        />
+
+                        <AppFormField
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            icon='phone-outline'
+                            keyboardType='Number'
+                            name='ConatactNumber'
+                            placeholder='Contact Number'
+                            textContentType='ConatactNumber'
                         />
                         <AppFormPassword
                             autoCapitalize='none'
                             autoCorrect={false}
                             icon='lock'
                             name='password'
-                            placeholder='Password New'
+                            placeholder='New Password'
                             textContentType='password'
                         />
 
