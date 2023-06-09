@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react';
-import { Image, Button, Text, FlatList, View, StyleSheet, TextInput } from 'react-native';
+import { Image, Button, Text, FlatList, View, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Card from '../../Card';
 import NewCard from '../../NewCard';
 import colors from '../../colors';
@@ -10,93 +10,57 @@ import axios from 'axios';
 import TopButtons from '../TopButtons';
 import { Url } from '../Core/index';
 import Header from '../../Header';
+import TeamMemeberModal from './TeamMemeberModal';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function TeamMember({ navigation }) {
 
 
     // console.log("in client Screen",list)
-    const [clients, setClients] = useState('');
-    const [filtered, setfiltered] = useState([]);
-    const [filterText, setfilterText] = useState();
-    const GlobaleEmployee = useContext(StoreContext)
+    let [empolyeeData, setempolyeeData] = useState('');
+    let [showPopup, setShowPopup] = useState(false);
+    let [ModalData, setModalData] = useState('');
+    let [loading, setloading] = useState(false);
+    let GlobaleEmployee = useContext(StoreContext)
 
-    console.log(GlobaleEmployee.Role._id, "createdBy")
+    console.log(GlobaleEmployee.Role.Role, "createdBy")
 
+    const handleClose = () => { setShowPopup(false) };
 
     useEffect(() => {
-        // let belongsTo = '';
-        // if (GlobaleEmployee.Role.Role == 'Admin') {
-        //     belongsTo = GlobaleEmployee.Role._id;
-        // } else {
-        //     belongsTo = GlobaleEmployee.Role.createdBy;
-        // }
-        // axios({
-        //   method: "post",
-        //   url: Url + "/auth/BelongsTo",
-        //   data: {
-        //     createdBy: belongsTo
-        //   }
-        // })
-        //   .then((responseJson) => {
-        //     console.log("TeamMember in getAPI", responseJson.data);
-        //     const filteredData=responseJson.data.filter(filterClients)
-        //     setClients(filteredData);
-        //     setfiltered(filteredData);
 
-        //   })
-        //   .catch((error) => {
-        //     console.error(error);
-        //   });
-        // function filterClients(client) {
-        //   if (GlobaleEmployee.Role.Role == 'Rider') {
-        //     return client.ClientRiderObjectId == GlobaleEmployee.Role._id;
-        //   } else {
-        //     return true;
-        //   }
-
-
-        // }
-
-        axios({
-            method: "post",
-            url: Url + "/filteredEmployee",
-            data: {
-                filter: {
-                    "createdBy": "6481b3091efcb5d62f14c744"
+        if (GlobaleEmployee.Role.Role == 'Admin') {
+            axios({
+                method: "post",
+                url: Url + "/filteredEmployee",
+                data: {
+                    filter: {
+                        "createdBy": GlobaleEmployee.Role._id
+                    }
                 }
-            }
-        }).then((res) => {
-            console.log(res.data, "Response Employee");
+            }).then((res) => {
 
-            setClients(res.data);
-
-        }).catch((err) => {
-            console.log(err);
-        })
-
-    }, [])
-
-    // for search
-    const handleSearch = async () => {
-        console.log("Search", filterText);
-        let filtereddata = clients.filter(clientData => (nameFilter(clientData.ClientName, filterText)));
-        console.log("filtered before", filtered.length, filtereddata.length)
-        setfiltered(filtereddata);
-        console.log("filtered after", filtered.length, filtereddata.length);
-
-    }
-    function nameFilter(clientName, name) {
-        console.log("Filters", clientName.toLowerCase().includes(name.toLowerCase()))
-        return clientName.toLowerCase().includes(name.toLowerCase());
-
-    }
-    const handlePress = (item) => {
-        navigation.navigate('Recovery Screen', item);
-        if (GlobaleEmployee.Role.Role == 'Rider') {
-
+                console.log(res.data, "Response Employee");
+                setempolyeeData(res.data);
+                setloading(false);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
-        console.log("Client is pressed", item);
+
+    }, [loading])
+
+    const handlePress = (item) => {
+        setModalData(item)
+        setShowPopup(true)
+    }
+
+    const modalUpdateData = async (data) => {
+        console.log(data, "modal Update Data");
+        setShowPopup(false)
+        setloading(true)
     }
 
     return (
@@ -105,29 +69,35 @@ function TeamMember({ navigation }) {
                 header={'Team Member'}
                 navigation={navigation}
             />
+            <TeamMemeberModal visible={showPopup} onClose={handleClose} data={ModalData} modalUpdateData={modalUpdateData} />
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}
                     source={require('../../../assets/logo.png')}
                 />
-                {/* <View style={styles.textContainer}>
-          <TextInput style={{ fontWeight: 'bold', fontSize: 18, width: '100%' }} placeholder='Client Name' onChangeText={(text) =>setfilterText(text.toString())} />
-        </View> */}
-                {/* <Button title='Search' onPress={() =>handleSearch()} color={'#578B9D'}  /> */}
             </View>
-            {clients != null ?
+            {empolyeeData != null ?
                 <FlatList
-                    data={clients}
+                    data={empolyeeData}
                     // keyExtractor={listing => listing.ClientId}
                     renderItem={({ item, i }) =>
-                        <Card
-                            key={i}
-                            title={item.employeeName}
-                            subTitle={item.Role}
-                            subSubTitle={item.shortCode}
+                        <TouchableOpacity onPress={() => handlePress(item)}>
+                            <View style={styles.container} >
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Name: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeName}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Contact Number: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeContactNum}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Login Id: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeEmail}</Text></Text>
+                                <Text style={{ fontSize: 23, color: "black", fontWeight: "bold" }}>Role: {" "} <Text style={{ fontWeight: "normal" }}>{item.Role}</Text>
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        // <Card
+                        //     key={i}
+                        //     title={item.employeeName}
+                        //     subTitle={item.Role}
+                        //     subSubTitle={item.shortCode}
 
-                            onPress={() => handlePress(item)}
-                        />
+                        //     onPress={() => handlePress(item)}
+                        // />
                     }
                 /> : <></>}
         </Screen>
@@ -153,6 +123,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 15,
         marginBottom: 10,
+    },
+    container: {
+        borderRadius: 15,
+        backgroundColor: '#B4C6D1',
+        marginBottom: 15,
+        marginHorizontal: 10,
+        overflow: 'hidden',
+        paddingVertical: 10,
+        paddingLeft: 10,
+        borderColor: '#B4C6D1',
+        borderWidth: 2,
+
     },
 })
 
