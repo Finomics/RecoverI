@@ -39,10 +39,10 @@ function LoginScreenCopy({ navigation }) {
             method: "post",
             url: Url + '/auth/login',
             data: {
-                email: "bilal@mplus-hks.com",
-                password: "mp123456",
-                // email: values.email,
-                // password: values.password,
+                // email: "bilal@mplus-hks.com",
+                // password: "mp123456",
+                email: values.email,
+                password: values.password,
             }
         }).then((res) => {
             // console.log(res.data,"login Response");

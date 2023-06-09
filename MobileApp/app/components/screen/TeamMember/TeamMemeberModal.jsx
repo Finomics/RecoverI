@@ -17,11 +17,11 @@ const Colors = {
   Black: '#000000',
 };
 
-export default function TeamMemeberModal({ visible, onClose, data, ManagerUpdate }) {
+export default function TeamMemeberModal({ visible, onClose, data, modalUpdateData }) {
 
-  console.log(data, "Modat");
-  const [Name, setUpdateName] = useState('');
-  const [ContactNum, setContactNum] = useState('');
+  console.log(data, "Modal");
+  const [Name, setUpdateName] = useState(data.employeeName);
+  const [ContactNum, setContactNum] = useState(data.employeeContactNum);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -29,12 +29,9 @@ export default function TeamMemeberModal({ visible, onClose, data, ManagerUpdate
     { label: 'Rider', value: 'Rider' },
     { label: 'Undefine', value: 'Undefine' },
   ]);
-  // const UpdateManager = (item) => {
-  //   console.log(item, "Update Manager Data");
-  // }
 
   function HandlerUpdate() {
-    console.log(value, Name, ContactNum)
+    // console.log(value, Name, ContactNum)
     axios({
       method: "post",
       url: Url + "/UpdateEmpolyee",
@@ -49,8 +46,9 @@ export default function TeamMemeberModal({ visible, onClose, data, ManagerUpdate
         }
 
       }
-    }).then(() => {
+    }).then((res) => {
       console.log(res.data, "Response Empolyee Update");
+      modalUpdateData(res.data)
     }).catch((err) => {
       console.log(err);
     })
@@ -109,16 +107,16 @@ export default function TeamMemeberModal({ visible, onClose, data, ManagerUpdate
                 <View style={styles.inputView}>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder="Contact Number"
+                    placeholder={data.employeeContactNum}
                     placeholderTextColor="#003f5c"
                     onChangeText={(ContactNum) => setContactNum(ContactNum)}
                   />
                 </View>
                 <View
                   style={{
-                    height: windowHeight / 2,
-                    // width: windowWidth - 2,
-                    // alignItems:"center"
+                    height: windowHeight / 3.5,
+                    width: windowWidth / 1.3,
+                    alignItems: "center",
                   }}
                 >
                   <DropDownPicker
@@ -132,6 +130,7 @@ export default function TeamMemeberModal({ visible, onClose, data, ManagerUpdate
                     listMode="SCROLLVIEW"
                   />
                 </View>
+
               </View>
             </ScrollView>
 
