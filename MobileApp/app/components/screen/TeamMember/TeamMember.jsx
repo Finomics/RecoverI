@@ -10,6 +10,7 @@ import axios from 'axios';
 import TopButtons from '../TopButtons';
 import { Url } from '../Core/index';
 import Header from '../../Header';
+import TeamMemeberModal from './TeamMemeberModal';
 
 
 function TeamMember({ navigation }) {
@@ -19,10 +20,13 @@ function TeamMember({ navigation }) {
     const [clients, setClients] = useState('');
     const [filtered, setfiltered] = useState([]);
     const [filterText, setfilterText] = useState();
+    let [showPopup, setShowPopup] = useState(false);
+    let [ModalData, setModalData] = useState('');
     const GlobaleEmployee = useContext(StoreContext)
 
     console.log(GlobaleEmployee.Role._id, "createdBy")
-
+    const handleClick = () => { setShowPopup(true) };
+    const handleClose = () => { setShowPopup(false) };
 
     useEffect(() => {
         // let belongsTo = '';
@@ -78,25 +82,23 @@ function TeamMember({ navigation }) {
     }, [])
 
     // for search
-    const handleSearch = async () => {
-        console.log("Search", filterText);
-        let filtereddata = clients.filter(clientData => (nameFilter(clientData.ClientName, filterText)));
-        console.log("filtered before", filtered.length, filtereddata.length)
-        setfiltered(filtereddata);
-        console.log("filtered after", filtered.length, filtereddata.length);
+    // const handleSearch = async () => {
+    //     console.log("Search", filterText);
+    //     let filtereddata = clients.filter(clientData => (nameFilter(clientData.ClientName, filterText)));
+    //     console.log("filtered before", filtered.length, filtereddata.length)
+    //     setfiltered(filtereddata);
+    //     console.log("filtered after", filtered.length, filtereddata.length);
 
-    }
-    function nameFilter(clientName, name) {
-        console.log("Filters", clientName.toLowerCase().includes(name.toLowerCase()))
-        return clientName.toLowerCase().includes(name.toLowerCase());
+    // }
+    // function nameFilter(clientName, name) {
+    //     console.log("Filters", clientName.toLowerCase().includes(name.toLowerCase()))
+    //     return clientName.toLowerCase().includes(name.toLowerCase());
 
-    }
+    // }
     const handlePress = (item) => {
-        navigation.navigate('Recovery Screen', item);
-        if (GlobaleEmployee.Role.Role == 'Rider') {
-
-        }
         console.log("Client is pressed", item);
+        setModalData(item)
+        setShowPopup(true)
     }
 
     return (
@@ -105,6 +107,7 @@ function TeamMember({ navigation }) {
                 header={'Team Member'}
                 navigation={navigation}
             />
+            <TeamMemeberModal visible={showPopup} onClose={handleClose} data={ModalData} />
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}
