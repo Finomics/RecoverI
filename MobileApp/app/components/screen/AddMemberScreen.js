@@ -56,9 +56,15 @@ function AddMemberScreen({ navigation }) {
             },
         })
             .then((res) => {
-                console.log(res.data, "response");
-                setLoad(false);
-                alert(`your ${value} is successully created`)
+                // console.log(res.data, "response");
+                if (res.data.status === 200) {
+                    setLoad(false);
+                    alert(`your ${value} is successully created`)
+                } else {
+                    alert(res.data.message);
+                    setLoad(previousState => !previousState)
+                }
+    
             })
             .catch((err) => {
                 console.log(err, "error");
