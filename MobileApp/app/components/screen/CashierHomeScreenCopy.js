@@ -13,16 +13,18 @@ const { width, height } = Dimensions.get('screen');
 function CashierHomeScreenCopy({ navigation }) {
     const contextData = useContext(StoreContext);
     const [user, setUser] = useState(contextData.Role)
-    // let arr = []
-    let str = user.employeeName
-    console.log(user.shortCode);
-    // arr.push(user.employeeName)
+   
+    let name="user";
 
+    let str = user.employeeName;
 
-    // console.log(arr, "firstWord");
+    if(str.indexOf(' ')!=-1){
 
-    // console.log("Context in Cashier", contextData.Role);
+    name=str.substring(0, str.indexOf(' '));
 
+    }else{
+        name=str;
+    }
     const handleClientList = () => {
         console.log('handleClientList');
         navigation.navigate('Clients Listing');
@@ -56,7 +58,7 @@ function CashierHomeScreenCopy({ navigation }) {
             />
             <View style={{ alignItems: 'center', backgroundColor: "white" }}>
                 <AppText style={{ color: "#2E6C81" }}>
-                    Welcome : {`${str.substring(0, str.indexOf(' '))} ( ${user.shortCode})`}
+                    Welcome : {`${name} ( ${user.shortCode})`}
                 </AppText>
             </View>
             <View style={{ width: width, height: height * 0.2, justifyContent: 'center' }}>

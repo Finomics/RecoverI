@@ -14,7 +14,7 @@ const {width, height} = Dimensions.get('window')
 
 
 function OTPScreen({ navigation, route }) {
-    console.log("IN OTP", route);
+    console.log("IN OTP", route.params);
     const PaymentObjectId = route.params;
 
 const data= route.params;
@@ -45,8 +45,8 @@ const data= route.params;
     // console.log(ResendPaymentEmail, "isNew");
     // console.log(BelongsTo, "BelongsTo");
 
-    let modeOfPayment = {};
-    if (mode === true) {
+    let modeOfPayment = '';
+    if (mode === 'Cheque') {
         modeOfPayment = 'Cheque'
     } else {
         modeOfPayment = 'Cash'

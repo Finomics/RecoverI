@@ -25,7 +25,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Cashier ', value: 'Cashier ' },
+    { label: 'Cashier', value: 'Cashier' },
     { label: 'Rider', value: 'Rider' },
     { label: 'Undefine', value: 'Undefine' },
   ]);

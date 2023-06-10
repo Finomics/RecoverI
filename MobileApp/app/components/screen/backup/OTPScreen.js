@@ -9,7 +9,8 @@ import AppButton from '../AppButton';
 
 function OTPScreen({ navigation, route }) {
 
-    const {listing, isNew, textInput} = route.params;
+    const {listing, isNew, textInput,} = route.params;
+    console.log("Routes in OTP",route.params);
 
     let modeOfPayment = {};
 

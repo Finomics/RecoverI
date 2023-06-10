@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 
 import {
   Image,
@@ -32,8 +32,12 @@ function RecoveryScreen({ navigation, route }) {
   const [Img, setImage] = useState("");
   const [load, setLoad] = useState(false);
 
+
   const listing = route.params;
-  //  console.log("LISTING",listing);
+
+  useEffect(()=> {
+   console.log("in Recovery UseEffect",textInput);
+}, []);
 
   const PaymentId = listing.ClientId.toString();
   const PaymentName = listing.ClientName;
@@ -58,6 +62,11 @@ function RecoveryScreen({ navigation, route }) {
   };
 
   const handleContinue = async () => {
+    if(textInput==""){
+      alert("Please enter correct collection Amount");
+    }else{
+
+    
     setLoad(true);
     let mode = isNew ? "Cheque" : "Cash";
     let payload = {
@@ -84,6 +93,7 @@ function RecoveryScreen({ navigation, route }) {
       withCredentials: true,
     })
       .then((response) => {
+        setTextInput("");
         // console.log("response from API", a.data);
         setLoad(false);
         var a = response.data;
@@ -92,11 +102,14 @@ function RecoveryScreen({ navigation, route }) {
         alert("confirmation OTP is sent");
       })
       .catch((error) => {
-        console.log( "error in Payment Data",error);
-        alert("error in processing transaction");
+        console.log( "error in Payment Data",error.response.data);
+       
+        alert(error.response.data);
         setLoad(false);
       });
-  };
+      setTextInput("");
+  }
+};
 
   if (imageUri === null) {
     console.log("not image");
@@ -198,6 +211,7 @@ function RecoveryScreen({ navigation, route }) {
       </ScrollView>
     </Screen>
   );
+
 }
 
 const styles = StyleSheet.create({
