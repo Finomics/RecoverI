@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import { Image, ScrollView, StyleSheet, ActivityIndicator, Dimensions, View, Text } from 'react-native';
 import * as Yup from 'yup';
-
 import Screen from '../Screen';
 import { AppForm, AppFormField, AppFormPassword, SubmitButton } from '../forms';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppButton from '../AppButton';
 import axios from 'axios';
 import StoreContext from './GlobalState';
@@ -24,17 +24,34 @@ const validationSchema = Yup.object().shape({
 function LoginScreenCopy({ navigation }) {
 
 
+
     const [load, setLoad] = useState(false)
     const [UserId, setChangeText] = useState('')
     const AdminRole = useContext(StoreContext);
 
     // console.log(AdminRole,"AdminRole");
+    // useEffect(async () => {
 
-    const handlePress = (values) => {
-        console.log(values.email, "login");
+    //     let User_Details = await AsyncStorage.getItem('User');
+
+    //     console.log("from Async", User_Details);
+
+    //     if (User_Details != null) {
+    //         const user = JSON.parse(User_Details)
+    //         console.log("UserDetail by default", user);
+    //         navigation.navigate('Welcome')
+    //     }
+
+    // }, [])
+
+    const handlePress = async (values) => {
+        // let User_Details = await AsyncStorage.getItem('User_Details');
+
+        // console.log(values.email, "login");
+        // console.log(load)
         setChangeText(values.email)
         setLoad(previousState => !previousState)
-        console.log(load)
+
         axios({
             method: "post",
             url: Url + '/auth/login',
@@ -45,16 +62,22 @@ function LoginScreenCopy({ navigation }) {
                 password: values.password,
             }
         }).then((res) => {
-            // console.log(res.data,"login Response");
-            console.log(res.data.Role);
-            // localStorage.setItem("Role", JSON.stringify(res.data.Role))
-            alert("Login Successfuly")
+            console.log(res.data, "User Response");
+            let User_Details = {
+                name: res.data.employeeName,
+                email: res.data.employeeEmail,
+                password: res.data.employeePassword
+            }
+            AsyncStorage.setItem('User', JSON.stringify(User_Details))
             setLoad(previousState => !previousState)
-            // console.log(email)
+
+            // navigation.navigate('Welcome')
+            // localStorage.setItem("Role", JSON.stringify(res.data.Role))
+
             AdminRole.setRole(res.data)
+
             if (res.data.Role === 'Admin') {
                 navigation.navigate('Admin Home')
-
             } else if (res.data.Role === 'Cashier') {
 
                 navigation.navigate('Cashier Home')
@@ -132,7 +155,7 @@ function LoginScreenCopy({ navigation }) {
                                 name='email'
                                 placeholder='Email or Phone'
                                 textContentType='emailAddress'
-                                // onChange={(e)=>{setChangeText(e.terget.value)}}
+                            // onChange={(e)=>{setChangeText(e.terget.value)}}
                             // onChangeText={text => onChangeText(text)}
 
                             />

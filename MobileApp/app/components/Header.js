@@ -1,6 +1,6 @@
 import { React, useEffect, useState, useContext } from 'react';
 import StoreContext from "./screen/GlobalState";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, StyleSheet, Dimensions, Image, TouchableOpacity, Text } from 'react-native';
 
@@ -20,6 +20,18 @@ function Header({ header, navigation }) {
             navigation.goBack();
         }
 
+    }
+    const handlelogOut = async () => {
+        console.log("raza");
+        try {
+            await AsyncStorage.removeItem('User');
+            let User_Details = await AsyncStorage.getItem('User');
+            navigation.navigate("Welcome")
+            console.log("from Asyncin new User ", User_Details);
+        }
+        catch (exception) {
+            return false;
+        }
     }
     const handleHome = () => {
         console.log('Home Button is pressed');
@@ -62,7 +74,7 @@ function Header({ header, navigation }) {
                 </Text>
             </View>
             {(route.name === "Rider Home" || route.name === "Cashier Home" || route.name === "Admin Home") ?
-                <TouchableOpacity style={styles.homeContaiiner} onPress={handleBack}>
+                <TouchableOpacity style={styles.homeContaiiner} onPress={handlelogOut}>
                     <Image
                         style={styles.logoOutIcon}
                         source={require('../assets/logout.png')}

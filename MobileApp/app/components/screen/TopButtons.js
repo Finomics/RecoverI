@@ -4,15 +4,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import StoreContext from './GlobalState';
 import colors from '../colors';
 import AppText from '../AppText';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function TopButtons({header,navigation}) {
+
+function TopButtons({ header, navigation }) {
 
     const contextData = useContext(StoreContext)
-    
 
-    const handleLeftButton=()=>{
+
+    const handleLeftButton = () => {
         console.log('Home Button is pressed');
-        if(contextData.Role.Role=='Admin'){
+        if (contextData.Role.Role == 'Admin') {
             navigation.navigate("Admin Home")
 
         } else if (contextData.Role.Role === 'Cashier') {
@@ -25,13 +27,20 @@ function TopButtons({header,navigation}) {
 
         } else {
             navigation.navigate('Welcome');
+        }
     }
-}
-    const handleRightButton=()=>{
-        contextData.setRole([]);
-        alert("logged out successfully");
-        navigation.navigate('Welcome');
-        console.log('Logout Button is pressed');
+    const handleRightButton = async () => {
+        // alert("logged out successfully");
+        // console.log('Logout Button is pressed');
+        try {
+            await AsyncStorage.removeItem('User');
+            let User_Details = await AsyncStorage.getItem('User');
+            console.log("from Asyncin new User ", User_Details);
+            navigation.navigate('Welcome');
+        }
+        catch (exception) {
+            return false;
+        }
     }
 
     return (
@@ -52,20 +61,20 @@ function TopButtons({header,navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         width: '100%',
         height: '8%',
         // marginTop: 25,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    leftCorner:{
+    leftCorner: {
         width: '20%',
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center'
     },
-    rightCorner:{
+    rightCorner: {
         width: '20%',
         height: '100%',
         alignItems: 'center',

@@ -45,6 +45,7 @@ export default function App() {
   // added dummy user for testing
   const [Role, setRole] = useState({})
   const [ClientId, setClientId] = useState([])
+  
 
   // console.log(Role, "Set GolbalState Data");
 
@@ -52,19 +53,19 @@ export default function App() {
     let a = com.anostrat.kollectIt
     // const { com.anostrat.kollectIt } = Constants.manifest.android;
     const url = `https://play.google.com/store/apps/details?id=${com.anostrat.kollectIt}`;
-    
+
 
     // const url = 'https://play.google.com/store/apps/details?id=com.miniclip.eightballpool';
     // console.log(url, "ddddddddddddddddddd");
 
     try {
       const response = await fetch(url);
-      console.log(response,"response");
+      console.log(response, "response");
       const html = await response.text();
 
       // Extract the latest version number from the HTML
       const match = html.match(/Current Version:.*?>(.*?)</);
-      console.log(match,"match");
+      console.log(match, "match");
       const latestVersion = match ? match[1] : null;
       console.log(latestVersion);
       // return latestVersion;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import { Image, ScrollView, StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
 import * as Yup from 'yup';
@@ -14,7 +14,7 @@ import axios from 'axios';
 import Header from '../Header';
 
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 const validationSchema = Yup.object().shape({
     name: Yup.string().label("Name"),
     cName: Yup.string().label("CName"),
@@ -34,10 +34,10 @@ function RegisterScreenCopy({ navigation }) {
     const handlePress = (values) => {
 
         setLoad(previousState => !previousState)
-         console.log(values, "registration form");
+        console.log(values, "registration form");
         axios({
             method: "post",
-            url: Url+"/auth/employe",
+            url: Url + "/auth/employe",
             data: {
                 name: values.name,
                 email: values.email,
@@ -48,9 +48,14 @@ function RegisterScreenCopy({ navigation }) {
             }
         }).then((res) => {
 
-            alert("Admin has been Created")
-            setLoad(previousState => !previousState)
-            navigation.navigate('Welcome')
+            if (res.data.status === 200) {
+                alert("Admin has been Created")
+                setLoad(previousState => !previousState)
+                navigation.navigate('Welcome')
+            } else {
+                alert(res.data.message);
+                setLoad(previousState => !previousState)
+            }
 
             // if(values.name=='Admin'){
             //     navigation.navigate('AdminHomeScreen')
@@ -59,12 +64,12 @@ function RegisterScreenCopy({ navigation }) {
             // }else if(values.name=='Rider') {
             //     navigation.navigate('RiderHomeScreen')
             // }
-           
 
-        }).catch((err) => { 
+
+        }).catch((err) => {
             console.log(err, "Admin Created Error");
-            setLoad(previousState => !previousState); 
-            alert ("Error in Registration: please try again later.");
+            setLoad(previousState => !previousState);
+            alert("Error in Registration: please try again later.");
             setLoad(false);
         })
     }
@@ -76,7 +81,7 @@ function RegisterScreenCopy({ navigation }) {
                 header={'Register'}
                 navigation={navigation}
             />
-            <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>
+            <View style={{ width: width, marginBottom: 60, justifyContent: 'center' }}>
                 <Image
                     style={styles.logo}
                     source={require('../../assets/logo.png')}
@@ -86,22 +91,22 @@ function RegisterScreenCopy({ navigation }) {
 
                 <View style={styles.container}>
                     <View style={styles.form}>
-                        <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', paddingBottom: 30}}>
+                        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', paddingBottom: 30 }}>
                             <Image
-                                style={{width: width*0.35}}
+                                style={{ width: width * 0.35 }}
                                 source={require('../../assets/pngtree.png')}
-                                />
+                            />
                         </View>
 
 
                         <AppForm
-                            initialValues={{ email: '', password: '', name: '',cName:'',sCode:'' }}
+                            initialValues={{ email: '', password: '', name: '', cName: '', sCode: '' }}
                             onSubmit={(values, { resetForm }) => {
                                 handlePress(values)
                                 // , resetForm({ values: initialValues });
                             }}
                             validationSchema={validationSchema}
-                            >
+                        >
                             <AppFormField
                                 autoCapitalize='words'
                                 autoCorrect={false}
@@ -109,23 +114,23 @@ function RegisterScreenCopy({ navigation }) {
                                 name='name'
                                 placeholder='Name'
                                 textContentType='name'
-                                />
-                                 <AppFormField
+                            />
+                            <AppFormField
                                 autoCapitalize='words'
                                 autoCorrect={false}
                                 icon='card-account-details-outline'
                                 name='cName'
                                 placeholder='Company Name'
                                 textContentType='name'
-                                />
-                                 <AppFormField
+                            />
+                            <AppFormField
                                 autoCapitalize='words'
                                 autoCorrect={false}
                                 icon='card-account-details-outline'
                                 name='sCode'
                                 placeholder='Company Short Code '
                                 textContentType='name'
-                                />
+                            />
                             <AppFormField
                                 autoCapitalize='none'
                                 autoCorrect={false}
@@ -134,7 +139,7 @@ function RegisterScreenCopy({ navigation }) {
                                 name='email'
                                 placeholder='Email or Phone'
                                 textContentType='emailAddress'
-                                />
+                            />
                             <AppFormPassword
                                 autoCapitalize='none'
                                 autoCorrect={false}
@@ -142,19 +147,19 @@ function RegisterScreenCopy({ navigation }) {
                                 name='password'
                                 placeholder='Password New'
                                 textContentType='password'
-                                />
+                            />
 
                             {
-                                load ? 
-                                <ActivityIndicator
-                                size='large' 
-                                color="#0000ff"
-                                /> 
-                                : 
-                                <SubmitButton
-                                title='Register'
-                                color='teal'
-                                /> 
+                                load ?
+                                    <ActivityIndicator
+                                        size='large'
+                                        color="#0000ff"
+                                    />
+                                    :
+                                    <SubmitButton
+                                        title='Register'
+                                        color='teal'
+                                    />
                             }
 
                             {/* <SubmitButton 
@@ -171,19 +176,19 @@ function RegisterScreenCopy({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-            // backgroundColor: 'red',
+        // backgroundColor: 'red',
         // flexDirection: 'row',
         alignSelf: 'center',
         flex: 1,
         justifyContent: 'center',
     },
-    form:{
+    form: {
         backgroundColor: '#578B9D',
-        width: width*0.9,
+        width: width * 0.9,
         // height: 400,
         borderRadius: 25,
         paddingTop: 10,
-        paddingBottom:30,
+        paddingBottom: 30,
         paddingHorizontal: 10,
     },
     logoContainer: {
