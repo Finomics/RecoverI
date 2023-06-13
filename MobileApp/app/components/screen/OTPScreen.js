@@ -10,14 +10,14 @@ import StoreContext from './GlobalState';
 import { Url } from './Core';
 import Header from '../Header';
 
-const {width, height} = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 
 
 function OTPScreen({ navigation, route }) {
     console.log("IN OTP", route.params);
     const PaymentObjectId = route.params;
 
-const data= route.params;
+    const data = route.params;
     // const PaymentEmail = route.params;
     // const PaymentId = route.params;
     // const isNew = route.params;
@@ -31,7 +31,7 @@ const data= route.params;
     // const PaymentEmail = route.params;
     // const PaymentId = route.params;
     // const isNew = route.params;
-  
+
 
     const RiderID = RiderContextData.Role._id
     const BelongsTo = RiderContextData.Role.createdBy
@@ -117,7 +117,7 @@ const data= route.params;
 
     function transaction() {
 
-    //    console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
+        //    console.log(PayObjectId, "Receive", PaymentAmount, ClientObjectId, RiderID, "transaction");
 
         axios({
             method: "post",
@@ -174,12 +174,13 @@ const data= route.params;
     }
 
 
-    const handleImageModal=()=>{
+    const handleImageModal = () => {
         console.log('hello' + width)
         setModalVisible(true)
 
     }
 
+    let Amount = parseInt(data.PaymentAmount).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
     return (
         <Screen>
@@ -189,14 +190,14 @@ const data= route.params;
             />
             <View style={styles.logoContainer}>
                 <Image
-                style={styles.logo}
-                source={require('../../assets/logo.png')}
+                    style={styles.logo}
+                    source={require('../../assets/logo.png')}
                 />
             </View>
             <TouchableOpacity onPress={handleImageModal}>
                 <View style={styles.descriptionContainer}>
                     <AppText style={{ fontWeight: '900' }}>Name: {data.PaymentName}</AppText>
-                    <AppText style={{ fontWeight: '900' }}>Amount: {(data.PaymentAmount)}</AppText>
+                    <AppText style={{ fontWeight: '900' }}>Amount: {Amount}</AppText>
                     <AppText style={{ fontWeight: '900' }}>Mode of Payment: {(modeOfPayment)}</AppText>
                 </View>
             </TouchableOpacity>
@@ -301,10 +302,10 @@ const data= route.params;
                         onPress={ReSendOtp}
                     />
                 </View>
-                
+
 
             </View>
-            
+
 
 
             <Modal
@@ -312,22 +313,22 @@ const data= route.params;
                 transparent={false}
                 visible={modalVisible}
             >
-                                   
-                <View style={{marginVertical: 30, padding:3, alignItems: 'center' }}>
+
+                <View style={{ marginVertical: 30, padding: 3, alignItems: 'center' }}>
                     <Image
-                        style={{width: width*0.9, height: (width*3/2)}}
+                        style={{ width: width * 0.9, height: (width * 3 / 2) }}
                         source={{
                             uri: data.imageUrl,
                         }}
-                    /> 
+                    />
                 </View>
-            
+
                 <Pressable
-                    style={{margin: 10, alignSelf:'center'}}
+                    style={{ margin: 10, alignSelf: 'center' }}
                     onPress={() => setModalVisible(!modalVisible)}>
                     <AppText>Go Back</AppText>
                 </Pressable>
-            </Modal>            
+            </Modal>
 
 
         </Screen>
@@ -346,7 +347,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         paddingVertical: 20,
         width: '75%',
-        alignSelf:'center',
+        alignSelf: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
         borderColor: colors.lightShade,

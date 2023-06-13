@@ -36,7 +36,7 @@ function PaymentList({ item, amount, tittle }) {
     return (
         <DataTable.Row style={{ width: '100%' }}>
             <DataTable.Cell>{item.employeeName}</DataTable.Cell>
-            <DataTable.Cell >{total}</DataTable.Cell>
+            <DataTable.Cell >{total.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</DataTable.Cell>
         </DataTable.Row>
 
     );

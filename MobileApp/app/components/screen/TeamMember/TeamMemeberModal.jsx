@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Modal, Text, Dimensions, View, ScrollView, TouchableOpacity, StyleSheet, FlatList, TextInput, SafeAreaView } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Url } from '../Core';
+
 // import StoreContext from '../../GlobalState/GlobalState';
 // import axios from 'axios';
 // import { Url } from '../../Core';
@@ -87,7 +88,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                 paddingLeft: 10,
                 alignItems: "flex-end",
               }}>
-              <Text style={{ fontSize: 35, color: "black" }} onPress={onClose}> X </Text>
+              <Text style={{ fontSize: 35, color: "#578B9D" }} onPress={onClose}> X </Text>
             </View>
             <View />
 
@@ -96,6 +97,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                 justifyContent: "center",
                 alignItems: "center",
               }}>
+                <Text style={{ marginLeft: '-70%', }}>Name</Text>
                 <View style={styles.inputView}>
                   <TextInput
                     style={styles.TextInput}
@@ -104,6 +106,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     onChangeText={(Name) => setUpdateName(Name)}
                   />
                 </View>
+                <Text style={{ marginLeft: '-50%', }}>Contact Number</Text>
                 <View style={styles.inputView}>
                   <TextInput
                     style={styles.TextInput}
@@ -119,6 +122,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     alignItems: "center",
                   }}
                 >
+                  <Text style={{ marginLeft: '-88%', }}>Role</Text>
                   <DropDownPicker
                     open={open}
                     value={value}
@@ -140,7 +144,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                   styles.buttonStyle,
                   {
                     marginTop: 30,
-                    backgroundColor: "#1D7874",
+                    backgroundColor: "#578B9D",
                     flex: 1,
                     marginRight: 5,
                     marginLeft: 10,
@@ -155,7 +159,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                   styles.buttonStyle,
                   {
                     marginTop: 30,
-                    backgroundColor: "#1D7874",
+                    backgroundColor: "#578B9D",
                     flex: 1,
                     marginRight: 5,
                     marginLeft: 10,
@@ -188,13 +192,13 @@ const styles = StyleSheet.create({
   },
   inputView: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 30,
+    borderRadius: 20,
     width: windowWidth / 1.3,
     marginBottom: 17,
-    alignItems: "center",
     height: 60,
-    borderColor: "#1D7874",
+    borderColor: "#578B9D",
     borderWidth: 5,
+    alignItems: "center",
 
   },
 
@@ -216,5 +220,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderColor: Colors.Black,
     borderWidth: 1,
+  },
+  label: {
+    color: "grey",
+    // fontSize: 10,
   },
 });

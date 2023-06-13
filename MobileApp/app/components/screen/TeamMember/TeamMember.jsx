@@ -29,8 +29,29 @@ function TeamMember({ navigation }) {
 
     const handleClose = () => { setShowPopup(false) };
 
-    useEffect(() => {
 
+    const HandlerFilter = (role) => {
+        // console.log(role);
+        axios({
+            method: "post",
+            url: Url + "/filteredEmployee",
+            data: {
+                filter: {
+                    "createdBy": GlobaleEmployee.Role._id,
+                    Role: role
+                }
+            }
+        }).then((res) => {
+            console.log(res.data, "filter empolyee data");
+            setempolyeeData(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+
+
+    useEffect(() => {
         if (GlobaleEmployee.Role.Role == 'Admin') {
             axios({
                 method: "post",
@@ -41,15 +62,14 @@ function TeamMember({ navigation }) {
                     }
                 }
             }).then((res) => {
-
-                console.log(res.data, "Response Employee");
+                // console.log(res.data, "Response Employee");
                 setempolyeeData(res.data);
                 setloading(false);
+
             }).catch((err) => {
                 console.log(err);
             })
         }
-
     }, [loading])
 
     const handlePress = (item) => {
@@ -76,6 +96,18 @@ function TeamMember({ navigation }) {
                     source={require('../../../assets/logo.png')}
                 />
             </View>
+            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+                <TouchableOpacity onPress={() => setloading(true)}>
+                    <View style={styles.filterBox}><Text style={{ fontSize: 20 }}>All</Text></View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => HandlerFilter("Cashier")}>
+                    <View style={styles.filterBox}><Text style={{ fontSize: 20 }}>Cashier</Text></View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => HandlerFilter("Rider")}>
+                    <View style={styles.filterBox} ><Text style={{ fontSize: 20 }}>Rider</Text></View>
+                </TouchableOpacity>
+            </View>
+
             {empolyeeData != null ?
                 <FlatList
                     data={empolyeeData}
@@ -135,6 +167,16 @@ const styles = StyleSheet.create({
         borderColor: '#B4C6D1',
         borderWidth: 2,
 
+    },
+    filterBox: {
+        borderWidth: 1,
+        margin: 5,
+        padding: 5,
+        width: 80,
+        alignItems: "center",
+        borderRadius: 10,
+        backgroundColor: "#EFEFEF",
+        marginBottom: 19
     },
 })
 
