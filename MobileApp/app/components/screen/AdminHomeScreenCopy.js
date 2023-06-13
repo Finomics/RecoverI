@@ -85,8 +85,8 @@ function AdminHomeScreenCopy({ navigation }) {
                     onPress={handleReporting}
                 />
                 <IconButton
-                    title={'Team Member'}
-                    subTitle={'View Team Member'}
+                    title={'Team Members'}
+                    subTitle={'View Team Members'}
                     image={require('../../assets/client-list.png')}
                     onPress={() => navigation.navigate('TeamMember')}
                 />

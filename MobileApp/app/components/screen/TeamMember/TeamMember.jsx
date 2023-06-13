@@ -86,7 +86,7 @@ function TeamMember({ navigation }) {
     return (
         <Screen>
             <Header
-                header={'Team Member'}
+                header={'Team Members'}
                 navigation={navigation}
             />
             <TeamMemeberModal visible={showPopup} onClose={handleClose} data={ModalData} modalUpdateData={modalUpdateData} />
