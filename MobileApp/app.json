@@ -21,6 +21,7 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/K-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -35,7 +36,9 @@
       "favicon": "./app/assets/K-icon.png"
     },
     "expo-yarn-workspaces": {
-      "symlinks": ["expo-constants"]
+      "symlinks": [
+        "expo-constants"
+      ]
     },
     "description": "",
     "extra": {
