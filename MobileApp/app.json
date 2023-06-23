@@ -6,6 +6,9 @@
     "orientation": "portrait",
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
+    "notification": {
+      "icon": "./app/assets/kollect-logo.png"
+    },
     "splash": {
       "image": "./app/assets/splscreen.png",
       "resizeMode": "contain",
@@ -18,10 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "package": "com.anostrat.kollectIt",
+      "googleServicesFile": "./google-services.json"
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/K-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,6 +34,7 @@
         "CAMERA"
       ],
       "package": "com.anostrat.kollectIt",
+      "googleServicesFile": "./google-services.json",
       "versionCode": 33
     },
     "web": {

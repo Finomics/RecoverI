@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "233823968881",
-    "project_id": "teckstik1",
-    "storage_bucket": "teckstik1.appspot.com"
+    "project_number": "442476182783",
+    "project_id": "expo-notification-63b3d",
+    "storage_bucket": "expo-notification-63b3d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:233823968881:android:24bbcc437d25b631f5c5d0",
+        "mobilesdk_app_id": "1:442476182783:android:5dbde1c57f46a9d83ba0ca",
         "android_client_info": {
           "package_name": "com.anostrat.kollectIt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "233823968881-k1psligjjad4urf9aaj92lb04rfa9n6u.apps.googleusercontent.com",
+          "client_id": "442476182783-l9bsjn7him7nnef1759ian2619hcdjg4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAwev-zTBn3wXocllnA_VMJQBJzK3JIHcM"
+          "current_key": "AIzaSyDRrMzDvhcYXoZW_RGY6e1__DlWIpxWd20"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "233823968881-k1psligjjad4urf9aaj92lb04rfa9n6u.apps.googleusercontent.com",
+              "client_id": "442476182783-l9bsjn7him7nnef1759ian2619hcdjg4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
