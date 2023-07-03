@@ -39,6 +39,7 @@
     "react-native": "0.70.5",
     "react-native-axios": "^0.17.1",
     "react-native-confirmation-code-field": "^7.3.0",
+    "react-native-country-picker-modal": "^2.0.0",
     "react-native-dropdown-picker": "^5.4.6",
     "react-native-image-slider-banner": "^1.0.3",
     "react-native-pager-view": "^6.2.0",
