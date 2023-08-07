@@ -191,7 +191,7 @@ function TransferScreen({ navigation }) {
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
-          source={require('../../assets/logo.png')}
+          source={require('../../assets/kollectit.png')}
         />
         <View style={styles.textContainer}>
           <TextInput style={{ fontWeight: 'bold', fontSize: 18, width: '100%' }} placeholder='Client Name' />

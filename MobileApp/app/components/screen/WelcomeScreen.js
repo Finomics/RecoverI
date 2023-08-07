@@ -48,7 +48,7 @@ function WelcomeScreen({ navigation }) {
         </View>
         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
           <Image
-            source={require('../../assets/logo.png')}
+            source={require('../../assets/kollectit.png')}
             style={styles.imageContainer}
           />
         </View>

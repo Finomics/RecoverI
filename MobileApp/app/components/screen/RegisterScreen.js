@@ -69,7 +69,7 @@ function LoginScreen({ navigation }) {
             <ScrollView>
                 <View style={styles.logoContainer}>
                     <Image
-                        source={require('../../assets/logo.png')}
+                        source={require('../../assets/kollectit.png')}
                         style={styles.logoName}
                     />
                     <Icon

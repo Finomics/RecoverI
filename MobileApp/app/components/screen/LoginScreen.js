@@ -76,7 +76,7 @@ function LoginScreen({ navigation }) {
             <ScrollView>
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/logo.png')}
+                    source={require('../../assets/kollectit.png')}
                 />
                 <AppForm
                     initialValues={{ email: '', password: '' }}

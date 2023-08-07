@@ -84,7 +84,7 @@ function RegisterScreenCopy({ navigation }) {
             <View style={{ width: width, marginBottom: 60, justifyContent: 'center' }}>
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/logo.png')}
+                    source={require('../../assets/kollectit.png')}
                 />
             </View>
             <ScrollView>

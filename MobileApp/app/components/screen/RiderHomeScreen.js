@@ -14,7 +14,7 @@ function RiderHomeScreen({navigation}) {
             <TopButtons header={''} navigation={navigation}/>
             <View style={styles.logoContainer}>
                 <Image  
-                    source={require('../../assets/logo.png')}
+                    source={require('../../assets/kollectit.png')}
                     style={styles.logoName}
                 />
             </View>

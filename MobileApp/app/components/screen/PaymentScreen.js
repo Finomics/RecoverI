@@ -76,7 +76,7 @@ console.log(value);
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
-          source={require('../../assets/logo.png')}
+          source={require('../../assets/kollectit.png')}
         />
         <View style={styles.textContainer}>
           <TextInput style={{ fontWeight: 'bold', width: '100%' }} placeholder='Client Name' />

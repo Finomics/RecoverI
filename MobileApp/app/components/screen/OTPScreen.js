@@ -191,7 +191,7 @@ function OTPScreen({ navigation, route }) {
             <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/logo.png')}
+                    source={require('../../assets/kollectit.png')}
                 />
             </View>
             <TouchableOpacity onPress={handleImageModal}>

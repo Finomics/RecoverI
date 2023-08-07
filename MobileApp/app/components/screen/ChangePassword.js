@@ -59,7 +59,7 @@ function ChangePassword({ navigation }) {
     <Screen style={styles.container}>
       <TopButtons header={""} navigation={navigation} />
       <ScrollView>
-        <Image style={styles.logo} source={require("../../assets/logo.png")} />
+        <Image style={styles.logo} source={require("../../assets/kollectit.png")} />
 
         <AppForm
           initialValues={{ password: "", newPassword: "" }}

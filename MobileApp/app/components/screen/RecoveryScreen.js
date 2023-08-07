@@ -147,7 +147,7 @@ function RecoveryScreen({ navigation, route }) {
       <View style={styles.logoContainer}>
         <Image
           style={{ width: 330, height: 140 }}
-          source={require("../../assets/logo.png")}
+          source={require("../../assets/kollectit.png")}
         />
       </View>
       <ScrollView>
