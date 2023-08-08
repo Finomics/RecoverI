@@ -110,7 +110,7 @@ function AddMemberScreen({ navigation }) {
               icon="email-outline"
               keyboardType="email-address"
               name="email"
-              placeholder="Login Id"
+              placeholder="Email or Phone"
               textContentType="emailAddress"
             />
 
@@ -120,7 +120,7 @@ function AddMemberScreen({ navigation }) {
               icon="phone-outline"
               keyboardType="Number"
               name="ConatactNumber"
-              placeholder="Contact Number"
+              placeholder="Secondary Contact"
               textContentType="ConatactNumber"
             />
             <AppFormPassword
