@@ -58,7 +58,7 @@ function ClientFormScreenCopy({ props, navigation }) {
       .then((res) => {
         var a = res.data;
         console.log(a, "response");
-        alert("Form has been Submitted");
+        alert("Client has been added");
         setLoad(false);
       })
       .catch((err) => {
@@ -72,7 +72,7 @@ function ClientFormScreenCopy({ props, navigation }) {
     return (
         <Screen>
             <Header
-                header={'Client Form'}
+                header={'Add Client'}
                 navigation={navigation}
             />
             <View style={{width: width, marginBottom:60, justifyContent: 'center'}}>

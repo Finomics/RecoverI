@@ -88,7 +88,7 @@ function ChangePasswordCopy({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="password"
-            placeholder="Password Old"
+            placeholder="Old Password"
             textContentType="password"
           />
           <AppFormPassword
@@ -96,7 +96,7 @@ function ChangePasswordCopy({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="newPassword"
-            placeholder="Password New"
+            placeholder="New Password"
             textContentType="newPassword"
           />
                              {load ? (

@@ -74,7 +74,7 @@ function ChangePassword({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="password"
-            placeholder="Password Old"
+            placeholder="Old Password"
             textContentType="password"
           />
           <AppFormPassword
@@ -82,7 +82,7 @@ function ChangePassword({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="newPassword"
-            placeholder="Password New"
+            placeholder="New Password"
             textContentType="newPassword"
           />
 

@@ -79,7 +79,7 @@ function AdminHomeScreenCopy({ navigation }) {
                     onPress={handleClientList}
                 />
                 <IconButton
-                    title={'Reporting'}
+                    title={'Reports'}
                     subTitle={'View Collections'}
                     image={require('../../assets/document.png')}
                     onPress={handleReporting}
