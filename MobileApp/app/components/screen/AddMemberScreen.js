@@ -32,8 +32,8 @@ function AddMemberScreen({ navigation }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: "Rider", value: "Rider" },
     { label: "Cashier", value: "Cashier" },
+    { label: "Rider", value: "Rider" },
   ]);
   const createdByAdminId = useContext(StoreContext);
 
@@ -120,7 +120,7 @@ function AddMemberScreen({ navigation }) {
               icon="phone-outline"
               keyboardType="Number"
               name="ConatactNumber"
-              placeholder="Secondary Contact"
+              placeholder="Mobile or Landline"
               textContentType="ConatactNumber"
             />
             <AppFormPassword

@@ -93,7 +93,7 @@ function RiderHomeScreenCopy({navigation}) {
                 />
                  <IconButton
                     title={'Change Password'}
-                    subTitle={'Change Password'}
+                    subTitle={'Change your Password'}
                     image={require('../../assets/password.png')}
                     onPress={handlePasswordChange}
                 />

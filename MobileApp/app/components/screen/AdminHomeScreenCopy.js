@@ -68,7 +68,7 @@ function AdminHomeScreenCopy({ navigation }) {
             <ScrollView>
                 <IconButton
                     title={'Add Member'}
-                    subTitle={'Add cashiers or Riders'}
+                    subTitle={'Add Clients, Cashier or Riders'}
                     image={require('../../assets/add-member.png')}
                     onPress={handleAddMember}
                 />
@@ -98,7 +98,7 @@ function AdminHomeScreenCopy({ navigation }) {
                 />
                 <IconButton
                     title={'Change Password'}
-                    subTitle={'Change Password'}
+                    subTitle={'Change your Password'}
                     image={require('../../assets/password.png')}
                     onPress={handlePasswordChange}
                 />

@@ -47,11 +47,11 @@ function ChangePassword({ navigation }) {
     })
       .then((res) => {
         setLoad((previousState) => !previousState);
-        console.log(res.data, "Change Password Json Data");
+        // console.log(res.data, "Change Password Json Data");
       })
       .catch((err) => {
         setLoad((previousState) => !previousState);
-        console.log(err, "Change Password Error Json Data");
+        // console.log(err, "Change Password Error Json Data");
       });
   };
 
