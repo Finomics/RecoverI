@@ -66,7 +66,7 @@ function RiderHomeScreenCopy({navigation}) {
                 />
 
             </View>
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <IconButton
                     title={'Client List'}
                     subTitle={'View list of clients assigned to you.'}

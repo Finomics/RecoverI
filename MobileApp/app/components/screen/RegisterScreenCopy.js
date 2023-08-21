@@ -193,7 +193,8 @@ function RegisterScreenCopy({ navigation }) {
                   />
                   <Text>I accept </Text>
                   <TouchableOpacity
-                    onPress={() => setSelection(handleOpen())}
+                    // onPress={() => setSelection(handleOpen())}
+                    onPress={() => Linking.openURL("https://kollectit.tecstik.com/KollectIt-TermsOfUse")}
                   >
                     <Text style={styles.paragraph}>Terms & Condition</Text>
                   </TouchableOpacity>

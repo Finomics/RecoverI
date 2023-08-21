@@ -65,7 +65,7 @@ function CashierHomeScreenCopy({ navigation }) {
         />
       </View>
 
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <IconButton
           title={"Add Client"}
           subTitle={"Add new Clients     "}

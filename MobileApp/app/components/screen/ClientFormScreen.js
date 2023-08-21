@@ -70,7 +70,7 @@ function ClientFormScreen({ props, navigation }) {
   return (
     <Screen style={styles.container}>
       <TopButtons header={''} navigation={navigation} />
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <AppText style={styles.header}>Client Input Form</AppText>
         <AppForm
           initialValues={initialValues}

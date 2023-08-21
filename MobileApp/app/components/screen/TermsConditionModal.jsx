@@ -67,7 +67,7 @@ export default function TermsConditionModal({ visible, onClose }) {
               </Text>
             </View>
 
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
               <View
                 style={{
                   justifyContent: "center",

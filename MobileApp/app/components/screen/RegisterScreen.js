@@ -66,7 +66,7 @@ function LoginScreen({ navigation }) {
     return (
         <Screen style={styles.container}>
             <TopButtons header={''} navigation={navigation}/>
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <View style={styles.logoContainer}>
                     <Image
                         source={require('../../assets/kollectit.png')}

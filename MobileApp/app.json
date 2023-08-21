@@ -10,7 +10,7 @@
       "icon": "./app/assets/kollect-logo.png"
     },
     "splash": {
-      "image": "./app/assets/splscreen.png",
+      "image": "./app/assets/splscreen1.png",
       "resizeMode": "contain",
       "backgroundColor": "#738FB5"
     },

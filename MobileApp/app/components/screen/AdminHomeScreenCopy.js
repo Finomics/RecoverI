@@ -65,7 +65,7 @@ function AdminHomeScreenCopy({ navigation }) {
                 />
 
             </View>
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <IconButton
                     title={'Add Member'}
                     subTitle={'Add Clients, Cashier or Riders'}

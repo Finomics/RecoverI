@@ -84,7 +84,7 @@ function AddMemberScreen({ navigation }) {
           source={require("../../assets/kollectit.png")}
         />
       </View>
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContianer}>
           <AppForm
             initialValues={{ email: "", password: "", userName: "" }}

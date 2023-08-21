@@ -58,7 +58,7 @@ function ChangePassword({ navigation }) {
   return (
     <Screen style={styles.container}>
       <TopButtons header={""} navigation={navigation} />
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <Image style={styles.logo} source={require("../../assets/kollectit.png")} />
 
         <AppForm
