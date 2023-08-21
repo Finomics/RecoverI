@@ -111,7 +111,7 @@ function RegisterScreenCopy({ navigation }) {
           source={require("../../assets/kollectit.png")}
         />
       </View>
-      <ScrollView>
+      <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.container}>
           <View style={styles.form}>
             <View
