@@ -1,34 +1,49 @@
-import axios from 'axios';
-import React, { useState, useContext } from 'react';
-import { Modal, Text, Dimensions, View, ScrollView, TouchableOpacity, StyleSheet, FlatList, TextInput, SafeAreaView } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker'
-import { Url } from '../Core';
+import axios from "axios";
+import React, { useState, useContext } from "react";
+import {
+  Modal,
+  Text,
+  Dimensions,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  TextInput,
+  SafeAreaView,
+} from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
+import { Url } from "../Core";
 
 // import StoreContext from '../../GlobalState/GlobalState';
 // import axios from 'axios';
 // import { Url } from '../../Core';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const Colors = {
-  Grey: '#DCDCDC',
-  White: '#FFFFFF',
-  Blue: '#0000FF',
-  Black: '#000000',
+  Grey: "#DCDCDC",
+  White: "#FFFFFF",
+  Blue: "#0000FF",
+  Black: "#000000",
 };
 
-export default function TeamMemeberModal({ visible, onClose, data, modalUpdateData }) {
-
+export default function TeamMemeberModal({
+  visible,
+  onClose,
+  data,
+  modalUpdateData,
+}) {
   console.log(data, "Modal");
   const [Name, setUpdateName] = useState(data.employeeName);
   const [ContactNum, setContactNum] = useState(data.employeeContactNum);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Cashier', value: 'Cashier' },
-    { label: 'Rider', value: 'Rider' },
-    { label: 'Undefine', value: 'Undefine' },
+    { label: "Cashier", value: "Cashier" },
+    { label: "Rider", value: "Rider" },
+    { label: "Undefine", value: "Undefine" },
   ]);
 
   function HandlerUpdate() {
@@ -38,21 +53,22 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
       url: Url + "/UpdateEmpolyee",
       data: {
         filter: {
-          _id: data._id
+          _id: data._id,
         },
         Update: {
           employeeName: Name,
-          employeeContactNum: ContactNum,
-          Role: value
-        }
-
-      }
-    }).then((res) => {
-      console.log(res.data, "Response Empolyee Update");
-      modalUpdateData(res.data)
-    }).catch((err) => {
-      console.log(err);
+          employeeEmail: ContactNum,
+          Role: value,
+        },
+      },
     })
+      .then((res) => {
+        console.log(res.data, "Response Empolyee Update");
+        modalUpdateData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -63,13 +79,10 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
         visible={visible}
         onRequestClose={onClose}
       >
-
-
-        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)' }}>
-
+        <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)" }}>
           <View
             style={{
-              backgroundColor: '#B4C6D1',
+              backgroundColor: "#B4C6D1",
               marginLeft: 10,
               marginRight: 10,
               marginTop: 50,
@@ -77,9 +90,8 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
               marginBottom: 10,
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
-
-            }}>
-
+            }}
+          >
             <View
               style={{
                 marginTop: 10,
@@ -87,17 +99,26 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                 paddingRight: 20,
                 paddingLeft: 10,
                 alignItems: "flex-end",
-              }}>
-              <Text style={{ fontSize: 35, color: "#578B9D" }} onPress={onClose}> X </Text>
+              }}
+            >
+              <Text
+                style={{ fontSize: 35, color: "#578B9D" }}
+                onPress={onClose}
+              >
+                {" "}
+                X{" "}
+              </Text>
             </View>
             <View />
 
-            <ScrollView >
-              <View style={{
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
-                <Text style={{ marginLeft: '-70%', }}>Name</Text>
+            <ScrollView>
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ marginLeft: "-70%" }}>Name</Text>
                 <View style={styles.inputView}>
                   <TextInput
                     style={styles.TextInput}
@@ -106,11 +127,11 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     onChangeText={(Name) => setUpdateName(Name)}
                   />
                 </View>
-                <Text style={{ marginLeft: '-50%', }}>Contact Number</Text>
+                <Text style={{ marginLeft: "-50%" }}>Secondary Contact</Text>
                 <View style={styles.inputView}>
                   <TextInput
                     style={styles.TextInput}
-                    placeholder={data.employeeContactNum}
+                    placeholder={data.employeeEmail}
                     placeholderTextColor="#003f5c"
                     onChangeText={(ContactNum) => setContactNum(ContactNum)}
                   />
@@ -122,7 +143,7 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ marginLeft: '-88%', }}>Role</Text>
+                  <Text style={{ marginLeft: "-88%" }}>Role</Text>
                   <DropDownPicker
                     open={open}
                     value={value}
@@ -134,7 +155,6 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     listMode="SCROLLVIEW"
                   />
                 </View>
-
               </View>
             </ScrollView>
 
@@ -150,8 +170,13 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     marginLeft: 10,
                   },
                 ]}
-                onPress={HandlerUpdate}>
-                <Text style={{ textAlign: 'center', color: "white", fontSize: 20 }}>Update</Text>
+                onPress={HandlerUpdate}
+              >
+                <Text
+                  style={{ textAlign: "center", color: "white", fontSize: 20 }}
+                >
+                  Update
+                </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -165,22 +190,23 @@ export default function TeamMemeberModal({ visible, onClose, data, modalUpdateDa
                     marginLeft: 10,
                   },
                 ]}
-                onPress={onClose}>
-                <Text style={{ textAlign: 'center', color: "white", fontSize: 20 }}>Close</Text>
+                onPress={onClose}
+              >
+                <Text
+                  style={{ textAlign: "center", color: "white", fontSize: 20 }}
+                >
+                  Close
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
-
         </View>
-      </Modal >
-
-    </View >
+      </Modal>
+    </View>
   );
 }
 
-
 const styles = StyleSheet.create({
-
   container: {
     backgroundColor: "#679289",
     justifyContent: "center",
@@ -188,7 +214,7 @@ const styles = StyleSheet.create({
     width: windowWidth / 1.2,
     borderRadius: 30,
     margin: 10,
-    padding: 10
+    padding: 10,
   },
   inputView: {
     backgroundColor: "#FFFFFF",
@@ -199,20 +225,19 @@ const styles = StyleSheet.create({
     borderColor: "#578B9D",
     borderWidth: 5,
     alignItems: "center",
-
   },
 
   TextInput: {
     height: 50,
     flex: 1,
-    fontSize: 22
+    fontSize: 22,
   },
 
   buttonsContainer: {
-    flexDirection: 'row',
-    position: 'absolute',
+    flexDirection: "row",
+    position: "absolute",
     bottom: 0,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonStyle: {
     padding: 10,

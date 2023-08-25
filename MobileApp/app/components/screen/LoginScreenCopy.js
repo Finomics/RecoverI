@@ -60,7 +60,7 @@ function LoginScreenCopy({ navigation }) {
       data: {
         // email: "bilal@mplus-hks.com",
         // password: "mp123456",
-        email: values.email,
+        loginId: values.email,
         password: values.password,
       },
     })
@@ -69,6 +69,7 @@ function LoginScreenCopy({ navigation }) {
         let User_Details = {
           name: res.data.employeeName,
           email: res.data.employeeEmail,
+          loginId: res.data.loginId,
           password: res.data.employeePassword,
         };
         AsyncStorage.setItem("User", JSON.stringify(User_Details));
@@ -148,10 +149,10 @@ function LoginScreenCopy({ navigation }) {
               <AppFormField
                 autoCapitalize="none"
                 autoCorrect={false}
-                icon="email"
+                icon="phone"
                 keyboardType="email-address"
                 name="email"
-                placeholder="Email or Phone"
+                placeholder="Phone or login Id"
                 textContentType="emailAddress"
                 // onChange={(e)=>{setChangeText(e.terget.value)}}
                 // onChangeText={text => onChangeText(text)}

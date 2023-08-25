@@ -115,10 +115,10 @@ function TeamMember({ navigation }) {
                     renderItem={({ item, i }) =>
                         <TouchableOpacity onPress={() => handlePress(item)}>
                             <View style={styles.container} >
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Name: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeName}</Text></Text>
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Contact Number: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeContactNum}</Text></Text>
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Login Id: {" "} <Text style={{ fontWeight: "normal" }}>{item.employeeEmail}</Text></Text>
-                                <Text style={{ fontSize: 23, color: "black", fontWeight: "bold" }}>Role: {" "} <Text style={{ fontWeight: "normal" }}>{item.Role}</Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Name: <Text style={{ fontWeight: "normal" }}>{item.employeeName}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Secondary Contact: <Text style={{ fontWeight: "normal" }}>{item.employeeEmail}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Login Id: <Text style={{ fontWeight: "normal" }}>{item.loginId}</Text></Text>
+                                <Text style={{ fontSize: 23, color: "black", fontWeight: "bold" }}>Role: <Text style={{ fontWeight: "normal" }}>{item.Role}</Text>
                                 </Text>
                             </View>
                         </TouchableOpacity>

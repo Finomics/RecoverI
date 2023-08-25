@@ -53,7 +53,7 @@ function AddMemberScreen({ navigation }) {
         createdBy: createdByAdminId.Role._id,
         companyName: createdByAdminId.Role.companyName,
         shortCode: createdByAdminId.Role.shortCode,
-        employeeContactNum: values.ConatactNumber,
+        loginId: values.ConatactNumber,
         name: values.userName,
       },
     })
@@ -84,7 +84,7 @@ function AddMemberScreen({ navigation }) {
           source={require("../../assets/kollectit.png")}
         />
       </View>
-         <ScrollView automaticallyAdjustKeyboardInsets={true}>
+      <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContianer}>
           <AppForm
             initialValues={{ email: "", password: "", userName: "" }}
@@ -107,28 +107,29 @@ function AddMemberScreen({ navigation }) {
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
-              icon="email-outline"
-              keyboardType="email-address"
-              name="email"
-              placeholder="Email or Phone"
-              textContentType="emailAddress"
+              icon="phone-outline"
+              keyboardType="Number"
+              name="ConatactNumber"
+              placeholder="Phone or Login id"
+              textContentType="ConatactNumber"
             />
 
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
-              icon="phone-outline"
-              keyboardType="Number"
-              name="ConatactNumber"
-              placeholder="Mobile or Landline"
-              textContentType="ConatactNumber"
+              icon="email-outline"
+              keyboardType="email-address"
+              name="email"
+              placeholder="Email"
+              textContentType="emailAddress"
             />
+
             <AppFormPassword
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
               name="password"
-              placeholder="New Password"
+              placeholder="Password"
               textContentType="password"
             />
 

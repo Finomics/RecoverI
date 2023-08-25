@@ -32,6 +32,7 @@ const validationSchema = Yup.object().shape({
   cName: Yup.string().label("CName"),
   sCode: Yup.string().label("SCode"),
   email: Yup.string().email().label("Email"),
+  phone: Yup.string().label("Phone"),
   password: Yup.string().label("Password"),
 });
 
@@ -41,6 +42,7 @@ function RegisterScreenCopy({ navigation }) {
   let [showPopup, setShowPopup] = useState(false);
 
   const handlePress = (values) => {
+    console.log(values, "values");
     if (isSelected === true) {
       setLoad((previousState) => !previousState);
       console.log(values, "registration form");
@@ -49,6 +51,8 @@ function RegisterScreenCopy({ navigation }) {
         url: Url + "/auth/employe",
         data: {
           name: values.name,
+          loginId: values.Phone, // login Id number email
+          employeeContactNum: values.Phone, //
           email: values.email,
           password: values.password,
           companyName: values.cName,
@@ -131,6 +135,7 @@ function RegisterScreenCopy({ navigation }) {
             <AppForm
               initialValues={{
                 email: "",
+                phone: "",
                 password: "",
                 name: "",
                 cName: "",
@@ -172,9 +177,19 @@ function RegisterScreenCopy({ navigation }) {
                 icon="email"
                 keyboardType="email-address"
                 name="email"
-                placeholder="Email or Phone"
+                placeholder="Email"
                 textContentType="emailAddress"
               />
+              <AppFormField
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="phone"
+                keyboardType="Phone-address"
+                name="Phone"
+                placeholder="Phone or Login Id"
+                textContentType="Phone"
+              />
+
               <AppFormPassword
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -194,7 +209,11 @@ function RegisterScreenCopy({ navigation }) {
                   <Text>I accept </Text>
                   <TouchableOpacity
                     // onPress={() => setSelection(handleOpen())}
-                    onPress={() => Linking.openURL("https://kollectit.tecstik.com/KollectIt-TermsOfUse")}
+                    onPress={() =>
+                      Linking.openURL(
+                        "https://kollectit.tecstik.com/KollectIt-TermsOfUse"
+                      )
+                    }
                   >
                     <Text style={styles.paragraph}>Terms & Condition</Text>
                   </TouchableOpacity>
