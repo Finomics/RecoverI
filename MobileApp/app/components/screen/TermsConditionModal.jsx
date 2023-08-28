@@ -13,7 +13,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { Url } from "../Core";
 
 // import StoreContext from '../../GlobalState/GlobalState';
 // import axios from 'axios';
@@ -29,48 +28,7 @@ const Colors = {
   Black: "#000000",
 };
 
-export default function TeamMemeberModal({
-  visible,
-  onClose,
-  data,
-  modalUpdateData,
-}) {
-  console.log(data, "Modal");
-  const [Name, setUpdateName] = useState(data.employeeName);
-  const [ContactNum, setContactNum] = useState(data.employeeContactNum);
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    { label: "Cashier", value: "Cashier" },
-    { label: "Rider", value: "Rider" },
-    { label: "Undefine", value: "Undefine" },
-  ]);
-
-  function HandlerUpdate() {
-    // console.log(value, Name, ContactNum)
-    axios({
-      method: "post",
-      url: Url + "/UpdateEmpolyee",
-      data: {
-        filter: {
-          _id: data._id,
-        },
-        Update: {
-          employeeName: Name,
-          employeeEmail: ContactNum,
-          Role: value,
-        },
-      },
-    })
-      .then((res) => {
-        console.log(res.data, "Response Empolyee Update");
-        modalUpdateData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
+export default function TermsConditionModal({ visible, onClose }) {
   return (
     <View style={{ marginTop: 10 }}>
       <Modal
@@ -95,7 +53,7 @@ export default function TeamMemeberModal({
             <View
               style={{
                 marginTop: 10,
-                paddingBottom: 10,
+                // paddingBottom: 10,
                 paddingRight: 20,
                 paddingLeft: 10,
                 alignItems: "flex-end",
@@ -105,80 +63,40 @@ export default function TeamMemeberModal({
                 style={{ fontSize: 35, color: "#578B9D" }}
                 onPress={onClose}
               >
-                {" "}
-                X{" "}
+                X
               </Text>
             </View>
-            <View />
 
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
               <View
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
+                  // marginTop: -10,
                 }}
               >
-                <Text style={{ marginLeft: "-70%" }}>Name</Text>
-                <View style={styles.inputView}>
-                  <TextInput
-                    style={styles.TextInput}
-                    placeholder={data.employeeName}
-                    placeholderTextColor="#003f5c"
-                    onChangeText={(Name) => setUpdateName(Name)}
-                  />
-                </View>
-                <Text style={{ marginLeft: "-50%" }}>Secondary Contact</Text>
-                <View style={styles.inputView}>
-                  <TextInput
-                    style={styles.TextInput}
-                    placeholder={data.employeeEmail}
-                    placeholderTextColor="#003f5c"
-                    onChangeText={(ContactNum) => setContactNum(ContactNum)}
-                  />
-                </View>
-                <View
-                  style={{
-                    height: windowHeight / 3.5,
-                    width: windowWidth / 1.3,
-                    alignItems: "center",
-                  }}
-                >
-                  <Text style={{ marginLeft: "-88%" }}>Role</Text>
-                  <DropDownPicker
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                    style={styles.inputView}
-                    listMode="SCROLLVIEW"
-                  />
-                </View>
+                <Text style={{ fontSize: 20 }}>Terms and Condition</Text>
+                <Text style={{ padding: 10, margin: 10 }}>
+                  We operate the mobile application Kollectlt (the 'App'), as
+                  well as any other related products and services that refer or
+                  link to these legal terms (the 'Legal Terms" (collectivelv to
+                  the 'Services').
+                </Text>
+                <Text style={{ padding: 10, margin: 10 }}>
+                  Collection of receivables become highlly secure with
+                  Kollectit. The and ensures vour workers collect pavments from
+                  vour customers or reimburse vour suppliers with the exact
+                  amount the workers are entrusted with.
+                </Text>
+                <Text style={{ padding: 10, margin: 10 }}>
+                  Download the app today and find out how Kollectit creates a
+                  seamless process of payment. From both sides of the deal.
+                  KollectIt is free to use with a transaction limit of 5.
+                </Text>
               </View>
             </ScrollView>
 
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity
-                style={[
-                  styles.buttonStyle,
-                  {
-                    marginTop: 30,
-                    backgroundColor: "#578B9D",
-                    flex: 1,
-                    marginRight: 5,
-                    marginLeft: 10,
-                  },
-                ]}
-                onPress={HandlerUpdate}
-              >
-                <Text
-                  style={{ textAlign: "center", color: "white", fontSize: 20 }}
-                >
-                  Update
-                </Text>
-              </TouchableOpacity>
-
               <TouchableOpacity
                 style={[
                   styles.buttonStyle,

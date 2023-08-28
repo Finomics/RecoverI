@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kollect IT",
     "slug": "KollectIT",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "orientation": "portrait",
     "icon": "./app/assets/K-icon.png",
     "userInterfaceStyle": "light",
@@ -35,7 +35,7 @@
       ],
       "package": "com.anostrat.kollectIt",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 33
+      "versionCode": 34
     },
     "web": {
       "favicon": "./app/assets/K-icon.png"

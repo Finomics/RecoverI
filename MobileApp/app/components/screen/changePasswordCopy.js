@@ -44,11 +44,11 @@ function ChangePasswordCopy({ navigation }) {
       })
         .then((res) => {
           setLoad((previousState) => !previousState);
-          console.log(res.data, "Change Password Json Data");
+          // console.log(res.data, "Change Password Json Data");
         })
         .catch((err) => {
           setLoad((previousState) => !previousState);
-          console.log(err, "Change Password Error Json Data");
+          // console.log(err, "Change Password Error Json Data");
         });
     };
 
@@ -88,7 +88,7 @@ function ChangePasswordCopy({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="password"
-            placeholder="Password Old"
+            placeholder="Old Password"
             textContentType="password"
           />
           <AppFormPassword
@@ -96,7 +96,7 @@ function ChangePasswordCopy({ navigation }) {
             autoCorrect={false}
             icon="lock"
             name="newPassword"
-            placeholder="Password New"
+            placeholder="New Password"
             textContentType="newPassword"
           />
                              {load ? (

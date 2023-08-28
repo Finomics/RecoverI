@@ -150,7 +150,7 @@ function RecoveryScreen({ navigation, route }) {
           source={require("../../assets/kollectit.png")}
         />
       </View>
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContainer}>
           <AppText style={styles.name}>{listing.ClientName}</AppText>
           <AppTextInput

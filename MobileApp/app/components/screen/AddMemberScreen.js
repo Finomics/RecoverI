@@ -32,8 +32,8 @@ function AddMemberScreen({ navigation }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: "Rider", value: "Rider" },
     { label: "Cashier", value: "Cashier" },
+    { label: "Rider", value: "Rider" },
   ]);
   const createdByAdminId = useContext(StoreContext);
 
@@ -53,7 +53,7 @@ function AddMemberScreen({ navigation }) {
         createdBy: createdByAdminId.Role._id,
         companyName: createdByAdminId.Role.companyName,
         shortCode: createdByAdminId.Role.shortCode,
-        employeeContactNum: values.ConatactNumber,
+        loginId: values.ConatactNumber,
         name: values.userName,
       },
     })
@@ -84,7 +84,7 @@ function AddMemberScreen({ navigation }) {
           source={require("../../assets/kollectit.png")}
         />
       </View>
-      <ScrollView>
+      <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContianer}>
           <AppForm
             initialValues={{ email: "", password: "", userName: "" }}
@@ -107,28 +107,29 @@ function AddMemberScreen({ navigation }) {
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
-              icon="email-outline"
-              keyboardType="email-address"
-              name="email"
-              placeholder="Login Id"
-              textContentType="emailAddress"
+              icon="phone-outline"
+              keyboardType="Number"
+              name="ConatactNumber"
+              placeholder="Phone or Login id"
+              textContentType="ConatactNumber"
             />
 
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
-              icon="phone-outline"
-              keyboardType="Number"
-              name="ConatactNumber"
-              placeholder="Contact Number"
-              textContentType="ConatactNumber"
+              icon="email-outline"
+              keyboardType="email-address"
+              name="email"
+              placeholder="Email"
+              textContentType="emailAddress"
             />
+
             <AppFormPassword
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
               name="password"
-              placeholder="New Password"
+              placeholder="Password"
               textContentType="password"
             />
 

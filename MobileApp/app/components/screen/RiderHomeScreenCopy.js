@@ -66,7 +66,7 @@ function RiderHomeScreenCopy({navigation}) {
                 />
 
             </View>
-            <ScrollView>
+               <ScrollView automaticallyAdjustKeyboardInsets={true}>
                 <IconButton
                     title={'Client List'}
                     subTitle={'View list of clients assigned to you.'}
@@ -93,7 +93,7 @@ function RiderHomeScreenCopy({navigation}) {
                 />
                  <IconButton
                     title={'Change Password'}
-                    subTitle={'Change Password'}
+                    subTitle={'Change your Password'}
                     image={require('../../assets/password.png')}
                     onPress={handlePasswordChange}
                 />

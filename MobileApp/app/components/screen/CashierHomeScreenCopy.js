@@ -65,10 +65,10 @@ function CashierHomeScreenCopy({ navigation }) {
         />
       </View>
 
-      <ScrollView>
+         <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <IconButton
           title={"Add Client"}
-          subTitle={"Add new Clients"}
+          subTitle={"Add new Clients     "}
           image={require("../../assets/add-user.png")}
           onPress={handleAddClient}
         />
@@ -101,7 +101,7 @@ function CashierHomeScreenCopy({ navigation }) {
 
         <IconButton
           title={"Change Password"}
-          subTitle={"Change Password"}
+          subTitle={"Change your Password"}
           image={require("../../assets/password.png")}
           onPress={handlePasswordChange}
         />

@@ -29,7 +29,7 @@ function WelcomeScreenCopy({ navigation }) {
                 method: "post",
                 url: Url + '/auth/login',
                 data: {
-                    email: user.email,
+                    loginId: user.loginId,
                     password: user.password,
                 }
             }).then((res) => {
@@ -70,8 +70,8 @@ function WelcomeScreenCopy({ navigation }) {
             />
             <View style={{ width: width, marginBottom: 60, justifyContent: 'center' }}>
                 <Image
-                    style={{ width: width, height: height * 0.25, }}
-                    source={require('../../assets/banner_2.png')}
+                    style={{ width: width, height: height * 0.20, }}
+                    source={require('../../assets/kollectit.png')}
                 />
             </View>
             <ScrollView >
