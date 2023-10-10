@@ -14,20 +14,7 @@ import StoreContext from './GlobalState';
 import { Url } from './Core';
 
 
-const attendanceData = [
-    {
-        emplyeeName: "Cashier1",
-        amount: 600000,
-    },
-    {
-        emplyeeName: "Cashier2",
-        amount: 700000,
-    },
-    {
-        emplyeeName: "Cashier3",
-        amount: 800000,
-    },
-]
+
 
 
 
