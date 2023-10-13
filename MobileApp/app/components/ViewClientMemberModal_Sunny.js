@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { View, StyleSheet, Text, Modal, Dimensions, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
@@ -16,9 +16,13 @@ const Colors = {
 
 function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, }) {
 
-
+    const [clientName, setClientName] =useState(data.clientName);
+    const [clientID, setClientID] =useState(data.clientID)
+    const [clientEmail, setClientEmail] =useState(data.clientEmail)
+    const [clientNumber, setClientNumber] =useState(data.clientNumber)
     const HandlerUpdate=()=>{
-        console.log('press')
+        console.log('Press Update')
+        onClose()
     }
     return (
     <View style={styles.container}>
@@ -54,7 +58,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                                     style={styles.TextInput}
                                     placeholder={data.clientName}
                                     placeholderTextColor="#003f5c"
-                                    onChangeText={(Name) => setUpdateName(Name)}
+                                    onChangeText={(clientName) => setClientName(clientName)}
                                 />
                             </View>
 
@@ -64,7 +68,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                                     style={styles.TextInput}
                                     placeholder={data.clientID}
                                     placeholderTextColor="#003f5c"
-                                    onChangeText={(Name) => setUpdateName(Name)}
+                                    onChangeText={(clientID) => setClientID(clientID)}
                                 />
                             </View>
 
@@ -74,7 +78,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                                     style={styles.TextInput}
                                     placeholder={data.clientEmail}
                                     placeholderTextColor="#003f5c"
-                                    onChangeText={(Name) => setUpdateName(Name)}
+                                    onChangeText={(clientEmail) => setClientEmail(clientEmail)}
                                 />
                             </View>
 
@@ -84,7 +88,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                                     style={styles.TextInput}
                                     placeholder={data.clientNumber}
                                     placeholderTextColor="#003f5c"
-                                    onChangeText={(Name) => setUpdateName(Name)}
+                                    onChangeText={(clientNumber) => setClientNumber(clientNumber)}
                                 />
                             </View>
                 
@@ -177,9 +181,10 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         flexDirection: "row",
-        position: "absolute",
+        // position: "absolute",
         bottom: 0,
         alignItems: "center",
+        // backgroundColor: ,
     },
     buttonStyle: {
         padding: 10,

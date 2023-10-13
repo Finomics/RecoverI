@@ -38,6 +38,12 @@ function VIewClientMember_Sunny({ navigation }) {
         setShowPopup(false)
         setloading(true)
     }
+    const setloading=()=>{
+        console.log('Press All')
+    }
+    const HandlerFilter=(item)=>{
+        console.log("Pressed " + item)
+    }
 
     return (
         <Screen>
