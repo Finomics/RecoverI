@@ -6,6 +6,43 @@ import ViewClientMemberModal_Sunny from '../ViewClientMemberModal_Sunny';
 
 function VIewClientMember_Sunny({ navigation }) {
 
+    useEffect(() => {
+        let belongsTo = '';
+        if (GlobaleEmployee.Role.Role == 'Admin') {
+          belongsTo = GlobaleEmployee.Role._id;
+        } else {
+          belongsTo = GlobaleEmployee.Role.createdBy;
+        }
+    
+        axios({
+          method: "post",
+          url: Url + "filteredClient",
+          data: {
+            belongsTo: belongsTo
+          }
+        })
+          .then((responseJson) => {
+            console.log("Client Update Screen in getAPI", responseJson.data);
+            const filteredData=responseJson.data.filter(filterClients)
+            setClients(filteredData);
+            setfiltered(filteredData);
+    
+          })
+          .catch((error) => {
+            console.error("Error in Client Update Screen in getAPI",error);
+          });
+        function filterClients(client) {
+          if (GlobaleEmployee.Role.Role == 'Rider') {
+            return client.ClientRiderObjectId == GlobaleEmployee.Role._id;
+          } else {
+            return true;
+          }
+    
+    
+        }
+    
+    
+      }, [])
     let [clientData, setClientData] = useState('');
     let [showPopup, setShowPopup] = useState(false);
     let [ModalData, setModalData] = useState('');
