@@ -1,10 +1,16 @@
 import { React, useContext, useEffect, useState } from 'react';
 import { Image, Button, Text, FlatList, View, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Screen from '../Screen';
+import StoreContext from './GlobalState';
+import axios from 'axios';
+import { Url } from './Core';
 import Header from '../Header';
 import ViewClientMemberModal_Sunny from '../ViewClientMemberModal_Sunny';
 
 function VIewClientMember_Sunny({ navigation }) {
+
+
+    const GlobaleEmployee = useContext(StoreContext)
 
     useEffect(() => {
         let belongsTo = '';
@@ -16,9 +22,9 @@ function VIewClientMember_Sunny({ navigation }) {
     
         axios({
           method: "post",
-          url: Url + "filteredClient",
+          url: Url + "/filteredClients",
           data: {
-            belongsTo: belongsTo
+           filter:{ BelongsTo: "63aa854588c3e19a5630caad"}
           }
         })
           .then((responseJson) => {
