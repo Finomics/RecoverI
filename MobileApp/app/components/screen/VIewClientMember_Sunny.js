@@ -10,7 +10,11 @@ import ViewClientMemberModal_Sunny from '../ViewClientMemberModal_Sunny';
 function VIewClientMember_Sunny({ navigation }) {
 
 
-    const GlobaleEmployee = useContext(StoreContext)
+    const GlobaleEmployee = useContext(StoreContext);
+
+    let [clientData, setClientData] = useState([]);
+    let [showPopup, setShowPopup] = useState(false);
+    let [ModalData, setModalData] = useState('');
 
     useEffect(() => {
         let belongsTo = '';
@@ -29,9 +33,10 @@ function VIewClientMember_Sunny({ navigation }) {
         })
           .then((responseJson) => {
             console.log("Client Update Screen in getAPI", responseJson.data);
-            const filteredData=responseJson.data.filter(filterClients)
-            setClients(filteredData);
-            setfiltered(filteredData);
+            setClientData(responseJson.data);
+            // const filteredData=responseJson.data.filter(filterClients)
+            // setClients(filteredData);
+            // setfiltered(filteredData);
     
           })
           .catch((error) => {
@@ -49,24 +54,22 @@ function VIewClientMember_Sunny({ navigation }) {
     
     
       }, [])
-    let [clientData, setClientData] = useState('');
-    let [showPopup, setShowPopup] = useState(false);
-    let [ModalData, setModalData] = useState('');
+
     
-    clientData= [
-        {
-            clientName: "hassan",
-            clientID: "01",
-            clientEmail: "ABC@gmail.com",
-            clientNumber: "03242886139",
-        },
-        {
-            clientName: "hammad",
-            clientID: "02",
-            clientEmail: "XYZ@gmail.com",
-            clientNumber: "03452057798",
-        }
-    ] 
+    // clientData= [
+    //     {
+    //         clientName: "hassan",
+    //         clientID: "01",
+    //         clientEmail: "ABC@gmail.com",
+    //         clientNumber: "03242886139",
+    //     },
+    //     {
+    //         clientName: "hammad",
+    //         clientID: "02",
+    //         clientEmail: "XYZ@gmail.com",
+    //         clientNumber: "03452057798",
+    //     }
+    // ] 
 
     const handlePress = (item) => {
         setModalData(item)
@@ -119,10 +122,10 @@ function VIewClientMember_Sunny({ navigation }) {
                     renderItem={({ item, i }) =>
                         <TouchableOpacity onPress={() => handlePress(item)}>
                             <View style={styles.container} >
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Name: <Text style={{ fontWeight: "normal" }}>{item.clientName}</Text></Text>
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Client ID: <Text style={{ fontWeight: "normal" }}>{item.clientID}</Text></Text>
-                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Client Email: <Text style={{ fontWeight: "normal" }}>{item.clientEmail}</Text></Text>
-                                <Text style={{ fontSize: 23, color: "black", fontWeight: "bold" }}>Client Number: <Text style={{ fontWeight: "normal" }}>{item.clientNumber}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Name: <Text style={{ fontWeight: "normal" }}>{item.ClientName}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Client ID: <Text style={{ fontWeight: "normal" }}>{item.ClientId}</Text></Text>
+                                <Text style={{ fontSize: 20, color: "black", fontWeight: "bold" }}>Client Email: <Text style={{ fontWeight: "normal" }}>{item.ClientEmail}</Text></Text>
+                                <Text style={{ fontSize: 23, color: "black", fontWeight: "bold" }}>Client Number: <Text style={{ fontWeight: "normal" }}>{item.ClientPhoneNumber}</Text></Text>
                             </View>
                         </TouchableOpacity>
                     }
