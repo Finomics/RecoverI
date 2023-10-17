@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import { View, StyleSheet, Text, Modal, Dimensions, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
+import axios from 'axios';
+import { Url } from '../components/screen/Core';
 import colors from './colors';
 
 const windowWidth = Dimensions.get("window").width;
@@ -16,13 +18,54 @@ const Colors = {
 
 function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, }) {
 
-    const [clientName, setClientName] =useState(data.clientName);
-    const [clientID, setClientID] =useState(data.clientID)
+    const [clientName, setClientName] =useState(data.ClientName);
+    const [clientId, setClientId] =useState(data.ClientId)
     const [clientEmail, setClientEmail] =useState(data.clientEmail)
-    const [clientNumber, setClientNumber] =useState(data.clientNumber)
-    const HandlerUpdate=()=>{
-        console.log('Press Update')
+    const [clientNumber, setClientNumber] =useState(data.ClientPhoneNumber);
+   
+    useEffect(() => {
+      setClientName(data.ClientName);
+      setClientId(data.ClientId);
+      setClientEmail(data.clientEmail);
+      setClientNumber(data.ClientPhoneNumber);
+
+    }, [data])
+
+    const HandlerUpdate=async()=>{
+      let filter={
+        _id:data._id
+      }
+      let update={
+        ClientName: clientName,
+        ClientId: clientId,
+        PhoneNumber:clientNumber
+      }
+     
+
+        console.log('Press Update',filter, update);
+      let resp= await updateClient(filter,update);
+
         onClose()
+    }
+
+    async function  updateClient(filter,update){
+      axios({
+        method: "put",
+        url: Url + "/UpdateFilteredClients",
+        data: {
+         filter:filter,
+         update:update
+        }
+      })
+        .then((responseJson) => {
+          console.log("Client Update Screen in Modal", responseJson.data);
+          
+  
+        })
+        .catch((error) => {
+          console.error("Error in Client Update Screen in Modal",error);
+        });
+
     }
     return (
     <View style={styles.container}>
@@ -56,7 +99,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                             <View style={styles.inputView}>
                                 <TextInput
                                     style={styles.TextInput}
-                                    placeholder={data.clientName}
+                                    placeholder={data.ClientName}
                                     placeholderTextColor="#003f5c"
                                     onChangeText={(clientName) => setClientName(clientName)}
                                 />
@@ -66,9 +109,9 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                             <View style={styles.inputView}>
                                 <TextInput
                                     style={styles.TextInput}
-                                    placeholder={data.clientID}
+                                    placeholder={data.ClientId}
                                     placeholderTextColor="#003f5c"
-                                    onChangeText={(clientID) => setClientID(clientID)}
+                                    onChangeText={(clientID) => setClientId(clientID)}
                                 />
                             </View>
 
@@ -76,7 +119,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                             <View style={styles.inputView}>
                                 <TextInput
                                     style={styles.TextInput}
-                                    placeholder={data.clientEmail}
+                                    placeholder={data.ClientEmail}
                                     placeholderTextColor="#003f5c"
                                     onChangeText={(clientEmail) => setClientEmail(clientEmail)}
                                 />
@@ -86,7 +129,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                             <View style={styles.inputView}>
                                 <TextInput
                                     style={styles.TextInput}
-                                    placeholder={data.clientNumber}
+                                    placeholder={data.ClientPhoneNumber}
                                     placeholderTextColor="#003f5c"
                                     onChangeText={(clientNumber) => setClientNumber(clientNumber)}
                                 />
