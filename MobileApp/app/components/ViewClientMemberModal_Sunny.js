@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 
-import { View, StyleSheet, Text, Modal, Dimensions, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Modal, Dimensions,ActivityIndicator, Alert, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
 import axios from 'axios';
 import { Url } from '../components/screen/Core';
@@ -19,7 +19,8 @@ const Colors = {
 function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, }) {
 
     const [clientName, setClientName] =useState(data.ClientName);
-    const [clientId, setClientId] =useState(data.ClientId)
+    const [clientId, setClientId] =useState(data.ClientId);
+    const [load, setLoad] =useState(false)
     const [clientEmail, setClientEmail] =useState(data.clientEmail)
     const [clientNumber, setClientNumber] =useState(data.ClientPhoneNumber);
    
@@ -45,10 +46,11 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
         console.log('Press Update',filter, update);
       let resp= await updateClient(filter,update);
 
-        onClose()
+      //  onClose()
     }
 
     async function  updateClient(filter,update){
+      setLoad(true);
       axios({
         method: "put",
         url: Url + "/UpdateFilteredClients",
@@ -59,11 +61,12 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
       })
         .then((responseJson) => {
           console.log("Client Update Screen in Modal", responseJson.data);
-          
+          setLoad(false);
   
         })
         .catch((error) => {
           console.error("Error in Client Update Screen in Modal",error);
+          alert("an error occured while updating values");
         });
 
     }
@@ -138,6 +141,11 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                         </View>
                     </ScrollView>
                     <View style={styles.buttonsContainer}>
+                    {load ? (
+              <ActivityIndicator size="large" color="#0000ff" />
+            ) : (
+              
+          
               <TouchableOpacity
                 style={[
                   styles.buttonStyle,
@@ -157,7 +165,7 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
                   Update
                 </Text>
               </TouchableOpacity>
-
+  )}
               <TouchableOpacity
                 style={[
                   styles.buttonStyle,
