@@ -18,6 +18,16 @@ function SettingScreen({ navigation, route }) {
         
       },[]);
 
+    const handleClientUpdate = () => {
+        console.log('handleClientUpdate');
+        navigation.navigate('ViewClientMember')
+    }
+    
+    const handleTeamUpdate = () => {
+        console.log('handleTeamUpdate');
+        navigation.navigate('TeamMember')
+    }
+
     const handleChangePassword = () => {
         console.log('handleChangePassword');
         navigation.navigate('Change Password');
@@ -40,7 +50,8 @@ function SettingScreen({ navigation, route }) {
                 <IconButton
                     title={"Client Update"}
                     subTitle={'ABC'}
-
+                    image={require('../../assets/clients-list.png')}
+                    onPress={handleClientUpdate}
                 />
                 { user =='Cashier' ?
                     
@@ -50,13 +61,15 @@ function SettingScreen({ navigation, route }) {
                     <IconButton
                         title={"Team Update"}
                         subTitle={'ABC'}
-                        
+                        image={require('../../assets/client-list.png')}
+                        onPress={handleTeamUpdate}
                     />
                 
                 }
                 <IconButton
                     title={"Change Password"}
                     subTitle={'ABC'}
+                    image={require('../../assets/password.png')}
                     onPress={handleChangePassword}               
                 />
             </ScrollView>
