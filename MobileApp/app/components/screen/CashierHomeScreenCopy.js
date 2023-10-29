@@ -16,6 +16,8 @@ function CashierHomeScreenCopy({ navigation }) {
 
   let name = "user";
 
+  console.log(user.Role)
+
   let str = user.employeeName;
 
   if (str.indexOf(" ") != -1) {
@@ -44,9 +46,11 @@ function CashierHomeScreenCopy({ navigation }) {
     navigation.navigate("All Payments");
   };
 
-  const handlePasswordChange = () => {
-    console.log("handlePasswordChang");
-    navigation.navigate("Change Password");
+  const handleSettingScreen = () => {
+    console.log("handleSettingScreen");
+    let temp = user.Role;
+    console.log("Hello "+temp)
+    navigation.navigate("SettingScreen", temp);
   };
   return (
     <Screen>
@@ -100,10 +104,10 @@ function CashierHomeScreenCopy({ navigation }) {
         />
 
         <IconButton
-          title={"Change Password"}
-          subTitle={"Change your Password"}
+          title={"Settings"}
+          subTitle={"Change your Settings"}
           image={require("../../assets/password.png")}
-          onPress={handlePasswordChange}
+          onPress={handleSettingScreen}
         />
       </ScrollView>
     </Screen>

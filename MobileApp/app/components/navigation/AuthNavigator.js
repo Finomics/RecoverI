@@ -34,14 +34,16 @@ import ClientFormScreenCopy from '../screen/ClientFormScreenCopy';
 import RiderCard from "../RiderCard";
 import TeamMember from "../screen/TeamMember/TeamMember";
 import VIewClientMember_Sunny from "../screen/VIewClientMember_Sunny";
+import SettingScreen from "../screen/SettingScreen";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
     <Stack.Navigator>
-        <Stack.Screen name='ViewClientMember' component={ VIewClientMember_Sunny}  options={{headerShown: false}} />
-        
         <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='SettingScreen' component={ SettingScreen }  options={{headerShown: false}} />
+        <Stack.Screen name='ViewClientMember' component={ VIewClientMember_Sunny}  options={{headerShown: false}} />
+
         <Stack.Screen name='Change Password' component={ChangePasswordCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
