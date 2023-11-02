@@ -41,6 +41,7 @@ function UnverifierPaymentScreen({ navigation }) {
     }
     if (userContext.Role.Role == 'Cashier') {
       filter.AssignedBy = userId;
+      filter.heldby = userId;
       //   filter.status="Un Verified";
       getPayments(filter);
     }
