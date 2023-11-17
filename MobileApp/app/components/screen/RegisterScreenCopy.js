@@ -48,7 +48,7 @@ function RegisterScreenCopy({ navigation }) {
       console.log(values, "registration form");
       axios({
         method: "post",
-        url: Url + "/auth/employe",
+        url: Url + "/auth/employe",//TODO, correct it if any issue
         data: {
           name: values.name,
           loginId: values.Phone, // login Id number email
@@ -61,9 +61,11 @@ function RegisterScreenCopy({ navigation }) {
         },
       })
         .then((res) => {
-          if (res.data.status === 200) {
+          console.log(res, "Created the Admin");
+          if (res.status === 200) {
             alert("Admin has been Created");
             setLoad((previousState) => !previousState);
+            
             navigation.navigate("Welcome");
           } else {
             alert(res.data.message);
