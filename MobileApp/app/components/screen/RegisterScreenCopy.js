@@ -20,7 +20,7 @@ import AppButton from "../AppButton";
 import Screen from "../Screen";
 import colors from "../colors";
 import TopButtons from "./TopButtons";
-import { AppForm, AppFormField, AppFormPassword, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
 import axios from "axios";
 import Header from "../Header";
 import { useEffect } from "react";
@@ -182,22 +182,22 @@ function RegisterScreenCopy({ navigation }) {
                 placeholder="Email"
                 textContentType="emailAddress"
               />
-              <AppFormField
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="phone"
-                keyboardType="Phone-address"
-                name="Phone"
-                placeholder="Phone or Login Id"
-                textContentType="Phone"
-              />
+               <AppFormPhone
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                icon='phone-outline'
+                                keyboardType='numeric'
+                                name='Phone'
+                                placeholder='Contact Number'
+                                textContentType='emailAddress'
+                            />
 
               <AppFormPassword
                 autoCapitalize="none"
                 autoCorrect={false}
                 icon="lock"
                 name="password"
-                placeholder="Password New"
+                placeholder="Password"
                 textContentType="password"
               />
               <View style={styles.checkboxContainer}>
