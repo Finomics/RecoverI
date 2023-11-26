@@ -7,6 +7,7 @@ import {
   Dimensions,
   View,
   Text,
+  Modal
 } from "react-native";
 import * as Yup from "yup";
 import Screen from "../Screen";
@@ -19,16 +20,24 @@ import { Url } from "./Core";
 import axios from "axios";
 import AppButton from "../AppButton";
 import TopButtons from "./TopButtons";
+import Icon from "../Icon";
+import colors from "../colors";
 
 const { width, height } = Dimensions.get("screen");
 const validationSchema = Yup.object().shape({
   email: Yup.string().label("Email"),
   password: Yup.string().label("Password"),
 });
+const validationSchema_Modal = Yup.object().shape({
+  phone: Yup.string().label("Password"),
+  email: Yup.string().label("Email"),
+});
 
 function LoginScreenCopy({ navigation }) {
   const [load, setLoad] = useState(false);
   const [UserId, setChangeText] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+
   const AdminRole = useContext(StoreContext);
 
   // console.log(AdminRole,"AdminRole");
@@ -97,8 +106,14 @@ function LoginScreenCopy({ navigation }) {
       });
   };
 
+  const handlePress_Modal=(values)=>{
+    console.log(values)
+
+  }
+
   function forgrtPassword() {
     // console.log(UserId);
+    setModalVisible(!modalVisible);
     axios({
       method: "post",
       url: Url + "/dash/forgrtPassword",
@@ -187,6 +202,59 @@ function LoginScreenCopy({ navigation }) {
                 color='black'
             onPress={()=> navigation.navigate('HomeScreen')}
             /> */}
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+        >
+          <ScrollView>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={{alignItems: 'flex-end'}}>
+                <Icon
+                  name={'close-circle'}
+                  iconColor="black"
+                  backgroundColor="transparent"
+                  size={70}
+                  onPress={() => setModalVisible(!modalVisible)}
+                  // title={'Close'}
+                />
+              </View>
+              <AppForm
+                initialValues={{ phone: "", email: "" }}
+                onSubmit={(values, { resetForm }) => {
+                  handlePress_Modal(values);
+                  // , resetForm({ values: initialValues });
+                }}
+                validationSchema={validationSchema_Modal}
+              >
+                <AppFormField
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  icon="phone"
+                  name="phone"
+                  placeholder="Phone or login Id"
+                  textContentType="emailAddress"
+                  // onChange={(e)=>{setChangeText(e.terget.value)}}
+                  // onChangeText={text => onChangeText(text)}
+                  />
+                <AppFormField
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  icon="email"
+                  keyboardType="email-address"
+                  name="email"
+                  placeholder="Email"
+                  textContentType="emailAddress"
+                />
+                <SubmitButton title="New Password" color="teal" />
+              </AppForm>
+            </View>
+            </View>
+          </ScrollView>
+        </Modal>      
+
     </Screen>
   );
 }
@@ -212,6 +280,27 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 30,
     marginBottom: 20,
+  },
+  modalView: {
+    // marginTop: 22,
+    marginHorizontal: 10,
+    backgroundColor: colors.buttonColor,
+    borderTopEndRadius: 20,
+    borderTopStartRadius: 20,
+    paddingHorizontal: 20,
+    height: height,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  centeredView: {
+    // flex: 1,
+    marginTop: height * 0.08,
   },
 });
 export default LoginScreenCopy;

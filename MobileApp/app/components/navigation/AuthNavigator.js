@@ -44,9 +44,9 @@ const AuthNavigator = () => (
         <Stack.Screen name='SettingScreen' component={ SettingScreen }  options={{headerShown: false}} />
         <Stack.Screen name='ViewClientMember' component={ VIewClientMember_Sunny}  options={{headerShown: false}} />
 
+        <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Change Password' component={ChangePasswordCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} options={{headerShown: false}} />
-        <Stack.Screen name='Login' component={LoginScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='OTP Screen' component={OTPScreen}  options={{headerShown: false}} />
         <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
