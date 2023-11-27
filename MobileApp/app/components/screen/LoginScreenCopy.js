@@ -227,16 +227,15 @@ function LoginScreenCopy({ navigation }) {
                 }}
                 validationSchema={validationSchema_Modal}
               >
-                <AppFormField
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  icon="phone"
-                  name="phone"
-                  placeholder="Phone or login Id"
-                  textContentType="emailAddress"
-                  // onChange={(e)=>{setChangeText(e.terget.value)}}
-                  // onChangeText={text => onChangeText(text)}
-                  />
+                <AppFormPhone
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                icon='phone-outline'
+                                keyboardType='numeric'
+                                name='phone'
+                                placeholder='Mobile Number'
+                                textContentType='emailAddress'
+                            />
                 <AppFormField
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -246,7 +245,7 @@ function LoginScreenCopy({ navigation }) {
                   placeholder="Email"
                   textContentType="emailAddress"
                 />
-                <SubmitButton title="New Password" color="teal" />
+                <SubmitButton title="Send Password" color="teal" />
               </AppForm>
             </View>
             </View>
