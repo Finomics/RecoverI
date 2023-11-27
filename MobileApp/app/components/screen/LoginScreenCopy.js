@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 import Screen from "../Screen";
-import { AppForm, AppFormField, AppFormPassword, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPassword, SubmitButton, AppFormPhone } from "../forms";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TouchableOpacity } from "react-native";
 import StoreContext from "./GlobalState";
@@ -161,17 +161,15 @@ function LoginScreenCopy({ navigation }) {
               }}
               validationSchema={validationSchema}
             >
-              <AppFormField
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="phone"
-                keyboardType="email-address"
-                name="email"
-                placeholder="Phone or login Id"
-                textContentType="emailAddress"
-                // onChange={(e)=>{setChangeText(e.terget.value)}}
-                // onChangeText={text => onChangeText(text)}
-              />
+              <AppFormPhone
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                icon='phone-outline'
+                                keyboardType='numeric'
+                                name='email'
+                                placeholder='Mobile Number'
+                                textContentType='emailAddress'
+                            />
               <AppFormPassword
                 autoCapitalize="none"
                 autoCorrect={false}
