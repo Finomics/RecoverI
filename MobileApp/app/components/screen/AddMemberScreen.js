@@ -12,6 +12,8 @@ import Constants from "expo-constants";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
 import Screen from "../Screen";
 import colors from "../colors";
 import axios from "axios";
@@ -27,6 +29,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
+
 function AddMemberScreen({ navigation }) {
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
@@ -35,9 +38,24 @@ function AddMemberScreen({ navigation }) {
     { label: "Cashier", value: "Cashier" },
     { label: "Rider", value: "Rider" },
   ]);
-  const createdByAdminId = useContext(StoreContext);
 
+  const resetNavigation = useNavigation();
+
+  const createdByAdminId = useContext(StoreContext);
+  
   console.log(createdByAdminId.Role.companyName, "createdBy");
+
+
+  const handleResetScreen = () => {
+    resetNavigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Add Member' }],
+        animation: true,
+      })
+    );
+  };
+
 
   const handlePress = ({ values, value }) => {
     setLoad(true);
@@ -73,6 +91,11 @@ function AddMemberScreen({ navigation }) {
         setLoad(false);
         AudioScheduledSourceNode(false);
       });
+      
+      handleResetScreen();
+
+      // resetForm({ values: "" });
+
   };
 
   return (
@@ -87,12 +110,14 @@ function AddMemberScreen({ navigation }) {
       <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContianer}>
           <AppForm
-            initialValues={{ email: "", password: "", userName: "" }}
+            initialValues={{ email: "", password: "", userName: "", ContactNumber:"" }}
             // onSubmit={values => console.log(values, value,":sasas")}
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
               handlePress({ values, value });
 
-             
+              console.log("hello ", values)
+              
+              
             }}
             validationSchema={validationSchema}
           >
