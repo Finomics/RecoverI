@@ -11,7 +11,7 @@ import * as Yup from "yup";
 import Constants from "expo-constants";
 import DropDownPicker from "react-native-dropdown-picker";
 
-import { AppForm, AppFormField, AppFormPassword, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
 import Screen from "../Screen";
 import colors from "../colors";
 import axios from "axios";
@@ -23,7 +23,7 @@ import Header from "../Header";
 const validationSchema = Yup.object().shape({
   userName: Yup.string().required().label("User Name"),
   email: Yup.string().label("Email"),
-  ConatactNumber: Yup.string().label("ConatactNumber"),
+  ContactNumber: Yup.string().label("ContactNumber"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
@@ -53,7 +53,7 @@ function AddMemberScreen({ navigation }) {
         createdBy: createdByAdminId.Role._id,
         companyName: createdByAdminId.Role.companyName,
         shortCode: createdByAdminId.Role.shortCode,
-        loginId: values.ConatactNumber,
+        loginId: values.ContactNumber,
         name: values.userName,
       },
     })
@@ -91,6 +91,8 @@ function AddMemberScreen({ navigation }) {
             // onSubmit={values => console.log(values, value,":sasas")}
             onSubmit={(values) => {
               handlePress({ values, value });
+
+             
             }}
             validationSchema={validationSchema}
           >
@@ -104,15 +106,15 @@ function AddMemberScreen({ navigation }) {
               textContentType="emailAddress"
             />
 
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="phone-outline"
-              keyboardType="Number"
-              name="ConatactNumber"
-              placeholder="Phone or Login id"
-              textContentType="ConatactNumber"
-            />
+<AppFormPhone
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                icon='phone-outline'
+                                keyboardType='numeric'
+                                name='ContactNumber'
+                                placeholder='Mobile Number'
+                                textContentType='emailAddress'
+                            />
 
             <AppFormField
               autoCapitalize="none"
