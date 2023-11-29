@@ -107,27 +107,33 @@ function LoginScreenCopy({ navigation }) {
   };
 
   const handlePress_Modal=(values)=>{
-    console.log(values)
+    console.log("in handle Modal",values);
+    forgotPassword(values);
 
   }
 
-  function forgrtPassword() {
-    // console.log(UserId);
+  function handleForgotPassword() {
     setModalVisible(!modalVisible);
+   }
+ async function forgotPassword(values) {
+     console.log("in forgot PW");
+   
     axios({
       method: "post",
       url: Url + "/dash/forgotPassword",
       data: {
-        employeeEmail: UserId,
+        loginId: values.phone,
+        email:values.email
       },
     })
       .then((response) => {
-        // console.log(response.data, "Forgot Password Response");
-        alert("Forgot Password Successfull!");
+      console.log(response.data.message, "Forgot Password Response");
+       alert(response.data.message);
       })
       .catch(() => {
-        console.log(error, "Forgot Password Error");
+        console.log(error, "unable to process your request at the moment");
       });
+     // setModalVisible(!modalVisible);
   }
 
   return (
@@ -183,7 +189,7 @@ function LoginScreenCopy({ navigation }) {
               ) : (
                 <SubmitButton title="Login" color="teal" />
               )}
-              <TouchableOpacity onPress={forgrtPassword}>
+              <TouchableOpacity onPress={handleForgotPassword}>
                 <Text
                   style={{ color: "white", textAlign: "right", marginTop: 15 }}
                 >
