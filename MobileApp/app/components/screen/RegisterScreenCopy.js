@@ -16,11 +16,13 @@ import * as Yup from "yup";
 import Icon from "../Icon";
 import { Url } from "./Core";
 
+import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
 import AppButton from "../AppButton";
 import Screen from "../Screen";
 import colors from "../colors";
 import TopButtons from "./TopButtons";
-import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
 import axios from "axios";
 import Header from "../Header";
 import { useEffect } from "react";
@@ -33,13 +35,25 @@ const validationSchema = Yup.object().shape({
   sCode: Yup.string().label("SCode"),
   email: Yup.string().email().label("Email"),
   phone: Yup.string().label("Phone"),
-  password: Yup.string().label("Password"),
+  password: Yup.string().min(4).label("Password"),
 });
 
 function RegisterScreenCopy({ navigation }) {
   const [load, setLoad] = useState(false);
   const [isSelected, setSelection] = useState(false);
   let [showPopup, setShowPopup] = useState(false);
+
+  const resetNavigation = useNavigation();
+
+  const handleResetScreen = () => {
+    resetNavigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Register' }],
+        animation: true,
+      })
+    );
+  };
 
   const handlePress = (values) => {
     console.log(values, "values");
@@ -89,6 +103,7 @@ function RegisterScreenCopy({ navigation }) {
     } else {
       Alert.alert("Alert", "Please accept terms and conditions");
     }
+    handleResetScreen();
   };
 
   const handleClose = () => {
