@@ -80,9 +80,11 @@ function AddMemberScreen({ navigation }) {
         if (res.data.status === 200) {
           setLoad(false);
           alert(`your ${value} is successully created`);
+          handleResetScreen();
         } else {
           alert(res.data.message);
           setLoad((previousState) => !previousState);
+          handleResetScreen();
         }
       })
       .catch((err) => {
@@ -92,7 +94,7 @@ function AddMemberScreen({ navigation }) {
         AudioScheduledSourceNode(false);
       });
       
-      handleResetScreen();
+     
 
       // resetForm({ values: "" });
 

@@ -20,8 +20,8 @@ import Header from "../Header";
 const {width, height} = Dimensions.get('screen');
 const validationSchema = Yup.object().shape({
   clientID: Yup.string().label("Client ID"),
-  clientName: Yup.string().label("Client Name"),
-  contact: Yup.string().label("Contact"),
+  clientName: Yup.string().label("Client Name").required('Client Name is required'),
+  phone: Yup.string().label("phone").required('Phone is required'),
   email: Yup.string().email().label("Email"),
   amount: Yup.string().label("Amount"),
 });
@@ -31,7 +31,7 @@ function ClientFormScreenCopy({ props, navigation }) {
     clientID: "",
     clientName: "",
     cnic: "",
-    contact: "",
+    phone: "",
     email: "",
     amount: "",
   };
@@ -63,7 +63,7 @@ function ClientFormScreenCopy({ props, navigation }) {
       data: {
         ClientId: values.clientID,
         ClientName: values.clientName,
-        ClientPhoneNumber: values.number.slice(1),
+        ClientPhoneNumber: values.phone.slice(1),
         ClientAmount: values.amount,
         ClientEmail: values.email,
         BelongsTo: GlobalEmployeeID.Role.createdBy,
@@ -140,7 +140,7 @@ function ClientFormScreenCopy({ props, navigation }) {
                                 autoCorrect={false}
                                 icon='phone-outline'
                                 keyboardType='numeric'
-                                name='number'
+                                name='phone'
                                 placeholder='Contact Number'
                                 textContentType='emailAddress'
                             />
@@ -158,7 +158,7 @@ function ClientFormScreenCopy({ props, navigation }) {
                             <AppFormField
                                 autoCapitalize="none"
                                 autoCorrect={false}
-                                icon="currency-rupee"
+                                icon=""
                                 keyboardType="numeric"
                                 name="amount"
                                 placeholder="Client Amount"
