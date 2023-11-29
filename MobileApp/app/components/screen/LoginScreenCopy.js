@@ -116,7 +116,7 @@ function LoginScreenCopy({ navigation }) {
     setModalVisible(!modalVisible);
     axios({
       method: "post",
-      url: Url + "/dash/forgrtPassword",
+      url: Url + "/dash/forgotPassword",
       data: {
         employeeEmail: UserId,
       },
