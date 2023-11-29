@@ -3,8 +3,10 @@ import React, { useState, useContext } from "react";
 import { Image, ScrollView, StyleSheet, View, Dimensions, ActivityIndicator } from "react-native";
 import * as Yup from "yup";
 
-import Screen from "../Screen";
 import { AppForm, AppFormField, AppFormPhone, SubmitButton } from "../forms";
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
+import Screen from "../Screen";
 import AppText from "../AppText";
 import colors from "../colors";
 import axios from "axios";
@@ -37,6 +39,19 @@ function ClientFormScreenCopy({ props, navigation }) {
   const GlobalEmployeeID = useContext(StoreContext)
   const [load, setLoad] = useState(false);
 
+  const resetNavigation = useNavigation();
+
+
+  const handleResetScreen = () => {
+    resetNavigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Client Form' }],
+        animation: true,
+      })
+    );
+  };
+
   const handlePress = (values) => {
     setLoad(true);
     console.log(values, "form");
@@ -66,6 +81,8 @@ function ClientFormScreenCopy({ props, navigation }) {
         alert("Error occured in submitting the form");
         setLoad(false);
       });
+
+      handleResetScreen();
       
   };
 
