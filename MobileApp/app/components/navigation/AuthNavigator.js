@@ -40,8 +40,8 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => (
     <Stack.Navigator>
-        <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
         <Stack.Screen name='Welcome' component={ WelcomeScreenCopy}  options={{headerShown: false}} />
+        <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
         <Stack.Screen name='SettingScreen' component={ SettingScreen }  options={{headerShown: false}} />
         <Stack.Screen name='ViewClientMember' component={ VIewClientMember_Sunny}  options={{headerShown: false}} />
 
