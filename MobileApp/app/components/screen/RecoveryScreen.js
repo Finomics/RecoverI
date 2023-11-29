@@ -155,7 +155,7 @@ function RecoveryScreen({ navigation, route }) {
           <AppText style={styles.name}>{listing.ClientName}</AppText>
           <AppTextInput
             placeholder="Amount"
-            icon="currency-rupee"
+            icon=""
             keyboardType="numeric"
             onChangeText={(textInput) => setTextInput(textInput)}
           />

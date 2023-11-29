@@ -11,7 +11,9 @@ import * as Yup from "yup";
 import Constants from "expo-constants";
 import DropDownPicker from "react-native-dropdown-picker";
 
-import { AppForm, AppFormField, AppFormPassword, SubmitButton } from "../forms";
+import { AppForm, AppFormField, AppFormPassword, SubmitButton,AppFormPhone } from "../forms";
+import { CommonActions, useNavigation } from '@react-navigation/native';
+
 import Screen from "../Screen";
 import colors from "../colors";
 import axios from "axios";
@@ -23,9 +25,10 @@ import Header from "../Header";
 const validationSchema = Yup.object().shape({
   userName: Yup.string().required().label("User Name"),
   email: Yup.string().label("Email"),
-  ConatactNumber: Yup.string().label("ConatactNumber"),
+  ContactNumber: Yup.string().label("ContactNumber"),
   password: Yup.string().required().min(4).label("Password"),
 });
+
 
 function AddMemberScreen({ navigation }) {
   const [load, setLoad] = useState(false);
@@ -35,9 +38,24 @@ function AddMemberScreen({ navigation }) {
     { label: "Cashier", value: "Cashier" },
     { label: "Rider", value: "Rider" },
   ]);
-  const createdByAdminId = useContext(StoreContext);
 
+  const resetNavigation = useNavigation();
+
+  const createdByAdminId = useContext(StoreContext);
+  
   console.log(createdByAdminId.Role.companyName, "createdBy");
+
+
+  const handleResetScreen = () => {
+    resetNavigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: 'Add Member' }],
+        animation: true,
+      })
+    );
+  };
+
 
   const handlePress = ({ values, value }) => {
     setLoad(true);
@@ -53,7 +71,7 @@ function AddMemberScreen({ navigation }) {
         createdBy: createdByAdminId.Role._id,
         companyName: createdByAdminId.Role.companyName,
         shortCode: createdByAdminId.Role.shortCode,
-        loginId: values.ConatactNumber,
+        loginId: values.ContactNumber,
         name: values.userName,
       },
     })
@@ -62,9 +80,11 @@ function AddMemberScreen({ navigation }) {
         if (res.data.status === 200) {
           setLoad(false);
           alert(`your ${value} is successully created`);
+          handleResetScreen();
         } else {
           alert(res.data.message);
           setLoad((previousState) => !previousState);
+          handleResetScreen();
         }
       })
       .catch((err) => {
@@ -73,6 +93,11 @@ function AddMemberScreen({ navigation }) {
         setLoad(false);
         AudioScheduledSourceNode(false);
       });
+      
+     
+
+      // resetForm({ values: "" });
+
   };
 
   return (
@@ -87,10 +112,14 @@ function AddMemberScreen({ navigation }) {
       <ScrollView automaticallyAdjustKeyboardInsets={true}>
         <View style={styles.inputContianer}>
           <AppForm
-            initialValues={{ email: "", password: "", userName: "" }}
+            initialValues={{ email: "", password: "", userName: "", ContactNumber:"" }}
             // onSubmit={values => console.log(values, value,":sasas")}
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
               handlePress({ values, value });
+
+              console.log("hello ", values)
+              
+              
             }}
             validationSchema={validationSchema}
           >
@@ -104,15 +133,15 @@ function AddMemberScreen({ navigation }) {
               textContentType="emailAddress"
             />
 
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="phone-outline"
-              keyboardType="Number"
-              name="ConatactNumber"
-              placeholder="Phone or Login id"
-              textContentType="ConatactNumber"
-            />
+<AppFormPhone
+                                autoCapitalize='none'
+                                autoCorrect={false}
+                                icon='phone-outline'
+                                keyboardType='numeric'
+                                name='ContactNumber'
+                                placeholder='Mobile Number'
+                                textContentType='emailAddress'
+                            />
 
             <AppFormField
               autoCapitalize="none"

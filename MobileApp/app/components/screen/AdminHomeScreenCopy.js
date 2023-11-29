@@ -43,9 +43,10 @@ function AdminHomeScreenCopy({ navigation }) {
         console.log('handleTransaction');
         navigation.navigate("Transactions");
     }
-    const handlePasswordChange = () => {
-        console.log('handlePasswordChang');
-        navigation.navigate('Change Password');
+    const handleSettingScreen = () => {
+        console.log('handleSettingScreen');
+        console.log(user.Role)
+        navigation.navigate('SettingScreen', {user},);
     }
     return (
         <Screen>
@@ -97,10 +98,10 @@ function AdminHomeScreenCopy({ navigation }) {
                     onPress={handleTransaction}
                 />
                 <IconButton
-                    title={'Change Password'}
-                    subTitle={'Change your Password'}
+                    title={'Settings'}
+                    subTitle={'Change your Settings'}
                     image={require('../../assets/password.png')}
-                    onPress={handlePasswordChange}
+                    onPress={handleSettingScreen}
                 />
             </ScrollView>
         </Screen>
