@@ -49,10 +49,10 @@ const AuthNavigator = () => (
         <Stack.Screen name='Assign Rider' component={RiderAssignScreen} options={{headerShown: false}} />
         <Stack.Screen name='Rider Home' component={RiderHomeScreenCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='OTP Screen' component={OTPScreen}  options={{headerShown: false}} />
+        <Stack.Screen name='Client Form' component={ClientFormScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Add Member' component={AddMemberScreen}  options={{headerShown: false}} />
         <Stack.Screen name='Admin Home' component={AdminHomeScreenCopy}  options={{headerShown: false}}/>
         <Stack.Screen name='Cashier Home' component={CashierHomeScreenCopy}  options={{headerShown: false}} />
-        <Stack.Screen name='Client Form' component={ClientFormScreenCopy}  options={{headerShown: false}} />
         <Stack.Screen name='Clients Listing' component={ClientScreen}  options={{headerShown: false}} />
         {/* <Stack.Screen name='HomeScreen' component={HomeScreen} /> */}
         <Stack.Screen name='Collections' component={PaymentScreen} options={{headerShown: false}} />
