@@ -74,7 +74,7 @@ function RiderHomeScreenCopy({navigation}) {
                     onPress={handleClientList}
                 />
                 <IconButton
-                    title={'Payment Collection'}
+                    title={'Collections'}
                     subTitle={'View all payments collected by you.'}
                     image={require('../../assets/payment-collection.png')}
                     onPress={handlePaymentCollection}

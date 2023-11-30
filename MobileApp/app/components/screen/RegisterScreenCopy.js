@@ -32,7 +32,7 @@ const { width, height } = Dimensions.get("screen");
 const validationSchema = Yup.object().shape({
   name: Yup.string().label("Name"),
   cName: Yup.string().label("CName"),
-  sCode: Yup.string().label("SCode"),
+  sCode: Yup.string().label("SCode").max(4, 'Short Code must be at most 4 characters').required(),
   email: Yup.string().email().label("Email"),
   phone: Yup.string().label("Phone"),
   password: Yup.string().min(4).label("Password"),

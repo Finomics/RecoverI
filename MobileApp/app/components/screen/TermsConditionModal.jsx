@@ -77,12 +77,11 @@ export default function TermsConditionModal({ visible, onClose }) {
               >
                 <Text style={{ fontSize: 20 }}>Terms and Condition</Text>
                 <Text style={{ padding: 10, margin: 10 }}>
-                  We operate the mobile application Kollectlt (the 'App'), as
-                  well as any other related products and services that refer or
-                  link to these legal terms (the 'Legal Terms" (collectivelv to
-                  the 'Services').
+                Kollectit is a mobile application developed by TecStik, offering users the ability to manage
+                 payments from customers and reimburse suppliers. The app's information is intended solely for personal, non-commercial use, and users are granted a non-exclusive, non-transferable license to access its content. TecStik asserts ownership of all intellectual property rights, including trademarks. Users are strictly prohibited from posting illegal, harassing, or defamatory content, and TecStik reserves the right to remove or edit such material. Additionally, the app emphasizes compliance with laws and regulations, and users are urged to report any copyright infringements promptly. TecStik disclaims responsibility for text message delays attributed to cellular network providers.
+                
                 </Text>
-                <Text style={{ padding: 10, margin: 10 }}>
+                {/* <Text style={{ padding: 10, margin: 10 }}>
                   Collection of receivables become highlly secure with
                   Kollectit. The and ensures vour workers collect pavments from
                   vour customers or reimburse vour suppliers with the exact
@@ -92,7 +91,7 @@ export default function TermsConditionModal({ visible, onClose }) {
                   Download the app today and find out how Kollectit creates a
                   seamless process of payment. From both sides of the deal.
                   KollectIt is free to use with a transaction limit of 5.
-                </Text>
+                </Text> */}
               </View>
             </ScrollView>
 

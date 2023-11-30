@@ -73,7 +73,7 @@ function OTPScreen({ navigation, route }) {
         setLoad(true);
         Alert.alert(
             'OTP Verification',
-            'You have made the ' + modeOfPayment + " transaction of Rs. " + data.PaymentAmount + '.',
+            'You have collected ' + modeOfPayment + " of " + data.PaymentAmount + ' from: '+data.PaymentName,
             [
                 {
                     text: "Cancel",
@@ -98,7 +98,7 @@ function OTPScreen({ navigation, route }) {
                             .then((response) => {
                                 // console.log(JSON.stringify(response))
                                 console.log(response.data, "response");
-                                alert("payment status Updated");
+                                alert("payment OTP verified");
                                 setLoad(false);
                                 navigation.navigate("Rider Home");
                                 // transaction()
