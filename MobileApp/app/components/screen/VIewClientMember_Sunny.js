@@ -94,7 +94,7 @@ function VIewClientMember_Sunny({ navigation }) {
     return (
         <Screen>
             <Header
-                header={'Client Members'}
+                header={'Update Clients'}
                 navigation={navigation}
             />
             <View>
