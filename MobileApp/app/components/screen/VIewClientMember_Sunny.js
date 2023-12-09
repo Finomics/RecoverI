@@ -103,7 +103,7 @@ function VIewClientMember_Sunny({ navigation }) {
                     source={require('../../assets/kollectit.png')}
                 />
             </View>
-            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
+            {/* <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}>
                 <TouchableOpacity onPress={() => setloading(true)}>
                     <View style={styles.filterBox}><Text style={{ fontSize: 20 }}>All</Text></View>
                 </TouchableOpacity>
@@ -113,7 +113,7 @@ function VIewClientMember_Sunny({ navigation }) {
                 <TouchableOpacity onPress={() => HandlerFilter("Rider")}>
                     <View style={styles.filterBox} ><Text style={{ fontSize: 20 }}>Rider</Text></View>
                 </TouchableOpacity>
-            </View>
+            </View> */}
 
             {clientData != null ?
                 <FlatList
