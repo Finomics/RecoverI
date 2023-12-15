@@ -39,7 +39,9 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
       let update={
         ClientName: clientName,
         ClientId: clientId,
-        PhoneNumber:clientNumber
+        PhoneNumber:clientNumber,
+        ClientEmail:clientEmail,
+        ClientPhoneNumber:clientNumber
       }
      
 
@@ -60,12 +62,12 @@ function ViewClientMemberModal_Sunny({ visible, onClose, data, modalUpdateData, 
         }
       })
         .then((responseJson) => {
-          console.log("Client Update Screen in Modal", responseJson.data);
+          console.log("--------------------Client Update Screen in Modal", responseJson.data);
           setLoad(false);
   
         })
         .catch((error) => {
-          console.error("Error in Client Update Screen in Modal",error);
+          console.error("---------------Error in Client Update Screen in Modal",error);
           alert("an error occured while updating values");
         });
 
